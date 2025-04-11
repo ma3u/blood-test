@@ -1,19 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Trash2, Calendar as CalendarIcon, PlusCircle, Edit, Save } from "lucide-react";
 import { 
   BloodTestResult, 
   TimelineEntry, 
@@ -23,8 +10,10 @@ import {
   clearTimelineData
 } from "@/lib/bloodTestUtils";
 import TimelineTrendChart from "./TimelineTrendChart";
-import ResultsPanel from "./ResultsPanel";
-import BloodTestForm from "./BloodTestForm";
+import TimelineHeader from "./timeline/TimelineHeader";
+import TimelineHistoryView from "./timeline/TimelineHistoryView";
+import TimelineAddDialog from "./timeline/TimelineAddDialog";
+import TimelineEditDialog from "./timeline/TimelineEditDialog";
 
 interface TimelineManagerProps {
   results: BloodTestResult[] | null;
@@ -70,6 +59,7 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
     
     setEditableValues(values);
     setSelectedDate(new Date(entry.date));
+    setSelectedEntryId(entry.id);
     setShowEditDialog(true);
   };
 
@@ -104,27 +94,12 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
     setSelectedEntryId(null);
   };
 
-  const selectedEntry = selectedEntryId 
-    ? timelineData.find(entry => entry.id === selectedEntryId) 
-    : null;
-
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold">Blood Test Timeline</h2>
-          <p className="text-gray-600">Track your blood test results over time</p>
-        </div>
-        <div className="space-x-2">
-          <Button variant="outline" onClick={onBack}>
-            Back to Results
-          </Button>
-          <Button onClick={() => setShowAddDialog(true)}>
-            <PlusCircle className="w-4 h-4 mr-2" />
-            Save Current Results
-          </Button>
-        </div>
-      </div>
+      <TimelineHeader 
+        onBack={onBack}
+        onAddDialogOpen={() => setShowAddDialog(true)}
+      />
 
       <Tabs defaultValue="chart">
         <TabsList>
@@ -137,169 +112,33 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
         </TabsContent>
         
         <TabsContent value="history">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="col-span-1">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex justify-between items-center">
-                    <span>Test History</span>
-                    {timelineData.length > 0 && (
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        onClick={handleClearTimeline}
-                        title="Clear all history"
-                      >
-                        <Trash2 className="w-4 h-4 text-red-500" />
-                      </Button>
-                    )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {timelineData.length === 0 ? (
-                    <div className="text-center p-6 bg-gray-50 rounded-lg">
-                      <p>No test results saved yet.</p>
-                      <Button 
-                        variant="outline" 
-                        className="mt-4" 
-                        onClick={() => setShowAddDialog(true)}
-                      >
-                        Save Current Results
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
-                      {timelineData
-                        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                        .map(entry => (
-                          <div 
-                            key={entry.id}
-                            className={`p-3 rounded-lg border cursor-pointer ${
-                              selectedEntryId === entry.id 
-                                ? 'bg-blue-50 border-blue-300' 
-                                : 'hover:bg-gray-50'
-                            }`}
-                          >
-                            <div className="flex justify-between items-center" onClick={() => setSelectedEntryId(entry.id)}>
-                              <div>
-                                <p className="font-medium">
-                                  {format(new Date(entry.date), 'MMM d, yyyy')}
-                                </p>
-                                <p className="text-sm text-gray-500">
-                                  {entry.results.length} markers
-                                </p>
-                              </div>
-                              <div className="flex space-x-1">
-                                <Button 
-                                  variant="ghost" 
-                                  size="icon"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedEntryId(entry.id);
-                                    handleEditEntry(entry);
-                                  }}
-                                >
-                                  <Edit className="w-4 h-4 text-blue-500" />
-                                </Button>
-                                <Button 
-                                  variant="ghost" 
-                                  size="icon" 
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleDeleteEntry(entry.id);
-                                  }}
-                                >
-                                  <Trash2 className="w-4 h-4 text-gray-400 hover:text-red-500" />
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="col-span-2">
-              {selectedEntry ? (
-                <div className="space-y-4">
-                  <div className="bg-white border rounded-md p-3 shadow-sm">
-                    <p className="text-gray-700 font-medium">
-                      Test Date: <span className="text-blue-600">{format(new Date(selectedEntry.date), "MMMM d, yyyy")}</span>
-                    </p>
-                  </div>
-                  <ResultsPanel results={selectedEntry.results} />
-                </div>
-              ) : (
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <p className="text-gray-500">Select a test result to view details</p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </div>
+          <TimelineHistoryView
+            timelineData={timelineData}
+            selectedEntryId={selectedEntryId}
+            setSelectedEntryId={setSelectedEntryId}
+            onEditEntry={handleEditEntry}
+            onDeleteEntry={handleDeleteEntry}
+            onClearTimeline={handleClearTimeline}
+          />
         </TabsContent>
       </Tabs>
 
-      {/* Dialog for adding new test results */}
-      <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Save Test Results</DialogTitle>
-            <DialogDescription>
-              Select the date when this test was taken.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="py-4">
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={(date) => date && setSelectedDate(date)}
-              className="mx-auto pointer-events-auto"
-              disabled={(date) => date > new Date()}
-            />
-          </div>
-          
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowAddDialog(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleAddToTimeline}>
-              Save to Timeline
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Dialog components */}
+      <TimelineAddDialog
+        open={showAddDialog}
+        onOpenChange={setShowAddDialog}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        onAddToTimeline={handleAddToTimeline}
+      />
 
-      {/* Dialog for editing existing test results */}
-      <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
-        <DialogContent className="max-w-3xl">
-          <DialogHeader>
-            <DialogTitle>Edit Test Results</DialogTitle>
-            <DialogDescription>
-              Modify the values for this test.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="py-4">
-            <BloodTestForm 
-              onResultsSubmit={handleUpdateEntry}
-              initialValues={editableValues}
-              initialDate={selectedDate}
-              isEditMode={true}
-            />
-          </div>
-          
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowEditDialog(false)}>
-              Cancel
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <TimelineEditDialog
+        open={showEditDialog}
+        onOpenChange={setShowEditDialog}
+        editableValues={editableValues}
+        selectedDate={selectedDate}
+        onUpdateEntry={handleUpdateEntry}
+      />
     </div>
   );
 };

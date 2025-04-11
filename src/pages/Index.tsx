@@ -2,7 +2,10 @@
 import { useState } from "react";
 import BloodTestForm from "@/components/BloodTestForm";
 import ResultsPanel from "@/components/ResultsPanel";
+import FileUploader from "@/components/FileUploader";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { analyzeBloodTest } from "@/lib/bloodTestUtils";
 
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
@@ -16,6 +19,21 @@ const Index = () => {
   const handleStartOver = () => {
     setResults(null);
     setShowForm(true);
+  };
+
+  const handleExtractedResults = (extractedValues: Record<string, string>) => {
+    // Convert string values to numbers and analyze
+    const testResults = Object.keys(extractedValues).map(key => {
+      const marker = bloodMarkers.find(marker => marker.id === key);
+      if (marker) {
+        const value = parseFloat(extractedValues[key]);
+        return analyzeBloodTest(marker, value);
+      }
+      return null;
+    }).filter(Boolean);
+
+    setResults(testResults);
+    setShowForm(false);
   };
 
   return (
@@ -34,13 +52,26 @@ const Index = () => {
           <div className="mb-6 text-center">
             <h2 className="text-3xl font-bold text-gray-900">Blood Test Analysis</h2>
             <p className="text-gray-600 mt-2">
-              Enter your blood test values to receive an instant analysis and interpretation
+              Enter your blood test values or upload test results for instant analysis and interpretation
             </p>
           </div>
 
           {showForm && !results ? (
             <div className="mt-8">
-              <BloodTestForm onResultsSubmit={handleResultsSubmit} />
+              <Tabs defaultValue="manual" className="w-full">
+                <TabsList className="grid grid-cols-2 mb-8">
+                  <TabsTrigger value="manual">Manual Entry</TabsTrigger>
+                  <TabsTrigger value="upload">Upload Test Results</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="manual">
+                  <BloodTestForm onResultsSubmit={handleResultsSubmit} />
+                </TabsContent>
+                
+                <TabsContent value="upload">
+                  <FileUploader onResultsExtracted={handleExtractedResults} />
+                </TabsContent>
+              </Tabs>
             </div>
           ) : (
             <div className="mt-8 space-y-6">

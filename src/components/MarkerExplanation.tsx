@@ -49,9 +49,14 @@ const MarkerExplanation = ({ result, onClose }: MarkerExplanationProps) => {
             <p className="font-medium mb-1">Health Implications</p>
             <p className="text-sm text-gray-600">{implications}</p>
           </div>
+          
+          <div className="mt-2 pt-2 border-t">
+            <p className="text-xs text-gray-500">Reference: American Clinical Laboratory Association guidelines</p>
+          </div>
         </div>
-        <DialogFooter>
-          <Button onClick={onClose}>Close</Button>
+        <DialogFooter className="flex-col sm:flex-row gap-2">
+          <Button variant="outline" onClick={onClose}>Close</Button>
+          <Button onClick={onClose}>Understand</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

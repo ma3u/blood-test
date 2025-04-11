@@ -83,36 +83,62 @@ const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
   };
 
   return (
-    <div className="w-full h-96 bg-white p-4 rounded-lg border">
+    <div className="w-full bg-white p-4 rounded-lg border">
       <h3 className="text-lg font-semibold mb-4">Blood Test Results Visualization</h3>
-      <ResponsiveContainer width="100%" height="90%">
-        <BarChart
-          data={chartData}
-          layout="vertical"
-          margin={{ top: 20, right: 30, left: 100, bottom: 10 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-          <XAxis 
-            type="number" 
-            domain={[0, 100]} 
-            tickFormatter={() => ''} 
-          />
-          <YAxis 
-            type="category" 
-            dataKey="name" 
-            width={100}
-            tickLine={false}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <ReferenceLine x={0} stroke="#666" />
-          <ReferenceLine x={100} stroke="#666" />
-          <Bar dataKey="normalizedValue" radius={[0, 4, 4, 0]}>
-            {chartData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={getBarColor(entry.status)} />
+      <div className="flex flex-col lg:flex-row lg:items-center">
+        <div className="lg:w-3/4 h-96">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={chartData}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 100, bottom: 10 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+              <XAxis 
+                type="number" 
+                domain={[0, 100]} 
+                tickFormatter={() => ''} 
+              />
+              <YAxis 
+                type="category" 
+                dataKey="name" 
+                width={100}
+                tickLine={false}
+              />
+              <Tooltip content={<CustomTooltip />} />
+              <ReferenceLine x={0} stroke="#666" />
+              <ReferenceLine x={100} stroke="#666" />
+              <Bar dataKey="normalizedValue" radius={[0, 4, 4, 0]}>
+                {chartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={getBarColor(entry.status)} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        
+        <div className="lg:w-1/4 mt-4 lg:mt-0 lg:ml-4">
+          <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 space-y-3">
+            {chartData.map((item, index) => (
+              <div key={index} className="flex items-center space-x-2 text-sm">
+                <div 
+                  className="w-3 h-3 rounded-sm" 
+                  style={{ backgroundColor: getBarColor(item.status) }}
+                />
+                <div>
+                  <div className="font-medium">{item.name}</div>
+                  <div className="text-gray-600">
+                    {item.value} {item.unit} 
+                    <span className="text-xs ml-1">
+                      ({item.minValue}-{item.maxValue})
+                    </span>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

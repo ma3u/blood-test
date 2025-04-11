@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import BloodTestForm from "@/components/BloodTestForm";
 import ResultsPanel from "@/components/ResultsPanel";
@@ -13,6 +12,7 @@ const Index = () => {
   const [showForm, setShowForm] = useState(true);
   const [showTimeline, setShowTimeline] = useState(false);
   const [testDate, setTestDate] = useState<Date>(new Date());
+  const [extractedValues, setExtractedValues] = useState<Record<string, string> | null>(null);
 
   const handleResultsSubmit = (testResults: any[], date: Date) => {
     setResults(testResults);
@@ -24,10 +24,12 @@ const Index = () => {
     setResults(null);
     setShowForm(true);
     setShowTimeline(false);
+    setExtractedValues(null);
   };
 
   const handleExtractedResults = (extractedValues: Record<string, string>) => {
-    // Convert string values to numbers and analyze
+    setExtractedValues(extractedValues);
+    
     const testResults = Object.keys(extractedValues).map(key => {
       const marker = bloodMarkers.find(marker => marker.id === key);
       if (marker) {
@@ -38,7 +40,7 @@ const Index = () => {
     }).filter(Boolean);
 
     setResults(testResults);
-    setTestDate(new Date()); // Set to today's date for uploaded results
+    setTestDate(new Date());
     setShowForm(false);
   };
 
@@ -48,6 +50,10 @@ const Index = () => {
 
   const handleBackFromTimeline = () => {
     setShowTimeline(false);
+  };
+
+  const handleReviewAndModify = () => {
+    setShowForm(true);
   };
 
   return (
@@ -85,13 +91,38 @@ const Index = () => {
                 </TabsList>
                 
                 <TabsContent value="manual">
-                  <BloodTestForm onResultsSubmit={handleResultsSubmit} />
+                  <BloodTestForm 
+                    onResultsSubmit={handleResultsSubmit} 
+                    initialValues={extractedValues || {}} 
+                  />
                 </TabsContent>
                 
                 <TabsContent value="upload">
                   <FileUploader onResultsExtracted={handleExtractedResults} />
                 </TabsContent>
               </Tabs>
+            </div>
+          ) : showForm && results ? (
+            <div className="mt-8">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p className="text-blue-700">You are now reviewing and modifying the extracted data. Submit the form to update your results.</p>
+              </div>
+              <BloodTestForm 
+                onResultsSubmit={handleResultsSubmit} 
+                initialValues={extractedValues || {}}
+                initialDate={testDate}
+              />
+              <div className="flex justify-end mt-4">
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setShowForm(false);
+                  }}
+                  className="mt-2"
+                >
+                  Cancel Editing
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="mt-8 space-y-6">
@@ -101,6 +132,11 @@ const Index = () => {
                 <Button onClick={handleStartOver} variant="outline" size="lg">
                   Start Over
                 </Button>
+                {extractedValues && (
+                  <Button onClick={handleReviewAndModify} variant="secondary" size="lg">
+                    Review & Modify Data
+                  </Button>
+                )}
                 <Button onClick={handleViewTimeline} variant="default" size="lg">
                   View Timeline
                 </Button>

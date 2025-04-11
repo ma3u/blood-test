@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,26 +17,44 @@ import { cn } from "@/lib/utils";
 
 interface BloodTestFormProps {
   onResultsSubmit: (results: any[], testDate: Date) => void;
+  initialValues?: Record<string, string>;
+  initialDate?: Date;
 }
 
-const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
-  const [values, setValues] = useState<{ [key: string]: string }>({});
-  const [testDate, setTestDate] = useState<Date>(new Date());
+const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: BloodTestFormProps) => {
+  const [values, setValues] = useState<{ [key: string]: string }>(initialValues);
+  const [testDate, setTestDate] = useState<Date>(initialDate || new Date());
+  
+  // Update values when initialValues prop changes
+  useEffect(() => {
+    if (initialValues && Object.keys(initialValues).length > 0) {
+      setValues(initialValues);
+    }
+  }, [initialValues]);
+  
+  // Update test date when initialDate prop changes
+  useEffect(() => {
+    if (initialDate) {
+      setTestDate(initialDate);
+    }
+  }, [initialDate]);
 
   const handleInputChange = (id: string, value: string) => {
     setValues({
       ...values,
-      [id]: value,
+      [id]: value
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const results = bloodMarkers.map((marker) => {
-      const value = parseFloat(values[marker.id] || "0");
+    const results = bloodMarkers.map(marker => {
+      const valueStr = values[marker.id] || "";
+      const value = parseFloat(valueStr);
+      if (isNaN(value) || valueStr === "") return null;
       return analyzeBloodTest(marker, value);
-    });
+    }).filter(Boolean);
     
     onResultsSubmit(results, testDate);
   };
@@ -45,26 +63,24 @@ const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
     setValues({});
   };
 
-  // Generate random sample values within normal ranges
-  const fillSampleData = () => {
-    const sampleValues: { [key: string]: string } = {};
-    bloodMarkers.forEach((marker) => {
-      const range = marker.maxValue - marker.minValue;
-      const randomValue = (Math.random() * range + marker.minValue).toFixed(1);
-      sampleValues[marker.id] = randomValue;
-    });
-    
-    // Add a few abnormal values to make it interesting
-    sampleValues.cholesterol = (210).toString();
-    sampleValues.glucose = (105).toString();
-    
-    setValues(sampleValues);
+  // Generate category sections
+  const categories = Array.from(
+    new Set(bloodMarkers.map(marker => marker.category))
+  );
+
+  const getCategoryMarkers = (category: string) => {
+    return bloodMarkers.filter(marker => marker.category === category);
   };
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Enter Blood Test Values</CardTitle>
+        <CardTitle className="text-2xl text-center">
+          Enter Your Blood Test Values
+        </CardTitle>
+        <p className="text-center text-gray-500">
+          Fill in the values from your blood test results. Leave fields blank if not available.
+        </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,49 +115,29 @@ const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {bloodMarkers.map((marker: BloodMarker) => (
               <div key={marker.id} className="space-y-2">
-                <Label htmlFor={marker.id} className="flex justify-between">
-                  <span>{marker.name}</span> 
-                  <span className="text-muted-foreground text-sm">{marker.unit}</span>
-                </Label>
-                <div className="flex items-center">
-                  <Input
-                    id={marker.id}
-                    type="number"
-                    step="0.01"
-                    placeholder={`${marker.minValue} - ${marker.maxValue}`}
-                    value={values[marker.id] || ""}
-                    onChange={(e) => handleInputChange(marker.id, e.target.value)}
-                    className="flex-1"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Normal range: {marker.minValue} - {marker.maxValue} {marker.unit}
-                </p>
+                <Label htmlFor={marker.id}>{marker.name} ({marker.unit})</Label>
+                <Input
+                  id={marker.id}
+                  type="text"
+                  inputMode="decimal"
+                  placeholder={`${marker.min} - ${marker.max}`}
+                  value={values[marker.id] || ""}
+                  onChange={(e) => handleInputChange(marker.id, e.target.value)}
+                  className="w-full"
+                />
               </div>
             ))}
           </div>
-          
-          <div className="flex flex-col sm:flex-row gap-2 pt-4">
-            <Button 
-              type="button" 
-              variant="outline" 
-              onClick={fillSampleData}
-              className="flex-1"
-            >
-              Fill Sample Data
-            </Button>
-            <Button 
-              type="button" 
-              variant="outline" 
+
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2 mt-6">
+            <Button
+              type="button"
+              variant="outline"
               onClick={handleReset}
-              className="flex-1"
             >
-              Clear Form
+              Clear All Values
             </Button>
-            <Button 
-              type="submit" 
-              className="flex-1 bg-blue-600 hover:bg-blue-700"
-            >
+            <Button type="submit">
               Analyze Results
             </Button>
           </div>

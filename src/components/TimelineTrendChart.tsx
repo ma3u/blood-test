@@ -134,69 +134,82 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
       </CardHeader>
       <CardContent>
         {viewMode === "chart" ? (
-          <div className="h-80">
-            <ChartContainer 
-              config={{
-                normal: { label: "Normal", color: "#10B981" },
-                high: { label: "High", color: "#EF4444" },
-                low: { label: "Low", color: "#3B82F6" },
-              }}
-            >
-              <LineChart data={transformedData} margin={{ top: 20, right: 30, left: 30, bottom: 30 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis 
-                  dataKey="date" 
-                  tick={{ fontSize: 12 }}
-                  tickMargin={10}
-                />
-                <YAxis
-                  domain={[
-                    (dataMin: number) => Math.max(0, dataMin * 0.9), 
-                    (dataMax: number) => dataMax * 1.1
-                  ]}
-                  tick={{ fontSize: 12 }}
-                  tickMargin={10}
-                />
-                
-                {selectedMarkerInfo && (
-                  <>
-                    <Tooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Line 
-                      name={selectedMarkerInfo.name}
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke={getLineColor()} 
-                      strokeWidth={2}
-                      dot={{ r: 5 }}
-                      activeDot={{ r: 7 }}
-                      animationDuration={500}
-                    />
-                    {/* Reference lines for normal range */}
-                    {selectedMarkerInfo && (
-                      <>
-                        <Line 
-                          name="Min Normal" 
-                          dataKey={() => selectedMarkerInfo.minValue}
-                          stroke="#10B981" 
-                          strokeDasharray="3 3"
-                          dot={false}
-                          activeDot={false}
-                        />
-                        <Line 
-                          name="Max Normal" 
-                          dataKey={() => selectedMarkerInfo.maxValue}
-                          stroke="#EF4444" 
-                          strokeDasharray="3 3"
-                          dot={false}
-                          activeDot={false}
-                        />
-                      </>
-                    )}
-                  </>
-                )}
-              </LineChart>
-            </ChartContainer>
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="lg:w-3/4 h-80">
+              <ChartContainer 
+                config={{
+                  normal: { label: "Normal", color: "#10B981" },
+                  high: { label: "High", color: "#EF4444" },
+                  low: { label: "Low", color: "#3B82F6" },
+                }}
+              >
+                <LineChart data={transformedData} margin={{ top: 20, right: 30, left: 30, bottom: 30 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis 
+                    dataKey="date" 
+                    tick={{ fontSize: 12 }}
+                    tickMargin={10}
+                  />
+                  <YAxis
+                    domain={[
+                      (dataMin: number) => Math.max(0, dataMin * 0.9), 
+                      (dataMax: number) => dataMax * 1.1
+                    ]}
+                    tick={{ fontSize: 12 }}
+                    tickMargin={10}
+                  />
+                  
+                  {selectedMarkerInfo && (
+                    <>
+                      <Tooltip content={<ChartTooltipContent />} />
+                      <Legend />
+                      <Line 
+                        name={selectedMarkerInfo.name}
+                        type="monotone" 
+                        dataKey="value" 
+                        stroke={getLineColor()} 
+                        strokeWidth={2}
+                        dot={{ r: 5 }}
+                        activeDot={{ r: 7 }}
+                        animationDuration={500}
+                      />
+                      {/* Reference lines for normal range */}
+                      {selectedMarkerInfo && (
+                        <>
+                          <Line 
+                            name="Min Normal" 
+                            dataKey={() => selectedMarkerInfo.minValue}
+                            stroke="#10B981" 
+                            strokeDasharray="3 3"
+                            dot={false}
+                            activeDot={false}
+                          />
+                          <Line 
+                            name="Max Normal" 
+                            dataKey={() => selectedMarkerInfo.maxValue}
+                            stroke="#EF4444" 
+                            strokeDasharray="3 3"
+                            dot={false}
+                            activeDot={false}
+                          />
+                        </>
+                      )}
+                    </>
+                  )}
+                </LineChart>
+              </ChartContainer>
+            </div>
+            
+            {/* Marker information box - moved to the side instead of below */}
+            {selectedMarkerInfo && (
+              <div className="lg:w-1/4 p-4 bg-gray-50 rounded-lg h-fit">
+                <h3 className="font-medium mb-2">{selectedMarkerInfo.name} ({selectedMarkerInfo.unit})</h3>
+                <p className="text-sm">{selectedMarkerInfo.description}</p>
+                <p className="text-sm mt-2">
+                  <span className="font-medium">Normal range:</span> {selectedMarkerInfo.minValue} - {selectedMarkerInfo.maxValue} {selectedMarkerInfo.unit}
+                </p>
+              </div>
+            )}
           </div>
         ) : (
           <div className="mt-4">
@@ -238,16 +251,6 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
                 })}
               </TableBody>
             </Table>
-          </div>
-        )}
-        
-        {selectedMarkerInfo && (
-          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-medium mb-2">{selectedMarkerInfo.name} ({selectedMarkerInfo.unit})</h3>
-            <p className="text-sm">{selectedMarkerInfo.description}</p>
-            <p className="text-sm mt-2">
-              <span className="font-medium">Normal range:</span> {selectedMarkerInfo.minValue} - {selectedMarkerInfo.maxValue} {selectedMarkerInfo.unit}
-            </p>
           </div>
         )}
       </CardContent>

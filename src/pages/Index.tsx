@@ -26,6 +26,8 @@ const Index = () => {
   };
 
   const handleUploadAnother = () => {
+    // Clear previous data for a new entry
+    setExtractedValues(null);
     setShowForm(true);
     setShowTimeline(false);
     setActiveTab("upload");

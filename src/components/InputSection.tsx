@@ -40,6 +40,7 @@ const InputSection = ({
           onResultsSubmit={onResultsSubmit} 
           initialValues={initialValues}
           initialDate={initialDate}
+          isEditMode={true}
         />
         <div className="flex justify-end mt-4">
           <Button 
@@ -54,6 +55,10 @@ const InputSection = ({
     );
   }
 
+  const handleSwitchToUpload = () => {
+    setActiveTab("upload");
+  };
+
   return (
     <div className="mt-8">
       <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -67,6 +72,7 @@ const InputSection = ({
             onResultsSubmit={onResultsSubmit} 
             initialValues={initialValues} 
             initialDate={initialDate}
+            onSwitchToUpload={handleSwitchToUpload}
           />
         </TabsContent>
         

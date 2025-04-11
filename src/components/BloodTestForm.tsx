@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BloodMarker, bloodMarkers, analyzeBloodTest } from "@/lib/bloodTestUtils";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Upload } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -20,13 +20,15 @@ interface BloodTestFormProps {
   initialValues?: Record<string, string>;
   initialDate?: Date;
   isEditMode?: boolean;
+  onSwitchToUpload?: () => void;
 }
 
 const BloodTestForm = ({ 
   onResultsSubmit, 
   initialValues = {}, 
   initialDate, 
-  isEditMode = false 
+  isEditMode = false,
+  onSwitchToUpload
 }: BloodTestFormProps) => {
   const [values, setValues] = useState<{ [key: string]: string }>(initialValues);
   const [testDate, setTestDate] = useState<Date>(initialDate || new Date());
@@ -83,8 +85,8 @@ const BloodTestForm = ({
         </p>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="mb-4">
+        <div className="mb-4 flex justify-between items-center">
+          <div className="flex-1">
             <Label htmlFor="test-date" className="mb-2 block">Test Date</Label>
             <Popover>
               <PopoverTrigger asChild>
@@ -111,20 +113,37 @@ const BloodTestForm = ({
               </PopoverContent>
             </Popover>
           </div>
+          {!isEditMode && onSwitchToUpload && (
+            <div className="ml-4 self-end mb-1">
+              <Button
+                variant="outline"
+                onClick={onSwitchToUpload}
+                className="flex items-center gap-2"
+              >
+                <Upload className="w-4 h-4" />
+                Upload Results Instead
+              </Button>
+            </div>
+          )}
+        </div>
 
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {bloodMarkers.map((marker: BloodMarker) => (
               <div key={marker.id} className="space-y-2">
                 <Label htmlFor={marker.id}>{marker.name} ({marker.unit})</Label>
-                <Input
-                  id={marker.id}
-                  type="text"
-                  inputMode="decimal"
-                  placeholder={`${marker.minValue} - ${marker.maxValue}`}
-                  value={values[marker.id] || ""}
-                  onChange={(e) => handleInputChange(marker.id, e.target.value)}
-                  className="w-full"
-                />
+                <div className="space-y-1">
+                  <Input
+                    id={marker.id}
+                    type="text"
+                    inputMode="decimal"
+                    placeholder={`${marker.minValue} - ${marker.maxValue}`}
+                    value={values[marker.id] || ""}
+                    onChange={(e) => handleInputChange(marker.id, e.target.value)}
+                    className="w-full"
+                  />
+                  <p className="text-xs text-gray-500">Normal range: {marker.minValue} - {marker.maxValue} {marker.unit}</p>
+                </div>
               </div>
             ))}
           </div>

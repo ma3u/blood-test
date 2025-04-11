@@ -14,6 +14,7 @@ const Index = () => {
   const [showTimeline, setShowTimeline] = useState(false);
   const [testDate, setTestDate] = useState<Date>(new Date());
   const [extractedValues, setExtractedValues] = useState<Record<string, string> | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("manual");
 
   const handleResultsSubmit = (testResults: any[], date: Date) => {
     setResults(testResults);
@@ -26,11 +27,13 @@ const Index = () => {
     setShowForm(true);
     setShowTimeline(false);
     setExtractedValues(null);
+    setActiveTab("manual");
   };
 
   const handleUploadAnother = () => {
     setShowForm(true);
     setShowTimeline(false);
+    setActiveTab("upload");
   };
 
   const handleExtractedResults = (extractedValues: Record<string, string>) => {
@@ -60,6 +63,25 @@ const Index = () => {
 
   const handleReviewAndModify = () => {
     setShowForm(true);
+    setActiveTab("manual");
+  };
+
+  const getFormValues = () => {
+    if (extractedValues) {
+      return extractedValues;
+    }
+    
+    if (results && results.length > 0) {
+      const values: Record<string, string> = {};
+      results.forEach((result: any) => {
+        if (result && result.marker && result.value !== undefined) {
+          values[result.marker.id] = result.value.toString();
+        }
+      });
+      return values;
+    }
+    
+    return {};
   };
 
   return (
@@ -90,7 +112,7 @@ const Index = () => {
             />
           ) : showForm && !results ? (
             <div className="mt-8">
-              <Tabs defaultValue="manual" className="w-full">
+              <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid grid-cols-2 mb-8">
                   <TabsTrigger value="manual">Manual Entry</TabsTrigger>
                   <TabsTrigger value="upload">Upload Test Results</TabsTrigger>
@@ -99,8 +121,8 @@ const Index = () => {
                 <TabsContent value="manual">
                   <BloodTestForm 
                     onResultsSubmit={handleResultsSubmit} 
-                    initialValues={extractedValues || {}} 
-                    initialDate={new Date()}
+                    initialValues={getFormValues()} 
+                    initialDate={testDate}
                   />
                 </TabsContent>
                 
@@ -116,7 +138,7 @@ const Index = () => {
               </div>
               <BloodTestForm 
                 onResultsSubmit={handleResultsSubmit} 
-                initialValues={extractedValues || {}}
+                initialValues={getFormValues()}
                 initialDate={testDate}
               />
               <div className="flex justify-end mt-4">
@@ -147,7 +169,11 @@ const Index = () => {
                 <Button onClick={handleStartOver} variant="outline" size="lg">
                   Start Over
                 </Button>
-                <Button onClick={handleUploadAnother} variant="secondary" size="lg">
+                <Button 
+                  onClick={handleUploadAnother} 
+                  variant="secondary" 
+                  size="lg"
+                >
                   Upload Another Test
                 </Button>
                 {extractedValues && (

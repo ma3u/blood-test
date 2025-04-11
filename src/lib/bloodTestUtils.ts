@@ -1,4 +1,3 @@
-
 export interface BloodMarker {
   id: string;
   name: string;
@@ -14,6 +13,12 @@ export interface BloodTestResult {
   marker: BloodMarker;
   value: number;
   status: "normal" | "low" | "high";
+}
+
+export interface TimelineEntry {
+  id: string;
+  date: string;
+  results: BloodTestResult[];
 }
 
 export const bloodMarkers: BloodMarker[] = [
@@ -205,4 +210,41 @@ export const getStatusText = (status: string): string => {
     default:
       return "Unknown";
   }
+};
+
+export const saveTimelineEntry = (date: Date, results: BloodTestResult[]): TimelineEntry => {
+  const id = `entry-${Date.now()}`;
+  const entry: TimelineEntry = {
+    id,
+    date: date.toISOString(),
+    results,
+  };
+  
+  const existingTimeline = getTimelineData();
+  
+  const updatedTimeline = [...existingTimeline, entry];
+  
+  localStorage.setItem('bloodTestTimeline', JSON.stringify(updatedTimeline));
+  
+  return entry;
+};
+
+export const getTimelineData = (): TimelineEntry[] => {
+  const timelineData = localStorage.getItem('bloodTestTimeline');
+  return timelineData ? JSON.parse(timelineData) : [];
+};
+
+export const clearTimelineData = (): void => {
+  localStorage.setItem('bloodTestTimeline', JSON.stringify([]));
+};
+
+export const deleteTimelineEntry = (id: string): void => {
+  const existingTimeline = getTimelineData();
+  const updatedTimeline = existingTimeline.filter(entry => entry.id !== id);
+  localStorage.setItem('bloodTestTimeline', JSON.stringify(updatedTimeline));
+};
+
+export const getTimelineEntryById = (id: string): TimelineEntry | undefined => {
+  const existingTimeline = getTimelineData();
+  return existingTimeline.find(entry => entry.id === id);
 };

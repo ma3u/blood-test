@@ -6,10 +6,12 @@ import FileUploader from "@/components/FileUploader";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { analyzeBloodTest, bloodMarkers } from "@/lib/bloodTestUtils";
+import TimelineManager from "@/components/TimelineManager";
 
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
   const [showForm, setShowForm] = useState(true);
+  const [showTimeline, setShowTimeline] = useState(false);
 
   const handleResultsSubmit = (testResults: any[]) => {
     setResults(testResults);
@@ -19,6 +21,7 @@ const Index = () => {
   const handleStartOver = () => {
     setResults(null);
     setShowForm(true);
+    setShowTimeline(false);
   };
 
   const handleExtractedResults = (extractedValues: Record<string, string>) => {
@@ -34,6 +37,14 @@ const Index = () => {
 
     setResults(testResults);
     setShowForm(false);
+  };
+
+  const handleViewTimeline = () => {
+    setShowTimeline(true);
+  };
+
+  const handleBackFromTimeline = () => {
+    setShowTimeline(false);
   };
 
   return (
@@ -56,7 +67,9 @@ const Index = () => {
             </p>
           </div>
 
-          {showForm && !results ? (
+          {showTimeline ? (
+            <TimelineManager results={results} onBack={handleBackFromTimeline} />
+          ) : showForm && !results ? (
             <div className="mt-8">
               <Tabs defaultValue="manual" className="w-full">
                 <TabsList className="grid grid-cols-2 mb-8">
@@ -77,9 +90,12 @@ const Index = () => {
             <div className="mt-8 space-y-6">
               <ResultsPanel results={results || []} />
               
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-center mt-8 space-x-4">
                 <Button onClick={handleStartOver} variant="outline" size="lg">
                   Start Over
+                </Button>
+                <Button onClick={handleViewTimeline} variant="default" size="lg">
+                  View Timeline
                 </Button>
               </div>
             </div>

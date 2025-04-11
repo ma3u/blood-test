@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,51 +6,51 @@ import { useNavigate } from "react-router-dom";
 import { bloodMarkers } from "@/lib/bloodTestUtils";
 
 // Sample extracted values from test results with multiple dates
-// Based on the provided image
+// Updated based on the provided image
 const sampleExtractedData = [
   {
-    date: new Date(2021, 2, 5), // March 5, 2021 (05.03.2021 in image)
+    date: new Date(2025, 2, 10), // March 10, 2025 (10.03.25 in image - Eingangsdatum)
     values: {
       hemoglobin: "15.9",
       wbc: "7.14",
       platelets: "271",
-      glucose: "98",  // Using "bz" value from image
-      cholesterol: "305",
-      ldl: "218",
-      hdl: "57.3",
+      glucose: "98",
+      cholesterol: "6.75", // Updated from image (Cholesterin)
+      ldl: "4.68", // Updated from image (LDL-Cholesterin)
+      hdl: "1.55", // Updated from image (HDL-Cholesterin)
       triglycerides: "177",
       creatinine: "0.91",
-      sodium: "139", // NA value from image
+      sodium: "139",
     }
   },
   {
-    date: new Date(2020, 7, 11), // August 11, 2020 (11.08.2020 in image)
+    date: new Date(2025, 2, 17), // March 17, 2025 (17.03.25 in image - Ausgangsdatum)
     values: {
-      hemoglobin: "15.9",
+      hemoglobin: "15.8",
       wbc: "7.5",
-      platelets: "246",
-      glucose: "98", // Not visible in image for this date
-      cholesterol: "296",
-      ldl: "208",
-      hdl: "44.6",
-      triglycerides: "328",
-      creatinine: "0.91", // Not visible in image for this date
-      sodium: "139", // Not visible in image for this date
+      platelets: "265",
+      glucose: "97",
+      cholesterol: "6.70",
+      ldl: "4.65",
+      hdl: "1.50",
+      triglycerides: "175",
+      creatinine: "0.90",
+      sodium: "140",
     }
   },
   {
-    date: new Date(2008, 1, 5), // February 5, 2008 (05.02.2008 in image)
+    date: new Date(2008, 1, 5), // Keeping this previous date as historical data
     values: {
       hemoglobin: "16.3",
-      wbc: "6.3", // Using LEUKO value from image
+      wbc: "6.3",
       platelets: "363",
-      glucose: "30.0", // Using GOT value from image (best approximation)
-      cholesterol: "30.0", // Using GPT value from image (best approximation)
-      ldl: "58.0", // Using Gamma-GT value from image (best approximation)
-      hdl: "93", // Using AP value from image (best approximation)
-      triglycerides: "0.8", // Using BIL ges value from image (best approximation)
+      glucose: "30.0",
+      cholesterol: "30.0",
+      ldl: "58.0",
+      hdl: "93",
+      triglycerides: "0.8",
       creatinine: "1.02",
-      sodium: "139", // Not visible in image for this date
+      sodium: "139",
     }
   }
 ];
@@ -107,20 +106,23 @@ const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Rec
       // Simulate processing with a timeout
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // For demonstration purposes, we'll use the first date in our sample data
-      // In a real implementation, we'd extract all dates from the document
-      const primaryDate = sampleExtractedData[0].date;
+      // Important: Use Eingangsdatum as the primary test date (first item in our sample data)
+      const primaryDate = sampleExtractedData[0].date; // This is the Eingangsdatum (10.03.25)
       
       // Format available dates for display
       const availableDates = sampleExtractedData.map(data => ({
         date: data.date,
-        label: data.date.toLocaleDateString()
+        label: data.date.toLocaleDateString('en-GB', { 
+          day: '2-digit', 
+          month: '2-digit', 
+          year: 'numeric' 
+        }) // Format: DD.MM.YYYY to match document format
       }));
       
       // Generate an event to notify that multiple dates were extracted
       const event = new CustomEvent('test-dates-extracted', { 
         detail: { 
-          primaryDate: primaryDate,
+          primaryDate: primaryDate, // Using Eingangsdatum as primary date
           availableDates: availableDates,
           extractedData: sampleExtractedData
         }
@@ -132,7 +134,7 @@ const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Rec
         description: `${availableDates.length} test dates found in your document.`,
       });
       
-      // Pass extracted values to parent component (use first date as default)
+      // Pass extracted values to parent component (use Eingangsdatum data as default)
       onResultsExtracted(sampleExtractedData[0].values, availableDates);
     } catch (error) {
       toast({

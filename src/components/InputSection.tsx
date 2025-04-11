@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BloodTestForm from "@/components/BloodTestForm";
 import FileUploader from "@/components/FileUploader";
@@ -36,6 +36,11 @@ const InputSection = ({
 }: InputSectionProps) => {
   const [selectedDateIndex, setSelectedDateIndex] = useState<number>(0);
 
+  useEffect(() => {
+    // Log the initial date when component mounts or initialDate changes
+    console.log("InputSection initialDate:", initialDate);
+  }, [initialDate]);
+
   if (!showForm) return null;
 
   // When in edit mode (reviewing existing results)
@@ -71,7 +76,10 @@ const InputSection = ({
   const handleDateSelect = (index: string) => {
     const idx = parseInt(index, 10);
     setSelectedDateIndex(idx);
+    console.log("Selected date at index:", idx);
+    
     if (availableDates && onDateSelect) {
+      console.log("Selecting date:", availableDates[idx].date);
       onDateSelect(availableDates[idx].date);
     }
   };

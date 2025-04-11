@@ -1,5 +1,4 @@
 
-import React from "react";
 import { format } from "date-fns";
 
 interface TestDateDisplayProps {
@@ -7,11 +6,16 @@ interface TestDateDisplayProps {
 }
 
 const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
+  // Format the date to show day, month, and year in a clear format
+  // Using the en-GB locale to match the document format (DD.MM.YYYY)
+  const formattedDate = format(date, "dd.MM.yyyy");
+
   return (
-    <div className="bg-white border rounded-md p-3 shadow-sm">
-      <p className="text-gray-700 font-medium">
-        Test Date: <span className="text-blue-600">{format(date, "MMMM d, yyyy")}</span>
-      </p>
+    <div className="flex items-center justify-center bg-blue-50 p-3 rounded-lg border border-blue-100">
+      <div className="text-center">
+        <p className="text-sm text-blue-600 font-medium">Test Date</p>
+        <p className="text-lg font-bold text-blue-700">{formattedDate}</p>
+      </div>
     </div>
   );
 };

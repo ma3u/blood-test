@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -106,8 +107,9 @@ const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Rec
       // Simulate processing with a timeout
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Important: Use Eingangsdatum as the primary test date (first item in our sample data)
+      // IMPORTANT: Make sure we're using the Eingangsdatum (March 10, 2025) as the primary test date
       const primaryDate = sampleExtractedData[0].date; // This is the Eingangsdatum (10.03.25)
+      console.log("Primary date set to:", primaryDate);
       
       // Format available dates for display
       const availableDates = sampleExtractedData.map(data => ({
@@ -118,6 +120,8 @@ const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Rec
           year: 'numeric' 
         }) // Format: DD.MM.YYYY to match document format
       }));
+      
+      console.log("Available dates formatted:", availableDates);
       
       // Generate an event to notify that multiple dates were extracted
       const event = new CustomEvent('test-dates-extracted', { 

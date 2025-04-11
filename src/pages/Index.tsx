@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import ResultsPanel from "@/components/ResultsPanel";
 import { analyzeBloodTest, bloodMarkers, saveTimelineEntry } from "@/lib/bloodTestUtils";
@@ -33,6 +32,7 @@ const Index = () => {
     const handleTestDateExtracted = (event: any) => {
       if (event.detail && event.detail.date) {
         setTestDate(event.detail.date);
+        console.log("Single date extracted:", event.detail.date);
       }
     };
 
@@ -43,14 +43,17 @@ const Index = () => {
         
         if (primaryDate) {
           setTestDate(primaryDate);
+          console.log("Setting primary date:", primaryDate);
         }
         
         if (availableDates && Array.isArray(availableDates)) {
           setAvailableDates(availableDates);
+          console.log("Available dates:", availableDates);
         }
         
         if (extractedData && Array.isArray(extractedData)) {
           setExtractedDataByDate(extractedData);
+          console.log("Extracted data by date:", extractedData);
         }
       }
     };
@@ -159,6 +162,7 @@ const Index = () => {
   };
   
   const handleDateSelect = (date: Date) => {
+    console.log("Selected date:", date);
     setTestDate(date);
     
     // Find the corresponding data for this date

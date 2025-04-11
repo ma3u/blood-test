@@ -5,13 +5,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BloodMarker, bloodMarkers, analyzeBloodTest } from "@/lib/bloodTestUtils";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 interface BloodTestFormProps {
-  onResultsSubmit: (results: any[]) => void;
+  onResultsSubmit: (results: any[], testDate: Date) => void;
 }
 
 const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
   const [values, setValues] = useState<{ [key: string]: string }>({});
+  const [testDate, setTestDate] = useState<Date>(new Date());
 
   const handleInputChange = (id: string, value: string) => {
     setValues({
@@ -28,7 +38,7 @@ const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
       return analyzeBloodTest(marker, value);
     });
     
-    onResultsSubmit(results);
+    onResultsSubmit(results, testDate);
   };
 
   const handleReset = () => {
@@ -58,6 +68,34 @@ const BloodTestForm = ({ onResultsSubmit }: BloodTestFormProps) => {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="mb-4">
+            <Label htmlFor="test-date" className="mb-2 block">Test Date</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className={cn(
+                    "w-full justify-start text-left font-normal",
+                    !testDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {testDate ? format(testDate, "PPP") : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={testDate}
+                  onSelect={(date) => date && setTestDate(date)}
+                  initialFocus
+                  disabled={(date) => date > new Date()}
+                  className="pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {bloodMarkers.map((marker: BloodMarker) => (
               <div key={marker.id} className="space-y-2">

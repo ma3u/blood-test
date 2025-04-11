@@ -14,8 +14,9 @@ const Index = () => {
   const [showTimeline, setShowTimeline] = useState(false);
   const [testDate, setTestDate] = useState<Date>(new Date());
 
-  const handleResultsSubmit = (testResults: any[]) => {
+  const handleResultsSubmit = (testResults: any[], date: Date) => {
     setResults(testResults);
+    setTestDate(date);
     setShowForm(false);
   };
 
@@ -37,6 +38,7 @@ const Index = () => {
     }).filter(Boolean);
 
     setResults(testResults);
+    setTestDate(new Date()); // Set to today's date for uploaded results
     setShowForm(false);
   };
 

@@ -26,11 +26,12 @@ const Index = () => {
   };
 
   const handleUploadAnother = () => {
-    // Clear previous data for a new entry
+    // Reset all form state for a completely new entry
     setExtractedValues(null);
+    setResults(null);
     setShowForm(true);
     setShowTimeline(false);
-    setActiveTab("upload");
+    setActiveTab("manual"); // Reset to manual tab by default
   };
 
   const handleExtractedResults = (extractedValues: Record<string, string>) => {

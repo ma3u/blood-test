@@ -30,6 +30,7 @@ const InputSection = ({
 }: InputSectionProps) => {
   if (!showForm) return null;
 
+  // When in edit mode (reviewing existing results)
   if (showForm && results) {
     return (
       <div className="mt-8">
@@ -59,6 +60,7 @@ const InputSection = ({
     setActiveTab("upload");
   };
 
+  // For new test entry (showing both tabs)
   return (
     <div className="mt-8">
       <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -70,8 +72,8 @@ const InputSection = ({
         <TabsContent value="manual">
           <BloodTestForm 
             onResultsSubmit={onResultsSubmit} 
-            initialValues={initialValues} 
-            initialDate={initialDate}
+            initialValues={{}} // Always use empty values for new tests
+            initialDate={new Date()} // Always use current date for new tests
             onSwitchToUpload={handleSwitchToUpload}
           />
         </TabsContent>

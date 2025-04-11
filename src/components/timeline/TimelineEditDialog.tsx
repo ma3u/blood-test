@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import BloodTestForm from "@/components/BloodTestForm";
 import { BloodTestResult } from "@/lib/bloodTestUtils";
+import TestDateDisplay from "@/components/TestDateDisplay";
 
 interface TimelineEditDialogProps {
   open: boolean;
@@ -35,6 +36,11 @@ const TimelineEditDialog = ({
             Modify the values for this test.
           </DialogDescription>
         </DialogHeader>
+        
+        {/* Add the TestDateDisplay component to show the date in the consistent format */}
+        <div className="mb-4">
+          <TestDateDisplay date={selectedDate} />
+        </div>
         
         <div className="py-4">
           <BloodTestForm 

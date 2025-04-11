@@ -63,15 +63,6 @@ const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: Blo
     setValues({});
   };
 
-  // Generate category sections
-  const categories = Array.from(
-    new Set(bloodMarkers.map(marker => marker.category))
-  );
-
-  const getCategoryMarkers = (category: string) => {
-    return bloodMarkers.filter(marker => marker.category === category);
-  };
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -120,7 +111,7 @@ const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: Blo
                   id={marker.id}
                   type="text"
                   inputMode="decimal"
-                  placeholder={`${marker.min} - ${marker.max}`}
+                  placeholder={`${marker.minValue} - ${marker.maxValue}`}
                   value={values[marker.id] || ""}
                   onChange={(e) => handleInputChange(marker.id, e.target.value)}
                   className="w-full"

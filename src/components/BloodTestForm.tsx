@@ -19,9 +19,15 @@ interface BloodTestFormProps {
   onResultsSubmit: (results: any[], testDate: Date) => void;
   initialValues?: Record<string, string>;
   initialDate?: Date;
+  isEditMode?: boolean;
 }
 
-const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: BloodTestFormProps) => {
+const BloodTestForm = ({ 
+  onResultsSubmit, 
+  initialValues = {}, 
+  initialDate, 
+  isEditMode = false 
+}: BloodTestFormProps) => {
   const [values, setValues] = useState<{ [key: string]: string }>(initialValues);
   const [testDate, setTestDate] = useState<Date>(initialDate || new Date());
   
@@ -67,10 +73,13 @@ const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: Blo
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-2xl text-center">
-          Enter Your Blood Test Values
+          {isEditMode ? "Edit Your Blood Test Values" : "Enter Your Blood Test Values"}
         </CardTitle>
         <p className="text-center text-gray-500">
-          Fill in the values from your blood test results. Leave fields blank if not available.
+          {isEditMode 
+            ? "Update the values from your blood test results."
+            : "Fill in the values from your blood test results. Leave fields blank if not available."
+          }
         </p>
       </CardHeader>
       <CardContent>
@@ -129,7 +138,7 @@ const BloodTestForm = ({ onResultsSubmit, initialValues = {}, initialDate }: Blo
               Clear All Values
             </Button>
             <Button type="submit">
-              Analyze Results
+              {isEditMode ? "Save Changes" : "Analyze Results"}
             </Button>
           </div>
         </form>

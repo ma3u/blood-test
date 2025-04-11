@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { analyzeBloodTest, bloodMarkers } from "@/lib/bloodTestUtils";
 import TimelineManager from "@/components/TimelineManager";
+import { format } from "date-fns";
 
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
@@ -25,6 +26,11 @@ const Index = () => {
     setShowForm(true);
     setShowTimeline(false);
     setExtractedValues(null);
+  };
+
+  const handleUploadAnother = () => {
+    setShowForm(true);
+    setShowTimeline(false);
   };
 
   const handleExtractedResults = (extractedValues: Record<string, string>) => {
@@ -94,6 +100,7 @@ const Index = () => {
                   <BloodTestForm 
                     onResultsSubmit={handleResultsSubmit} 
                     initialValues={extractedValues || {}} 
+                    initialDate={new Date()}
                   />
                 </TabsContent>
                 
@@ -126,11 +133,22 @@ const Index = () => {
             </div>
           ) : (
             <div className="mt-8 space-y-6">
+              {testDate && (
+                <div className="bg-white border rounded-md p-3 shadow-sm">
+                  <p className="text-gray-700 font-medium">
+                    Test Date: <span className="text-blue-600">{format(testDate, "MMMM d, yyyy")}</span>
+                  </p>
+                </div>
+              )}
+              
               <ResultsPanel results={results || []} />
               
-              <div className="flex justify-center mt-8 space-x-4">
+              <div className="flex flex-wrap justify-center mt-8 gap-4">
                 <Button onClick={handleStartOver} variant="outline" size="lg">
                   Start Over
+                </Button>
+                <Button onClick={handleUploadAnother} variant="secondary" size="lg">
+                  Upload Another Test
                 </Button>
                 {extractedValues && (
                   <Button onClick={handleReviewAndModify} variant="secondary" size="lg">

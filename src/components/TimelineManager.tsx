@@ -28,12 +28,13 @@ import ResultsPanel from "./ResultsPanel";
 interface TimelineManagerProps {
   results: BloodTestResult[] | null;
   onBack: () => void;
+  initialDate?: Date;
 }
 
-const TimelineManager = ({ results, onBack }: TimelineManagerProps) => {
+const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps) => {
   const [timelineData, setTimelineData] = useState<TimelineEntry[]>([]);
   const [showAddDialog, setShowAddDialog] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
   const [selectedEntryId, setSelectedEntryId] = useState<string | null>(null);
 
   // Load timeline data

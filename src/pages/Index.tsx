@@ -12,6 +12,7 @@ const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
   const [showForm, setShowForm] = useState(true);
   const [showTimeline, setShowTimeline] = useState(false);
+  const [testDate, setTestDate] = useState<Date>(new Date());
 
   const handleResultsSubmit = (testResults: any[]) => {
     setResults(testResults);
@@ -68,7 +69,11 @@ const Index = () => {
           </div>
 
           {showTimeline ? (
-            <TimelineManager results={results} onBack={handleBackFromTimeline} />
+            <TimelineManager 
+              results={results} 
+              onBack={handleBackFromTimeline}
+              initialDate={testDate}
+            />
           ) : showForm && !results ? (
             <div className="mt-8">
               <Tabs defaultValue="manual" className="w-full">

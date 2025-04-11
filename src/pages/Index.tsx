@@ -5,7 +5,7 @@ import ResultsPanel from "@/components/ResultsPanel";
 import FileUploader from "@/components/FileUploader";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { analyzeBloodTest } from "@/lib/bloodTestUtils";
+import { analyzeBloodTest, bloodMarkers } from "@/lib/bloodTestUtils";
 
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);

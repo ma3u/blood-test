@@ -1,0 +1,120 @@
+
+import { BloodTestResult } from "@/lib/bloodTestUtils";
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  ReferenceLine,
+  Cell
+} from "recharts";
+
+interface BloodMarkerChartProps {
+  results: BloodTestResult[];
+}
+
+const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
+  // Transform the data for the chart
+  const chartData = results.map((result) => {
+    // Calculate percentage of value within normal range for consistent visualization
+    const range = result.marker.maxValue - result.marker.minValue;
+    const normalizedMin = 0;
+    const normalizedMax = 100;
+    const normalizedValue = ((result.value - result.marker.minValue) / range) * 100;
+    
+    return {
+      name: result.marker.name,
+      value: result.value,
+      normalizedValue: normalizedValue,
+      normalizedMin: normalizedMin,
+      normalizedMax: normalizedMax,
+      minValue: result.marker.minValue,
+      maxValue: result.marker.maxValue,
+      status: result.status,
+      unit: result.marker.unit,
+    };
+  });
+
+  const getBarColor = (status: string) => {
+    switch (status) {
+      case "normal":
+        return "#10B981"; // green-500
+      case "low":
+        return "#3B82F6"; // blue-500
+      case "high":
+        return "#EF4444"; // red-500
+      default:
+        return "#6B7280"; // gray-500
+    }
+  };
+
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-white p-3 shadow-md border rounded-md">
+          <p className="font-medium">{data.name}</p>
+          <p>
+            Value: <span className="font-medium">{data.value} {data.unit}</span>
+          </p>
+          <p className="text-sm text-gray-600">
+            Normal range: {data.minValue} - {data.maxValue} {data.unit}
+          </p>
+          <p className="text-sm mt-1">
+            Status: <span 
+              className={`font-medium ${
+                data.status === "normal" 
+                  ? "text-green-600" 
+                  : data.status === "low" 
+                    ? "text-blue-600" 
+                    : "text-red-600"
+              }`}
+            >
+              {data.status.charAt(0).toUpperCase() + data.status.slice(1)}
+            </span>
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  return (
+    <div className="w-full h-96 bg-white p-4 rounded-lg border">
+      <h3 className="text-lg font-semibold mb-4">Blood Test Results Visualization</h3>
+      <ResponsiveContainer width="100%" height="90%">
+        <BarChart
+          data={chartData}
+          layout="vertical"
+          margin={{ top: 20, right: 30, left: 100, bottom: 10 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+          <XAxis 
+            type="number" 
+            domain={[0, 100]} 
+            tickFormatter={() => ''} 
+          />
+          <YAxis 
+            type="category" 
+            dataKey="name" 
+            width={100}
+            tickLine={false}
+          />
+          <Tooltip content={<CustomTooltip />} />
+          <ReferenceLine x={0} stroke="#666" />
+          <ReferenceLine x={100} stroke="#666" />
+          <Bar dataKey="normalizedValue" radius={[0, 4, 4, 0]}>
+            {chartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={getBarColor(entry.status)} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+export default BloodMarkerChart;

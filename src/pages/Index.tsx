@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import BloodTestForm from "@/components/BloodTestForm";
 import ResultsPanel from "@/components/ResultsPanel";
@@ -20,14 +21,6 @@ const Index = () => {
     setResults(testResults);
     setTestDate(date);
     setShowForm(false);
-  };
-
-  const handleStartOver = () => {
-    setResults(null);
-    setShowForm(true);
-    setShowTimeline(false);
-    setExtractedValues(null);
-    setActiveTab("manual");
   };
 
   const handleUploadAnother = () => {
@@ -166,15 +159,12 @@ const Index = () => {
               <ResultsPanel results={results || []} />
               
               <div className="flex flex-wrap justify-center mt-8 gap-4">
-                <Button onClick={handleStartOver} variant="outline" size="lg">
-                  Start Over
-                </Button>
                 <Button 
                   onClick={handleUploadAnother} 
                   variant="secondary" 
                   size="lg"
                 >
-                  Upload Another Test
+                  Enter New Test Values
                 </Button>
                 {extractedValues && (
                   <Button onClick={handleReviewAndModify} variant="secondary" size="lg">

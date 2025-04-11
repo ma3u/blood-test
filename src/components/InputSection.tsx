@@ -1,20 +1,24 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BloodTestForm from "@/components/BloodTestForm";
 import FileUploader from "@/components/FileUploader";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 interface InputSectionProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   onResultsSubmit: (results: any[], date: Date) => void;
-  onResultsExtracted: (values: Record<string, string>) => void;
+  onResultsExtracted: (values: Record<string, string>, dates?: Array<{date: Date, label: string}>) => void;
   initialValues: Record<string, string>;
   initialDate: Date;
   showForm: boolean;
   results: any[] | null;
   onCancelEditing?: () => void;
+  availableDates?: Array<{date: Date, label: string}>;
+  onDateSelect?: (date: Date) => void;
 }
 
 const InputSection = ({
@@ -26,8 +30,12 @@ const InputSection = ({
   initialDate,
   showForm,
   results,
-  onCancelEditing
+  onCancelEditing,
+  availableDates,
+  onDateSelect
 }: InputSectionProps) => {
+  const [selectedDateIndex, setSelectedDateIndex] = useState<number>(0);
+
   if (!showForm) return null;
 
   // When in edit mode (reviewing existing results)
@@ -60,6 +68,14 @@ const InputSection = ({
     setActiveTab("upload");
   };
 
+  const handleDateSelect = (index: string) => {
+    const idx = parseInt(index, 10);
+    setSelectedDateIndex(idx);
+    if (availableDates && onDateSelect) {
+      onDateSelect(availableDates[idx].date);
+    }
+  };
+
   // For new test entry (showing both tabs)
   return (
     <div className="mt-8">
@@ -70,10 +86,38 @@ const InputSection = ({
         </TabsList>
         
         <TabsContent value="manual">
+          {availableDates && availableDates.length > 0 && (
+            <div className="mb-6 bg-green-50 p-4 rounded-lg border border-green-200">
+              <Label htmlFor="available-dates" className="block mb-2 font-medium text-green-800">
+                Available Test Dates
+              </Label>
+              <div className="flex items-center gap-2">
+                <Select 
+                  value={selectedDateIndex.toString()} 
+                  onValueChange={handleDateSelect}
+                >
+                  <SelectTrigger className="w-full md:w-[300px] bg-white">
+                    <SelectValue placeholder="Select a test date" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {availableDates.map((dateObj, index) => (
+                      <SelectItem key={index} value={index.toString()}>
+                        {dateObj.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <span className="text-sm text-green-600">
+                  {availableDates.length} test dates found in your document
+                </span>
+              </div>
+            </div>
+          )}
+          
           <BloodTestForm 
             onResultsSubmit={onResultsSubmit} 
-            initialValues={{}} // Always use empty values for new tests
-            initialDate={new Date()} // Always use current date for new tests
+            initialValues={initialValues} 
+            initialDate={initialDate} 
             onSwitchToUpload={handleSwitchToUpload}
           />
         </TabsContent>

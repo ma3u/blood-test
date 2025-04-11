@@ -12,6 +12,11 @@ import ActionButtons from "@/components/ActionButtons";
 import InputSection from "@/components/InputSection";
 import { toast } from "@/components/ui/use-toast";
 
+interface TestDateInfo {
+  date: Date;
+  label: string;
+}
+
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
   const [showForm, setShowForm] = useState(true);
@@ -19,19 +24,43 @@ const Index = () => {
   const [testDate, setTestDate] = useState<Date>(new Date());
   const [extractedValues, setExtractedValues] = useState<Record<string, string> | null>(null);
   const [activeTab, setActiveTab] = useState<string>("manual");
+  const [availableDates, setAvailableDates] = useState<TestDateInfo[]>([]);
+  const [extractedDataByDate, setExtractedDataByDate] = useState<Array<{date: Date, values: Record<string, string>}>>([]);
 
   // Listen for test date extraction events
   useEffect(() => {
+    // Legacy event handler for single date extraction
     const handleTestDateExtracted = (event: any) => {
       if (event.detail && event.detail.date) {
         setTestDate(event.detail.date);
       }
     };
+
+    // New event handler for multiple dates extraction
+    const handleTestDatesExtracted = (event: any) => {
+      if (event.detail) {
+        const { primaryDate, availableDates, extractedData } = event.detail;
+        
+        if (primaryDate) {
+          setTestDate(primaryDate);
+        }
+        
+        if (availableDates && Array.isArray(availableDates)) {
+          setAvailableDates(availableDates);
+        }
+        
+        if (extractedData && Array.isArray(extractedData)) {
+          setExtractedDataByDate(extractedData);
+        }
+      }
+    };
     
     window.addEventListener('test-date-extracted', handleTestDateExtracted);
+    window.addEventListener('test-dates-extracted', handleTestDatesExtracted);
     
     return () => {
       window.removeEventListener('test-date-extracted', handleTestDateExtracted);
+      window.removeEventListener('test-dates-extracted', handleTestDatesExtracted);
     };
   }, []);
 
@@ -54,11 +83,17 @@ const Index = () => {
     setResults(null);
     setShowForm(true);
     setShowTimeline(false);
-    setActiveTab("manual"); // Reset to manual tab by default
+    setActiveTab("manual");
+    setAvailableDates([]);
+    setExtractedDataByDate([]);
   };
 
-  const handleExtractedResults = (extractedValues: Record<string, string>) => {
+  const handleExtractedResults = (extractedValues: Record<string, string>, dates?: TestDateInfo[]) => {
     setExtractedValues(extractedValues);
+    
+    if (dates && dates.length > 0) {
+      setAvailableDates(dates);
+    }
     
     const testResults = Object.keys(extractedValues).map(key => {
       const marker = bloodMarkers.find(marker => marker.id === key);
@@ -75,10 +110,35 @@ const Index = () => {
     // Automatically save to timeline for uploaded results
     // Use the previously set testDate (which might have been updated by the extraction event)
     saveTimelineEntry(testDate, testResults);
-    toast({
-      title: "Results saved",
-      description: "Your uploaded test results have been automatically saved to your timeline.",
-    });
+    
+    // If we have multiple dates from the document, save them all to the timeline
+    if (extractedDataByDate.length > 0) {
+      // Starting at index 1 because we've already saved the first date
+      for (let i = 1; i < extractedDataByDate.length; i++) {
+        const dataPoint = extractedDataByDate[i];
+        const dateResults = Object.keys(dataPoint.values).map(key => {
+          const marker = bloodMarkers.find(marker => marker.id === key);
+          if (marker) {
+            const value = parseFloat(dataPoint.values[key]);
+            return analyzeBloodTest(marker, value);
+          }
+          return null;
+        }).filter(Boolean);
+        
+        // Save this date to the timeline
+        saveTimelineEntry(dataPoint.date, dateResults);
+      }
+      
+      toast({
+        title: "All results saved",
+        description: `${extractedDataByDate.length} test dates have been automatically saved to your timeline.`,
+      });
+    } else {
+      toast({
+        title: "Results saved",
+        description: "Your uploaded test results have been automatically saved to your timeline.",
+      });
+    }
   };
 
   const handleViewTimeline = () => {
@@ -96,6 +156,31 @@ const Index = () => {
 
   const handleCancelEditing = () => {
     setShowForm(false);
+  };
+  
+  const handleDateSelect = (date: Date) => {
+    setTestDate(date);
+    
+    // Find the corresponding data for this date
+    const dataForDate = extractedDataByDate.find(
+      item => item.date.getTime() === date.getTime()
+    );
+    
+    if (dataForDate) {
+      setExtractedValues(dataForDate.values);
+      
+      // Update the results preview based on the selected date's values
+      const newResults = Object.keys(dataForDate.values).map(key => {
+        const marker = bloodMarkers.find(marker => marker.id === key);
+        if (marker) {
+          const value = parseFloat(dataForDate.values[key]);
+          return analyzeBloodTest(marker, value);
+        }
+        return null;
+      }).filter(Boolean);
+      
+      setResults(newResults);
+    }
   };
 
   const getFormValues = () => {
@@ -144,6 +229,8 @@ const Index = () => {
               showForm={showForm}
               results={results}
               onCancelEditing={handleCancelEditing}
+              availableDates={availableDates}
+              onDateSelect={handleDateSelect}
             />
           ) : (
             <div className="mt-8 space-y-6">

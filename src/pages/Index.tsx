@@ -1,7 +1,7 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResultsPanel from "@/components/ResultsPanel";
-import { analyzeBloodTest, bloodMarkers } from "@/lib/bloodTestUtils";
+import { analyzeBloodTest, bloodMarkers, saveTimelineEntry } from "@/lib/bloodTestUtils";
 import TimelineManager from "@/components/TimelineManager";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -10,6 +10,7 @@ import Disclaimer from "@/components/Disclaimer";
 import TestDateDisplay from "@/components/TestDateDisplay";
 import ActionButtons from "@/components/ActionButtons";
 import InputSection from "@/components/InputSection";
+import { toast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [results, setResults] = useState<any[] | null>(null);
@@ -19,10 +20,32 @@ const Index = () => {
   const [extractedValues, setExtractedValues] = useState<Record<string, string> | null>(null);
   const [activeTab, setActiveTab] = useState<string>("manual");
 
+  // Listen for test date extraction events
+  useEffect(() => {
+    const handleTestDateExtracted = (event: any) => {
+      if (event.detail && event.detail.date) {
+        setTestDate(event.detail.date);
+      }
+    };
+    
+    window.addEventListener('test-date-extracted', handleTestDateExtracted);
+    
+    return () => {
+      window.removeEventListener('test-date-extracted', handleTestDateExtracted);
+    };
+  }, []);
+
   const handleResultsSubmit = (testResults: any[], date: Date) => {
     setResults(testResults);
     setTestDate(date);
     setShowForm(false);
+    
+    // Automatically save to timeline
+    saveTimelineEntry(date, testResults);
+    toast({
+      title: "Results saved",
+      description: "Your test results have been automatically saved to your timeline.",
+    });
   };
 
   const handleUploadAnother = () => {
@@ -47,8 +70,15 @@ const Index = () => {
     }).filter(Boolean);
 
     setResults(testResults);
-    setTestDate(new Date());
     setShowForm(false);
+    
+    // Automatically save to timeline for uploaded results
+    // Use the previously set testDate (which might have been updated by the extraction event)
+    saveTimelineEntry(testDate, testResults);
+    toast({
+      title: "Results saved",
+      description: "Your uploaded test results have been automatically saved to your timeline.",
+    });
   };
 
   const handleViewTimeline = () => {

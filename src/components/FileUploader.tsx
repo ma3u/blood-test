@@ -20,6 +20,9 @@ const sampleExtractedValues = {
   sodium: "139",
 };
 
+// Sample test date (simulating extraction of date from document)
+const sampleTestDate = new Date(2025, 3, 5); // April 5, 2025
+
 const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Record<string, string>) => void }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -78,6 +81,15 @@ const FileUploader = ({ onResultsExtracted }: { onResultsExtracted: (values: Rec
       });
       
       // Pass extracted values to parent component
+      // In a real implementation, we'd extract the date from the document
+      // and pass it along with the values
+      
+      // Set the current date to the sample test date (simulating extraction from document)
+      const event = new CustomEvent('test-date-extracted', { 
+        detail: { date: sampleTestDate }
+      });
+      window.dispatchEvent(event);
+      
       onResultsExtracted(sampleExtractedValues);
     } catch (error) {
       toast({

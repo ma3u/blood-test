@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to my blood-test and orto-molecular project
 
 ## Project info
 
@@ -16,18 +16,18 @@ Changes made via Lovable will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE e.g. windsurf, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Follow these steps:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone repository
+git clone https://github.com/ma3u/blood-test.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate
+cd blood-test
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -44,10 +44,8 @@ npm run dev
 
 **Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
+- fork this repo
+- press "."
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
@@ -59,6 +57,9 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+
+- later:
+- N8N for AI Agents
 
 ## How can I deploy this project?
 

@@ -2,7 +2,9 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/38dac377-5105-483b-bf8a-d4995e212fd7
+**URL**: 
+- https://mabu.red 
+- https://lovable.dev/projects/38dac377-5105-483b-bf8a-d4995e212fd7
 
 ## How can I edit this code?
 
@@ -64,11 +66,5 @@ This project is built with:
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/38dac377-5105-483b-bf8a-d4995e212fd7) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

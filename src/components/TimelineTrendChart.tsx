@@ -66,12 +66,18 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
   const getLineColor = () => {
     const hasHighValues = transformedData.some(item => {
       const marker = bloodMarkers.find(m => m.id === selectedMarker);
-      return marker && item.value > marker.maxValue;
+      if (!marker) return false;
+      
+      const numericValue = typeof item.value === 'string' ? parseFloat(item.value) : item.value;
+      return numericValue > marker.maxValue;
     });
     
     const hasLowValues = transformedData.some(item => {
       const marker = bloodMarkers.find(m => m.id === selectedMarker);
-      return marker && item.value < marker.minValue;
+      if (!marker) return false;
+      
+      const numericValue = typeof item.value === 'string' ? parseFloat(item.value) : item.value;
+      return numericValue < marker.minValue;
     });
     
     if (hasHighValues) return "#EF4444"; // red

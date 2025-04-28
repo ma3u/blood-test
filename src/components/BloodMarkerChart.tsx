@@ -1,42 +1,43 @@
-
-import { BloodTestResult } from "@/lib/bloodTestUtils";
+import { useState, useEffect } from "react";
 import { 
+  ResponsiveContainer, 
   BarChart, 
   Bar, 
   XAxis, 
   YAxis, 
-  CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer,
   ReferenceLine,
   Cell
 } from "recharts";
+import { BloodMarker, BloodTestResult } from "@/lib/bloodTestUtils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface BloodMarkerChartProps {
   results: BloodTestResult[];
 }
 
 const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
-  // Transform the data for the chart
-  const chartData = results.map((result) => {
-    // Calculate percentage of value within normal range for consistent visualization
-    const range = result.marker.maxValue - result.marker.minValue;
-    const normalizedMin = 0;
-    const normalizedMax = 100;
-    const normalizedValue = ((result.value - result.marker.minValue) / range) * 100;
+  const [chartData, setChartData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const data = results.map(result => {
+      const numericValue = typeof result.value === 'string' ? parseFloat(result.value) : result.value;
+      const percentFromMin = ((numericValue - result.marker.minValue) / 
+        (result.marker.maxValue - result.marker.minValue)) * 100;
+      
+      return {
+        name: result.marker.name,
+        value: numericValue,
+        unit: result.marker.unit,
+        min: result.marker.minValue,
+        max: result.marker.maxValue,
+        percentFromMin,
+        status: result.status
+      };
+    });
     
-    return {
-      name: result.marker.name,
-      value: result.value,
-      normalizedValue: normalizedValue,
-      normalizedMin: normalizedMin,
-      normalizedMax: normalizedMax,
-      minValue: result.marker.minValue,
-      maxValue: result.marker.maxValue,
-      status: result.status,
-      unit: result.marker.unit,
-    };
-  });
+    setChartData(data);
+  }, [results]);
 
   const getBarColor = (status: string) => {
     switch (status) {
@@ -61,7 +62,7 @@ const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
             Value: <span className="font-medium">{data.value} {data.unit}</span>
           </p>
           <p className="text-sm text-gray-600">
-            Normal range: {data.minValue} - {data.maxValue} {data.unit}
+            Normal range: {data.min} - {data.max} {data.unit}
           </p>
           <p className="text-sm mt-1">
             Status: <span 
@@ -108,7 +109,7 @@ const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
               <Tooltip content={<CustomTooltip />} />
               <ReferenceLine x={0} stroke="#666" />
               <ReferenceLine x={100} stroke="#666" />
-              <Bar dataKey="normalizedValue" radius={[0, 4, 4, 0]}>
+              <Bar dataKey="percentFromMin" radius={[0, 4, 4, 0]}>
                 {chartData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={getBarColor(entry.status)} />
                 ))}
@@ -130,7 +131,7 @@ const BloodMarkerChart = ({ results }: BloodMarkerChartProps) => {
                   <div className="text-gray-600">
                     {item.value} {item.unit} 
                     <span className="text-xs ml-1">
-                      ({item.minValue}-{item.maxValue})
+                      ({item.min}-{item.max})
                     </span>
                   </div>
                 </div>

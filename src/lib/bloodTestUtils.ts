@@ -1,4 +1,3 @@
-
 import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 
 // Export types for convenience
@@ -253,4 +252,28 @@ export const deleteTimelineEntry = (id: string): void => {
 export const getTimelineEntryById = (id: string): TimelineEntry | undefined => {
   const existingTimeline = getTimelineData();
   return existingTimeline.find(entry => entry.id === id);
+};
+
+export const getReferenceRange = (markerId: string, gender: "male" | "female") => {
+  const referenceRanges: Record<string, { male: string; female: string }> = {
+    "ferritin": {
+      male: "30-400 ng/ml",
+      female: "15-150 ng/ml (premenopausal), 15-300 ng/ml (postmenopausal)"
+    },
+    "vitamin_d": {
+      male: "50-70 ng/ml",
+      female: "50-70 ng/ml"
+    },
+    "vitamin_b12": {
+      male: ">600 pg/ml",
+      female: ">600 pg/ml"
+    },
+  };
+
+  const range = referenceRanges[markerId];
+  if (range) {
+    return range[gender];
+  }
+  
+  return "No reference range available";
 };

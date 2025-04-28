@@ -63,7 +63,7 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
     setShowEditDialog(true);
   };
 
-  const handleUpdateEntry = (testResults: BloodTestResult[], date: Date) => {
+  const handleUpdateEntry = (results: BloodTestResult[], date: Date) => {
     if (selectedEntryId) {
       // Delete old entry
       deleteTimelineEntry(selectedEntryId);
@@ -72,7 +72,7 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
       const updatedEntry = {
         id: selectedEntryId,
         date: date.toISOString(),
-        results: testResults
+        results: results
       };
       
       // Save to localStorage

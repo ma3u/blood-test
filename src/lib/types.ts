@@ -4,11 +4,11 @@ export interface BloodMarker {
   name: string;
   unit: string;
   normalRange: string;
-  minValue?: number;
-  maxValue?: number;
-  description?: string;
-  lowImplication?: string;
-  highImplication?: string;
+  minValue: number;
+  maxValue: number;
+  description: string;
+  lowImplication: string;
+  highImplication: string;
 }
 
 export interface BloodTestResult {

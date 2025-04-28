@@ -8,9 +8,14 @@ This file provides a high-level overview of the project and the expected product
 ## Project Goal
 
 Create a comprehensive blood test analytics web tool that allows users to:
-1. Input and upload diagnostic results from blood tests
+1. Input and upload diagnostic results from blood tests (OCR scan)
 2. Track and visualize trends over time
 3. Receive personalized recommendations for nutrition, supplements, physical activity, and stress reduction techniques based on their blood test results and personal information
+
+## User Journey
+
+1. User see the common values of the blood test as Input fields with the range of the 
+2. He can upload the diagnostic results as PDF or images a varous formats
 
 ## Key Features
 

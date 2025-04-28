@@ -1,36 +1,17 @@
 
 import { useState } from "react";
-import TimelineManager from "@/components/TimelineManager";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageIntro from "@/components/layout/PageIntro";
-import Disclaimer from "@/components/Disclaimer";
-import FormContainer from "@/components/test-form/FormContainer";
-import TestDateManager from "@/components/test-form/TestDateManager";
-import { TestDateInfo } from "@/lib/types";
+import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
+import ResultsPanel from "@/components/ResultsPanel";
+import { BloodTestResult } from "@/lib/types";
 
 const Index = () => {
-  const [results, setResults] = useState<any[] | null>(null);
-  const [showForm, setShowForm] = useState(true);
-  const [showTimeline, setShowTimeline] = useState(false);
-  const [testDate, setTestDate] = useState<Date>(new Date());
-  const [extractedValues, setExtractedValues] = useState<Record<string, string> | null>(null);
-  const [activeTab, setActiveTab] = useState<string>("manual");
-  const [availableDates, setAvailableDates] = useState<TestDateInfo[]>([]);
-  const [extractedDataByDate, setExtractedDataByDate] = useState<Array<{date: Date, values: Record<string, string>}>>([]);
+  const [results, setResults] = useState<BloodTestResult[] | null>(null);
 
-  const handleUploadAnother = () => {
-    setExtractedValues(null);
-    setResults(null);
-    setShowForm(true);
-    setShowTimeline(false);
-    setActiveTab("manual");
-    setAvailableDates([]);
-    setExtractedDataByDate([]);
-  };
-
-  const handleBackFromTimeline = () => {
-    setShowTimeline(false);
+  const handleTestResults = (testResults: BloodTestResult[]) => {
+    setResults(testResults);
   };
 
   return (
@@ -38,41 +19,17 @@ const Index = () => {
       <Header />
 
       <main className="container mx-auto py-8 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           <PageIntro 
             title="Blood Test Analysis"
             description="Enter your blood test values or upload test results for instant analysis and interpretation"
           />
 
-          <TestDateManager 
-            setTestDate={setTestDate}
-            setAvailableDates={setAvailableDates}
-            setExtractedDataByDate={setExtractedDataByDate}
-          />
-
-          {showTimeline ? (
-            <TimelineManager 
-              results={results} 
-              onBack={handleBackFromTimeline}
-              initialDate={testDate}
-            />
+          {!results ? (
+            <BloodTestContainer onSubmit={handleTestResults} />
           ) : (
-            <FormContainer 
-              showForm={showForm}
-              testDate={testDate}
-              results={results}
-              extractedValues={extractedValues}
-              activeTab={activeTab}
-              availableDates={availableDates}
-              onHandleUploadAnother={handleUploadAnother}
-              onViewTimeline={() => setShowTimeline(true)}
-              setActiveTab={setActiveTab}
-              setShowForm={setShowForm}
-              onDateSelect={(date: Date) => setTestDate(date)}
-            />
+            <ResultsPanel results={results} />
           )}
-          
-          <Disclaimer />
         </div>
       </main>
 

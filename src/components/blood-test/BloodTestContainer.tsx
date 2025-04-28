@@ -199,7 +199,8 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                 type="number"
                 id={marker.id}
                 defaultValue={initialValues ? initialValues[marker.id] : ''}
-                {...form.register(marker.id as never)} {/* Cast to never to bypass TypeScript's type checking here */}
+                {...form.register(marker.id as never)} 
+                /* Cast to never to bypass TypeScript's type checking here */
               />
             </div>
           ))}

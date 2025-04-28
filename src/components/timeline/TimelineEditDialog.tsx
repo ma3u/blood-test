@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import BloodTestForm from "@/components/BloodTestForm";
 import { BloodTestResult } from "@/lib/bloodTestUtils";
 import TestDateDisplay from "@/components/TestDateDisplay";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface TimelineEditDialogProps {
   open: boolean;
@@ -27,6 +29,18 @@ const TimelineEditDialog = ({
   selectedDate,
   onUpdateEntry,
 }: TimelineEditDialogProps) => {
+  const [userId, setUserId] = useState<string>("");
+
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session?.user) {
+        setUserId(data.session.user.id);
+      }
+    };
+    getCurrentUser();
+  }, []);
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
@@ -43,12 +57,15 @@ const TimelineEditDialog = ({
         </div>
         
         <div className="py-4">
-          <BloodTestForm 
-            onResultsSubmit={onUpdateEntry}
-            initialValues={editableValues}
-            initialDate={selectedDate}
-            isEditMode={true}
-          />
+          {userId && (
+            <BloodTestForm 
+              userId={userId}
+              initialValues={editableValues}
+              initialDate={selectedDate}
+              isEditMode={true}
+              onResultsSubmit={onUpdateEntry}
+            />
+          )}
         </div>
         
         <DialogFooter>

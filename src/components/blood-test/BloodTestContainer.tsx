@@ -196,7 +196,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                 type="number"
                 id={marker.id}
                 defaultValue={initialValues ? initialValues[marker.id] : ''}
-                {...form.register(`${marker.id}`)}
+                {...form.register(marker.id)}
               />
             </div>
           ))}

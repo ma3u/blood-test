@@ -1,6 +1,8 @@
-import { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 
-export { BloodMarker, BloodTestResult, TimelineEntry };
+import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
+
+// Export types for convenience
+export type { BloodMarker, BloodTestResult, TimelineEntry };
 
 export const bloodMarkers: BloodMarker[] = [
   {

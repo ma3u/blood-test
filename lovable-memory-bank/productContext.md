@@ -49,3 +49,7 @@ Create a comprehensive blood test analytics web tool that allows users to:
 7. Timeline management for historical blood test data
 8. Later use N8N webhook to use a professional AI health agent trained with expert data
 9. N8N agent will re-use the supabase database
+
+## Notes
+
+- Show a disclaimer that the recommendations are not medical advice

@@ -1,4 +1,3 @@
-
 export interface BloodMarker {
   id: string;
   name: string;
@@ -25,3 +24,8 @@ export const bloodMarkers: BloodMarker[] = [
   { id: 'creatinine', name: 'Creatinine', unit: 'mg/dL', normalRange: '0.6 - 1.2' },
   { id: 'sodium', name: 'Sodium', unit: 'mmol/L', normalRange: '135 - 145' }
 ];
+
+export interface TestDateInfo {
+  date: Date;
+  label: string;
+}

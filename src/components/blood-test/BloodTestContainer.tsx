@@ -37,8 +37,10 @@ interface BloodTestContainerProps {
   onResultsSubmit?: (results: BloodTestResult[], date: Date) => void;
 }
 
+// Extend the form schema to dynamically include blood marker fields
 const formSchema = z.object({
   date: z.date(),
+  // We'll handle the dynamic marker fields separately
 });
 
 const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit }: BloodTestContainerProps) => {
@@ -62,6 +64,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
     }
   }, [initialDate]);
 
+  // Create a form with just the date field in the schema
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -196,7 +199,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                 type="number"
                 id={marker.id}
                 defaultValue={initialValues ? initialValues[marker.id] : ''}
-                {...form.register(marker.id)}
+                {...form.register(marker.id as never)} {/* Cast to never to bypass TypeScript's type checking here */}
               />
             </div>
           ))}

@@ -1,7 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { BloodTestResult, getStatusColor, getStatusText } from "@/lib/bloodTestUtils";
+import { BloodTestResult } from "@/lib/types";
+import { getStatusColor, getStatusText } from "@/lib/bloodTestUtils";
 
 interface MarkerExplanationProps {
   result: BloodTestResult;

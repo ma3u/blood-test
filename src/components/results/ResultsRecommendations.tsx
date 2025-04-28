@@ -1,5 +1,6 @@
 
-import { BloodTestResult, getRecommendations } from "@/lib/bloodTestUtils";
+import { BloodTestResult } from "@/lib/types";
+import { getRecommendations } from "@/lib/bloodTestUtils";
 
 interface ResultsRecommendationsProps {
   results: BloodTestResult[];

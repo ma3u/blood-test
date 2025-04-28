@@ -1,6 +1,6 @@
 
 import { format } from "date-fns";
-import { TimelineEntry } from "@/lib/bloodTestUtils";
+import { TimelineEntry } from "@/lib/types";
 import { Card, CardContent } from "@/components/ui/card";
 import ResultsPanel from "@/components/ResultsPanel";
 

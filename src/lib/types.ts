@@ -13,7 +13,7 @@ export interface BloodMarker {
 
 export interface BloodTestResult {
   marker: BloodMarker;
-  value: string | number;
+  value: number | string;
   status: 'normal' | 'low' | 'high';
   isNormal: boolean;
 }
@@ -28,4 +28,3 @@ export interface TimelineEntry {
   date: string;
   results: BloodTestResult[];
 }
-

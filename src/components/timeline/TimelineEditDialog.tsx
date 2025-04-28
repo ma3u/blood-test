@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import BloodTestForm from "@/components/BloodTestForm";
-import { BloodTestResult } from "@/lib/bloodTestUtils";
+import { BloodTestResult } from "@/lib/types";
 import TestDateDisplay from "@/components/TestDateDisplay";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";

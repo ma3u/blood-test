@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { BloodTestResult, bloodMarkers } from "@/lib/types";
+import { BloodTestResult } from "@/lib/types";
+import { bloodMarkers } from "@/lib/bloodTestUtils";
 import { format } from "date-fns";
 import { Trash2 } from "lucide-react";
 
@@ -49,10 +51,11 @@ export default function BloodTestForm({
         const marker = bloodMarkers.find(m => m.id === markerId);
         if (!marker) throw new Error(`Invalid marker: ${markerId}`);
         
-        const [min, max] = marker.normalRange.split(' - ').map(Number);
         const numValue = Number(value);
-        const isNormal = numValue >= min && numValue <= max;
-        const status = isNormal ? 'normal' : (numValue < min ? 'low' : 'high');
+        const isNormal = !isNaN(numValue) && 
+          numValue >= marker.minValue && 
+          numValue <= marker.maxValue;
+        const status = isNormal ? 'normal' : (numValue < marker.minValue ? 'low' : 'high');
 
         return {
           marker,

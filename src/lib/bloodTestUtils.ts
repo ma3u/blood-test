@@ -117,20 +117,32 @@ export const bloodMarkers: BloodMarker[] = [
   },
 ];
 
-export const analyzeBloodTest = (marker: BloodMarker, value: number): BloodTestResult => {
-  let status: "normal" | "low" | "high" = "normal";
+export const getStatus = (marker: BloodMarker, value: number | string): { status: "normal" | "low" | "high"; isNormal: boolean } => {
+  const numValue = typeof value === 'string' ? parseFloat(value) : value;
   
-  if (value < marker.minValue) {
-    status = "low";
-  } else if (value > marker.maxValue) {
-    status = "high";
+  if (isNaN(numValue)) {
+    return { status: "normal", isNormal: true };
   }
+  
+  if (numValue < marker.minValue) {
+    return { status: "low", isNormal: false };
+  } 
+  
+  if (numValue > marker.maxValue) {
+    return { status: "high", isNormal: false };
+  }
+  
+  return { status: "normal", isNormal: true };
+};
+
+export const analyzeBloodTest = (marker: BloodMarker, value: number): BloodTestResult => {
+  const { status, isNormal } = getStatus(marker, value);
   
   return {
     marker,
     value,
     status,
-    isNormal: status === "normal"
+    isNormal
   };
 };
 

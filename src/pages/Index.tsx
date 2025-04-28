@@ -26,7 +26,10 @@ const Index = () => {
           />
 
           {!results ? (
-            <BloodTestContainer onSubmit={handleTestResults} />
+            <BloodTestContainer 
+              onSubmit={handleTestResults} 
+              userId="anonymous-user" // Adding a default userId for now
+            />
           ) : (
             <ResultsPanel results={results} />
           )}

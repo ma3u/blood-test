@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -17,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { BloodMarker, BloodTestResult } from "@/lib/types";
 import { getStatus } from "@/lib/bloodTestUtils";
-import { toast } from "@/components/ui/use-toast"
+import { toast } from "@/components/ui/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { addTimelineEntry, getBloodMarkers, updateTimelineEntry } from "@/lib/api";
 import { Calendar } from "@/components/ui/calendar";
@@ -65,8 +66,8 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
     resolver: zodResolver(formSchema),
     defaultValues: {
       date: initialDate || new Date(),
-    },
-  })
+    }
+  });
 
   function handleDateSelect(date: Date | undefined) {
     if (date) {
@@ -81,15 +82,15 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
       toast({
         title: "Success!",
         description: "Successfully added to timeline.",
-      })
+      });
     },
     onError: () => {
       toast({
         title: "Error!",
         description: "Failed to add to timeline.",
-      })
+      });
     }
-  })
+  });
 
   const { mutate: updateEntryMutate } = useMutation({
     mutationFn: updateTimelineEntry,
@@ -97,15 +98,15 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
       toast({
         title: "Success!",
         description: "Successfully updated timeline entry.",
-      })
+      });
     },
     onError: () => {
       toast({
         title: "Error!",
         description: "Failed to update timeline entry.",
-      })
+      });
     }
-  })
+  });
 
   const handleSubmit = (values: any) => {
     const testResults: BloodTestResult[] = bloodMarkers.map(marker => {
@@ -121,10 +122,10 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
     });
 
     if (isEditMode && onResultsSubmit) {
-      updateEntryMutate({ userId: userId, date: selectedDate, results: testResults });
+      updateEntryMutate({ userId, date: selectedDate, results: testResults });
       onResultsSubmit(testResults, selectedDate);
     } else {
-      addEntryMutate({ userId: userId, date: selectedDate, results: testResults });
+      addEntryMutate({ userId, date: selectedDate, results: testResults });
     }
 
     onSubmit?.(testResults);
@@ -155,11 +156,11 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                         variant={"outline"}
                         className={cn(
                           "w-[240px] pl-3 text-left font-normal",
-                          !form.getValue("date") && "text-muted-foreground"
+                          !field.value && "text-muted-foreground"
                         )}
                       >
-                        {form.getValue("date") ? (
-                          format(form.getValue("date"), "PPP")
+                        {field.value ? (
+                          format(field.value, "PPP")
                         ) : (
                           <span>Pick a date</span>
                         )}
@@ -170,7 +171,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                   <PopoverContent className="w-auto p-0" align="start">
                     <Calendar
                       mode="single"
-                      selected={form.getValue("date")}
+                      selected={field.value}
                       onSelect={handleDateSelect}
                       disabled={(date) =>
                         date > new Date() || date < new Date('2020-01-01')

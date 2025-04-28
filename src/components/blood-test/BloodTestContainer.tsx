@@ -1,93 +1,208 @@
+import React, { useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-import React, { useState } from 'react';
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import BloodValueInput from './BloodValueInput';
-import { bloodMarkers } from '@/lib/bloodTestUtils';
-import { BloodTestResult } from '@/lib/types';
-import { useToast } from '@/hooks/use-toast';
-import { Info } from 'lucide-react';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { BloodMarker, BloodTestResult } from "@/lib/types";
+import { getStatus } from "@/lib/bloodTestUtils";
+import { toast } from "@/components/ui/use-toast"
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { addTimelineEntry, getBloodMarkers, updateTimelineEntry } from "@/lib/api";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import ReferenceValuesDialog from "@/components/ReferenceValuesDialog";
 
 interface BloodTestContainerProps {
-  onSubmit: (results: BloodTestResult[]) => void;
+  onSubmit?: (results: BloodTestResult[]) => void;
+  userId: string;
+  initialValues?: Record<string, string>;
+  initialDate?: Date;
+  isEditMode?: boolean;
+  onResultsSubmit?: (results: BloodTestResult[], date: Date) => void;
 }
 
-const BloodTestContainer = ({ onSubmit }: BloodTestContainerProps) => {
-  const [values, setValues] = useState<Record<string, string>>({});
-  const [gender, setGender] = useState<'male' | 'female'>('male');
-  const { toast } = useToast();
+const formSchema = z.object({
+  date: z.date(),
+});
 
-  const handleValueChange = (markerId: string, value: string) => {
-    setValues(prev => ({
-      ...prev,
-      [markerId]: value
-    }));
-  };
+const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit }: BloodTestContainerProps) => {
+  const [bloodMarkers, setBloodMarkers] = useState<BloodMarker[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const results: BloodTestResult[] = bloodMarkers.map(marker => {
-      const value = values[marker.id] || '';
-      const numericValue = parseFloat(value);
-      const isNormal = !isNaN(numericValue) && 
-        numericValue >= marker.minValue && 
-        numericValue <= marker.maxValue;
-      
+  const { data: markersData, isLoading, isError } = useQuery({
+    queryKey: ['bloodMarkers'],
+    queryFn: getBloodMarkers,
+  });
+
+  useEffect(() => {
+    if (markersData) {
+      setBloodMarkers(markersData);
+    }
+  }, [markersData]);
+
+  useEffect(() => {
+    if (initialDate) {
+      setSelectedDate(initialDate);
+    }
+  }, [initialDate]);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      date: initialDate || new Date(),
+    },
+  })
+
+  function handleDateSelect(date: Date | undefined) {
+    if (date) {
+      setSelectedDate(date);
+      form.setValue("date", date);
+    }
+  }
+
+  const { mutate: addEntryMutate } = useMutation({
+    mutationFn: addTimelineEntry,
+    onSuccess: () => {
+      toast({
+        title: "Success!",
+        description: "Successfully added to timeline.",
+      })
+    },
+    onError: () => {
+      toast({
+        title: "Error!",
+        description: "Failed to add to timeline.",
+      })
+    }
+  })
+
+  const { mutate: updateEntryMutate } = useMutation({
+    mutationFn: updateTimelineEntry,
+    onSuccess: () => {
+      toast({
+        title: "Success!",
+        description: "Successfully updated timeline entry.",
+      })
+    },
+    onError: () => {
+      toast({
+        title: "Error!",
+        description: "Failed to update timeline entry.",
+      })
+    }
+  })
+
+  const handleSubmit = (values: any) => {
+    const testResults: BloodTestResult[] = bloodMarkers.map(marker => {
+      const value = values[marker.id];
+      const { status, isNormal } = getStatus(marker, value);
+
       return {
-        marker,
-        value: numericValue || value,
-        isNormal,
-        status: isNaN(numericValue) ? 'normal' :
-          numericValue < marker.minValue ? 'low' :
-          numericValue > marker.maxValue ? 'high' : 'normal'
+        marker: marker,
+        value: value,
+        status: status,
+        isNormal: isNormal,
       };
     });
 
-    onSubmit(results);
-    toast({
-      title: "Test results submitted",
-      description: "Your blood test values have been recorded."
-    });
+    if (isEditMode && onResultsSubmit) {
+      updateEntryMutate({ userId: userId, date: selectedDate, results: testResults });
+      onResultsSubmit(testResults, selectedDate);
+    } else {
+      addEntryMutate({ userId: userId, date: selectedDate, results: testResults });
+    }
+
+    onSubmit?.(testResults);
   };
 
+  if (isLoading) return <div>Loading markers...</div>;
+  if (isError) return <div>Error fetching markers</div>;
+
   return (
-    <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <span>Blood Test Values</span>
-          <div className="flex items-center space-x-2">
-            <Info className="h-4 w-4 text-gray-500" />
-            <span className="text-sm text-gray-500">Reference values based on {gender}</span>
-          </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Tabs defaultValue={gender} onValueChange={(v) => setGender(v as 'male' | 'female')}>
-          <TabsList className="mb-4">
-            <TabsTrigger value="male">Male</TabsTrigger>
-            <TabsTrigger value="female">Female</TabsTrigger>
-          </TabsList>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {bloodMarkers.map((marker) => (
-              <BloodValueInput
-                key={marker.id}
-                marker={marker}
-                value={values[marker.id] || ''}
-                onChange={(value) => handleValueChange(marker.id, value)}
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-semibold tracking-tight">Blood Test Values</h2>
+        <ReferenceValuesDialog />
+      </div>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="date"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Test Date</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-[240px] pl-3 text-left font-normal",
+                          !form.getValue("date") && "text-muted-foreground"
+                        )}
+                      >
+                        {form.getValue("date") ? (
+                          format(form.getValue("date"), "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={form.getValue("date")}
+                      onSelect={handleDateSelect}
+                      disabled={(date) =>
+                        date > new Date() || date < new Date('2020-01-01')
+                      }
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormDescription>
+                  This is the date when the test was performed.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {bloodMarkers.map((marker) => (
+            <div key={marker.id} className="grid gap-2">
+              <Label htmlFor={marker.id}>{marker.name} ({marker.unit})</Label>
+              <Input
+                type="number"
+                id={marker.id}
+                defaultValue={initialValues ? initialValues[marker.id] : ''}
+                {...form.register(`${marker.id}`)}
               />
-            ))}
-            <div className="flex justify-end mt-6">
-              <Button type="submit">
-                Analyze Results
-              </Button>
             </div>
-          </form>
-        </Tabs>
-      </CardContent>
-    </Card>
+          ))}
+
+          <Button type="submit">Submit Results</Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 

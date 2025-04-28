@@ -2,7 +2,7 @@
 # Progress
 
 This file tracks the project's progress using a task list format.
-"2025-04-28 10:00:00" - Log of updates made.
+"2025-04-28 11:30:00" - Added reference values dialog with comprehensive medical guidelines.
 
 ## Completed Tasks
 
@@ -10,12 +10,16 @@ This file tracks the project's progress using a task list format.
 - Implemented timeline visualization for test results
 - Set up type definitions for blood test markers and results
 - Fixed type compatibility issues between components
+- Added reference values dialog with medical guidelines
+- Implemented proper date selection for test results
+- Enhanced visualization components to support both numeric and string values
+- Resolved remaining build errors related to type handling
 
 ## Current Tasks
 
-- Implementing proper date selection for test results
-- Enhancing visualization components to support both numeric and string values
-- Resolving remaining build errors related to type handling
+- Implementing user profile management
+- Enhancing data visualization for timeline view
+- Adding more detailed result analysis
 
 ## Next Steps
 

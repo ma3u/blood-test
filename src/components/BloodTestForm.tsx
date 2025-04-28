@@ -3,8 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { BloodTestResult } from "@/lib/bloodTestUtils";
+import { BloodTestResult, bloodMarkers } from "@/lib/types";
 import { format } from "date-fns";
+import { ClearAll } from "lucide-react";
 
 interface BloodTestFormProps {
   userId: string;
@@ -34,25 +35,42 @@ export default function BloodTestForm({
     }));
   };
 
+  const handleClearAll = () => {
+    setValues({});
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
+      // Convert values to BloodTestResult array
+      const results: BloodTestResult[] = Object.entries(values).map(([markerId, value]) => {
+        const marker = bloodMarkers.find(m => m.id === markerId);
+        if (!marker) throw new Error(`Invalid marker: ${markerId}`);
+        
+        const [min, max] = marker.normalRange.split(' - ').map(Number);
+        const numValue = Number(value);
+        const isNormal = numValue >= min && numValue <= max;
+        const status = isNormal ? 'normal' : (numValue < min ? 'low' : 'high');
+
+        return {
+          marker,
+          value,
+          isNormal,
+          status
+        };
+      });
+
       // If in edit mode and handling via parent component
       if (isEditMode && onResultsSubmit) {
-        const results: BloodTestResult[] = Object.entries(values).map(([marker, value]) => ({
-          marker: { id: marker, name: marker, unit: "" },
-          value: value,
-          isNormal: true
-        }));
         onResultsSubmit(results, testDate ? new Date(testDate) : new Date());
         return;
       }
 
       // Otherwise save to Supabase
       const { error } = await supabase
-        .from("blood_tests")
+        .from('blood_tests')
         .insert({
           user_id: userId,
           test_date: testDate,
@@ -66,7 +84,7 @@ export default function BloodTestForm({
         description: "Blood test results saved successfully",
       });
 
-      // Reset form
+      // Reset form if not in edit mode
       if (!isEditMode) {
         setTestDate("");
         setValues({});
@@ -83,64 +101,67 @@ export default function BloodTestForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <Input
-          type="date"
-          value={testDate}
-          onChange={(e) => setTestDate(e.target.value)}
-          required
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Input
-          placeholder="Hemoglobin"
-          value={values.hemoglobin || ""}
-          onChange={(e) => handleValueChange("hemoglobin", e.target.value)}
-        />
-        <Input
-          placeholder="White Blood Cells"
-          value={values.wbc || ""}
-          onChange={(e) => handleValueChange("wbc", e.target.value)}
-        />
-        <Input
-          placeholder="Red Blood Cells"
-          value={values.rbc || ""}
-          onChange={(e) => handleValueChange("rbc", e.target.value)}
-        />
-        <Input
-          placeholder="Glucose"
-          value={values.glucose || ""}
-          onChange={(e) => handleValueChange("glucose", e.target.value)}
-        />
-        <Input
-          placeholder="Cholesterol"
-          value={values.cholesterol || ""}
-          onChange={(e) => handleValueChange("cholesterol", e.target.value)}
-        />
-        <Input
-          placeholder="Vitamin D"
-          value={values.vitaminD || ""}
-          onChange={(e) => handleValueChange("vitaminD", e.target.value)}
-        />
-      </div>
-
-      <div className="flex gap-2">
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Saving..." : "Save Results"}
-        </Button>
-        
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div className="space-y-2">
+          <h1 className="text-2xl font-bold">Enter Your Blood Test Values</h1>
+          <p className="text-gray-500">Fill in the values from your blood test results. Leave fields blank if not available.</p>
+        </div>
         {onSwitchToUpload && (
           <Button 
             type="button" 
             variant="outline"
             onClick={onSwitchToUpload}
+            className="whitespace-nowrap"
           >
-            Upload Results
+            Upload Results Instead
           </Button>
         )}
       </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2">Test Date</label>
+        <Input
+          type="date"
+          value={testDate}
+          onChange={(e) => setTestDate(e.target.value)}
+          required
+          className="mb-6"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {bloodMarkers.map((marker) => (
+          <div key={marker.id} className="space-y-2">
+            <label className="block text-sm font-medium">
+              {marker.name} ({marker.unit})
+            </label>
+            <Input
+              type="text"
+              placeholder={marker.normalRange}
+              value={values[marker.id] || ""}
+              onChange={(e) => handleValueChange(marker.id, e.target.value)}
+            />
+            <p className="text-sm text-gray-500">
+              Normal range: {marker.normalRange} {marker.unit}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-end gap-4">
+        <Button 
+          type="button" 
+          variant="outline" 
+          onClick={handleClearAll}
+        >
+          <ClearAll className="mr-2 h-4 w-4" />
+          Clear All Values
+        </Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Saving..." : "Analyze Results"}
+        </Button>
+      </div>
     </form>
   );
-}
+};

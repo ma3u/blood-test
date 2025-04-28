@@ -35,6 +35,17 @@ const InputSection = ({
   onDateSelect
 }: InputSectionProps) => {
   const [selectedDateIndex, setSelectedDateIndex] = useState<number>(0);
+  const [userId, setUserId] = useState<string>("");
+
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUserId(session.user.id);
+      }
+    };
+    getCurrentUser();
+  }, []);
 
   useEffect(() => {
     // Log the initial date when component mounts or initialDate changes
@@ -50,12 +61,15 @@ const InputSection = ({
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
           <p className="text-blue-700">You are now reviewing and modifying the extracted data. Submit the form to update your results.</p>
         </div>
-        <BloodTestForm 
-          onResultsSubmit={onResultsSubmit} 
-          initialValues={initialValues}
-          initialDate={initialDate}
-          isEditMode={true}
-        />
+        {userId && (
+          <BloodTestForm 
+            userId={userId}
+            onResultsSubmit={onResultsSubmit} 
+            initialValues={initialValues}
+            initialDate={initialDate}
+            isEditMode={true}
+          />
+        )}
         <div className="flex justify-end mt-4">
           <Button 
             variant="outline" 
@@ -122,12 +136,15 @@ const InputSection = ({
             </div>
           )}
           
-          <BloodTestForm 
-            onResultsSubmit={onResultsSubmit} 
-            initialValues={initialValues} 
-            initialDate={initialDate} 
-            onSwitchToUpload={handleSwitchToUpload}
-          />
+          {userId && (
+            <BloodTestForm 
+              userId={userId}
+              onResultsSubmit={onResultsSubmit} 
+              initialValues={initialValues} 
+              initialDate={initialDate} 
+              onSwitchToUpload={handleSwitchToUpload}
+            />
+          )}
         </TabsContent>
         
         <TabsContent value="upload">

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { BloodTestResult, bloodMarkers } from "@/lib/types";
 import { format } from "date-fns";
-import { ClearAll } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 interface BloodTestFormProps {
   userId: string;
@@ -68,16 +68,13 @@ export default function BloodTestForm({
         return;
       }
 
-      // Otherwise save to Supabase
-      const { error } = await supabase
-        .from('blood_tests')
-        .insert({
-          user_id: userId,
-          test_date: testDate,
-          test_values: values,
-        });
-
-      if (error) throw error;
+      // Otherwise save to localStorage for now until we set up Supabase tables
+      // We'll skip the Supabase code for now since the tables don't exist yet
+      localStorage.setItem(`blood_test_${Date.now()}`, JSON.stringify({
+        user_id: userId,
+        test_date: testDate,
+        test_values: values,
+      }));
 
       toast({
         title: "Success",
@@ -155,7 +152,7 @@ export default function BloodTestForm({
           variant="outline" 
           onClick={handleClearAll}
         >
-          <ClearAll className="mr-2 h-4 w-4" />
+          <Trash2 className="mr-2 h-4 w-4" />
           Clear All Values
         </Button>
         <Button type="submit" disabled={isLoading}>

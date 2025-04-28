@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import TestDateDisplay from "./TestDateDisplay";
 
@@ -15,19 +14,25 @@ export default function BloodTestList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTests = async () => {
-      const { data: session } = await supabase.auth.getSession();
-      if (session?.session?.user) {
-        const { data, error } = await supabase
-          .from('blood_tests')
-          .select('*')
-          .eq('user_id', session.session.user.id)
-          .order('test_date', { ascending: false });
-
-        if (!error && data) {
-          setTests(data);
+    // Use localStorage instead of Supabase until we set up tables
+    const fetchTests = () => {
+      const allTests: BloodTest[] = [];
+      // Find all keys in localStorage that start with blood_test_
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('blood_test_')) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            const test = JSON.parse(item);
+            allTests.push({
+              id: key,
+              test_date: test.test_date,
+              test_values: test.test_values
+            });
+          }
         }
       }
+      setTests(allTests.sort((a, b) => new Date(b.test_date).getTime() - new Date(a.test_date).getTime()));
       setLoading(false);
     };
 

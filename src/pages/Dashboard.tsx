@@ -47,7 +47,7 @@ export default function Dashboard() {
             <CardTitle>Add New Blood Test</CardTitle>
           </CardHeader>
           <CardContent>
-            <BloodTestForm userId={session.user.id} />
+            {session?.user?.id && <BloodTestForm userId={session.user.id} />}
           </CardContent>
         </Card>
         
@@ -56,7 +56,7 @@ export default function Dashboard() {
             <CardTitle>Your Blood Tests</CardTitle>
           </CardHeader>
           <CardContent>
-            <BloodTestList userId={session.user.id} />
+            <BloodTestList />
           </CardContent>
         </Card>
       </div>

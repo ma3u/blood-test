@@ -177,6 +177,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                         date > new Date() || date < new Date('2020-01-01')
                       }
                       initialFocus
+                      className="p-3 pointer-events-auto"
                     />
                   </PopoverContent>
                 </Popover>

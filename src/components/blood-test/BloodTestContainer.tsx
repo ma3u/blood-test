@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,6 +34,7 @@ interface BloodTestContainerProps {
   initialDate?: Date;
   isEditMode?: boolean;
   onResultsSubmit?: (results: BloodTestResult[], date: Date) => void;
+  gender?: "male" | "female"; // Added gender property
 }
 
 // Extend the form schema to dynamically include blood marker fields
@@ -43,7 +43,7 @@ const formSchema = z.object({
   // We'll handle the dynamic marker fields separately
 });
 
-const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit }: BloodTestContainerProps) => {
+const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit, gender = "male" }: BloodTestContainerProps) => {
   const [bloodMarkers, setBloodMarkers] = useState<BloodMarker[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
 
@@ -114,7 +114,8 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
   const handleSubmit = (values: any) => {
     const testResults: BloodTestResult[] = bloodMarkers.map(marker => {
       const value = values[marker.id];
-      const { status, isNormal } = getStatus(marker, value);
+      // Pass the gender to getStatus for gender-specific reference values
+      const { status, isNormal } = getStatus(marker, value, gender);
 
       return {
         marker: marker,

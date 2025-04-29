@@ -1,31 +1,14 @@
-export interface BloodMarker {
-  id: string;
-  name: string;
-  unit: string;
-  minValue: number;
-  maxValue: number;
-  description: string;
-  lowImplication: string;
-  highImplication: string;
-}
+import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 
-export interface BloodTestResult {
-  marker: BloodMarker;
-  value: number;
-  status: "normal" | "low" | "high";
-}
-
-export interface TimelineEntry {
-  id: string;
-  date: string;
-  results: BloodTestResult[];
-}
+// Export types for convenience
+export type { BloodMarker, BloodTestResult, TimelineEntry };
 
 export const bloodMarkers: BloodMarker[] = [
   {
     id: "hemoglobin",
     name: "Hemoglobin",
     unit: "g/dL",
+    normalRange: "13.5 - 17.5",
     minValue: 13.5,
     maxValue: 17.5,
     description: "Protein in red blood cells that carries oxygen throughout the body.",
@@ -36,6 +19,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "wbc",
     name: "White Blood Cell Count",
     unit: "10³/µL",
+    normalRange: "4.5 - 11.0",
     minValue: 4.5,
     maxValue: 11.0,
     description: "Cells that help fight infections and other diseases.",
@@ -46,6 +30,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "platelets",
     name: "Platelets",
     unit: "10³/µL",
+    normalRange: "150 - 450",
     minValue: 150,
     maxValue: 450,
     description: "Cell fragments that help blood clot.",
@@ -56,6 +41,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "glucose",
     name: "Glucose",
     unit: "mg/dL",
+    normalRange: "70 - 99",
     minValue: 70,
     maxValue: 99,
     description: "Main sugar found in blood and the major source of energy for the body's cells.",
@@ -66,6 +52,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "cholesterol",
     name: "Total Cholesterol",
     unit: "mg/dL",
+    normalRange: "125 - 200",
     minValue: 125,
     maxValue: 200,
     description: "Fatty substance found in the blood.",
@@ -76,6 +63,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "ldl",
     name: "LDL Cholesterol",
     unit: "mg/dL",
+    normalRange: "0 - 100",
     minValue: 0,
     maxValue: 100,
     description: "Low-density lipoprotein, often called 'bad' cholesterol.",
@@ -86,6 +74,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "hdl",
     name: "HDL Cholesterol",
     unit: "mg/dL",
+    normalRange: "40 - 60",
     minValue: 40,
     maxValue: 60,
     description: "High-density lipoprotein, often called 'good' cholesterol.",
@@ -96,6 +85,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "triglycerides",
     name: "Triglycerides",
     unit: "mg/dL",
+    normalRange: "0 - 150",
     minValue: 0,
     maxValue: 150,
     description: "Type of fat found in the blood.",
@@ -106,6 +96,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "creatinine",
     name: "Creatinine",
     unit: "mg/dL",
+    normalRange: "0.6 - 1.2",
     minValue: 0.6,
     maxValue: 1.2,
     description: "Waste product from normal muscle breakdown.",
@@ -116,6 +107,7 @@ export const bloodMarkers: BloodMarker[] = [
     id: "sodium",
     name: "Sodium",
     unit: "mmol/L",
+    normalRange: "135 - 145",
     minValue: 135,
     maxValue: 145,
     description: "Electrolyte that helps maintain fluid balance and is needed for nerve and muscle function.",
@@ -124,19 +116,32 @@ export const bloodMarkers: BloodMarker[] = [
   },
 ];
 
-export const analyzeBloodTest = (marker: BloodMarker, value: number): BloodTestResult => {
-  let status: "normal" | "low" | "high" = "normal";
+export const getStatus = (marker: BloodMarker, value: number | string): { status: "normal" | "low" | "high"; isNormal: boolean } => {
+  const numValue = typeof value === 'string' ? parseFloat(value) : value;
   
-  if (value < marker.minValue) {
-    status = "low";
-  } else if (value > marker.maxValue) {
-    status = "high";
+  if (isNaN(numValue)) {
+    return { status: "normal", isNormal: true };
   }
+  
+  if (numValue < marker.minValue) {
+    return { status: "low", isNormal: false };
+  } 
+  
+  if (numValue > marker.maxValue) {
+    return { status: "high", isNormal: false };
+  }
+  
+  return { status: "normal", isNormal: true };
+};
+
+export const analyzeBloodTest = (marker: BloodMarker, value: number): BloodTestResult => {
+  const { status, isNormal } = getStatus(marker, value);
   
   return {
     marker,
     value,
     status,
+    isNormal
   };
 };
 
@@ -247,4 +252,28 @@ export const deleteTimelineEntry = (id: string): void => {
 export const getTimelineEntryById = (id: string): TimelineEntry | undefined => {
   const existingTimeline = getTimelineData();
   return existingTimeline.find(entry => entry.id === id);
+};
+
+export const getReferenceRange = (markerId: string, gender: "male" | "female") => {
+  const referenceRanges: Record<string, { male: string; female: string }> = {
+    "ferritin": {
+      male: "30-400 ng/ml",
+      female: "15-150 ng/ml (premenopausal), 15-300 ng/ml (postmenopausal)"
+    },
+    "vitamin_d": {
+      male: "50-70 ng/ml",
+      female: "50-70 ng/ml"
+    },
+    "vitamin_b12": {
+      male: ">600 pg/ml",
+      female: ">600 pg/ml"
+    },
+  };
+
+  const range = referenceRanges[markerId];
+  if (range) {
+    return range[gender];
+  }
+  
+  return "No reference range available";
 };

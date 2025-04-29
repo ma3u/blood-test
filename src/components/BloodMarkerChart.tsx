@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { 
   ResponsiveContainer, 
@@ -7,9 +8,10 @@ import {
   YAxis, 
   Tooltip, 
   ReferenceLine,
-  Cell
+  Cell,
+  CartesianGrid
 } from "recharts";
-import { BloodMarker, BloodTestResult } from "@/lib/bloodTestUtils";
+import { BloodTestResult } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface BloodMarkerChartProps {

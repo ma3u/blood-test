@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   BloodTestResult, 
-  TimelineEntry, 
+  TimelineEntry
+} from "@/lib/types";
+import { 
   getTimelineData,
   deleteTimelineEntry,
   saveTimelineEntry,

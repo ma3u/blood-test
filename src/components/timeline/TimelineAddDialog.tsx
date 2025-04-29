@@ -1,4 +1,3 @@
-
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +8,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { BloodTestResult } from "@/lib/bloodTestUtils";
+import { BloodTestResult } from "@/lib/types";
 
 interface TimelineAddDialogProps {
   open: boolean;

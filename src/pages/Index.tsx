@@ -27,7 +27,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#2596be]"> {/* New RGB(37, 150, 190) color */}
+    <div className="min-h-screen bg-[#FAF6E2]"> {/* Updated background color to #FAF6E2 */}
       <Header />
 
       <main className="container mx-auto py-4 px-3">

@@ -12,10 +12,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { InfoIcon } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
+  const { t } = useLanguage();
 
   const handleTestResults = (testResults: BloodTestResult[]) => {
     setResults(testResults);
@@ -42,20 +44,20 @@ const Index = () => {
               className="w-24 h-24 object-contain mb-2"
             />
             <PageIntro 
-              title="Blood Test Analysis"
-              description="Enter your blood test values or upload test results for instant analysis and interpretation"
+              title={t("page.title")}
+              description={t("page.description")}
             />
             <div className="mt-2">
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="ghost" size="sm" className="flex items-center gap-1 text-blue-500 hover:text-blue-700">
                     <InfoIcon className="h-4 w-4" />
-                    <span>Learn more</span>
+                    <span>{t("learn.more")}</span>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">Welcome to mabu.red</DialogTitle>
+                    <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">{t("dialog.title")}</DialogTitle>
                   </DialogHeader>
                   <DialogDescription className="space-y-6 text-foreground">
                     <p className="font-medium text-lg">
@@ -115,7 +117,7 @@ const Index = () => {
                   onClick={() => setResults(null)} 
                   className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors"
                 >
-                  Back to Test Input
+                  {t("back.to.test")}
                 </button>
               </div>
             </>

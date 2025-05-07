@@ -1,4 +1,3 @@
-
 # Decision Log
 
 This file records architectural and implementation decisions using a list format.
@@ -9,6 +8,7 @@ This file records architectural and implementation decisions using a list format
 "2025-05-07 16:30:00" - Enhanced upload functionality and visual design.
 "2025-05-07 18:15:00" - Fixed icon imports and resolved build errors.
 "2025-05-07 20:30:00" - Implemented locale files for multi-language support and added French language.
+"2025-05-07 22:15:00" - Improved button accessibility and event propagation handling.
 
 ## Decision
 
@@ -128,3 +128,25 @@ Implemented locale files for multi-language support and added French language
 5. Updated components to use the new translation system
 6. Added browser language detection with fallback to English
 7. Maintained local storage persistence for language preference
+
+## Decision
+
+Improved button accessibility and event propagation handling
+
+## Rationale
+
+1. Buttons within forms were triggering form submission when clicked
+2. Information buttons should display information without affecting form state
+3. Improved accessibility is needed for screen readers and keyboard navigation
+4. Event bubbling was causing unintended form submissions
+
+## Implementation Details
+
+1. Added explicit `type="button"` attribute to all buttons in forms that should not submit
+2. Created dedicated event handlers that use both `e.preventDefault()` and `e.stopPropagation()`
+3. Added descriptive `aria-label` attributes for screen readers
+4. Improved focus states and keyboard navigation for all interactive elements
+5. Separated button click handling from hover card functionality
+6. Modified TestDateDisplay and GenderSwitch components to properly handle events
+7. Ensured all clickable elements have proper accessibility attributes
+8. Added descriptive comments to clarify the purpose of event handlers

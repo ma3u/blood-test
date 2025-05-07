@@ -32,10 +32,23 @@ const LanguageSwitcher = () => {
             {availableLanguages.map((lang) => (
               <span 
                 key={lang} 
-                className={lang === language ? "font-bold" : "opacity-60"}
+                className={`
+                  px-1 py-0.5 rounded transition-all 
+                  ${lang === language ? "font-bold bg-blue-600" : "opacity-80 hover:opacity-100 hover:bg-blue-600/50"}
+                `}
                 onClick={(e) => {
                   e.stopPropagation();
                   setLanguage(lang);
+                }}
+                role="button"
+                aria-label={`Switch to ${languageNames[lang]}`}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setLanguage(lang);
+                  }
                 }}
               >
                 {lang.toUpperCase()}

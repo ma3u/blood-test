@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Info, TestTube, FileImage, FilePdf, Calendar } from "lucide-react";
+import { Info, TestTube, FileImage, File, Calendar } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -418,7 +418,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                             ) : (
                               <span>Pick a date</span>
                             )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            <Calendar className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
@@ -479,7 +479,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                                 <>
                                   <div className="flex items-center gap-2 text-blue-700">
                                     {selectedFile.type === 'application/pdf' ? 
-                                      <FilePdf className="h-10 w-10" /> : 
+                                      <File className="h-10 w-10" /> : 
                                       <FileImage className="h-10 w-10" />
                                     }
                                     {selectedFile.name}
@@ -489,7 +489,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                               ) : (
                                 <>
                                   <div className="flex gap-4">
-                                    <FilePdf className="h-10 w-10 text-blue-500" />
+                                    <File className="h-10 w-10 text-blue-500" />
                                     <FileImage className="h-10 w-10 text-blue-500" />
                                   </div>
                                   <div className="text-lg font-medium text-blue-700">Click to upload or drag and drop</div>

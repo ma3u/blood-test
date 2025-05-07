@@ -7,6 +7,7 @@ This file records architectural and implementation decisions using a list format
 "2025-05-07 13:30:00" - Added compact design principles for blood test input form.
 "2025-05-07 14:45:00" - Fixed gender switch functionality and improved UI compactness.
 "2025-05-07 16:30:00" - Enhanced upload functionality and visual design.
+"2025-05-07 18:15:00" - Fixed icon imports and resolved build errors.
 
 ## Decision
 
@@ -89,3 +90,19 @@ Enhanced upload functionality and visual design with health impact categorizatio
 7. Added gradient buttons and improved overall color scheme for visual appeal
 8. Implemented category-based organization of blood markers with appropriate colors
 9. Enhanced hover cards with more detailed marker information and implications
+
+## Decision
+
+Fixed icon imports in BloodTestContainer component
+
+## Rationale
+
+1. Build errors occurred due to importing non-existent icons from lucide-react
+2. Icons like 'FilePdf' and references to 'CalendarIcon' were causing build failures
+
+## Implementation Details
+
+1. Replaced 'FilePdf' with the standard 'File' icon from lucide-react
+2. Fixed all references to 'CalendarIcon' to use the imported 'Calendar' component
+3. Updated all icon usages to ensure compatibility with the lucide-react package
+4. Maintained the same visual design and functionality while resolving build errors

@@ -1,10 +1,119 @@
-
 import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 
 // Export types for convenience
 export type { BloodMarker, BloodTestResult, TimelineEntry };
 
 export const bloodMarkers: BloodMarker[] = [
+  {
+    id: "ferritin",
+    name: "Ferritin (storage iron)",
+    unit: "ng/ml",
+    normalRange: "Male: 30-400, Female: 15-150 (premenopausal), 15-300 (postmenopausal)",
+    minValue: 15,
+    maxValue: 400,
+    description: "Protein that stores iron in the body's cells.",
+    lowImplication: "May indicate iron deficiency, which can lead to anemia.",
+    highImplication: "May indicate iron overload, inflammation, liver disease or certain types of cancer.",
+  },
+  {
+    id: "vitamin_d",
+    name: "Vitamin D (25-OH)",
+    unit: "ng/ml",
+    normalRange: "50-70 (optimal)",
+    minValue: 50,
+    maxValue: 70,
+    description: "Essential for calcium absorption and bone health.",
+    lowImplication: "May lead to bone diseases, muscle weakness, and increased risk of certain conditions.",
+    highImplication: "Excessive supplementation may lead to hypercalcemia and associated complications.",
+  },
+  {
+    id: "vitamin_b12",
+    name: "Vitamin B12 (total)",
+    unit: "pg/ml",
+    normalRange: ">600 (optimal 1000)",
+    minValue: 600,
+    maxValue: 2000,
+    description: "Essential for nerve function, DNA synthesis, and red blood cell formation.",
+    lowImplication: "May lead to anemia, neurological problems, fatigue, and weakness.",
+    highImplication: "Generally not a concern as excess is usually excreted.",
+  },
+  {
+    id: "holo_transcobalamin",
+    name: "Holo-transcobalamin",
+    unit: "pmol/l",
+    normalRange: ">100",
+    minValue: 100,
+    maxValue: 150,
+    description: "Active form of vitamin B12 available for cell use.",
+    lowImplication: "May indicate vitamin B12 deficiency even when total B12 appears normal.",
+    highImplication: "Generally not a concern.",
+  },
+  {
+    id: "folic_acid",
+    name: "Folic acid",
+    unit: "ng/ml",
+    normalRange: ">16",
+    minValue: 16,
+    maxValue: 20,
+    description: "B vitamin important for cell growth and metabolism.",
+    lowImplication: "May lead to anemia and increased homocysteine levels.",
+    highImplication: "Generally not a concern unless extremely high from supplements.",
+  },
+  {
+    id: "zinc",
+    name: "Zinc (whole blood)",
+    unit: "mg/l",
+    normalRange: "6-7",
+    minValue: 6,
+    maxValue: 7,
+    description: "Essential mineral for immune function, protein synthesis, and cell division.",
+    lowImplication: "May lead to impaired immune function, poor wound healing, and taste abnormalities.",
+    highImplication: "May cause nausea, vomiting, and impair copper absorption.",
+  },
+  {
+    id: "magnesium",
+    name: "Magnesium (serum)",
+    unit: "mmol/l",
+    normalRange: "0.85-1.0",
+    minValue: 0.85,
+    maxValue: 1.0,
+    description: "Essential for muscle and nerve function, blood glucose control, and blood pressure regulation.",
+    lowImplication: "May cause muscle cramps, fatigue, and irregular heartbeat.",
+    highImplication: "May cause nausea, vomiting, and low blood pressure.",
+  },
+  {
+    id: "selenium",
+    name: "Selenium (whole blood)",
+    unit: "µg/l",
+    normalRange: "140-160",
+    minValue: 140,
+    maxValue: 160,
+    description: "Trace element important for cognitive function, immune system, and fertility.",
+    lowImplication: "May lead to muscle weakness, fatigue, and increased susceptibility to infections.",
+    highImplication: "May cause garlic breath odor, nausea, and nerve damage in excess.",
+  },
+  {
+    id: "omega3",
+    name: "Omega-3 Index",
+    unit: "%",
+    normalRange: ">8",
+    minValue: 8,
+    maxValue: 11,
+    description: "Measures the amount of omega-3 fatty acids in red blood cell membranes.",
+    lowImplication: "Associated with increased risk of cardiovascular disease.",
+    highImplication: "Generally not a concern as higher levels are beneficial.",
+  },
+  {
+    id: "total_protein",
+    name: "Total protein",
+    unit: "g/dl",
+    normalRange: ">7.0 (optimal 7.3-7.6)",
+    minValue: 7.0,
+    maxValue: 8.5,
+    description: "Measures all proteins in blood, important for fluid balance and immune function.",
+    lowImplication: "May indicate liver or kidney disease, malnutrition, or malabsorption.",
+    highImplication: "May indicate inflammation, infection, or certain bone marrow disorders.",
+  },
   {
     id: "hemoglobin",
     name: "Hemoglobin",
@@ -125,11 +234,27 @@ export const getStatus = (marker: BloodMarker, value: number | string, gender?: 
     return { status: "normal", isNormal: true };
   }
   
-  if (numValue < marker.minValue) {
+  // Adjust min/max values based on gender for gender-specific markers
+  let minValue = marker.minValue;
+  let maxValue = marker.maxValue;
+  
+  if (gender) {
+    // Handle gender-specific reference ranges
+    if (marker.id === "ferritin" && gender === "female") {
+      minValue = 15;
+      maxValue = 150; // Using premenopausal values as default for females
+    } else if (marker.id === "ferritin" && gender === "male") {
+      minValue = 30;
+      maxValue = 400;
+    }
+    // Add other gender-specific ranges as needed
+  }
+  
+  if (numValue < minValue) {
     return { status: "low", isNormal: false };
   } 
   
-  if (numValue > marker.maxValue) {
+  if (numValue > maxValue) {
     return { status: "high", isNormal: false };
   }
   

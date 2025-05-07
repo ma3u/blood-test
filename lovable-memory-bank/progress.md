@@ -7,6 +7,7 @@ This file tracks the project's progress using a task list format.
 "2025-04-28 13:45:00" - Restored Disclaimer component and implemented gender switch functionality for different reference values.
 "2025-04-29 08:30:00" - Fixed type error by updating BloodTestContainer to properly accept gender property.
 "2025-04-29 09:15:00" - Fixed build error with getStatus function parameters to properly handle gender parameter.
+"2025-05-07 10:00:00" - Updated blood markers to include reference values from "General Parameters" in ReferenceValues.md.
 
 ## Completed Tasks
 
@@ -25,6 +26,8 @@ This file tracks the project's progress using a task list format.
 - Implemented User Journey steps 1-4 (input fields with reference ranges, upload capability, analysis display, and recommendations)
 - Fixed type error for gender prop in BloodTestContainer
 - Fixed build error related to getStatus function parameters
+- Updated blood markers with comprehensive reference values from medical guidelines
+- Added improved UI for blood test input fields with reference ranges
 
 ## Current Tasks
 
@@ -42,3 +45,4 @@ This file tracks the project's progress using a task list format.
 - Implement nutrition and supplement suggestion system
 - Build exercise recommendation component
 - Add stress reduction techniques module
+

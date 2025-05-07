@@ -6,6 +6,7 @@ This file tracks the project's current status, including recent changes, current
 "2025-04-28 13:45:00" - Restored disclaimer component, implemented gender switch, and ensured User Journey steps 1-4 are implemented.
 "2025-04-29 08:30:00" - Fixed type error by adding gender property to BloodTestContainerProps interface.
 "2025-04-29 09:15:00" - Updated getStatus function to optionally accept gender parameter to fix build error.
+"2025-05-07 10:00:00" - Updated blood markers with reference values from "General Parameters" in ReferenceValues.md.
 
 ## Current Focus
 
@@ -13,6 +14,7 @@ This file tracks the project's current status, including recent changes, current
 - Building the timeline visualization component for tracking trends over time
 - Resolving type issues between different components using BloodTestResult
 - Implementing the user authentication flow after blood test result display
+- Improving the display of reference values from medical guidelines
 
 ## Recent Changes
 
@@ -25,6 +27,8 @@ This file tracks the project's current status, including recent changes, current
 - Ensured User Journey steps 1-4 are properly implemented (input form with reference values, upload capability, analysis view, and recommendations)
 - Fixed type error by adding gender property to BloodTestContainerProps interface
 - Updated getStatus function in bloodTestUtils.ts to optionally accept a gender parameter
+- Added comprehensive reference values for blood markers from medical guidelines
+- Improved the UI for displaying reference ranges alongside input fields
 
 ## Open Questions/Issues
 
@@ -34,6 +38,7 @@ This file tracks the project's current status, including recent changes, current
 - How to implement the registration prompt after showing test results?
 - How to optimize the OCR scan functionality for PDF and image uploads?
 - How to more effectively use gender-specific reference values in result analysis?
+- How to handle age-dependent reference values in addition to gender-specific ones?
 
 ## User Journey Implementation Status
 
@@ -46,3 +51,4 @@ This file tracks the project's current status, including recent changes, current
 7. ⬜ Store analyzed data and recommendations in the database
 8. ⬜ Compare results in a timeline view
 9. ⬜ Create a user profile with personal health information
+

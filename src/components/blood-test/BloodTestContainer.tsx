@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { BloodMarker, BloodTestResult } from "@/lib/types";
-import { getStatus } from "@/lib/bloodTestUtils";
+import { getStatus, bloodMarkers } from "@/lib/bloodTestUtils";
 import { toast } from "@/components/ui/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { addTimelineEntry, getBloodMarkers, updateTimelineEntry } from "@/lib/api";
@@ -35,7 +35,7 @@ interface BloodTestContainerProps {
   initialDate?: Date;
   isEditMode?: boolean;
   onResultsSubmit?: (results: BloodTestResult[], date: Date) => void;
-  gender?: "male" | "female"; // Added gender property
+  gender: "male" | "female";
 }
 
 // Extend the form schema to dynamically include blood marker fields
@@ -45,19 +45,13 @@ const formSchema = z.object({
 });
 
 const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit, gender = "male" }: BloodTestContainerProps) => {
-  const [bloodMarkers, setBloodMarkers] = useState<BloodMarker[]>([]);
+  const [bloodMarkersData, setBloodMarkersData] = useState<BloodMarker[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
 
-  const { data: markersData, isLoading, isError } = useQuery({
-    queryKey: ['bloodMarkers'],
-    queryFn: getBloodMarkers,
-  });
-
   useEffect(() => {
-    if (markersData) {
-      setBloodMarkers(markersData);
-    }
-  }, [markersData]);
+    // Using the imported bloodMarkers directly instead of fetching
+    setBloodMarkersData(bloodMarkers);
+  }, []);
 
   useEffect(() => {
     if (initialDate) {
@@ -113,10 +107,10 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
   });
 
   const handleSubmit = (values: any) => {
-    const testResults: BloodTestResult[] = bloodMarkers.map(marker => {
+    const testResults: BloodTestResult[] = bloodMarkersData.map(marker => {
       const value = values[marker.id];
-      // Fix: Remove the third argument from getStatus call since it doesn't accept a gender parameter
-      const { status, isNormal } = getStatus(marker, value);
+      // Pass gender to getStatus for gender-specific reference values
+      const { status, isNormal } = getStatus(marker, value, gender);
 
       return {
         marker: marker,
@@ -136,8 +130,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
     onSubmit?.(testResults);
   };
 
-  if (isLoading) return <div>Loading markers...</div>;
-  if (isError) return <div>Error fetching markers</div>;
+  if (bloodMarkersData.length === 0) return <div>Loading markers...</div>;
 
   return (
     <div className="space-y-6">
@@ -194,20 +187,34 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
             )}
           />
 
-          {bloodMarkers.map((marker) => (
-            <div key={marker.id} className="grid gap-2">
-              <Label htmlFor={marker.id}>{marker.name} ({marker.unit})</Label>
-              <Input
-                type="number"
-                id={marker.id}
-                defaultValue={initialValues ? initialValues[marker.id] : ''}
-                {...form.register(marker.id as never)} 
-                /* Cast to never to bypass TypeScript's type checking here */
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {bloodMarkersData.map((marker) => (
+              <div key={marker.id} className="space-y-2 p-4 border rounded-md bg-gray-50">
+                <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
+                <div className="flex items-center gap-2">
+                  <Input
+                    type="number"
+                    id={marker.id}
+                    placeholder={`Enter value in ${marker.unit}`}
+                    defaultValue={initialValues ? initialValues[marker.id] : ''}
+                    {...form.register(marker.id as never)}
+                    className="flex-1"
+                  />
+                  <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
+                </div>
+                <div className="mt-1">
+                  <p className="text-sm text-gray-500">
+                    <span className="font-medium">Reference range:</span> {marker.normalRange}
+                  </p>
+                  {marker.description && (
+                    <p className="text-xs text-gray-500 mt-1">{marker.description}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
 
-          <Button type="submit">Submit Results</Button>
+          <Button type="submit" className="w-full">Submit Blood Test Results</Button>
         </form>
       </Form>
     </div>

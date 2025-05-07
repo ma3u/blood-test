@@ -27,16 +27,16 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-[#1A1F2C]"> {/* Dark blue background color from logo */}
       <Header />
 
-      <main className="container mx-auto py-8 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="flex flex-col items-center mb-6">
+      <main className="container mx-auto py-4 px-3">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="flex flex-col items-center mb-4">
             <img 
               src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
               alt="Blood Test Oracle Logo" 
-              className="w-32 h-32 object-contain mb-4"
+              className="w-24 h-24 object-contain mb-2"
             />
             <PageIntro 
               title="Blood Test Analysis"
@@ -55,7 +55,7 @@ const Index = () => {
           ) : (
             <>
               <ResultsPanel results={results} />
-              <div className="mt-8">
+              <div className="mt-6">
                 <button 
                   onClick={() => setResults(null)} 
                   className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors"

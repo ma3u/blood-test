@@ -63,7 +63,17 @@ const de = {
   "results.status.low": "Niedrig",
   "results.status.high": "Hoch",
   "results.value": "Wert:",
-  "results.range": "Normalbereich:"
+  "results.range": "Normalbereich:",
+  
+  // Adding missing translations for the results summary section
+  "results.summary.normal": "Normale Werte",
+  "results.summary.low": "Niedrige Werte",
+  "results.summary.high": "Hohe Werte",
+  "results.summary.abnormal": "Abnormale Ergebnisse",
+  "results.summary.all_normal": "Alle Ergebnisse Normal",
+  "results.summary.all_normal_description": "Alle Ihre Blutwerte liegen im Normalbereich.",
+  "results.summary.your_value": "Ihr Wert:",
+  "results.summary.normal_range": "Normalbereich:"
 };
 
 export default de;

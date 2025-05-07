@@ -3,6 +3,7 @@ import { BloodTestResult } from "@/lib/types";
 import InfoCard from "@/components/InfoCard";
 import MarkerExplanation from "@/components/MarkerExplanation";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ResultsSummaryProps {
   results: BloodTestResult[];
@@ -10,6 +11,7 @@ interface ResultsSummaryProps {
 
 const ResultsSummary = ({ results }: ResultsSummaryProps) => {
   const [selectedMarkerId, setSelectedMarkerId] = useState<string | null>(null);
+  const { t } = useLanguage();
   
   const abnormalResults = results.filter(
     (result) => result.status === "high" || result.status === "low"
@@ -23,19 +25,19 @@ const ResultsSummary = ({ results }: ResultsSummaryProps) => {
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <InfoCard 
-          title="Normal Values" 
+          title={t("results.summary.normal")} 
           value={results.filter(r => r.status === "normal").length} 
           total={results.length}
           color="bg-green-100 border-green-500 text-green-800"
         />
         <InfoCard 
-          title="Low Values" 
+          title={t("results.summary.low")} 
           value={results.filter(r => r.status === "low").length} 
           total={results.length}
           color="bg-blue-100 border-blue-500 text-blue-800" 
         />
         <InfoCard 
-          title="High Values" 
+          title={t("results.summary.high")} 
           value={results.filter(r => r.status === "high").length} 
           total={results.length}
           color="bg-red-100 border-red-500 text-red-800"
@@ -44,7 +46,7 @@ const ResultsSummary = ({ results }: ResultsSummaryProps) => {
       
       {abnormalResults.length > 0 ? (
         <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-4">Abnormal Results</h3>
+          <h3 className="text-lg font-semibold mb-4">{t("results.summary.abnormal")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {abnormalResults.map((result) => (
               <div
@@ -65,15 +67,15 @@ const ResultsSummary = ({ results }: ResultsSummaryProps) => {
                         : "bg-red-100 text-red-800"
                     }`}
                   >
-                    {result.status === "low" ? "Low" : "High"}
+                    {result.status === "low" ? t("results.status.low") : t("results.status.high")}
                   </span>
                 </div>
                 <div className="mt-2">
                   <p>
-                    Your value: <strong>{result.value} {result.marker.unit}</strong>
+                    {t("results.summary.your_value")} <strong>{result.value} {result.marker.unit}</strong>
                   </p>
                   <p className="text-sm text-gray-600">
-                    Normal range: {result.marker.normalRange}
+                    {t("results.summary.normal_range")} {result.marker.normalRange}
                   </p>
                 </div>
               </div>
@@ -82,9 +84,9 @@ const ResultsSummary = ({ results }: ResultsSummaryProps) => {
         </div>
       ) : (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center mt-6">
-          <h3 className="text-lg font-semibold text-green-700">All Results Normal</h3>
+          <h3 className="text-lg font-semibold text-green-700">{t("results.summary.all_normal")}</h3>
           <p className="text-green-600 mt-2">
-            All your blood test markers are within the normal range.
+            {t("results.summary.all_normal_description")}
           </p>
         </div>
       )}

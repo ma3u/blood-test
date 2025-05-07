@@ -16,6 +16,7 @@ import TimelineHeader from "./timeline/TimelineHeader";
 import TimelineHistoryView from "./timeline/TimelineHistoryView";
 import TimelineAddDialog from "./timeline/TimelineAddDialog";
 import TimelineEditDialog from "./timeline/TimelineEditDialog";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TimelineManagerProps {
   results: BloodTestResult[] | null;
@@ -30,6 +31,7 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
   const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
   const [selectedEntryId, setSelectedEntryId] = useState<string | null>(null);
   const [editableValues, setEditableValues] = useState<Record<string, string>>({});
+  const { t } = useLanguage();
 
   // Load timeline data
   useEffect(() => {
@@ -106,7 +108,7 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
       <Tabs defaultValue="chart">
         <TabsList>
           <TabsTrigger value="chart">Trend Chart</TabsTrigger>
-          <TabsTrigger value="history">Test History</TabsTrigger>
+          <TabsTrigger value="history">{t("timeline.select")}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="chart">

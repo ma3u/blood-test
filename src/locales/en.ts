@@ -63,7 +63,17 @@ const en = {
   "results.status.low": "Low",
   "results.status.high": "High",
   "results.value": "Value:",
-  "results.range": "Normal range:"
+  "results.range": "Normal range:",
+  
+  // Adding missing translations for the results summary section
+  "results.summary.normal": "Normal Values",
+  "results.summary.low": "Low Values",
+  "results.summary.high": "High Values",
+  "results.summary.abnormal": "Abnormal Results",
+  "results.summary.all_normal": "All Results Normal",
+  "results.summary.all_normal_description": "All your blood test markers are within the normal range.",
+  "results.summary.your_value": "Your value:",
+  "results.summary.normal_range": "Normal range:"
 };
 
 export default en;

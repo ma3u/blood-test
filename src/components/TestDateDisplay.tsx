@@ -3,12 +3,15 @@ import { format } from "date-fns";
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TestDateDisplayProps {
   date: Date;
 }
 
 const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
+  const { t } = useLanguage();
+  
   // Format the date to show day, month, and year in a clear format
   // Using the en-GB locale to match the document format (DD.MM.YYYY)
   const formattedDate = format(date, "dd.MM.yyyy");
@@ -29,15 +32,15 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
             className="text-blue-600" 
             type="button" 
             onClick={handleInfoClick}
-            aria-label="Show date information"
+            aria-label={t("gender.info")}
           >
             <Info className="h-4 w-4" />
           </button>
         </HoverCardTrigger>
         <HoverCardContent className="w-80">
           <div className="space-y-2">
-            <h4 className="font-medium">Test Date</h4>
-            <p className="text-sm">The date when your blood test was performed. This is important for tracking changes over time.</p>
+            <h4 className="font-medium">{t("timeline.date")}</h4>
+            <p className="text-sm">{t("select.date")}</p>
           </div>
         </HoverCardContent>
       </HoverCard>

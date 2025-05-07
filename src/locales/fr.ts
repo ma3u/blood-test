@@ -63,7 +63,17 @@ const fr = {
   "results.status.low": "Bas",
   "results.status.high": "Élevé",
   "results.value": "Valeur :",
-  "results.range": "Plage normale :"
+  "results.range": "Plage normale :",
+  
+  // Adding missing translations for the results summary section
+  "results.summary.normal": "Valeurs Normales",
+  "results.summary.low": "Valeurs Basses",
+  "results.summary.high": "Valeurs Élevées",
+  "results.summary.abnormal": "Résultats Anormaux",
+  "results.summary.all_normal": "Tous les Résultats Normaux",
+  "results.summary.all_normal_description": "Tous vos marqueurs de test sanguin sont dans la plage normale.",
+  "results.summary.your_value": "Votre valeur :",
+  "results.summary.normal_range": "Plage normale :"
 };
 
 export default fr;

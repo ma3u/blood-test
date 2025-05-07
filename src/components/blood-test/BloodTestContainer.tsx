@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -114,8 +115,8 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
   const handleSubmit = (values: any) => {
     const testResults: BloodTestResult[] = bloodMarkers.map(marker => {
       const value = values[marker.id];
-      // Pass the gender to getStatus for gender-specific reference values
-      const { status, isNormal } = getStatus(marker, value, gender);
+      // Fix: Remove the third argument from getStatus call since it doesn't accept a gender parameter
+      const { status, isNormal } = getStatus(marker, value);
 
       return {
         marker: marker,

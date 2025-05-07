@@ -1,3 +1,4 @@
+
 import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 
 // Export types for convenience
@@ -116,7 +117,8 @@ export const bloodMarkers: BloodMarker[] = [
   },
 ];
 
-export const getStatus = (marker: BloodMarker, value: number | string): { status: "normal" | "low" | "high"; isNormal: boolean } => {
+// Updated getStatus function to optionally accept gender parameter
+export const getStatus = (marker: BloodMarker, value: number | string, gender?: "male" | "female"): { status: "normal" | "low" | "high"; isNormal: boolean } => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
   
   if (isNaN(numValue)) {

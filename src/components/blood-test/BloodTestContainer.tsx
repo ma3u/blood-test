@@ -39,7 +39,7 @@ interface BloodTestContainerProps {
   initialDate?: Date;
   isEditMode?: boolean;
   onResultsSubmit?: (results: BloodTestResult[], date: Date) => void;
-  gender: "male" | "female";
+  gender?: "male" | "female";
 }
 
 // Extend the form schema to dynamically include blood marker fields
@@ -48,9 +48,10 @@ const formSchema = z.object({
   // We'll handle the dynamic marker fields separately
 });
 
-const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit, gender = "male" }: BloodTestContainerProps) => {
+const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEditMode, onResultsSubmit, gender: initialGender = "male" }: BloodTestContainerProps) => {
   const [bloodMarkersData, setBloodMarkersData] = useState<BloodMarker[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
+  const [gender, setGender] = useState<"male" | "female">(initialGender);
 
   useEffect(() => {
     // Using the imported bloodMarkers directly instead of fetching
@@ -77,6 +78,10 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
       form.setValue("date", date);
     }
   }
+
+  const handleGenderChange = (newGender: "male" | "female") => {
+    setGender(newGender);
+  };
 
   const { mutate: addEntryMutate } = useMutation({
     mutationFn: addTimelineEntry,
@@ -152,19 +157,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
       <div className="flex flex-wrap justify-between items-center">
         <h2 className="text-2xl font-semibold tracking-tight">Blood Test Values</h2>
         
-        <div className="flex items-center">
-          <GenderSwitch gender={gender} onChange={() => {}} className="mr-2" />
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ReferenceValuesDialog />
-              </TooltipTrigger>
-              <TooltipContent>
-                View full reference values
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
+        <GenderSwitch gender={gender} onChange={handleGenderChange} className="mr-2" />
       </div>
 
       <Form {...form}>
@@ -246,6 +239,9 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                               {marker.highImplication && (
                                 <p className="text-sm text-red-600">High: {marker.highImplication}</p>
                               )}
+                              <p className="text-xs text-gray-500 mt-2">
+                                <span className="font-medium">Reference ({gender}):</span> {refRange} {marker.unit}
+                              </p>
                             </div>
                           </HoverCardContent>
                         </HoverCard>
@@ -260,11 +256,6 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                           className="flex-1"
                         />
                         <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
-                      </div>
-                      <div className="mt-1">
-                        <p className="text-xs text-gray-500">
-                          <span className="font-medium">Ref ({gender}):</span> {refRange}
-                        </p>
                       </div>
                     </div>
                   );

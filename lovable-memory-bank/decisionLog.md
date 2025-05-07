@@ -5,6 +5,7 @@ This file records architectural and implementation decisions using a list format
 
 "2025-04-28 10:00:00" - Log of updates made.
 "2025-05-07 13:30:00" - Added compact design principles for blood test input form.
+"2025-05-07 14:45:00" - Fixed gender switch functionality and improved UI compactness.
 
 ## Decision
 
@@ -44,3 +45,23 @@ Implement a compact, responsive design for blood test input form
 5. Added gender-specific reference ranges that update when switching between male/female
 6. Organized blood markers into categories for better visual grouping
 7. Used HoverCard component to display detailed information about each marker
+
+## Decision
+
+Fixed gender switch functionality and improved UI organization
+
+## Rationale
+
+1. Gender switch was not properly changing the reference ranges
+2. Reference ranges were displayed redundantly both in placeholder and below input fields
+3. Additional information about markers was taking too much vertical space
+
+## Implementation Details
+
+1. Fixed gender switch component to properly pass the selected gender to parent components
+2. Updated BloodTestContainer to properly handle gender changes and pass them to getStatus function
+3. Moved reference range information from below input fields into the info hover cards
+4. Added gender-specific reference ranges in the placeholder text of input fields
+5. Enhanced HoverCard components to display comprehensive marker information including reference ranges
+6. Ensured reference ranges update appropriately when gender selection changes
+

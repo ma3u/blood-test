@@ -14,6 +14,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Protein that stores iron in the body's cells.",
     lowImplication: "May indicate iron deficiency, which can lead to anemia.",
     highImplication: "May indicate iron overload, inflammation, liver disease or certain types of cancer.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "30-400",
+      female: "15-150"
+    }
   },
   {
     id: "vitamin_d",
@@ -25,6 +30,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Essential for calcium absorption and bone health.",
     lowImplication: "May lead to bone diseases, muscle weakness, and increased risk of certain conditions.",
     highImplication: "Excessive supplementation may lead to hypercalcemia and associated complications.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "50-70",
+      female: "50-70"
+    }
   },
   {
     id: "vitamin_b12",
@@ -36,6 +46,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Essential for nerve function, DNA synthesis, and red blood cell formation.",
     lowImplication: "May lead to anemia, neurological problems, fatigue, and weakness.",
     highImplication: "Generally not a concern as excess is usually excreted.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: ">600 (optimal 1000)",
+      female: ">600 (optimal 1000)"
+    }
   },
   {
     id: "holo_transcobalamin",
@@ -47,6 +62,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Active form of vitamin B12 available for cell use.",
     lowImplication: "May indicate vitamin B12 deficiency even when total B12 appears normal.",
     highImplication: "Generally not a concern.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: ">100",
+      female: ">100"
+    }
   },
   {
     id: "folic_acid",
@@ -58,6 +78,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "B vitamin important for cell growth and metabolism.",
     lowImplication: "May lead to anemia and increased homocysteine levels.",
     highImplication: "Generally not a concern unless extremely high from supplements.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: ">16",
+      female: ">16"
+    }
   },
   {
     id: "zinc",
@@ -69,6 +94,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Essential mineral for immune function, protein synthesis, and cell division.",
     lowImplication: "May lead to impaired immune function, poor wound healing, and taste abnormalities.",
     highImplication: "May cause nausea, vomiting, and impair copper absorption.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "6-7",
+      female: "6-7"
+    }
   },
   {
     id: "magnesium",
@@ -80,6 +110,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Essential for muscle and nerve function, blood glucose control, and blood pressure regulation.",
     lowImplication: "May cause muscle cramps, fatigue, and irregular heartbeat.",
     highImplication: "May cause nausea, vomiting, and low blood pressure.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "0.85-1.0",
+      female: "0.85-1.0"
+    }
   },
   {
     id: "selenium",
@@ -91,6 +126,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Trace element important for cognitive function, immune system, and fertility.",
     lowImplication: "May lead to muscle weakness, fatigue, and increased susceptibility to infections.",
     highImplication: "May cause garlic breath odor, nausea, and nerve damage in excess.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "140-160",
+      female: "140-160"
+    }
   },
   {
     id: "omega3",
@@ -102,6 +142,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Measures the amount of omega-3 fatty acids in red blood cell membranes.",
     lowImplication: "Associated with increased risk of cardiovascular disease.",
     highImplication: "Generally not a concern as higher levels are beneficial.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: ">8",
+      female: ">8"
+    }
   },
   {
     id: "total_protein",
@@ -113,6 +158,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Measures all proteins in blood, important for fluid balance and immune function.",
     lowImplication: "May indicate liver or kidney disease, malnutrition, or malabsorption.",
     highImplication: "May indicate inflammation, infection, or certain bone marrow disorders.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: ">7.0 (optimal 7.3-7.6)",
+      female: ">7.0 (optimal 7.3-7.6)"
+    }
   },
   {
     id: "hemoglobin",
@@ -124,6 +174,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Protein in red blood cells that carries oxygen throughout the body.",
     lowImplication: "May indicate anemia, blood loss, nutritional deficiencies, or bone marrow problems.",
     highImplication: "May indicate polycythemia, lung disease, heart disease, or dehydration.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "13.5 - 17.5",
+      female: "13.5 - 17.5"
+    }
   },
   {
     id: "wbc",
@@ -135,6 +190,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Cells that help fight infections and other diseases.",
     lowImplication: "May indicate bone marrow problems, autoimmune disorders, or certain medications.",
     highImplication: "May indicate infection, inflammation, leukemia, or tissue damage.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "4.5 - 11.0",
+      female: "4.5 - 11.0"
+    }
   },
   {
     id: "platelets",
@@ -146,6 +206,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Cell fragments that help blood clot.",
     lowImplication: "May indicate bone marrow problems, autoimmune disorders, or certain medications.",
     highImplication: "May indicate inflammation, infection, or certain blood disorders.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "150 - 450",
+      female: "150 - 450"
+    }
   },
   {
     id: "glucose",
@@ -157,6 +222,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Main sugar found in blood and the major source of energy for the body's cells.",
     lowImplication: "May indicate hypoglycemia, liver disease, or certain medications.",
     highImplication: "May indicate diabetes, stress, infection, or certain medications.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "70 - 99",
+      female: "70 - 99"
+    }
   },
   {
     id: "cholesterol",
@@ -168,6 +238,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Fatty substance found in the blood.",
     lowImplication: "May indicate malnutrition, liver disease, or hyperthyroidism.",
     highImplication: "May indicate increased risk of heart disease or stroke.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "125 - 200",
+      female: "125 - 200"
+    }
   },
   {
     id: "ldl",
@@ -179,6 +254,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Low-density lipoprotein, often called 'bad' cholesterol.",
     lowImplication: "Generally not a concern.",
     highImplication: "Associated with increased risk of heart disease and stroke.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "0 - 100",
+      female: "0 - 100"
+    }
   },
   {
     id: "hdl",
@@ -190,6 +270,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "High-density lipoprotein, often called 'good' cholesterol.",
     lowImplication: "May indicate increased risk of heart disease.",
     highImplication: "Generally beneficial and protective against heart disease.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "40 - 60",
+      female: "40 - 60"
+    }
   },
   {
     id: "triglycerides",
@@ -201,6 +286,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Type of fat found in the blood.",
     lowImplication: "Generally not a concern.",
     highImplication: "May indicate increased risk of heart disease, pancreatitis, or metabolic syndrome.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "0 - 150",
+      female: "0 - 150"
+    }
   },
   {
     id: "creatinine",
@@ -212,6 +302,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Waste product from normal muscle breakdown.",
     lowImplication: "May indicate decreased muscle mass or pregnancy.",
     highImplication: "May indicate kidney disease or damage.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "0.6 - 1.2",
+      female: "0.6 - 1.2"
+    }
   },
   {
     id: "sodium",
@@ -223,6 +318,11 @@ export const bloodMarkers: BloodMarker[] = [
     description: "Electrolyte that helps maintain fluid balance and is needed for nerve and muscle function.",
     lowImplication: "May indicate kidney problems, heart failure, certain medications, or excessive sweating.",
     highImplication: "May indicate dehydration, kidney disease, or heart failure.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "135 - 145",
+      female: "135 - 145"
+    }
   },
 ];
 
@@ -238,12 +338,12 @@ export const getStatus = (marker: BloodMarker, value: number | string, gender?: 
   let minValue = marker.minValue;
   let maxValue = marker.maxValue;
   
-  if (gender) {
+  if (gender && marker.genderSpecificRanges) {
     // Handle gender-specific reference ranges
-    if (marker.id === "ferritin" && gender === "female") {
+    if (gender === "female" && marker.id === "ferritin") {
       minValue = 15;
       maxValue = 150; // Using premenopausal values as default for females
-    } else if (marker.id === "ferritin" && gender === "male") {
+    } else if (gender === "male" && marker.id === "ferritin") {
       minValue = 30;
       maxValue = 400;
     }

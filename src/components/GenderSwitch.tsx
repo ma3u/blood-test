@@ -15,6 +15,13 @@ interface GenderSwitchProps {
 }
 
 const GenderSwitch = ({ gender, onChange, className }: GenderSwitchProps) => {
+  // Improved handler to ensure the event doesn't bubble up to the form
+  const handleInfoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Just show the HoverCard, no additional action needed
+  };
+
   return (
     <div className={cn("flex items-center space-x-2 p-2 border rounded-md bg-white", className)}>
       <div className="flex items-center">
@@ -41,8 +48,9 @@ const GenderSwitch = ({ gender, onChange, className }: GenderSwitchProps) => {
             variant="ghost" 
             size="sm" 
             className="h-8 w-8 p-0"
-            type="button" // Explicitly set button type to prevent form submission
-            onClick={(e) => e.preventDefault()} // Prevent any default actions
+            type="button"
+            onClick={handleInfoClick}
+            aria-label="Show reference information"
           >
             <span className="sr-only">Show reference information</span>
             <Info className="h-4 w-4" />

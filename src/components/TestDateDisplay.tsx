@@ -13,6 +13,13 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
   // Using the en-GB locale to match the document format (DD.MM.YYYY)
   const formattedDate = format(date, "dd.MM.yyyy");
 
+  // Improved handler to ensure the event doesn't bubble up to the form
+  const handleInfoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Just show the HoverCard, no additional action needed
+  };
+
   return (
     <div className="flex items-center justify-between bg-blue-50 p-3 rounded-lg border border-blue-100">
       <div className="text-lg font-bold text-blue-700">{formattedDate}</div>
@@ -20,8 +27,9 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
         <HoverCardTrigger asChild>
           <button 
             className="text-blue-600" 
-            type="button" // Explicitly set button type to prevent form submission
-            onClick={(e) => e.preventDefault()} // Prevent any default actions
+            type="button" 
+            onClick={handleInfoClick}
+            aria-label="Show date information"
           >
             <Info className="h-4 w-4" />
           </button>

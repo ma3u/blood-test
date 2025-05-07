@@ -42,6 +42,9 @@ const formSchema = z.object({
   // We'll handle the dynamic marker fields separately
 });
 
+// Define the correct type for form values to fix the TypeScript error
+type FormValues = z.infer<typeof formSchema> & Record<string, string>;
+
 const BloodTestContainer = ({
   onSubmit,
   userId,
@@ -91,7 +94,7 @@ const BloodTestContainer = ({
   };
 
   // Create form with schema
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       date: initialDate || new Date(),
@@ -113,7 +116,7 @@ const BloodTestContainer = ({
     // Set the form values based on the selected date
     const values = getCurrentDateValues();
     Object.entries(values).forEach(([key, value]) => {
-      form.setValue(key as never, value);
+      form.setValue(key as any, value);
     });
     
     const selectedDateObj = getSelectedDate();
@@ -155,7 +158,7 @@ const BloodTestContainer = ({
   });
 
   // Form submission handler
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: FormValues) => {
     const testResults: BloodTestResult[] = bloodMarkersData.map(marker => {
       const value = values[marker.id];
       const { status, isNormal } = getStatus(marker, value, gender);

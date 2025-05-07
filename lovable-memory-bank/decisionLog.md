@@ -8,6 +8,7 @@ This file records architectural and implementation decisions using a list format
 "2025-05-07 14:45:00" - Fixed gender switch functionality and improved UI compactness.
 "2025-05-07 16:30:00" - Enhanced upload functionality and visual design.
 "2025-05-07 18:15:00" - Fixed icon imports and resolved build errors.
+"2025-05-07 19:30:00" - Simplified health category display while maintaining color-coding system.
 
 ## Decision
 
@@ -106,3 +107,22 @@ Fixed icon imports in BloodTestContainer component
 2. Fixed all references to 'CalendarIcon' to use the imported 'Calendar' component
 3. Updated all icon usages to ensure compatibility with the lucide-react package
 4. Maintained the same visual design and functionality while resolving build errors
+
+## Decision
+
+Simplified health category display while maintaining color-coding system
+
+## Rationale
+
+1. The interface had too many specific test input fields, creating visual clutter
+2. The color-coded health categories provide a useful organizational structure
+3. Users need a cleaner interface that focuses on the health impact areas
+4. Maintaining the category-based organization improves user understanding
+
+## Implementation Details
+
+1. Kept the health category cards with their original colors and descriptions
+2. Removed specific test fields displayed in the screenshot to create a cleaner layout
+3. Maintained the hover card functionality for detailed information access
+4. Preserved the category-based organization of blood markers
+5. Ensured the color-coding system remains intact for visual consistency

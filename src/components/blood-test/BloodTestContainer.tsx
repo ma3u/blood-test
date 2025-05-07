@@ -545,22 +545,6 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                     </TabsContent>
                     
                     <TabsContent value="manual">
-                      {/* Category Legend */}
-                      <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                        {Object.entries(healthCategories).map(([key, category]) => (
-                          <div 
-                            key={key} 
-                            className={`p-3 rounded-md border ${category.color} flex items-center gap-2`}
-                          >
-                            <div className="flex-1">
-                              <h4 className="font-medium">{category.name}</h4>
-                              <p className="text-xs text-gray-600">{category.description}</p>
-                            </div>
-                            <TestTube className="h-5 w-5" />
-                          </div>
-                        ))}
-                      </div>
-                    
                       {/* Health Categories */}
                       {Object.entries(groupedMarkers).map(([category, markers]) => (
                         <div key={category} className="space-y-4 mb-8">

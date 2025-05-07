@@ -107,8 +107,8 @@ const TimelineManager = ({ results, onBack, initialDate }: TimelineManagerProps)
 
       <Tabs defaultValue="chart">
         <TabsList>
-          <TabsTrigger value="chart">Trend Chart</TabsTrigger>
-          <TabsTrigger value="history">{t("timeline.select")}</TabsTrigger>
+          <TabsTrigger value="chart">{t("timeline.chart")}</TabsTrigger>
+          <TabsTrigger value="history">{t("timeline.history")}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="chart">

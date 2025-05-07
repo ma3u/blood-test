@@ -1,4 +1,3 @@
-
 import {
   Dialog,
   DialogContent,
@@ -20,61 +19,64 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ReferenceValuesDialog = () => {
+  const { t } = useLanguage();
+  
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <FileText className="mr-2 h-4 w-4" />
-          Reference Values
+          {t("reference.title")}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-5xl max-h-[85vh]">
         <DialogHeader>
-          <DialogTitle>Reference Values</DialogTitle>
+          <DialogTitle>{t("reference.title")}</DialogTitle>
           <DialogDescription>
-            Based on Dr. Ulrich Strunz and Dr. med. Helena Orfanos-Boeckel recommendations
+            {t("reference.description")}
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[65vh] w-full">
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="mb-4">
-              <TabsTrigger value="general">General Parameters</TabsTrigger>
-              <TabsTrigger value="amino">Amino Acids</TabsTrigger>
-              <TabsTrigger value="vitamins">Special Vitamins</TabsTrigger>
-              <TabsTrigger value="inflammation">Inflammation Markers</TabsTrigger>
+              <TabsTrigger value="general">{t("reference.general")}</TabsTrigger>
+              <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
+              <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
+              <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="general">
               <Table>
-                <TableCaption>General Parameters Reference Values</TableCaption>
+                <TableCaption>{t("reference.caption.general")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Parameter</TableHead>
-                    <TableHead>Unit</TableHead>
-                    <TableHead>Women (Reference/Target)</TableHead>
-                    <TableHead>Men (Reference/Target)</TableHead>
-                    <TableHead>Comment</TableHead>
+                    <TableHead>{t("reference.column.parameter")}</TableHead>
+                    <TableHead>{t("reference.column.unit")}</TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
+                    <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">Ferritin (storage iron)</TableCell>
+                    <TableCell className="font-medium">{t("marker.ferritin")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200</TableCell>
                     <TableCell>30–400<br/>optimal: 100–300</TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Vitamin D (25-OH)</TableCell>
+                    <TableCell className="font-medium">{t("marker.vitaminD")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>50–70 (optimal)</TableCell>
                     <TableCell>50–70 (optimal)</TableCell>
                     <TableCell>Reference: 10–100, optimal higher</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Vitamin B12 (total)</TableCell>
+                    <TableCell className="font-medium">{t("marker.vitaminB12")}</TableCell>
                     <TableCell>pg/ml</TableCell>
                     <TableCell>&gt;600 (optimal 1000)</TableCell>
                     <TableCell>&gt;600 (optimal 1000)</TableCell>
@@ -88,7 +90,7 @@ const ReferenceValuesDialog = () => {
                     <TableCell>Reference: 37.5–150</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Folic acid</TableCell>
+                    <TableCell className="font-medium">{t("marker.folicAcid")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>&gt;16</TableCell>
                     <TableCell>&gt;16</TableCell>
@@ -163,14 +165,14 @@ const ReferenceValuesDialog = () => {
 
             <TabsContent value="amino">
               <Table>
-                <TableCaption>Amino Acids (Aminogram, Serum/Plasma) Reference Values</TableCaption>
+                <TableCaption>{t("reference.caption.amino")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Parameter</TableHead>
-                    <TableHead>Unit</TableHead>
-                    <TableHead>Women (Reference/Target)</TableHead>
-                    <TableHead>Men (Reference/Target)</TableHead>
-                    <TableHead>Comment</TableHead>
+                    <TableHead>{t("reference.column.parameter")}</TableHead>
+                    <TableHead>{t("reference.column.unit")}</TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
+                    <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -250,14 +252,14 @@ const ReferenceValuesDialog = () => {
 
             <TabsContent value="vitamins">
               <Table>
-                <TableCaption>Special Vitamins Reference Values</TableCaption>
+                <TableCaption>{t("reference.caption.vitamins")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Parameter</TableHead>
-                    <TableHead>Unit</TableHead>
-                    <TableHead>Women (Reference/Target)</TableHead>
-                    <TableHead>Men (Reference/Target)</TableHead>
-                    <TableHead>Comment</TableHead>
+                    <TableHead>{t("reference.column.parameter")}</TableHead>
+                    <TableHead>{t("reference.column.unit")}</TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
+                    <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -316,14 +318,14 @@ const ReferenceValuesDialog = () => {
             
             <TabsContent value="inflammation">
               <Table>
-                <TableCaption>Inflammation Markers Reference Values</TableCaption>
+                <TableCaption>{t("reference.caption.inflammation")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Parameter</TableHead>
-                    <TableHead>Unit</TableHead>
-                    <TableHead>Women (Reference/Target)</TableHead>
-                    <TableHead>Men (Reference/Target)</TableHead>
-                    <TableHead>Comment</TableHead>
+                    <TableHead>{t("reference.column.parameter")}</TableHead>
+                    <TableHead>{t("reference.column.unit")}</TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
+                    <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -368,19 +370,17 @@ const ReferenceValuesDialog = () => {
           </Tabs>
 
           <div className="mt-8 p-4 bg-gray-50 rounded-md">
-            <h3 className="font-semibold mb-2">Notes for Use:</h3>
+            <h3 className="font-semibold mb-2">{t("reference.notes.title")}</h3>
             <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
-              <li>These values are based on optimal target ranges for prevention and modern molecular medicine as recommended by Dr. Strunz and Dr. Orfanos-Boeckel.</li>
-              <li>Values may vary depending on the laboratory and individual situation. For individual interpretation, always consider personal history and clinical context.</li>
-              <li>For hormones, consider cycle phase, age, and possible hormone therapy, especially in women.</li>
-              <li><strong>Amino acids</strong>: For optimal health, each amino acid should be in the upper half of the reference range; values are based on healthy, high-performing individuals.</li>
-              <li><strong>Special vitamins</strong>: Target values are often higher than standard reference ranges to support prevention and optimal function.</li>
-              <li><strong>Inflammation markers</strong>: Lower values are generally better; chronic low-grade inflammation is a risk factor for many diseases.</li>
+              <li>{t("reference.notes.1")}</li>
+              <li>{t("reference.notes.2")}</li>
+              <li>{t("reference.notes.3")}</li>
+              <li><strong>{t("reference.amino")}</strong>: {t("reference.notes.4")}</li>
+              <li><strong>{t("reference.vitamins")}</strong>: {t("reference.notes.5")}</li>
+              <li><strong>{t("reference.inflammation")}</strong>: {t("reference.notes.6")}</li>
             </ul>
             <p className="text-xs mt-4 text-muted-foreground">
-              <strong>Sources:</strong> Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); 
-              Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), 
-              Dr. Ulrich Strunz, "Die Amino-Revolution" (2022)
+              <strong>Sources:</strong> {t("reference.sources")}
             </p>
           </div>
         </ScrollArea>

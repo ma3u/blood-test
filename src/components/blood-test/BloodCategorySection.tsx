@@ -6,6 +6,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface BloodCategorySectionProps {
   category: string;
@@ -26,6 +27,8 @@ const BloodCategorySection = ({
   register,
   initialValues
 }: BloodCategorySectionProps) => {
+  const { t } = useLanguage();
+  
   return (
     <div className="space-y-4 mb-6">
       <h3 className="text-lg font-medium border-b pb-1">
@@ -38,13 +41,25 @@ const BloodCategorySection = ({
             ? marker.genderSpecificRanges[gender]
             : marker.normalRange;
 
+          // Translate marker name and description if translation keys exist
+          const markerNameKey = `marker.${marker.id}`;
+          const markerDescKey = `marker.${marker.id}.description`;
+          const markerLowKey = `marker.low.${marker.id}`;
+          const markerHighKey = `marker.high.${marker.id}`;
+          
+          // Use dynamic translations or fall back to original values
+          const markerName = t(markerNameKey as any) !== markerNameKey ? t(markerNameKey as any) : marker.name;
+          const markerDesc = t(markerDescKey as any) !== markerDescKey ? t(markerDescKey as any) : marker.description;
+          const markerLow = t(markerLowKey as any) !== markerLowKey ? t(markerLowKey as any) : (marker.lowImplication || t("marker.low.general"));
+          const markerHigh = t(markerHighKey as any) !== markerHighKey ? t(markerHighKey as any) : (marker.highImplication || t("marker.high.general"));
+
           return (
             <div 
               key={marker.id} 
               className={`space-y-2 p-3 rounded-md border ${categoryColor} transition-colors`}
             >
               <div className="flex items-center justify-between">
-                <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
+                <Label htmlFor={marker.id} className="font-semibold">{markerName}</Label>
                 <HoverCard>
                   <HoverCardTrigger asChild>
                     <Button variant="ghost" size="icon" className="h-6 w-6">
@@ -53,16 +68,16 @@ const BloodCategorySection = ({
                   </HoverCardTrigger>
                   <HoverCardContent className="w-80">
                     <div className="space-y-2">
-                      <h4 className="font-medium">{marker.name}</h4>
-                      <p className="text-sm">{marker.description}</p>
+                      <h4 className="font-medium">{markerName}</h4>
+                      <p className="text-sm">{markerDesc}</p>
                       {marker.lowImplication && (
-                        <p className="text-sm text-blue-600">Low: {marker.lowImplication}</p>
+                        <p className="text-sm text-blue-600">{t("results.status.low")}: {markerLow}</p>
                       )}
                       {marker.highImplication && (
-                        <p className="text-sm text-red-600">High: {marker.highImplication}</p>
+                        <p className="text-sm text-red-600">{t("results.status.high")}: {markerHigh}</p>
                       )}
                       <p className="text-xs text-gray-500 mt-2">
-                        <span className="font-medium">Reference ({gender}):</span> {refRange} {marker.unit}
+                        <span className="font-medium">{t("gender.reference")} ({t(gender === "male" ? "gender.male" : "gender.female")}):</span> {refRange} {marker.unit}
                       </p>
                     </div>
                   </HoverCardContent>

@@ -11,7 +11,7 @@ const de = {
   "back.to.test": "Zurück zur Testeingabe",
   "footer.text": "Bluttest-Orakel - Ein medizinisches Analysewerkzeug für Bildungszwecke",
   
-  // New translations
+  // Disclaimer translations
   "disclaimer.paragraph1": "Diese App ist nur für experimentelle und pädagogische Zwecke gedacht. Die von dieser App bereitgestellten Informationen und Antworten werden von künstlicher Intelligenz generiert und sind nicht als professionelle medizinische Beratung, Diagnose oder Behandlung gedacht oder zu betrachten.",
   "disclaimer.paragraph2": "Diese App ersetzt nicht die Konsultation eines lizenzierten Gesundheitsdienstleisters oder medizinischen Experten. Wenden Sie sich immer an Ihren Arzt oder einen anderen qualifizierten Gesundheitsdienstleister, wenn Sie Fragen zu einem medizinischen Zustand haben oder bevor Sie Änderungen an Ihrem Gesundheitsregime vornehmen.",
   "disclaimer.paragraph3": "Ignorieren Sie niemals professionellen medizinischen Rat oder verzögern Sie die Suche danach aufgrund von etwas, das Sie von dieser App gelesen oder erhalten haben. Die Nutzung dieser App und das Vertrauen auf die bereitgestellten Informationen erfolgt ausschließlich auf eigenes Risiko.",
@@ -65,7 +65,7 @@ const de = {
   "results.value": "Wert:",
   "results.range": "Normalbereich:",
   
-  // Adding missing translations for the results summary section
+  // Results summary section
   "results.summary.normal": "Normale Werte",
   "results.summary.low": "Niedrige Werte",
   "results.summary.high": "Hohe Werte",
@@ -73,7 +73,113 @@ const de = {
   "results.summary.all_normal": "Alle Ergebnisse Normal",
   "results.summary.all_normal_description": "Alle Ihre Blutwerte liegen im Normalbereich.",
   "results.summary.your_value": "Ihr Wert:",
-  "results.summary.normal_range": "Normalbereich:"
+  "results.summary.normal_range": "Normalbereich:",
+  
+  // Health categories
+  "health.category.critical": "Kritische Marker",
+  "health.category.metabolic": "Stoffwechselgesundheit",
+  "health.category.cardiovascular": "Herz-Kreislauf-Gesundheit",
+  "health.category.immune": "Immunfunktion",
+  "health.category.nutrition": "Ernährungszustand",
+  "health.category.general": "Allgemeine Gesundheit",
+  
+  // Category descriptions
+  "health.category.critical.description": "Diese Werte haben direkten und erheblichen Einfluss auf lebenswichtige Funktionen",
+  "health.category.metabolic.description": "Bezogen auf Energieproduktion und Stoffwechselprozesse",
+  "health.category.cardiovascular.description": "Wichtige Indikatoren für Herzgesundheit und Kreislauf",
+  "health.category.immune.description": "Bezogen auf Immunsystemgesundheit und Entzündungen",
+  "health.category.nutrition.description": "Indikatoren für Vitamin- und Mineralstoffstatus",
+  "health.category.general.description": "Indikatoren für die allgemeine Gesundheit",
+  
+  // Common marker names
+  "marker.hemoglobin": "Hämoglobin",
+  "marker.wbc": "Weiße Blutkörperchen",
+  "marker.platelets": "Thrombozyten",
+  "marker.glucose": "Glukose",
+  "marker.hba1c": "HbA1c",
+  "marker.insulin": "Insulin",
+  "marker.cholesterol": "Cholesterin",
+  "marker.ldl": "LDL-Cholesterin",
+  "marker.hdl": "HDL-Cholesterin",
+  "marker.triglycerides": "Triglyzeride",
+  "marker.creatinine": "Kreatinin",
+  "marker.sodium": "Natrium",
+  "marker.potassium": "Kalium",
+  "marker.calcium": "Kalzium",
+  "marker.magnesium": "Magnesium",
+  "marker.vitaminD": "Vitamin D",
+  "marker.vitaminB12": "Vitamin B12",
+  "marker.ferritin": "Ferritin",
+  "marker.tsh": "TSH",
+  "marker.folicAcid": "Folsäure",
+  
+  // Common marker descriptions
+  "marker.hemoglobin.description": "Protein in roten Blutkörperchen, das Sauerstoff durch den Körper transportiert.",
+  "marker.wbc.description": "Zellen, die bei der Bekämpfung von Infektionen helfen und Teil des Immunsystems sind.",
+  "marker.platelets.description": "Kleine Blutzellen, die Ihrem Körper helfen, Gerinnsel zu bilden, um Blutungen zu stoppen.",
+  "marker.glucose.description": "Primäre Energiequelle für die Zellen des Körpers; hohe Werte können auf Diabetes hinweisen.",
+  "marker.hba1c.description": "Spiegelt die durchschnittlichen Blutzuckerwerte der letzten 2-3 Monate wider.",
+  "marker.insulin.description": "Hormon, das den Blutzuckerspiegel und die Energiespeicherung reguliert.",
+  "marker.cholesterol.description": "Wachsartige Substanz im Blut, die für den Aufbau gesunder Zellen benötigt wird.",
+  "marker.ldl.description": "Bekannt als 'schlechtes' Cholesterin, erhöhte Werte erhöhen das Risiko für Herzerkrankungen.",
+  "marker.hdl.description": "Bekannt als 'gutes' Cholesterin, hilft andere Formen von Cholesterin aus dem Blutkreislauf zu entfernen.",
+  "marker.triglycerides.description": "Art von Fett im Blut; hohe Werte mit Herzerkrankungen verbunden.",
+  "marker.creatinine.description": "Abfallprodukt aus dem normalen Muskelabbau; wird zur Bewertung der Nierenfunktion verwendet.",
+  "marker.sodium.description": "Elektrolyt, das hilft, den Flüssigkeitshaushalt und die Nerven-/Muskelfunktion zu erhalten.",
+  "marker.potassium.description": "Elektrolyt, das für Herz-, Muskel- und Nervenfunktion unerlässlich ist.",
+  "marker.calcium.description": "Mineral, das für Knochengesundheit, Muskelfunktion und Nervensignale unerlässlich ist.",
+  "marker.magnesium.description": "Mineral, das an über 300 biochemischen Reaktionen im Körper beteiligt ist.",
+  "marker.vitaminD.description": "Fettlösliches Vitamin, wichtig für Immunfunktion und Knochengesundheit.",
+  "marker.vitaminB12.description": "Essentiell für Nervenfunktion, DNA-Synthese und die Bildung roter Blutkörperchen.",
+  "marker.ferritin.description": "Protein, das Eisen speichert und bei Bedarf freisetzt.",
+  "marker.tsh.description": "Steuert die Schilddrüsenhormonproduktion; wichtiger Indikator für die Schilddrüsenfunktion.",
+  "marker.folicAcid.description": "B-Vitamin, das für Zellwachstum, DNA-Bildung und die Vorbeugung von Geburtsfehlern unerlässlich ist.",
+  
+  // Common implications
+  "marker.low.general": "Kann auf einen Mangel oder ein zugrunde liegendes Gesundheitsproblem hinweisen.",
+  "marker.high.general": "Kann auf einen Überschuss oder ein zugrunde liegendes Gesundheitsproblem hinweisen.",
+  
+  // Reference values dialog
+  "reference.title": "Referenzwerte",
+  "reference.description": "Basierend auf den Empfehlungen von Dr. Ulrich Strunz und Dr. med. Helena Orfanos-Boeckel",
+  "reference.general": "Allgemeine Parameter",
+  "reference.amino": "Aminosäuren",
+  "reference.vitamins": "Spezielle Vitamine",
+  "reference.inflammation": "Entzündungsmarker",
+  "reference.caption.general": "Referenzwerte für Allgemeine Parameter",
+  "reference.caption.amino": "Referenzwerte für Aminosäuren (Aminogramm, Serum/Plasma)",
+  "reference.caption.vitamins": "Referenzwerte für Spezielle Vitamine",
+  "reference.caption.inflammation": "Referenzwerte für Entzündungsmarker",
+  "reference.column.parameter": "Parameter",
+  "reference.column.unit": "Einheit",
+  "reference.column.women": "Frauen (Referenz/Ziel)",
+  "reference.column.men": "Männer (Referenz/Ziel)",
+  "reference.column.comment": "Kommentar",
+  "reference.notes.title": "Hinweise zur Verwendung:",
+  "reference.notes.1": "Diese Werte basieren auf optimalen Zielbereichen für Prävention und moderne Molekularmedizin, wie von Dr. Strunz und Dr. Orfanos-Boeckel empfohlen.",
+  "reference.notes.2": "Die Werte können je nach Labor und individueller Situation variieren. Berücksichtigen Sie für die individuelle Interpretation immer die persönliche Vorgeschichte und den klinischen Kontext.",
+  "reference.notes.3": "Bei Hormonen berücksichtigen Sie Zyklusphase, Alter und mögliche Hormontherapie, besonders bei Frauen.",
+  "reference.notes.4": "Aminosäuren: Für optimale Gesundheit sollte jede Aminosäure in der oberen Hälfte des Referenzbereichs liegen; Werte basieren auf gesunden, leistungsstarken Individuen.",
+  "reference.notes.5": "Spezielle Vitamine: Zielwerte liegen oft höher als Standard-Referenzbereiche, um Prävention und optimale Funktion zu unterstützen.",
+  "reference.notes.6": "Entzündungsmarker: Niedrigere Werte sind generell besser; chronische niedriggradige Entzündungen sind ein Risikofaktor für viele Krankheiten.",
+  "reference.sources": "Quellen: Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
+  
+  // Timeline
+  "timeline.chart": "Trenddiagramm",
+  "timeline.history": "Verlauf",
+  "timeline.clear": "Zeitachse löschen",
+  "timeline.clear.confirm": "Sind Sie sicher? Dies löscht alle Ihre gespeicherten Testergebnisse.",
+  "timeline.clear.yes": "Ja, alles löschen",
+  "timeline.clear.no": "Abbrechen",
+  
+  // Results panel
+  "results.panel.title": "Bluttest-Analyse",
+  "results.panel.summary": "Zusammenfassung",
+  "results.panel.details": "Detaillierte Ergebnisse",
+  "results.panel.recommendations": "Empfehlungen",
+  
+  // Test date display
+  "test.date.info": "Das Datum Ihres Bluttests"
 };
 
 export default de;

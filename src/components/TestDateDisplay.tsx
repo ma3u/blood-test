@@ -1,8 +1,7 @@
 
 import { format } from "date-fns";
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Info } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface TestDateDisplayProps {
@@ -40,7 +39,7 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
         <HoverCardContent className="w-80">
           <div className="space-y-2">
             <h4 className="font-medium">{t("timeline.date")}</h4>
-            <p className="text-sm">{t("select.date")}</p>
+            <p className="text-sm">{t("test.date.info")}</p>
           </div>
         </HoverCardContent>
       </HoverCard>

@@ -48,38 +48,44 @@ const ResultsSummary = ({ results }: ResultsSummaryProps) => {
         <div className="mt-6">
           <h3 className="text-lg font-semibold mb-4">{t("results.summary.abnormal")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {abnormalResults.map((result) => (
-              <div
-                key={result.marker.id}
-                className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
-                  result.status === "low"
-                    ? "bg-blue-50 border-blue-200"
-                    : "bg-red-50 border-red-200"
-                }`}
-                onClick={() => setSelectedMarkerId(result.marker.id)}
-              >
-                <div className="flex justify-between items-center">
-                  <h4 className="font-medium">{result.marker.name}</h4>
-                  <span
-                    className={`px-2 py-1 rounded text-sm ${
-                      result.status === "low"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-red-100 text-red-800"
-                    }`}
-                  >
-                    {result.status === "low" ? t("results.status.low") : t("results.status.high")}
-                  </span>
+            {abnormalResults.map((result) => {
+              // Try to get translated marker name if available
+              const markerNameKey = `marker.${result.marker.id}`;
+              const markerName = t(markerNameKey as any) !== markerNameKey ? t(markerNameKey as any) : result.marker.name;
+              
+              return (
+                <div
+                  key={result.marker.id}
+                  className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
+                    result.status === "low"
+                      ? "bg-blue-50 border-blue-200"
+                      : "bg-red-50 border-red-200"
+                  }`}
+                  onClick={() => setSelectedMarkerId(result.marker.id)}
+                >
+                  <div className="flex justify-between items-center">
+                    <h4 className="font-medium">{markerName}</h4>
+                    <span
+                      className={`px-2 py-1 rounded text-sm ${
+                        result.status === "low"
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-red-100 text-red-800"
+                      }`}
+                    >
+                      {result.status === "low" ? t("results.status.low") : t("results.status.high")}
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <p>
+                      {t("results.summary.your_value")} <strong>{result.value} {result.marker.unit}</strong>
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {t("results.summary.normal_range")} {result.marker.normalRange}
+                    </p>
+                  </div>
                 </div>
-                <div className="mt-2">
-                  <p>
-                    {t("results.summary.your_value")} <strong>{result.value} {result.marker.unit}</strong>
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {t("results.summary.normal_range")} {result.marker.normalRange}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ) : (

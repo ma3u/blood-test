@@ -5,23 +5,26 @@ import { BloodTestResult } from "@/lib/types";
 import ResultsSummary from "./results/ResultsSummary";
 import ResultsDetails from "./results/ResultsDetails";
 import ResultsRecommendations from "./results/ResultsRecommendations";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ResultsPanelProps {
   results: BloodTestResult[];
 }
 
 const ResultsPanel = ({ results }: ResultsPanelProps) => {
+  const { t } = useLanguage();
+  
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Blood Test Analysis</CardTitle>
+        <CardTitle className="text-2xl text-center">{t("results.panel.title")}</CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="summary" className="w-full">
           <TabsList className="grid grid-cols-3 mb-8">
-            <TabsTrigger value="summary">Summary</TabsTrigger>
-            <TabsTrigger value="details">Detailed Results</TabsTrigger>
-            <TabsTrigger value="recommendations">Recommendations</TabsTrigger>
+            <TabsTrigger value="summary">{t("results.panel.summary")}</TabsTrigger>
+            <TabsTrigger value="details">{t("results.panel.details")}</TabsTrigger>
+            <TabsTrigger value="recommendations">{t("results.panel.recommendations")}</TabsTrigger>
           </TabsList>
           
           <TabsContent value="summary">

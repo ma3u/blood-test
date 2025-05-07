@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +12,6 @@ import { toast } from "@/components/ui/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { addTimelineEntry, updateTimelineEntry } from "@/lib/api";
 import { Card, CardContent } from "@/components/ui/card";
-import { TabsContent } from "@/components/ui/tabs";
 import GenderSwitch from "@/components/GenderSwitch";
 import ReferenceValuesDialog from "@/components/ReferenceValuesDialog";
 import { useLanguage } from "@/context/LanguageContext";
@@ -22,8 +22,9 @@ import DateSelectionField from "./DateSelectionField";
 import EntryMethodTabs from "./EntryMethodTabs";
 import FileUploadTab from "./FileUploadTab";
 import OCRResultsDialog from "./OCRResultsDialog";
-import { healthCategories, assignHealthCategory } from "./HealthCategories";
+import { assignHealthCategory } from "./HealthCategories";
 import { useSampleData } from "./useSampleData";
+import { useHealthCategories } from "./HealthCategories";
 
 interface BloodTestContainerProps {
   onSubmit?: (results: BloodTestResult[]) => void;
@@ -58,6 +59,7 @@ const BloodTestContainer = ({
   const [gender, setGender] = useState<"male" | "female">(initialGender);
   const [activeTab, setActiveTab] = useState("manual");
   const { t } = useLanguage();
+  const healthCategories = useHealthCategories();
   
   // Use our custom hook for sample data and file upload logic
   const {
@@ -227,18 +229,21 @@ const BloodTestContainer = ({
                 {activeTab === "manual" && (
                   <div className="space-y-6">
                     {/* Health Categories */}
-                    {Object.entries(groupedMarkers).map(([category, markers]) => (
-                      <BloodCategorySection
-                        key={category}
-                        category={category}
-                        markers={markers}
-                        categoryName={healthCategories[category as keyof typeof healthCategories]?.name || category}
-                        categoryColor={healthCategories[category as keyof typeof healthCategories]?.color || "bg-gray-100"}
-                        gender={gender}
-                        register={form.register}
-                        initialValues={initialValues}
-                      />
-                    ))}
+                    {Object.entries(groupedMarkers).map(([category, markers]) => {
+                      const categoryKey = category as keyof typeof healthCategories;
+                      return (
+                        <BloodCategorySection
+                          key={category}
+                          category={category}
+                          markers={markers}
+                          categoryName={healthCategories[categoryKey]?.name || category}
+                          categoryColor={healthCategories[categoryKey]?.color || "bg-gray-100"}
+                          gender={gender}
+                          register={form.register}
+                          initialValues={initialValues}
+                        />
+                      );
+                    })}
                   </div>
                 )}
 

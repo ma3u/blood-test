@@ -11,7 +11,7 @@ const fr = {
   "back.to.test": "Retour à la Saisie du Test",
   "footer.text": "Oracle d'Analyse Sanguine - Un outil d'analyse médicale à des fins éducatives",
   
-  // New translations
+  // Disclaimer translations
   "disclaimer.paragraph1": "Cette application est destinée uniquement à des fins expérimentales et éducatives. Les informations et les réponses fournies par cette application sont générées par l'intelligence artificielle et ne sont pas destinées à être, ni ne doivent être considérées comme, des conseils, diagnostics ou traitements médicaux professionnels.",
   "disclaimer.paragraph2": "Cette application ne remplace pas la consultation d'un professionnel de la santé agréé ou d'un expert médical. Consultez toujours votre médecin ou un autre professionnel de la santé qualifié pour toute question concernant une condition médicale ou avant d'apporter des modifications à votre régime de santé.",
   "disclaimer.paragraph3": "Ne négligez jamais un avis médical professionnel ou ne tardez pas à le consulter en raison de quelque chose que vous avez lu ou reçu de cette application. L'utilisation de cette application et la confiance accordée aux informations fournies sont entièrement à vos propres risques.",
@@ -65,7 +65,7 @@ const fr = {
   "results.value": "Valeur :",
   "results.range": "Plage normale :",
   
-  // Adding missing translations for the results summary section
+  // Results summary section
   "results.summary.normal": "Valeurs Normales",
   "results.summary.low": "Valeurs Basses",
   "results.summary.high": "Valeurs Élevées",
@@ -73,7 +73,113 @@ const fr = {
   "results.summary.all_normal": "Tous les Résultats Normaux",
   "results.summary.all_normal_description": "Tous vos marqueurs de test sanguin sont dans la plage normale.",
   "results.summary.your_value": "Votre valeur :",
-  "results.summary.normal_range": "Plage normale :"
+  "results.summary.normal_range": "Plage normale :",
+  
+  // Health categories
+  "health.category.critical": "Marqueurs Critiques",
+  "health.category.metabolic": "Santé Métabolique",
+  "health.category.cardiovascular": "Santé Cardiovasculaire",
+  "health.category.immune": "Fonction Immunitaire",
+  "health.category.nutrition": "État Nutritionnel",
+  "health.category.general": "Santé Générale",
+  
+  // Category descriptions
+  "health.category.critical.description": "Ces valeurs ont un impact direct et significatif sur les fonctions vitales",
+  "health.category.metabolic.description": "Liés à la production d'énergie et aux processus métaboliques",
+  "health.category.cardiovascular.description": "Indicateurs importants pour la santé cardiaque et la circulation",
+  "health.category.immune.description": "Liés à la santé du système immunitaire et à l'inflammation",
+  "health.category.nutrition.description": "Indicateurs du statut en vitamines et minéraux",
+  "health.category.general.description": "Indicateurs de santé générale",
+  
+  // Common marker names
+  "marker.hemoglobin": "Hémoglobine",
+  "marker.wbc": "Globules Blancs",
+  "marker.platelets": "Plaquettes",
+  "marker.glucose": "Glucose",
+  "marker.hba1c": "HbA1c",
+  "marker.insulin": "Insuline",
+  "marker.cholesterol": "Cholestérol",
+  "marker.ldl": "Cholestérol LDL",
+  "marker.hdl": "Cholestérol HDL",
+  "marker.triglycerides": "Triglycérides",
+  "marker.creatinine": "Créatinine",
+  "marker.sodium": "Sodium",
+  "marker.potassium": "Potassium",
+  "marker.calcium": "Calcium",
+  "marker.magnesium": "Magnésium",
+  "marker.vitaminD": "Vitamine D",
+  "marker.vitaminB12": "Vitamine B12",
+  "marker.ferritin": "Ferritine",
+  "marker.tsh": "TSH",
+  "marker.folicAcid": "Acide Folique",
+  
+  // Common marker descriptions
+  "marker.hemoglobin.description": "Protéine dans les globules rouges qui transporte l'oxygène dans tout le corps.",
+  "marker.wbc.description": "Cellules qui aident à combattre les infections et font partie du système immunitaire.",
+  "marker.platelets.description": "Petites cellules sanguines qui aident votre corps à former des caillots pour arrêter les saignements.",
+  "marker.glucose.description": "Source d'énergie primaire pour les cellules du corps; des niveaux élevés peuvent indiquer un diabète.",
+  "marker.hba1c.description": "Reflète les niveaux moyens de glucose sanguin au cours des 2-3 derniers mois.",
+  "marker.insulin.description": "Hormone qui régule les niveaux de sucre dans le sang et le stockage d'énergie.",
+  "marker.cholesterol.description": "Substance cireuse trouvée dans le sang, nécessaire pour construire des cellules saines.",
+  "marker.ldl.description": "Connu comme le cholestérol 'mauvais', des niveaux élevés augmentent le risque de maladie cardiaque.",
+  "marker.hdl.description": "Connu comme le cholestérol 'bon', aide à éliminer d'autres formes de cholestérol de la circulation sanguine.",
+  "marker.triglycerides.description": "Type de graisse dans le sang; des niveaux élevés sont liés aux maladies cardiaques.",
+  "marker.creatinine.description": "Déchet provenant de la dégradation musculaire normale; utilisé pour évaluer la fonction rénale.",
+  "marker.sodium.description": "Électrolyte qui aide à maintenir l'équilibre des fluides et la fonction nerveuse/musculaire.",
+  "marker.potassium.description": "Électrolyte essentiel pour la fonction cardiaque, musculaire et nerveuse.",
+  "marker.calcium.description": "Minéral essentiel pour la santé osseuse, la fonction musculaire et la signalisation nerveuse.",
+  "marker.magnesium.description": "Minéral impliqué dans plus de 300 réactions biochimiques dans le corps.",
+  "marker.vitaminD.description": "Vitamine liposoluble importante pour la fonction immunitaire et la santé osseuse.",
+  "marker.vitaminB12.description": "Essentielle pour la fonction nerveuse, la synthèse de l'ADN et la formation des globules rouges.",
+  "marker.ferritin.description": "Protéine qui stocke le fer et le libère quand nécessaire.",
+  "marker.tsh.description": "Contrôle la production d'hormone thyroïdienne; indicateur clé de la fonction thyroïdienne.",
+  "marker.folicAcid.description": "Vitamine B essentielle pour la croissance cellulaire, la formation de l'ADN et la prévention des anomalies congénitales.",
+  
+  // Common implications
+  "marker.low.general": "Peut indiquer une carence ou un problème de santé sous-jacent.",
+  "marker.high.general": "Peut indiquer un excès ou un problème de santé sous-jacent.",
+  
+  // Reference values dialog
+  "reference.title": "Valeurs de Référence",
+  "reference.description": "Basées sur les recommandations du Dr. Ulrich Strunz et du Dr. med. Helena Orfanos-Boeckel",
+  "reference.general": "Paramètres Généraux",
+  "reference.amino": "Acides Aminés",
+  "reference.vitamins": "Vitamines Spéciales",
+  "reference.inflammation": "Marqueurs d'Inflammation",
+  "reference.caption.general": "Valeurs de Référence des Paramètres Généraux",
+  "reference.caption.amino": "Valeurs de Référence des Acides Aminés (Aminogramme, Sérum/Plasma)",
+  "reference.caption.vitamins": "Valeurs de Référence des Vitamines Spéciales",
+  "reference.caption.inflammation": "Valeurs de Référence des Marqueurs d'Inflammation",
+  "reference.column.parameter": "Paramètre",
+  "reference.column.unit": "Unité",
+  "reference.column.women": "Femmes (Référence/Cible)",
+  "reference.column.men": "Hommes (Référence/Cible)",
+  "reference.column.comment": "Commentaire",
+  "reference.notes.title": "Notes d'Utilisation :",
+  "reference.notes.1": "Ces valeurs sont basées sur des plages cibles optimales pour la prévention et la médecine moléculaire moderne, comme recommandé par Dr. Strunz et Dr. Orfanos-Boeckel.",
+  "reference.notes.2": "Les valeurs peuvent varier selon le laboratoire et la situation individuelle. Pour une interprétation individuelle, tenez toujours compte des antécédents personnels et du contexte clinique.",
+  "reference.notes.3": "Pour les hormones, considérez la phase du cycle, l'âge et une éventuelle hormonothérapie, surtout chez les femmes.",
+  "reference.notes.4": "Acides aminés : Pour une santé optimale, chaque acide aminé devrait être dans la moitié supérieure de la plage de référence; les valeurs sont basées sur des individus sains et performants.",
+  "reference.notes.5": "Vitamines spéciales : Les valeurs cibles sont souvent plus élevées que les plages de référence standard pour soutenir la prévention et une fonction optimale.",
+  "reference.notes.6": "Marqueurs d'inflammation : Des valeurs plus basses sont généralement meilleures; l'inflammation chronique de bas grade est un facteur de risque pour de nombreuses maladies.",
+  "reference.sources": "Sources : Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
+  
+  // Timeline
+  "timeline.chart": "Graphique de Tendance",
+  "timeline.history": "Historique",
+  "timeline.clear": "Effacer la Chronologie",
+  "timeline.clear.confirm": "Êtes-vous sûr ? Cela supprimera tous vos résultats de tests enregistrés.",
+  "timeline.clear.yes": "Oui, tout effacer",
+  "timeline.clear.no": "Annuler",
+  
+  // Results panel
+  "results.panel.title": "Analyse de Test Sanguin",
+  "results.panel.summary": "Résumé",
+  "results.panel.details": "Résultats Détaillés",
+  "results.panel.recommendations": "Recommandations",
+  
+  // Test date display
+  "test.date.info": "La date de votre test sanguin"
 };
 
 export default fr;

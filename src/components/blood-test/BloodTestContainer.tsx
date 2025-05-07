@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Info } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,14 +20,17 @@ import {
 import { BloodMarker, BloodTestResult } from "@/lib/types";
 import { getStatus, bloodMarkers } from "@/lib/bloodTestUtils";
 import { toast } from "@/components/ui/use-toast";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { addTimelineEntry, getBloodMarkers, updateTimelineEntry } from "@/lib/api";
+import { useMutation } from "@tanstack/react-query";
+import { addTimelineEntry, updateTimelineEntry } from "@/lib/api";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import ReferenceValuesDialog from "@/components/ReferenceValuesDialog";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import GenderSwitch from "@/components/GenderSwitch";
 
 interface BloodTestContainerProps {
   onSubmit?: (results: BloodTestResult[]) => void;
@@ -132,11 +136,35 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
 
   if (bloodMarkersData.length === 0) return <div>Loading markers...</div>;
 
+  // Group markers into categories for better organization
+  const groupedMarkers = bloodMarkersData.reduce<Record<string, BloodMarker[]>>((acc, marker) => {
+    // Group by category if it exists, otherwise use "General"
+    const category = marker.category || "General";
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(marker);
+    return acc;
+  }, {});
+
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-wrap justify-between items-center">
         <h2 className="text-2xl font-semibold tracking-tight">Blood Test Values</h2>
-        <ReferenceValuesDialog />
+        
+        <div className="flex items-center">
+          <GenderSwitch gender={gender} onChange={() => {}} className="mr-2" />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <ReferenceValuesDialog />
+              </TooltipTrigger>
+              <TooltipContent>
+                View full reference values
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </div>
 
       <Form {...form}>
@@ -187,32 +215,63 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
             )}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {bloodMarkersData.map((marker) => (
-              <div key={marker.id} className="space-y-2 p-4 border rounded-md bg-gray-50">
-                <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
-                <div className="flex items-center gap-2">
-                  <Input
-                    type="number"
-                    id={marker.id}
-                    placeholder={`Enter value in ${marker.unit}`}
-                    defaultValue={initialValues ? initialValues[marker.id] : ''}
-                    {...form.register(marker.id as never)}
-                    className="flex-1"
-                  />
-                  <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
-                </div>
-                <div className="mt-1">
-                  <p className="text-sm text-gray-500">
-                    <span className="font-medium">Reference range:</span> {marker.normalRange}
-                  </p>
-                  {marker.description && (
-                    <p className="text-xs text-gray-500 mt-1">{marker.description}</p>
-                  )}
-                </div>
+          {/* Map through each category and create a section */}
+          {Object.entries(groupedMarkers).map(([category, markers]) => (
+            <div key={category} className="space-y-4">
+              <h3 className="text-lg font-medium">{category}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {markers.map((marker) => {
+                  // Get gender-specific reference range
+                  const refRange = marker.genderSpecificRanges && marker.genderSpecificRanges[gender]
+                    ? marker.genderSpecificRanges[gender]
+                    : marker.normalRange;
+
+                  return (
+                    <div key={marker.id} className="space-y-2 p-3 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors">
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
+                        <HoverCard>
+                          <HoverCardTrigger asChild>
+                            <Button variant="ghost" size="icon" className="h-6 w-6">
+                              <Info className="h-4 w-4" />
+                            </Button>
+                          </HoverCardTrigger>
+                          <HoverCardContent className="w-80">
+                            <div className="space-y-2">
+                              <h4 className="font-medium">{marker.name}</h4>
+                              <p className="text-sm">{marker.description}</p>
+                              {marker.lowImplication && (
+                                <p className="text-sm text-blue-600">Low: {marker.lowImplication}</p>
+                              )}
+                              {marker.highImplication && (
+                                <p className="text-sm text-red-600">High: {marker.highImplication}</p>
+                              )}
+                            </div>
+                          </HoverCardContent>
+                        </HoverCard>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Input
+                          type="number"
+                          id={marker.id}
+                          placeholder={`${refRange} ${marker.unit}`}
+                          defaultValue={initialValues ? initialValues[marker.id] : ''}
+                          {...form.register(marker.id as never)}
+                          className="flex-1"
+                        />
+                        <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
+                      </div>
+                      <div className="mt-1">
+                        <p className="text-xs text-gray-500">
+                          <span className="font-medium">Ref ({gender}):</span> {refRange}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
 
           <Button type="submit" className="w-full">Submit Blood Test Results</Button>
         </form>

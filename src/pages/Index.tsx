@@ -21,6 +21,10 @@ const Index = () => {
     console.log("Blood test results received, user could be prompted to register here");
   };
 
+  const handleGenderChange = (newGender: "male" | "female") => {
+    setGender(newGender);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -34,13 +38,6 @@ const Index = () => {
 
           {!results ? (
             <>
-              <div className="mb-6">
-                <GenderSwitch 
-                  gender={gender} 
-                  onChange={setGender} 
-                  className="bg-white border rounded-lg p-4 shadow-sm" 
-                />
-              </div>
               <BloodTestContainer 
                 onSubmit={handleTestResults} 
                 userId="anonymous-user" 

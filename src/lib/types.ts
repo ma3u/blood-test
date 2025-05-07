@@ -9,6 +9,11 @@ export interface BloodMarker {
   description: string;
   lowImplication: string;
   highImplication: string;
+  category?: string;
+  genderSpecificRanges?: {
+    male: string;
+    female: string;
+  };
 }
 
 export interface BloodTestResult {

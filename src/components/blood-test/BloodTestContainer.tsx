@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { TestTube } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -12,12 +11,12 @@ import { getStatus, bloodMarkers } from "@/lib/bloodTestUtils";
 import { toast } from "@/components/ui/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { addTimelineEntry, updateTimelineEntry } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 import GenderSwitch from "@/components/GenderSwitch";
 import ReferenceValuesDialog from "@/components/ReferenceValuesDialog";
 
-// Import our new components
+// Import our components
 import BloodCategorySection from "./BloodCategorySection";
 import DateSelectionField from "./DateSelectionField";
 import EntryMethodTabs from "./EntryMethodTabs";
@@ -98,7 +97,7 @@ const BloodTestContainer = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       date: initialDate || new Date(),
-    }
+    } as unknown as Record<string, string>
   });
 
   function handleDateSelect(date: Date | undefined) {
@@ -116,7 +115,7 @@ const BloodTestContainer = ({
     // Set the form values based on the selected date
     const values = getCurrentDateValues();
     Object.entries(values).forEach(([key, value]) => {
-      form.setValue(key as any, value);
+      form.setValue(key as string, value as string);
     });
     
     const selectedDateObj = getSelectedDate();
@@ -205,16 +204,10 @@ const BloodTestContainer = ({
       </div>
       
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TestTube className="h-5 w-5 text-blue-600" />
-            Test Information
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-              {/* Side-by-side layout for date selection and tabs */}
+              {/* Side-by-side layout with improved alignment */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left column - Date Selection */}
                 <DateSelectionField 

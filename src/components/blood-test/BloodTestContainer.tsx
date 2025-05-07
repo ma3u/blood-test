@@ -381,11 +381,8 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calendar className="h-5 w-5 text-blue-600" />
-            Test Date
+            Blood Test Information
           </CardTitle>
-          <CardDescription>
-            The date when your blood test was performed. This is important for tracking changes over time.
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -396,7 +393,19 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <div className="flex items-center justify-between">
-                      <FormLabel>Select Date</FormLabel>
+                      <div className="flex items-center gap-2">
+                        <FormLabel>Select Date</FormLabel>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Info className="h-4 w-4 text-blue-600 cursor-help" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="max-w-xs">The date when your blood test was performed. This is important for tracking changes over time.</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
                       {extractedDates.length > 0 && (
                         <div className="text-sm text-blue-600 font-medium">
                           {extractedDates.length} dates found in your document

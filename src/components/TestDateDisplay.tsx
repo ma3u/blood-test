@@ -1,5 +1,7 @@
 
 import { format } from "date-fns";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 interface TestDateDisplayProps {
   date: Date;
@@ -13,7 +15,6 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
   return (
     <div className="flex items-center justify-center bg-blue-50 p-3 rounded-lg border border-blue-100">
       <div className="text-center">
-        <p className="text-sm text-blue-600 font-medium">Test Date</p>
         <p className="text-lg font-bold text-blue-700">{formattedDate}</p>
       </div>
     </div>

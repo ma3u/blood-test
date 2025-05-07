@@ -27,8 +27,22 @@ const LanguageSwitcher = () => {
           size="sm" 
           className="flex items-center gap-1 text-white hover:text-blue-100"
         >
-          <Globe className="h-4 w-4" />
-          <span>{language.toUpperCase()}</span>
+          <Globe className="h-4 w-4 mr-1" />
+          <span className="flex gap-1">
+            {availableLanguages.map((lang) => (
+              <span 
+                key={lang} 
+                className={lang === language ? "font-bold" : "opacity-60"}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLanguage(lang);
+                }}
+              >
+                {lang.toUpperCase()}
+                {lang !== availableLanguages[availableLanguages.length - 1] && " | "}
+              </span>
+            ))}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

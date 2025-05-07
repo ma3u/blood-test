@@ -8,6 +8,7 @@ import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
 import { BloodTestResult } from "@/lib/types";
 import GenderSwitch from "@/components/GenderSwitch";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
@@ -31,10 +32,17 @@ const Index = () => {
 
       <main className="container mx-auto py-8 px-4">
         <div className="max-w-4xl mx-auto space-y-8">
-          <PageIntro 
-            title="Blood Test Analysis"
-            description="Enter your blood test values or upload test results for instant analysis and interpretation"
-          />
+          <div className="flex flex-col items-center mb-6">
+            <img 
+              src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
+              alt="Blood Test Oracle Logo" 
+              className="w-32 h-32 object-contain mb-4"
+            />
+            <PageIntro 
+              title="Blood Test Analysis"
+              description="Enter your blood test values or upload test results for instant analysis and interpretation"
+            />
+          </div>
 
           {!results ? (
             <>

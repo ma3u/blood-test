@@ -18,7 +18,11 @@ const TestDateDisplay = ({ date }: TestDateDisplayProps) => {
       <div className="text-lg font-bold text-blue-700">{formattedDate}</div>
       <HoverCard>
         <HoverCardTrigger asChild>
-          <button className="text-blue-600">
+          <button 
+            className="text-blue-600" 
+            type="button" // Explicitly set button type to prevent form submission
+            onClick={(e) => e.preventDefault()} // Prevent any default actions
+          >
             <Info className="h-4 w-4" />
           </button>
         </HoverCardTrigger>

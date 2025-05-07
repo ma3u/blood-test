@@ -37,7 +37,13 @@ const GenderSwitch = ({ gender, onChange, className }: GenderSwitchProps) => {
 
       <HoverCard>
         <HoverCardTrigger asChild>
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="h-8 w-8 p-0"
+            type="button" // Explicitly set button type to prevent form submission
+            onClick={(e) => e.preventDefault()} // Prevent any default actions
+          >
             <span className="sr-only">Show reference information</span>
             <Info className="h-4 w-4" />
           </Button>

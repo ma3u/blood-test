@@ -26,7 +26,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
       <Header />
 
       <main className="container mx-auto py-8 px-4">
@@ -50,7 +50,7 @@ const Index = () => {
               <div className="mt-8">
                 <button 
                   onClick={() => setResults(null)} 
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-gray-700 transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors"
                 >
                   Back to Test Input
                 </button>

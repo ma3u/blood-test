@@ -6,6 +6,7 @@ This file records architectural and implementation decisions using a list format
 "2025-04-28 10:00:00" - Log of updates made.
 "2025-05-07 13:30:00" - Added compact design principles for blood test input form.
 "2025-05-07 14:45:00" - Fixed gender switch functionality and improved UI compactness.
+"2025-05-07 16:30:00" - Enhanced upload functionality and visual design.
 
 ## Decision
 
@@ -65,3 +66,26 @@ Fixed gender switch functionality and improved UI organization
 5. Enhanced HoverCard components to display comprehensive marker information including reference ranges
 6. Ensured reference ranges update appropriately when gender selection changes
 
+## Decision
+
+Enhanced upload functionality and visual design with health impact categorization
+
+## Rationale
+
+1. Users need to upload documents directly within the same interface
+2. Color-coding values by health impact improves user understanding
+3. Information boxes provide context without cluttering the interface
+4. Categorizing blood markers by health impact area creates logical grouping
+5. Multi-date extraction from documents enhances the utility of OCR
+
+## Implementation Details
+
+1. Integrated document upload functionality directly into the main blood test form using a tab interface
+2. Created a comprehensive OCR information box explaining supported document types
+3. Implemented color-coded categories for different health impact areas (cardiovascular, metabolic, etc.)
+4. Added a legend explaining the health categories and their significance
+5. Enhanced the test date display with an information card explaining its importance
+6. Created a dialog system to display and select between multiple extracted test dates
+7. Added gradient buttons and improved overall color scheme for visual appeal
+8. Implemented category-based organization of blood markers with appropriate colors
+9. Enhanced hover cards with more detailed marker information and implications

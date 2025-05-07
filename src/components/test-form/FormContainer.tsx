@@ -6,6 +6,7 @@ import ActionButtons from "@/components/ActionButtons";
 import InputSection from "@/components/InputSection";
 import { toast } from "@/components/ui/use-toast";
 import { saveTimelineEntry } from "@/lib/bloodTestUtils";
+import { Card } from "@/components/ui/card";
 
 interface FormContainerProps {
   showForm: boolean;
@@ -55,35 +56,39 @@ export default function FormContainer({
 
   if (showForm) {
     return (
-      <InputSection 
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        onResultsSubmit={handleResultsSubmit}
-        onResultsExtracted={(values, dates) => {
-          // Handle extracted results
-          console.log("Extracted values:", values, "dates:", dates);
-        }}
-        initialValues={extractedValues || {}}
-        initialDate={testDate}
-        showForm={showForm}
-        results={results}
-        onCancelEditing={handleCancelEditing}
-        availableDates={availableDates}
-        onDateSelect={onDateSelect}
-      />
+      <Card className="p-6">
+        <InputSection 
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          onResultsSubmit={handleResultsSubmit}
+          onResultsExtracted={(values, dates) => {
+            // Handle extracted results
+            console.log("Extracted values:", values, "dates:", dates);
+          }}
+          initialValues={extractedValues || {}}
+          initialDate={testDate}
+          showForm={showForm}
+          results={results}
+          onCancelEditing={handleCancelEditing}
+          availableDates={availableDates}
+          onDateSelect={onDateSelect}
+        />
+      </Card>
     );
   }
 
   return (
     <div className="mt-8 space-y-6">
-      {testDate && <TestDateDisplay date={testDate} />}
-      <ResultsPanel results={results || []} />
-      <ActionButtons 
-        onUploadAnother={onHandleUploadAnother}
-        onReviewAndModify={handleReviewAndModify}
-        onViewTimeline={onViewTimeline}
-        hasExtractedValues={!!extractedValues}
-      />
+      <Card className="p-6">
+        {testDate && <TestDateDisplay date={testDate} />}
+        <ResultsPanel results={results || []} />
+        <ActionButtons 
+          onUploadAnother={onHandleUploadAnother}
+          onReviewAndModify={handleReviewAndModify}
+          onViewTimeline={onViewTimeline}
+          hasExtractedValues={!!extractedValues}
+        />
+      </Card>
     </div>
   );
 }

@@ -381,100 +381,105 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calendar className="h-5 w-5 text-blue-600" />
+            Test Information
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="date"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <FormLabel>Select Date</FormLabel>
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Info className="h-4 w-4 text-blue-600 cursor-help" />
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="max-w-xs">The date when your blood test was performed. This is important for tracking changes over time.</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+              {/* Side-by-side layout for date selection and tabs */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Left column - Date Selection */}
+                <FormField
+                  control={form.control}
+                  name="date"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="text-lg font-medium">Select Date</FormLabel>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Info className="h-4 w-4 text-blue-600 cursor-help" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className="max-w-xs">The date when your blood test was performed. This is important for tracking changes over time.</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </div>
                       </div>
+                      
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <Calendar className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <CalendarComponent
+                            mode="single"
+                            selected={field.value}
+                            onSelect={handleDateSelect}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date('2020-01-01')
+                            }
+                            initialFocus
+                            className="p-3 pointer-events-auto"
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      
                       {extractedDates.length > 0 && (
-                        <div className="text-sm text-blue-600 font-medium">
-                          {extractedDates.length} dates found in your document
+                        <div className="mt-4">
+                          <div className="text-sm text-blue-600 font-medium mb-2">
+                            {extractedDates.length} dates found in your document
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {extractedDates.map((dateInfo, index) => (
+                              <Button
+                                key={index}
+                                type="button"
+                                size="sm"
+                                variant={selectedDateIndex === index ? "default" : "outline"}
+                                onClick={() => handleSelectExtractedDate(index)}
+                              >
+                                {dateInfo.label}
+                              </Button>
+                            ))}
+                          </div>
                         </div>
                       )}
-                    </div>
-                    
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <Calendar className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <CalendarComponent
-                          mode="single"
-                          selected={field.value}
-                          onSelect={handleDateSelect}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date('2020-01-01')
-                          }
-                          initialFocus
-                          className="p-3 pointer-events-auto"
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    
-                    {extractedDates.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {extractedDates.map((dateInfo, index) => (
-                          <Button
-                            key={index}
-                            type="button"
-                            size="sm"
-                            variant={selectedDateIndex === index ? "default" : "outline"}
-                            onClick={() => handleSelectExtractedDate(index)}
-                          >
-                            {dateInfo.label}
-                          </Button>
-                        ))}
-                      </div>
-                    )}
-                  </FormItem>
-                )}
-              />
-              
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1">
+                    </FormItem>
+                  )}
+                />
+                
+                {/* Right column - Entry Method Tabs */}
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Entry Method</h3>
                   <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab}>
-                    <TabsList className="mb-4">
+                    <TabsList className="grid grid-cols-2 mb-4">
                       <TabsTrigger value="manual">Manual Entry</TabsTrigger>
                       <TabsTrigger value="upload">Upload Document</TabsTrigger>
                     </TabsList>
                     
                     <TabsContent value="upload">
                       <div className="space-y-4">
-                        <div className="flex flex-col items-center justify-center border-2 border-dashed border-blue-300 rounded-lg p-6 cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
+                        <div className="flex flex-col items-center justify-center border-2 border-dashed border-blue-300 rounded-lg p-4 cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
                           <input
                             type="file"
                             id="file-upload"
@@ -498,10 +503,10 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                               ) : (
                                 <>
                                   <div className="flex gap-4">
-                                    <File className="h-10 w-10 text-blue-500" />
-                                    <FileImage className="h-10 w-10 text-blue-500" />
+                                    <File className="h-8 w-8 text-blue-500" />
+                                    <FileImage className="h-8 w-8 text-blue-500" />
                                   </div>
-                                  <div className="text-lg font-medium text-blue-700">Click to upload or drag and drop</div>
+                                  <div className="text-base font-medium text-blue-700">Click to upload or drag and drop</div>
                                   <div className="text-sm text-blue-500">PDF, JPG, or PNG</div>
                                 </>
                               )}
@@ -515,110 +520,117 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                           onClick={handleUpload}
                           disabled={!selectedFile}
                         >
-                          Process Document with OCR
+                          Process Document
                         </Button>
-                        
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="w-full flex items-center gap-2"
-                          onClick={() => setShowUploadInfo(!showUploadInfo)}
-                        >
-                          <Info className="h-4 w-4" />
-                          {showUploadInfo ? "Hide Information" : "What documents can I upload?"}
-                        </Button>
-                        
-                        {showUploadInfo && (
-                          <Card className="bg-blue-50 border-blue-200">
-                            <CardHeader className="pb-2">
-                              <CardTitle className="text-lg">Document Processing Information</CardTitle>
-                            </CardHeader>
-                            <CardContent className="pt-0 text-sm">
-                              <p className="mb-2">Our OCR system can extract blood test values from:</p>
-                              <ul className="list-disc pl-6 space-y-1">
-                                <li>PDF lab reports from most hospitals and clinics</li>
-                                <li>Scanned images of lab reports (JPG, PNG)</li>
-                                <li>Photos of printed lab reports</li>
-                              </ul>
-                              <p className="mt-2">For best results:</p>
-                              <ul className="list-disc pl-6 space-y-1">
-                                <li>Ensure the document is clearly readable</li>
-                                <li>Make sure all values and units are visible</li>
-                                <li>Include the reference ranges if available</li>
-                              </ul>
-                              <p className="mt-2 text-blue-700 font-medium">The system can detect multiple test dates in a single document!</p>
-                            </CardContent>
-                          </Card>
-                        )}
                       </div>
-                    </TabsContent>
-                    
-                    <TabsContent value="manual">
-                      {/* Health Categories */}
-                      {Object.entries(groupedMarkers).map(([category, markers]) => (
-                        <div key={category} className="space-y-4 mb-8">
-                          <h3 className="text-lg font-medium border-b pb-1">
-                            {healthCategories[category as keyof typeof healthCategories]?.name || category}
-                          </h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {markers.map((marker) => {
-                              // Get gender-specific reference range
-                              const refRange = marker.genderSpecificRanges && marker.genderSpecificRanges[gender]
-                                ? marker.genderSpecificRanges[gender]
-                                : marker.normalRange;
-
-                              const categoryColor = healthCategories[category as keyof typeof healthCategories]?.color || "bg-gray-100";
-
-                              return (
-                                <div 
-                                  key={marker.id} 
-                                  className={`space-y-2 p-3 rounded-md border ${categoryColor} transition-colors`}
-                                >
-                                  <div className="flex items-center justify-between">
-                                    <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
-                                    <HoverCard>
-                                      <HoverCardTrigger asChild>
-                                        <Button variant="ghost" size="icon" className="h-6 w-6">
-                                          <Info className="h-4 w-4" />
-                                        </Button>
-                                      </HoverCardTrigger>
-                                      <HoverCardContent className="w-80">
-                                        <div className="space-y-2">
-                                          <h4 className="font-medium">{marker.name}</h4>
-                                          <p className="text-sm">{marker.description}</p>
-                                          {marker.lowImplication && (
-                                            <p className="text-sm text-blue-600">Low: {marker.lowImplication}</p>
-                                          )}
-                                          {marker.highImplication && (
-                                            <p className="text-sm text-red-600">High: {marker.highImplication}</p>
-                                          )}
-                                          <p className="text-xs text-gray-500 mt-2">
-                                            <span className="font-medium">Reference ({gender}):</span> {refRange} {marker.unit}
-                                          </p>
-                                        </div>
-                                      </HoverCardContent>
-                                    </HoverCard>
-                                  </div>
-                                  <div className="flex items-center gap-2">
-                                    <Input
-                                      type="number"
-                                      id={marker.id}
-                                      placeholder={`${refRange} ${marker.unit}`}
-                                      defaultValue={initialValues ? initialValues[marker.id] : ''}
-                                      {...form.register(marker.id as never)}
-                                      className="flex-1"
-                                    />
-                                    <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      ))}
                     </TabsContent>
                   </Tabs>
                 </div>
+              </div>
+
+              {/* Content area for manual entry or info card */}
+              <div>
+                {activeTab === "manual" && (
+                  <div className="space-y-6">
+                    {/* Health Categories */}
+                    {Object.entries(groupedMarkers).map(([category, markers]) => (
+                      <div key={category} className="space-y-4 mb-6">
+                        <h3 className="text-lg font-medium border-b pb-1">
+                          {healthCategories[category as keyof typeof healthCategories]?.name || category}
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                          {markers.map((marker) => {
+                            // Get gender-specific reference range
+                            const refRange = marker.genderSpecificRanges && marker.genderSpecificRanges[gender]
+                              ? marker.genderSpecificRanges[gender]
+                              : marker.normalRange;
+
+                            const categoryColor = healthCategories[category as keyof typeof healthCategories]?.color || "bg-gray-100";
+
+                            return (
+                              <div 
+                                key={marker.id} 
+                                className={`space-y-2 p-3 rounded-md border ${categoryColor} transition-colors`}
+                              >
+                                <div className="flex items-center justify-between">
+                                  <Label htmlFor={marker.id} className="font-semibold">{marker.name}</Label>
+                                  <HoverCard>
+                                    <HoverCardTrigger asChild>
+                                      <Button variant="ghost" size="icon" className="h-6 w-6">
+                                        <Info className="h-4 w-4" />
+                                      </Button>
+                                    </HoverCardTrigger>
+                                    <HoverCardContent className="w-80">
+                                      <div className="space-y-2">
+                                        <h4 className="font-medium">{marker.name}</h4>
+                                        <p className="text-sm">{marker.description}</p>
+                                        {marker.lowImplication && (
+                                          <p className="text-sm text-blue-600">Low: {marker.lowImplication}</p>
+                                        )}
+                                        {marker.highImplication && (
+                                          <p className="text-sm text-red-600">High: {marker.highImplication}</p>
+                                        )}
+                                        <p className="text-xs text-gray-500 mt-2">
+                                          <span className="font-medium">Reference ({gender}):</span> {refRange} {marker.unit}
+                                        </p>
+                                      </div>
+                                    </HoverCardContent>
+                                  </HoverCard>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Input
+                                    type="number"
+                                    id={marker.id}
+                                    placeholder={`${refRange} ${marker.unit}`}
+                                    defaultValue={initialValues ? initialValues[marker.id] : ''}
+                                    {...form.register(marker.id as never)}
+                                    className="flex-1"
+                                  />
+                                  <span className="text-sm font-medium text-gray-500 whitespace-nowrap">{marker.unit}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeTab === "upload" && showUploadInfo && (
+                  <Card className="bg-blue-50 border-blue-200 mt-4">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">Document Processing Information</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0 text-sm">
+                      <p className="mb-2">Our OCR system can extract blood test values from:</p>
+                      <ul className="list-disc pl-6 space-y-1">
+                        <li>PDF lab reports from most hospitals and clinics</li>
+                        <li>Scanned images of lab reports (JPG, PNG)</li>
+                        <li>Photos of printed lab reports</li>
+                      </ul>
+                      <p className="mt-2">For best results:</p>
+                      <ul className="list-disc pl-6 space-y-1">
+                        <li>Ensure the document is clearly readable</li>
+                        <li>Make sure all values and units are visible</li>
+                        <li>Include the reference ranges if available</li>
+                      </ul>
+                      <p className="mt-2 text-blue-700 font-medium">The system can detect multiple test dates in a single document!</p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {activeTab === "upload" && !showUploadInfo && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full flex items-center gap-2 mt-2"
+                    onClick={() => setShowUploadInfo(!showUploadInfo)}
+                  >
+                    <Info className="h-4 w-4" />
+                    What documents can I upload?
+                  </Button>
+                )}
               </div>
 
               <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">

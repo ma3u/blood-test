@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BloodTestForm from "@/components/BloodTestForm";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface InputSectionProps {
   activeTab: string;
@@ -101,24 +103,20 @@ const InputSection = ({
   // For new test entry (showing both tabs)
   return (
     <div className="mt-8">
-      <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid grid-cols-2 mb-8">
-          <TabsTrigger value="manual">Manual Entry</TabsTrigger>
-          <TabsTrigger value="upload">Upload Test Results</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="manual">
-          {availableDates && availableDates.length > 0 && (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Left column: Available Test Dates */}
+        <div>
+          {availableDates && availableDates.length > 0 ? (
             <div className="mb-6 bg-green-50 p-4 rounded-lg border border-green-200">
               <Label htmlFor="available-dates" className="block mb-2 font-medium text-green-800">
                 Available Test Dates
               </Label>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col gap-2">
                 <Select 
                   value={selectedDateIndex.toString()} 
                   onValueChange={handleDateSelect}
                 >
-                  <SelectTrigger className="w-full md:w-[300px] bg-white">
+                  <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Select a test date" />
                   </SelectTrigger>
                   <SelectContent>
@@ -134,23 +132,42 @@ const InputSection = ({
                 </span>
               </div>
             </div>
+          ) : (
+            <div className="p-6 bg-blue-50 rounded-lg border border-blue-100 flex items-center justify-center">
+              <div className="text-center text-blue-700">
+                <p className="font-medium mb-1">No test dates available yet</p>
+                <p className="text-sm">Upload a document to extract test dates automatically</p>
+              </div>
+            </div>
           )}
-          
-          {userId && (
-            <BloodTestForm 
-              userId={userId}
-              onResultsSubmit={onResultsSubmit} 
-              initialValues={initialValues} 
-              initialDate={initialDate} 
-              onSwitchToUpload={handleSwitchToUpload}
-            />
-          )}
-        </TabsContent>
+        </div>
         
-        <TabsContent value="upload">
-          <FileUploader onResultsExtracted={onResultsExtracted} />
-        </TabsContent>
-      </Tabs>
+        {/* Right column: Tabs */}
+        <div>
+          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="grid grid-cols-2 mb-4">
+              <TabsTrigger value="manual">Manual Entry</TabsTrigger>
+              <TabsTrigger value="upload">Upload Test Results</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="manual">
+              {userId && (
+                <BloodTestForm 
+                  userId={userId}
+                  onResultsSubmit={onResultsSubmit} 
+                  initialValues={initialValues} 
+                  initialDate={initialDate} 
+                  onSwitchToUpload={handleSwitchToUpload}
+                />
+              )}
+            </TabsContent>
+            
+            <TabsContent value="upload">
+              <FileUploader onResultsExtracted={onResultsExtracted} />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
     </div>
   );
 };

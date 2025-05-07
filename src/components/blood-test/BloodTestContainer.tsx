@@ -381,7 +381,6 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calendar className="h-5 w-5 text-blue-600" />
-            Blood Test Information
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -412,6 +411,7 @@ const BloodTestContainer = ({ onSubmit, userId, initialValues, initialDate, isEd
                         </div>
                       )}
                     </div>
+                    
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>

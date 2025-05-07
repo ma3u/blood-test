@@ -13,6 +13,7 @@ import { BloodTestResult } from "@/lib/types";
 import TestDateDisplay from "@/components/TestDateDisplay";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TimelineEditDialogProps {
   open: boolean;
@@ -30,6 +31,7 @@ const TimelineEditDialog = ({
   onUpdateEntry,
 }: TimelineEditDialogProps) => {
   const [userId, setUserId] = useState<string>("");
+  const { t } = useLanguage();
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -45,9 +47,9 @@ const TimelineEditDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Edit Test Results</DialogTitle>
+          <DialogTitle>{t("edit.title")}</DialogTitle>
           <DialogDescription>
-            Modify the values for this test.
+            {t("edit.description")}
           </DialogDescription>
         </DialogHeader>
         
@@ -70,7 +72,7 @@ const TimelineEditDialog = ({
         
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("edit.cancel")}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -1,12 +1,15 @@
 
 import { BloodTestResult } from "@/lib/types";
 import BloodMarkerChart from "@/components/BloodMarkerChart";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ResultsDetailsProps {
   results: BloodTestResult[];
 }
 
 const ResultsDetails = ({ results }: ResultsDetailsProps) => {
+  const { t } = useLanguage();
+  
   return (
     <div className="space-y-8">
       <BloodMarkerChart results={results} />
@@ -35,18 +38,18 @@ const ResultsDetails = ({ results }: ResultsDetailsProps) => {
                 }`}
               >
                 {result.status === "normal"
-                  ? "Normal"
+                  ? t("results.status.normal")
                   : result.status === "low"
-                  ? "Low"
-                  : "High"}
+                  ? t("results.status.low")
+                  : t("results.status.high")}
               </span>
             </div>
             <div className="mt-2">
               <p>
-                Value: <strong>{result.value} {result.marker.unit}</strong>
+                {t("results.value")} <strong>{result.value} {result.marker.unit}</strong>
               </p>
               <p className="text-sm text-gray-600">
-                Normal range: {result.marker.normalRange}
+                {t("results.range")} {result.marker.normalRange}
               </p>
               <p className="text-sm mt-2">{result.marker.description}</p>
               

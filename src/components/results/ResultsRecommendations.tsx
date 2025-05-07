@@ -1,6 +1,7 @@
 
 import { BloodTestResult } from "@/lib/types";
 import { getRecommendations } from "@/lib/bloodTestUtils";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ResultsRecommendationsProps {
   results: BloodTestResult[];
@@ -8,14 +9,14 @@ interface ResultsRecommendationsProps {
 
 const ResultsRecommendations = ({ results }: ResultsRecommendationsProps) => {
   const recommendations = getRecommendations(results);
+  const { t } = useLanguage();
 
   return (
     <div className="space-y-4">
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-4">
-        <h3 className="text-lg font-semibold text-blue-800 mb-4">Important Notice</h3>
+        <h3 className="text-lg font-semibold text-blue-800 mb-4">{t("results.notice.title")}</h3>
         <p className="text-blue-700">
-          This analysis is for informational purposes only and is not a substitute for professional medical advice. 
-          Always consult with your healthcare provider regarding your blood test results.
+          {t("results.notice.text")}
         </p>
       </div>
       

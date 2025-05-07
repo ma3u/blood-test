@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -61,39 +60,35 @@ const Index = () => {
                   </DialogHeader>
                   <DialogDescription className="space-y-6 text-foreground">
                     <p className="font-medium text-lg">
-                      Where cutting-edge research in epigenetics, longevity, and molecular medicine converges to empower healthier, longer lives.
+                      {t("welcome.intro")}
                     </p>
                     
                     <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
                       <p>
-                        Aging is shaped not just by our genes but by dynamic interactions between epigenetic switches, environmental factors, and cellular health. 
-                        Emerging science reveals that longevity hinges on maintaining biomarker balance – measurable indicators like DNA methylation patterns, 
-                        nutrient levels, and hormonal activity. These biomarkers act as a "health dashboard," revealing gaps in essential nutrients 
-                        (e.g., vitamin D, magnesium), amino acids, and hormones that accelerate aging if unaddressed.
+                        {t("welcome.paragraph1")}
                       </p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-blue-700 mb-2">Personalized Health Strategies</h3>
+                      <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("welcome.strategies.title")}</h3>
                       <ul className="list-disc pl-5 space-y-2">
-                        <li><span className="font-medium">Biomarker Diagnostics:</span> Advanced testing pinpoints deficiencies in nutrients (e.g., iron, B vitamins), antioxidants, and hormones like cortisol, enabling tailored interventions.</li>
-                        <li><span className="font-medium">Micronutrient Optimization:</span> Targeted supplements – such as resveratrol (DNA repair), omega-3s (brain health), and CoQ10 (cellular energy) – address gaps identified through testing.</li>
-                        <li><span className="font-medium">Hormonal & Metabolic Balance:</span> Lifestyle adjustments restore rhythm to systems disrupted by aging, including insulin sensitivity and stress response.</li>
+                        <li><span className="font-medium">{t("welcome.strategies.item1")}</span></li>
+                        <li><span className="font-medium">{t("welcome.strategies.item2")}</span></li>
+                        <li><span className="font-medium">{t("welcome.strategies.item3")}</span></li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-blue-700 mb-2">Science-Backed Longevity Practices</h3>
+                      <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("welcome.practices.title")}</h3>
                       <ul className="list-disc pl-5 space-y-2">
-                        <li><span className="font-medium">Movement:</span> Regular exercise boosts mitochondrial health and muscle-derived antioxidants like EcSOD, reducing oxidative stress.</li>
-                        <li><span className="font-medium">Sleep Optimization:</span> 7+ hours nightly lowers mortality risk by 18% and supports metabolic repair.</li>
-                        <li><span className="font-medium">Stress Resilience:</span> Techniques like active rest (light yoga, walking) and mindfulness modulate inflammation linked to chronic disease.</li>
+                        <li><span className="font-medium">{t("welcome.practices.item1")}</span></li>
+                        <li><span className="font-medium">{t("welcome.practices.item2")}</span></li>
+                        <li><span className="font-medium">{t("welcome.practices.item3")}</span></li>
                       </ul>
                     </div>
                     
                     <p className="mt-4 font-medium">
-                      By bridging biomarker gaps and aligning lifestyle with cellular needs, we unlock possibilities for healthspan extension. 
-                      Explore how these insights apply to your unique biology – ready to dive deeper?
+                      {t("welcome.outro")}
                     </p>
                   </DialogDescription>
                 </DialogContent>

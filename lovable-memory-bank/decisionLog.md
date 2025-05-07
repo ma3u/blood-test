@@ -1,3 +1,4 @@
+
 # Decision Log
 
 This file records architectural and implementation decisions using a list format.
@@ -9,6 +10,7 @@ This file records architectural and implementation decisions using a list format
 "2025-05-07 18:15:00" - Fixed icon imports and resolved build errors.
 "2025-05-07 20:30:00" - Implemented locale files for multi-language support and added French language.
 "2025-05-07 22:15:00" - Improved button accessibility and event propagation handling.
+"2025-05-07 23:45:00" - Enhanced internationalization with comprehensive translation keys.
 
 ## Decision
 
@@ -150,3 +152,25 @@ Improved button accessibility and event propagation handling
 6. Modified TestDateDisplay and GenderSwitch components to properly handle events
 7. Ensured all clickable elements have proper accessibility attributes
 8. Added descriptive comments to clarify the purpose of event handlers
+
+## Decision
+
+Enhanced internationalization with comprehensive translation keys
+
+## Rationale
+
+1. Application needed consistent localization across all user-facing text
+2. Hardcoded text made it difficult to maintain translations
+3. Some components were using direct text instead of translation keys
+4. Accessibility elements needed localization for screen readers
+
+## Implementation Details
+
+1. Added comprehensive translation keys for all user-facing text in all supported languages
+2. Updated components to use the translation system with the `t()` function
+3. Applied translations to accessibility attributes like `aria-label`
+4. Structured translations into logical groupings (disclaimer, results, timeline, etc.)
+5. Included translations for all status messages, tooltips, and button texts
+6. Added translations for the welcome dialog content including health strategies and practices
+7. Ensured consistent terminology across all languages
+8. Maintained existing functionality while enhancing the internationalization

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 import GenderSwitch from "@/components/GenderSwitch";
 import ReferenceValuesDialog from "@/components/ReferenceValuesDialog";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Import our components
 import BloodCategorySection from "./BloodCategorySection";
@@ -57,6 +57,7 @@ const BloodTestContainer = ({
   const [selectedDate, setSelectedDate] = useState<Date>(initialDate || new Date());
   const [gender, setGender] = useState<"male" | "female">(initialGender);
   const [activeTab, setActiveTab] = useState("manual");
+  const { t } = useLanguage();
   
   // Use our custom hook for sample data and file upload logic
   const {
@@ -195,7 +196,7 @@ const BloodTestContainer = ({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap justify-between items-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Blood Test Values</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">{t("blood.test.title")}</h2>
         
         <div className="flex items-center gap-2">
           <GenderSwitch gender={gender} onChange={handleGenderChange} className="mr-2" />
@@ -252,7 +253,7 @@ const BloodTestContainer = ({
               </div>
 
               <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Submit Blood Test Results
+                {t("blood.test.submit")}
               </Button>
             </form>
           </Form>

@@ -8,6 +8,7 @@ This file records architectural and implementation decisions using a list format
 "2025-05-07 14:45:00" - Fixed gender switch functionality and improved UI compactness.
 "2025-05-07 16:30:00" - Enhanced upload functionality and visual design.
 "2025-05-07 18:15:00" - Fixed icon imports and resolved build errors.
+"2025-05-07 20:30:00" - Implemented locale files for multi-language support and added French language.
 
 ## Decision
 
@@ -106,3 +107,24 @@ Fixed icon imports in BloodTestContainer component
 2. Fixed all references to 'CalendarIcon' to use the imported 'Calendar' component
 3. Updated all icon usages to ensure compatibility with the lucide-react package
 4. Maintained the same visual design and functionality while resolving build errors
+
+## Decision
+
+Implemented locale files for multi-language support and added French language
+
+## Rationale
+
+1. Using separate locale files improves maintainability of translations
+2. Adding French expands the application's accessibility to French-speaking users
+3. Structured locale system allows for easier addition of more languages in the future
+4. Dropdown menu for language selection provides better UX than toggle button
+
+## Implementation Details
+
+1. Created a locales directory with separate files for each language (en.ts, de.ts, fr.ts)
+2. Updated the LanguageContext to use these locale files
+3. Added types for supported languages and translation keys
+4. Implemented a dropdown menu for language selection with language names
+5. Updated components to use the new translation system
+6. Added browser language detection with fallback to English
+7. Maintained local storage persistence for language preference

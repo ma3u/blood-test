@@ -1,65 +1,40 @@
 
 import { createContext, useState, useContext, ReactNode, useEffect } from "react";
-
-type Language = "en" | "de";
+import locales, { SupportedLanguage, TranslationKey } from "../locales";
 
 type LanguageContextType = {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-};
-
-const translations = {
-  en: {
-    "app.title": "Blood Test Oracle",
-    "app.subtitle": "Medical Analysis Tool",
-    "page.title": "Blood Test Analysis",
-    "page.description": "Enter your blood test values or upload test results for instant analysis and interpretation",
-    "learn.more": "Learn more",
-    "language.toggle": "DE | EN",
-    "dialog.title": "Welcome to mabu.red",
-    "disclaimer.title": "Disclaimer",
-    "back.to.test": "Back to Test Input",
-    "footer.text": "Blood Test Oracle - A medical analysis tool for educational purposes",
-  },
-  de: {
-    "app.title": "Bluttest-Orakel",
-    "app.subtitle": "Medizinisches Analysewerkzeug",
-    "page.title": "Bluttest-Analyse",
-    "page.description": "Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch",
-    "learn.more": "Mehr erfahren",
-    "language.toggle": "DE | EN",
-    "dialog.title": "Willkommen bei mabu.red",
-    "disclaimer.title": "Haftungsausschluss",
-    "back.to.test": "Zurück zur Testeingabe",
-    "footer.text": "Bluttest-Orakel - Ein medizinisches Analysewerkzeug für Bildungszwecke",
-  },
+  language: SupportedLanguage;
+  setLanguage: (lang: SupportedLanguage) => void;
+  t: (key: TranslationKey) => string;
+  availableLanguages: SupportedLanguage[];
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const getBrowserLanguage = (): Language => {
-    const browserLang = navigator.language.split("-")[0];
-    return browserLang === "de" ? "de" : "en";
+  const getBrowserLanguage = (): SupportedLanguage => {
+    const browserLang = navigator.language.split("-")[0] as SupportedLanguage;
+    return browserLang in locales ? browserLang : "en";
   };
 
-  const [language, setLanguage] = useState<Language>(() => {
+  const [language, setLanguage] = useState<SupportedLanguage>(() => {
     // Try to get from localStorage first
-    const savedLanguage = localStorage.getItem("language") as Language;
-    return savedLanguage ? savedLanguage : getBrowserLanguage();
+    const savedLanguage = localStorage.getItem("language") as SupportedLanguage;
+    return savedLanguage && savedLanguage in locales ? savedLanguage : getBrowserLanguage();
   });
 
   useEffect(() => {
     localStorage.setItem("language", language);
   }, [language]);
 
-  const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations[typeof language]] || key;
+  const t = (key: TranslationKey): string => {
+    return locales[language][key] || key;
   };
 
+  const availableLanguages: SupportedLanguage[] = ["en", "de", "fr"];
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, availableLanguages }}>
       {children}
     </LanguageContext.Provider>
   );

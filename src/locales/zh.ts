@@ -228,7 +228,7 @@ const zh = {
   "marker.vitaminB12.description": "对神经功能、DNA合成和红细胞形成至关重要。",
   "marker.ferritin.description": "储存铁并在需要时释放铁的蛋白质。",
   "marker.tsh.description": "控制甲状腺激素产生；甲状腺功能的关键指标。",
-  "marker.folicAcid.description": "对细胞生长、DNA形成和预防先天缺陷至关重要的B族维生素。",
+  "marker.folicAcid.description": "对细胞生长、DNA形成���预防先天缺陷至关重要的B族维生素。",
   "marker.totalProtein.description": "血液中所有蛋白质的总量，包括白蛋白和球蛋白。",
   
   // Common implications
@@ -246,6 +246,10 @@ const zh = {
   
   // Date extraction
   "date.extracted": "在您的文档中找到的日期",
+  
+  // Impressum translations
+  "impressum.title": "法律声明",
+  "impressum.menu": "法律声明",
 };
 
 export default zh;

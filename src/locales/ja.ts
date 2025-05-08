@@ -75,7 +75,7 @@ const ja = {
   // Upload
   "upload.title": "結果をアップロード",
   "upload.description": "検査結果を含むPDFまたは画像をアップロード",
-  "upload.button": "ファイルを選択",
+  "upload.button": "ファ��ルを選択",
   "upload.processing": "ファイル処理中...",
   "upload.instructions": "血液検査のPDFまたは画像ファイルをここにドラッグ＆ドロップするか、クリックして選択してください",
   "upload.document": "文書をアップロード",
@@ -212,7 +212,7 @@ const ja = {
   "marker.wbc.description": "感染と戦い、免疫系の一部である細胞。",
   "marker.platelets.description": "出血を止めるために血栓を形成する助けとなる微小な血球。",
   "marker.glucose.description": "体の細胞のための主要なエネルギー源。高値は糖尿病を示す可能性があります。",
-  "marker.hba1c.description": "過去2〜3ヶ月の平均血糖値を反映します。",
+  "marker.hba1c.description": "過去2〜3ヶ月の平均血糖値を反映します���",
   "marker.insulin.description": "血糖値とエネルギー貯蔵を調節するホルモン。",
   "marker.cholesterol.description": "血液中に見られる、健康な細胞を構築するために必要なワックス様物質。",
   "marker.ldl.description": "「悪玉」コレステロールとして知られ、高値は心臓病のリスクを高めます。",
@@ -245,7 +245,11 @@ const ja = {
   "test.date.info": "あなたの血液検査の日付",
   
   // Date extraction
-  "date.extracted": "あなたの文書で見つかった日付"
+  "date.extracted": "あなたの文書で見つかった日付",
+  
+  // Impressum translations
+  "impressum.title": "法的通知",
+  "impressum.menu": "法的通知"
 };
 
 export default ja;

@@ -1,4 +1,3 @@
-
 const fr = {
   "app.title": "Oracle d'Analyse Sanguine",
   "app.subtitle": "Outil d'Analyse Médicale",
@@ -185,7 +184,11 @@ const fr = {
   "marker.description": "Description",
   "implications": "Implications",
   "reference": "Référence",
-  "understand": "Je comprends"
+  "understand": "Je comprends",
+  
+  // Impressum translations
+  "impressum.title": "Mentions Légales",
+  "impressum.menu": "Mentions Légales"
 };
 
 export default fr;

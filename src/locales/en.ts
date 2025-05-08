@@ -245,6 +245,10 @@ const en = {
 
   // Date extraction
   "date.extracted": "Dates found in your document",
+  
+  // Impressum translations
+  "impressum.title": "Legal Notice",
+  "impressum.menu": "Legal Notice",
 };
 
 export default en;

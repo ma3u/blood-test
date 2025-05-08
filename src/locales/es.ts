@@ -136,8 +136,11 @@ const es = {
   "marker.tsh.description": "Controla la producción de hormonas tiroideas; indicador clave de la función tiroidea.",
   "marker.folicAcid.description": "Vitamina B crucial para el crecimiento celular, formación de ADN y prevención de defectos congénitos.",
   "marker.totalProtein.description": "Cantidad total de todas las proteínas en la sangre, incluyendo albúmina y globulinas.",
+  
+  // Impressum translations
   "impressum.title": "Aviso Legal",
   "impressum.menu": "Aviso Legal",
+  
   "sign.in": "Iniciar sesión",
   "sign.out": "Cerrar sesión",
   "dashboard": "Panel de control",

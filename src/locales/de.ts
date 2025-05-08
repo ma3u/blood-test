@@ -1,4 +1,3 @@
-
 const de = {
   "app.title": "Bluttest-Orakel",
   "app.subtitle": "Medizinisches Analysewerkzeug",
@@ -185,7 +184,11 @@ const de = {
   "marker.description": "Beschreibung",
   "implications": "Auswirkungen",
   "reference": "Referenz",
-  "understand": "Ich verstehe"
+  "understand": "Ich verstehe",
+  
+  // Impressum translations
+  "impressum.title": "Impressum",
+  "impressum.menu": "Impressum"
 };
 
 export default de;

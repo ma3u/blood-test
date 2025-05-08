@@ -246,6 +246,10 @@ const ru = {
 
   // Date extraction
   "date.extracted": "Даты найдены в вашем документе",
+  
+  // Impressum translations
+  "impressum.title": "Юридическая информация",
+  "impressum.menu": "Юридическая информация",
 };
 
 export default ru;

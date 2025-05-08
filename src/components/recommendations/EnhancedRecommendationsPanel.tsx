@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { BloodTestResult } from "@/lib/types";
@@ -53,7 +52,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({ recommendation 
         
         {recommendation.dosage && (
           <p className="mt-2 text-xs font-medium">
-            {t("recommendation.dosage")}: {recommendation.dosage}
+            Dosage: {recommendation.dosage}
           </p>
         )}
         

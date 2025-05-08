@@ -1,4 +1,3 @@
-
 # Progress Log
 
 ## Timeline
@@ -20,6 +19,7 @@
 "2025-05-08 20:05:00" - Fixed duplicated header issue by removing redundant Header component from Index.tsx.
 "2025-05-08 20:30:00" - Fixed theme toggle functionality by updating theme provider implementation and import paths.
 "2025-05-08 21:20:00" - Fixed build error by adding useTheme export to theme-provider component.
+"2025-05-08 21:45:00" - Restored accessibility menu and enhanced language switcher in the Header component.
 
 ## Completed Tasks
 
@@ -54,6 +54,7 @@
 - Fixed duplicated header issue in application layout
 - Fixed theme toggle functionality to properly switch between light and dark modes
 - Added useTheme export to theme-provider to fix build error
+- Restored accessibility menu and enhanced language switcher in the Header component
 
 ## Current Tasks
 - Continue refactoring large files into smaller, more focused components

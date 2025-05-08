@@ -1,6 +1,16 @@
 
 # Decision Log
 
+## 2025-05-08: Improved Language Switcher Accessibility
+- Enhanced text contrast ratio in language selector to meet WCAG 2.1 AA standards (minimum 4.5:1 for normal text)
+- Added proper aria attributes for screen readers
+- Improved focus states with visible outlines
+- Added full language names for better clarity
+- Ensured dropdown menu has sufficient background contrast and z-index
+- Fixed dropdown menu positioning
+- Implemented consistent hover and focus states
+- Followed WCAG 2.1 accessibility guidelines
+
 ## 2025-05-08: Updated Language Handling in Main Page
 - Added dynamic headline and subtitle text based on selected language
 - Added country flag emojis to language selector

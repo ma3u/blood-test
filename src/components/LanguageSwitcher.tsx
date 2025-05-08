@@ -18,28 +18,47 @@ const languageFlags: Record<string, string> = {
   es: "🇪🇸"
 };
 
+// Language names to display in full form
+const languageNames: Record<string, string> = {
+  en: "English",
+  de: "Deutsch",
+  fr: "Français",
+  es: "Español"
+};
+
 const LanguageSwitcher = () => {
   const { language, setLanguage, availableLanguages } = useLanguage();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="flex items-center gap-1 h-8">
-          <Globe className="h-4 w-4 mr-1" />
-          <span className="mr-1">{languageFlags[language]}</span>
-          <span className="text-sm uppercase">{language}</span>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="flex items-center gap-1 h-8 bg-white text-gray-800 border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label={`Change language, current language is ${languageNames[language]}`}
+        >
+          <Globe className="h-4 w-4 mr-1" aria-hidden="true" />
+          <span className="mr-1" aria-hidden="true">{languageFlags[language]}</span>
+          <span className="text-sm font-medium uppercase">{language}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent 
+        align="end"
+        className="bg-white border border-gray-300 shadow-lg rounded-md w-40 z-50"
+        sideOffset={5}
+      >
         {availableLanguages.map((lang) => (
           <DropdownMenuItem
             key={lang}
             onClick={() => setLanguage(lang)}
-            className={language === lang ? "bg-accent" : ""}
+            className={`${
+              language === lang ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-100"
+            } focus:bg-blue-100 focus:text-blue-800 focus:outline-none`}
           >
-            <div className="flex items-center">
-              <span className="mr-2">{languageFlags[lang]}</span>
-              <span>{lang.toUpperCase()}</span>
+            <div className="flex items-center w-full px-1 py-1">
+              <span className="mr-2" aria-hidden="true">{languageFlags[lang]}</span>
+              <span className="font-medium">{languageNames[lang]}</span>
             </div>
           </DropdownMenuItem>
         ))}

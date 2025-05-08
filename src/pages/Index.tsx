@@ -5,14 +5,14 @@ import Footer from "@/components/layout/Footer";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
-import IntroductionSection from "@/components/IntroductionSection";
 import { BloodTestResult } from "@/lib/types";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { InfoIcon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
+import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
@@ -113,45 +113,55 @@ const Index = () => {
                     </DialogHeader>
                     <DialogDescription id="dialog-description" className="space-y-6 text-foreground">
                       <p className="font-medium text-lg">
-                        {t("welcome.intro")}
+                        {t("intro.welcome")}
                       </p>
                       
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <p>
-                          {t("welcome.paragraph1")}
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("welcome.strategies.title")}</h3>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li><span className="font-medium">{t("welcome.strategies.item1")}</span></li>
-                          <li><span className="font-medium">{t("welcome.strategies.item2")}</span></li>
-                          <li><span className="font-medium">{t("welcome.strategies.item3")}</span></li>
+                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.why.title")}</h3>
+                        <p className="text-gray-700 mb-4">{t("intro.why.content")}</p>
+                        
+                        <ul className="list-disc pl-6 space-y-2 mb-6">
+                          <li className="text-gray-700">{t("intro.why.point1")}</li>
+                          <li className="text-gray-700">{t("intro.why.point2")}</li>
+                          <li className="text-gray-700">{t("intro.why.point3")}</li>
                         </ul>
                       </div>
                       
                       <div>
-                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("welcome.practices.title")}</h3>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li><span className="font-medium">{t("welcome.practices.item1")}</span></li>
-                          <li><span className="font-medium">{t("welcome.practices.item2")}</span></li>
-                          <li><span className="font-medium">{t("welcome.practices.item3")}</span></li>
+                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.next.title")}</h3>
+                        <p className="text-gray-700 mb-4">{t("intro.next.content")}</p>
+                        
+                        <ul className="list-disc pl-6 space-y-2 mb-4">
+                          <li className="text-gray-700">{t("intro.next.point1")}</li>
+                          <li className="text-gray-700">{t("intro.next.point2")}</li>
+                          <li className="text-gray-700">{t("intro.next.point3")}</li>
+                          <li className="text-gray-700">{t("intro.next.point4")}</li>
+                          <li className="text-gray-700">{t("intro.next.point5")}</li>
                         </ul>
+                        
+                        <p className="text-gray-700 italic mb-6">{t("intro.next.conclusion")}</p>
                       </div>
                       
-                      <p className="mt-4 font-medium">
-                        {t("welcome.outro")}
-                      </p>
+                      <div>
+                        <Separator className="my-6" />
+                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.feedback.title")}</h3>
+                        <p className="text-gray-700 mb-4">{t("intro.feedback.content")}</p>
+                        
+                        <ul className="list-disc pl-6 space-y-2 mb-4">
+                          <li className="text-gray-700">{t("intro.feedback.point1")}</li>
+                          <li className="text-gray-700">{t("intro.feedback.point2")}</li>
+                          <li className="text-gray-700">{t("intro.feedback.point3")}</li>
+                        </ul>
+                        
+                        <p className="text-gray-700 mb-3">{t("intro.feedback.conclusion")}</p>
+                        <p className="text-gray-700 font-medium">{t("intro.feedback.question")}</p>
+                      </div>
                     </DialogDescription>
                   </DialogContent>
                 </Dialog>
               </div>
             </div>
           </div>
-
-          {/* Show Introduction Section if no results are being displayed */}
-          {!results && <IntroductionSection />}
 
           {!results ? (
             <>

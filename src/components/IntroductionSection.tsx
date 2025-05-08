@@ -4,6 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
+// This component is no longer rendered directly, but its content is used in the dialog
 const IntroductionSection: React.FC = () => {
   const { t } = useLanguage();
 

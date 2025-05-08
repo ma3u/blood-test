@@ -152,7 +152,7 @@ const en = {
   "footer.text": "Blood Test Oracle - A medical analysis tool for educational purposes",
   
   // Blood test form
-  "blood.test.title": "Enter Your Blood Test Values",
+  "blood.test.title": "Blood Test Values",
   "blood.test.submit": "Analyze Results",
   "select.date": "Select Test Date",
   "entry.methods": "Entry Methods",

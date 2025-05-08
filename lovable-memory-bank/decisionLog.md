@@ -1,6 +1,28 @@
 
 # Decision Log
 
+### 🧪 Decision 023: Automated Testing Strategy for Vite/React/TS
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Tooling<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:**
+  - Ensure code quality and prevent regressions as the project grows.
+  - Align testing tools with the Vite + React + TypeScript stack for fast, reliable feedback and modern syntax support.
+  - Enable automated CI to catch errors before merging changes.
+
+- **Decision:**
+  - Use **Vitest** as the primary test runner (native Vite support, fast, TypeScript-friendly).
+  - Use **@testing-library/react** for React component/unit/integration testing (best practice for user-centric UI tests).
+  - Add a **GitHub Actions** workflow to run all tests on every push and pull request.
+
+- **Action Items:**
+  1. Add `vitest`, `@testing-library/react`, and related dependencies to `devDependencies`.
+  2. Configure `vitest.config.ts` for the project (setup files, coverage, etc.).
+  3. Write initial unit and integration tests for core components and the recommendations system (see decisionLog and progress.md for coverage targets).
+  4. Create `.github/workflows/test.yml` to run tests automatically on push/PR.
+  5. Ensure test results are visible in PRs and failing tests block merges.
+
+---
+
 ## 📝 How to Update This Decision Record
 
 1. 🆕 **Add new decisions at the top** of the file.

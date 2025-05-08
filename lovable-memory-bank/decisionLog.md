@@ -1,8 +1,6 @@
 
 # Decision Log
 
----
-
 ## 📝 How to Update This Decision Record
 
 1. 🆕 **Add new decisions at the top** of the file.
@@ -21,8 +19,8 @@
 - [Decision Log](#decision-log)
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
-    - [📋 Outstanding Tasks](#-outstanding-tasks)
-    - [Decision 001: Type System – Support `string | number` for BloodTestResult.value (Type System, 2025-04-28)](#decision-001-type-system--support-string--number-for-bloodtestresultvalue-type-system-2025-04-28)
+    - [� Outstanding Tasks](#-outstanding-tasks)
+    - [🛠️ Decision 001: Type System – Support `string | number` for BloodTestResult.value](#️-decision-001-type-system--support-string--number-for-bloodtestresultvalue)
     - [🟦 Decision 002: UI/UX – Compact, Responsive Blood Test Input Form](#-decision-002-uiux--compact-responsive-blood-test-input-form)
     - [🟦 Decision 003: UI/UX – Gender Switch Functionality \& UI Organization](#-decision-003-uiux--gender-switch-functionality--ui-organization)
     - [🟦 Decision 004: UI/UX – Marker Info Space Optimization](#-decision-004-uiux--marker-info-space-optimization)
@@ -39,6 +37,7 @@
     - [🐞 Decision 015: Fixed Empty Page Issue](#-decision-015-fixed-empty-page-issue)
     - [♿ Decision 016: Adopt WCAG 2.1 as Accessibility Standard](#-decision-016-adopt-wcag-21-as-accessibility-standard)
     - [🔍 Decision 017: Optimize SEO with Open Graph Best Practices](#-decision-017-optimize-seo-with-open-graph-best-practices)
+    - [🟦 Decision 018: Auth – Optional Login \& Health Record Storage](#-decision-018-auth--optional-login--health-record-storage)
 
 ---
 
@@ -181,3 +180,13 @@
   - Test Open Graph tags with Facebook Sharing Debugger and Twitter Card Validator.
   - Automate meta tag generation for dynamic pages if applicable.
   - Document Open Graph and SEO strategy in project documentation.
+
+### 🟦 Decision 018: Auth – Optional Login & Health Record Storage
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Auth<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:** Lower the barrier for user adoption by making login optional. Allow users to use the tool without authentication, but enable them to store and track their diagnosis results and recommendations in Supabase if they choose to log in. Storing the original test date (not just entry date) is required for meaningful health development tracking. After getting the personal recommandation, ask the user to register will varuous OAuth 2.1 providers. 
+- **Implementation:**  
+  - Users can use the health tool without logging in.  
+  - Implement a login modal with OAuth 2.1 providers (Google, GitHub, etc.) with the provided functions of Supabase
+  - Logging in is only required to save results and recommendations in Supabase.  
+  - Each stored record must include the original date of the test, enabling longitudinal health comparisons.

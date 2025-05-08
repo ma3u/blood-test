@@ -193,7 +193,7 @@ const de = {
   // Website intro content
   "intro.title": "Willkommen bei Blood Test Oracle",
   "intro.subtitle": "Eine persönliche Reise zur Gesundheitsoptimierung",
-  "intro.welcome": "Willkommen! Ich bin Matthias, und ich habe diese Website als eine persönliche und gemeinsame Reise in die Welt der Epigenetik, Langlebigkeit und Molekularmedizin erstellt. Mein Ziel ist es, die Kraft der KI zu nutzen, um meine eigene Gesundheit und Bildung zu verbessern – und anderen zu helfen, die diesen Weg mit mir gehen möchten.",
+  "intro.welcome": "Willkommen! Ich bin Matthias, und ich habe diese Website als eine persönliche und gemeinsame Reise in die Welt der Epigenetik, Langlebigkeit und Molekularmedizin erstellt. Mein Ziel ist es, die Kraft der KI zu nutzen, um meine eigene Gesundheit und Bildung zu verbessern – und anderen zu helfen, die diesen Weg mit mir zu gehen möchten.",
   "intro.why.title": "Warum diese Homepage existiert",
   "intro.why.content": "Altern, Gesundheit und Langlebigkeit betreffen nicht nur unsere Gene – es geht um das dynamische Zusammenspiel zwischen unserer Umwelt, unserem Lebensstil und den Schaltern, die unsere Gene an- und ausschalten. Diese Homepage existiert, um:",
   "intro.why.point1": "Meine Entdeckungen und Fortschritte zu teilen, während ich KI und epigenetische Erkenntnisse nutze, um meine Gesundheitsreise zu gestalten.",
@@ -213,7 +213,30 @@ const de = {
   "intro.feedback.point2": "Welche Funktionen sollte ich priorisieren?",
   "intro.feedback.point3": "Wie kann ich diese Website und die kommenden KI-Agenten für Sie nützlicher, klarer und motivierender gestalten?",
   "intro.feedback.conclusion": "Bitte teilen Sie Ihre Gedanken und Ideen – Ihr Feedback wird direkt beeinflussen, wie dieser Service wächst und sich verbessert.",
-  "intro.feedback.question": "Gibt es bestimmte Fragen oder Herausforderungen auf Ihrem Gesundheitsweg, bei denen die KI Ihnen zuerst helfen soll? Lassen Sie es mich wissen!"
+  "intro.feedback.question": "Gibt es bestimmte Fragen oder Herausforderungen auf Ihrem Gesundheitsweg, bei denen die KI Ihnen zuerst helfen soll? Lassen Sie es mich wissen!",
+  
+  // Accessibility translations
+  "accessibility.language.selector": "Sprachauswahl",
+  "loading": "Wird geladen...",
+  "error.title": "Fehler",
+  
+  // Recommendations system translations
+  "recommendations.title": "Persönliche Empfehlungen",
+  "recommendations.subtitle": "Basierend auf Ihren Blutwerten und Ihrem Profil",
+  "recommendations.error.load": "Die Empfehlungen konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+  "recommendations.disclaimer.title": "Medizinischer Hinweis",
+  "recommendations.disclaimer.text": "Diese Empfehlungen dienen nur zu Informationszwecken und stellen keine medizinische Beratung dar. Konsultieren Sie immer einen Arzt, bevor Sie Änderungen an Ihrer Ernährung, Nahrungsergänzungsmitteln oder Ihrem Trainingsprogramm vornehmen.",
+  "recommendations.tabs.nutrition": "Ernährung",
+  "recommendations.tabs.supplements": "Nahrungsergänzung",
+  "recommendations.tabs.exercise": "Bewegung",
+  "recommendations.tabs.stress": "Stressabbau",
+  "recommendations.related.markers": "Bezogen auf",
+  "recommendations.contraindications": "Nicht empfohlen bei",
+  "recommendations.dosage": "Empfohlene Dosierung",
+  "recommendations.no.nutrition": "Keine spezifischen Ernährungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
+  "recommendations.no.supplements": "Keine spezifischen Nahrungsergänzungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
+  "recommendations.no.exercise": "Keine spezifischen Bewegungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
+  "recommendations.no.stress": "Keine spezifischen Empfehlungen zum Stressabbau basierend auf Ihren aktuellen Ergebnissen"
 };
 
 export default de;

@@ -329,6 +329,26 @@ const en = {
   "recommendation.evidence.preliminary": "Preliminary scientific evidence",
   "recommendation.none": "No specific recommendations for this category",
   "recommendation.none.all": "No specific recommendations based on your current results",
+  
+  // Accessibility translations
+  "accessibility.language.selector": "Language selector",
+  "loading": "Loading...",
+  "error.title": "Error",
+  
+  // Recommendations system translations
+  "recommendations.subtitle": "Based on your blood test results and profile",
+  "recommendations.error.load": "Unable to load recommendations. Please try again.",
+  "recommendations.disclaimer.title": "Medical Disclaimer",
+  "recommendations.disclaimer.text": "These recommendations are for informational purposes only and do not constitute medical advice. Always consult with a healthcare professional before making changes to your diet, supplements, or exercise routine.",
+  "recommendations.tabs.nutrition": "Nutrition",
+  "recommendations.tabs.supplements": "Supplements",
+  "recommendations.tabs.exercise": "Exercise",
+  "recommendations.tabs.stress": "Stress Relief",
+  "recommendations.dosage": "Suggested dosage",
+  "recommendations.no.nutrition": "No specific nutrition recommendations based on your current results",
+  "recommendations.no.supplements": "No specific supplement recommendations based on your current results",
+  "recommendations.no.exercise": "No specific exercise recommendations based on your current results",
+  "recommendations.no.stress": "No specific stress management recommendations based on your current results"
 };
 
 export default en;

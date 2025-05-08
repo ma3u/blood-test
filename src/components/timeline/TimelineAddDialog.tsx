@@ -1,3 +1,4 @@
+
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +10,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { BloodTestResult } from "@/lib/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TimelineAddDialogProps {
   open: boolean;
@@ -25,13 +27,15 @@ const TimelineAddDialog = ({
   setSelectedDate,
   onAddToTimeline,
 }: TimelineAddDialogProps) => {
+  const { t } = useLanguage();
+  
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Save Test Results</DialogTitle>
+          <DialogTitle>{t("timeline.add")}</DialogTitle>
           <DialogDescription>
-            Select the date when this test was taken.
+            {t("timeline.date")}
           </DialogDescription>
         </DialogHeader>
         
@@ -47,10 +51,10 @@ const TimelineAddDialog = ({
         
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("edit.cancel")}
           </Button>
           <Button onClick={onAddToTimeline}>
-            Save to Timeline
+            {t("form.submit")}
           </Button>
         </DialogFooter>
       </DialogContent>

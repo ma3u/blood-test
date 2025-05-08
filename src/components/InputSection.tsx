@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface InputSectionProps {
   activeTab: string;
@@ -38,6 +39,7 @@ const InputSection = ({
 }: InputSectionProps) => {
   const [selectedDateIndex, setSelectedDateIndex] = useState<number>(0);
   const [userId, setUserId] = useState<string>("");
+  const { t } = useLanguage();
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -109,7 +111,7 @@ const InputSection = ({
           {availableDates && availableDates.length > 0 ? (
             <div className="mb-6 bg-green-50 p-4 rounded-lg border border-green-200">
               <Label htmlFor="available-dates" className="block mb-2 font-medium text-green-800">
-                Available Test Dates
+                {t("date.extracted")}
               </Label>
               <div className="flex flex-col gap-2">
                 <Select 
@@ -117,7 +119,7 @@ const InputSection = ({
                   onValueChange={handleDateSelect}
                 >
                   <SelectTrigger className="w-full bg-white">
-                    <SelectValue placeholder="Select a test date" />
+                    <SelectValue placeholder={t("select.date")} />
                   </SelectTrigger>
                   <SelectContent>
                     {availableDates.map((dateObj, index) => (
@@ -146,8 +148,8 @@ const InputSection = ({
         <div>
           <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-2 mb-4">
-              <TabsTrigger value="manual">Manual Entry</TabsTrigger>
-              <TabsTrigger value="upload">Upload Test Results</TabsTrigger>
+              <TabsTrigger value="manual">{t("manual.entry")}</TabsTrigger>
+              <TabsTrigger value="upload">{t("file.upload")}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="manual">

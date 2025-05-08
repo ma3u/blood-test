@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 import { TestDateInfo } from "@/lib/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface DateSelectionFieldProps {
   form: UseFormReturn<z.infer<any>>;
@@ -25,6 +26,8 @@ const DateSelectionField = ({
   selectedDateIndex,
   handleSelectExtractedDate
 }: DateSelectionFieldProps) => {
+  const { t } = useLanguage();
+  
   const handleDateSelect = (date: Date | undefined) => {
     if (date) {
       form.setValue("date", date);
@@ -39,7 +42,7 @@ const DateSelectionField = ({
         <FormItem className="flex flex-col">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <FormLabel className="text-lg font-medium">Select Date</FormLabel>
+              <FormLabel className="text-lg font-medium">{t("select.date")}</FormLabel>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>

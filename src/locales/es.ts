@@ -1,4 +1,3 @@
-
 const es = {
   "app.title": "Blood Test Oracle",
   "app.subtitle": "Análisis de Sangre",
@@ -69,7 +68,11 @@ const es = {
   "implications": "Implicaciones",
   "reference": "Referencia",
   "understand": "Entender este marcador",
-  "test.date.info": "Fecha de la prueba:"
+  "test.date.info": "Fecha de la prueba:",
+  "select.date": "Seleccionar fecha",
+  "entry.methods": "Métodos de entrada",
+  "manual.entry": "Entrada manual",
+  "file.upload": "Cargar archivo",
 };
 
 export default es;

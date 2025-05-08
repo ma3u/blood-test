@@ -14,6 +14,7 @@ export interface Recommendation {
   markers: string[]; // related markers
   evidenceLevel: "strong" | "moderate" | "preliminary";
   contraindications?: string[];
+  dosage?: string; // Adding the optional dosage property to fix the build error
 }
 
 // Determine key markers that need attention

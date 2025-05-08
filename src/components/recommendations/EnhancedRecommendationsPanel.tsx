@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { enhanceAccessibility } from "@/lib/accessibilityUtils";
-import { Apple, Pill, Activity, Wind } from "lucide-react"; // Changed from Nutrition to Apple
+import { Apple, Pill, Activity, Wind } from "lucide-react";
 
 interface RecommendationItemProps {
   recommendation: Recommendation;

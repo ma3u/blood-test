@@ -1,4 +1,3 @@
-
 // Russian translations
 const ru = {
   // Header and navigation
@@ -35,20 +34,6 @@ const ru = {
   "disclaimer.paragraph2": "Всегда консультируйтесь с вашим врачом перед внесением каких-либо изменений в вашу диету, режим физических упражнений или прием добавок.",
   "disclaimer.paragraph3": "Этот инструмент не предназначен для диагностики, лечения или предотвращения каких-либо заболеваний.",
   "disclaimer.paragraph4": "Результаты и рекомендации основаны на общих научных данных и могут не учитывать все индивидуальные факторы здоровья.",
-  
-  // Timeline
-  "timeline.title": "История анализов",
-  "timeline.description": "Просмотр и управление историей результатов ваших анализов",
-  "timeline.back": "Назад",
-  "timeline.add": "Добавить",
-  "timeline.select": "Выберите результат теста для просмотра деталей",
-  "timeline.date": "Дата теста",
-  "timeline.chart": "График трендов",
-  "timeline.history": "История",
-  "timeline.clear": "Очистить историю",
-  "timeline.clear.confirm": "Вы уверены? Это удалит все сохраненные результаты тестов.",
-  "timeline.clear.yes": "Да, удалить все",
-  "timeline.clear.no": "Отменить",
   
   // Form labels
   "form.date": "Дата",
@@ -243,7 +228,24 @@ const ru = {
   "understand": "Понятно",
   
   // Test date display
-  "test.date.info": "Дата вашего анализа крови"
+  "test.date.info": "Дата вашего анализа крови",
+
+  // Timeline
+  "timeline.title": "История анализов",
+  "timeline.description": "Просмотр и управление историей результатов ваших анализов",
+  "timeline.back": "Назад",
+  "timeline.add": "Добавить",
+  "timeline.select": "Выберите результат теста для просмотра деталей",
+  "timeline.date": "Дата теста",
+  "timeline.chart": "График трендов",
+  "timeline.history": "История",
+  "timeline.clear": "Очистить историю",
+  "timeline.clear.confirm": "Вы уверены? Это удалит все сохраненные результаты тестов.",
+  "timeline.clear.yes": "Да, удалить все",
+  "timeline.clear.no": "Отменить",
+
+  // Date extraction
+  "date.extracted": "Даты найдены в вашем документе",
 };
 
 export default ru;

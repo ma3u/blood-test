@@ -1,4 +1,3 @@
-
 // Japanese translations
 const ja = {
   // Header and navigation
@@ -137,7 +136,7 @@ const ja = {
   "reference.notes.3": "ホルモンについては、特に女性の場合、周期段階、年齢、ホルモン療法の可能性を考慮してください。",
   "reference.notes.4": "アミノ酸：最適な健康のためには、各アミノ酸が参照範囲の上半分にあるべきです。値は健康で高パフォーマンスの個人に基づいています。",
   "reference.notes.5": "特殊ビタミン：目標値は予防と最適な機能をサポートするため、標準参照範囲よりも高いことがよくあります。",
-  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の炎症は多くの疾患のリスク要因です。",
+  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の炎症は多くの疾患のリス���要因です。",
   "reference.sources": "出典：Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
   
   // Edit title
@@ -243,7 +242,10 @@ const ja = {
   "understand": "理解しました",
   
   // Test date display
-  "test.date.info": "あなたの血液検査の日付"
+  "test.date.info": "あなたの血液検査の日付",
+  
+  // Date extraction
+  "date.extracted": "あなたの文書で見つかった日付"
 };
 
 export default ja;

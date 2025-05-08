@@ -1,4 +1,3 @@
-
 // Chinese (Mandarin) translations
 const zh = {
   // Header and navigation
@@ -243,7 +242,10 @@ const zh = {
   "understand": "我明白了",
   
   // Test date display
-  "test.date.info": "您的血液测试日期"
+  "test.date.info": "您的血液测试日期",
+  
+  // Date extraction
+  "date.extracted": "在您的文档中找到的日期",
 };
 
 export default zh;

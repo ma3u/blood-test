@@ -1,6 +1,12 @@
 
 # Decision Log
 
+## 2025-05-08: Fixed Type Error in MarkerExplanation Component
+- Updated MarkerExplanation component to accept both direct marker props and BloodTestResult props
+- Added support for displaying the component as both a hover card and a modal dialog
+- Improved component flexibility by making gender and other props optional
+- Resolved TypeScript errors in ResultsSummary component
+
 ## 2025-05-08: Added Spanish Language Support
 - Added Spanish translations for all text in the application
 - Updated language selector to include Spanish option
@@ -23,3 +29,4 @@
 - Consider refactoring BloodTestContainer.tsx as it's getting too long
 - Organize translations into more logical groupings by feature
 - Ensure all components use consistent language translation patterns
+

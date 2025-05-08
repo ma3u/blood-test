@@ -179,7 +179,13 @@ const en = {
   "results.panel.recommendations": "Recommendations",
   
   // Test date display
-  "test.date.info": "The date of your blood test"
+  "test.date.info": "The date of your blood test",
+  
+  // MarkerExplanation component translations
+  "marker.description": "Description",
+  "implications": "Implications",
+  "reference": "Reference",
+  "understand": "I Understand"
 };
 
 export default en;

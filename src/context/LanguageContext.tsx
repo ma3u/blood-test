@@ -31,7 +31,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return locales[language][key] || key;
   };
 
-  const availableLanguages: SupportedLanguage[] = ["en", "de", "fr"];
+  const availableLanguages: SupportedLanguage[] = ["en", "de", "fr", "es"];
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, availableLanguages }}>

@@ -16,6 +16,7 @@ This file records architectural and implementation decisions in a structured and
 7. [Decision 007: Internationalization – Locale Files & French Support](#decision-007-internationalization--locale-files--french-support)
 8. [Decision 008: Accessibility – Button Accessibility & Event Handling](#decision-008-accessibility--button-accessibility--event-handling)
 9. [Decision 009: Internationalization – Comprehensive Translation Keys](#decision-009-internationalization--comprehensive-translation-keys)
+10. [Decision 010: Internationalization & UI – Spanish Support, Country Flags, and Layout Changes](#decision-010-internationalization--ui--spanish-support-country-flags-and-layout-changes)
 
 ---
 
@@ -212,5 +213,31 @@ Enhance internationalization with comprehensive translation keys.
 - Added translations for the welcome dialog content including health strategies and practices.
 - Ensured consistent terminology across all languages.
 - Maintained existing functionality while enhancing the internationalization.
+
+---
+
+### Decision 010: Internationalization & UI – Spanish Support, Country Flags, and Layout Changes
+
+**Date:** 2025-05-08 09:30:00  
+**Category:** Internationalization, UI/UX
+
+#### Headline
+Added Spanish language support, country flags in language selector, and adjusted layout.
+
+#### Rationale
+- Spanish language support expands accessibility to Spanish-speaking users.
+- Country flags provide visual identification of languages, improving usability.
+- Repositioning the logo and headline creates a more balanced and professional layout.
+- These changes enhance the international appeal and usability of the application.
+
+#### Implementation Details
+- Created a comprehensive Spanish (es.ts) locale file with translations for all UI text.
+- Updated the locales/index.ts file to include Spanish as a supported language.
+- Added country flag emojis (🇬🇧, 🇩🇪, 🇫🇷, 🇪🇸) to the language selector dropdown.
+- Enhanced the LanguageSwitcher component to display the current language flag in the button.
+- Redesigned the header section of the Index page to place the logo on the left and headline on the right.
+- Updated the language selection dropdown to show flags alongside language names.
+- Documented changes in the decision log to maintain a comprehensive record of design decisions.
+- Ensured all UI elements remain responsive after layout changes.
 
 ---

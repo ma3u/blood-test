@@ -16,7 +16,15 @@ const LanguageSwitcher = () => {
   const languageNames: Record<SupportedLanguage, string> = {
     en: "English",
     de: "Deutsch",
-    fr: "Français"
+    fr: "Français",
+    es: "Español"
+  };
+
+  const countryFlags: Record<SupportedLanguage, string> = {
+    en: "🇬🇧",
+    de: "🇩🇪",
+    fr: "🇫🇷",
+    es: "🇪🇸"
   };
 
   return (
@@ -28,34 +36,8 @@ const LanguageSwitcher = () => {
           className="flex items-center gap-1 text-white hover:text-blue-100"
         >
           <Globe className="h-4 w-4 mr-1" />
-          <span className="flex gap-1">
-            {availableLanguages.map((lang) => (
-              <span 
-                key={lang} 
-                className={`
-                  px-1 py-0.5 rounded transition-all 
-                  ${lang === language ? "font-bold bg-blue-600" : "opacity-80 hover:opacity-100 hover:bg-blue-600/50"}
-                `}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLanguage(lang);
-                }}
-                role="button"
-                aria-label={`Switch to ${languageNames[lang]}`}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setLanguage(lang);
-                  }
-                }}
-              >
-                {lang.toUpperCase()}
-                {lang !== availableLanguages[availableLanguages.length - 1] && " | "}
-              </span>
-            ))}
-          </span>
+          <span className="text-lg mr-1">{countryFlags[language]}</span>
+          <span>{languageNames[language]}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -63,8 +45,9 @@ const LanguageSwitcher = () => {
           <DropdownMenuItem
             key={lang}
             onClick={() => setLanguage(lang)}
-            className={lang === language ? "bg-muted" : ""}
+            className={`${lang === language ? "bg-muted" : ""} flex items-center gap-2`}
           >
+            <span className="text-lg">{countryFlags[lang]}</span>
             {languageNames[lang]}
           </DropdownMenuItem>
         ))}

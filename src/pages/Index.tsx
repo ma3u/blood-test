@@ -6,12 +6,12 @@ import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
 import { BloodTestResult } from "@/lib/types";
-import GenderSwitch from "@/components/GenderSwitch";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { InfoIcon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
@@ -26,10 +26,6 @@ const Index = () => {
     console.log("Blood test results received, user could be prompted to register here");
   };
 
-  const handleGenderChange = (newGender: "male" | "female") => {
-    setGender(newGender);
-  };
-
   // Language-specific headlines and descriptions
   const getPageHeadline = () => {
     switch (language) {
@@ -39,6 +35,12 @@ const Index = () => {
         return "Analyse de Test Sanguin";
       case 'es':
         return "Análisis de Prueba de Sangre";
+      case 'ru':
+        return "Анализ крови";
+      case 'zh':
+        return "血液测试分析";
+      case 'ja':
+        return "血液検査分析";
       default:
         return "Blood Test Analysis";
     }
@@ -52,6 +54,12 @@ const Index = () => {
         return "Entrez vos valeurs de test sanguin ou téléchargez les résultats pour une analyse et une interprétation instantanées";
       case 'es':
         return "Ingrese sus valores de prueba de sangre o cargue resultados para un análisis e interpretación inmediatos";
+      case 'ru':
+        return "Введите результаты анализа крови или загрузите их для мгновенного анализа и интерпретации";
+      case 'zh':
+        return "输入您的血液测试值或上传测试结果以获取即时分析和解释";
+      case 'ja':
+        return "血液検査値を入力するか、テスト結果をアップロードして即時分析と解釈を得る";
       default:
         return "Enter your blood test values or upload test results for instant analysis and interpretation";
     }
@@ -59,6 +67,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF6E2]">
+      <SEOHead 
+        title={getPageHeadline()}
+        description={getPageDescription()}
+      />
       <Header />
 
       {/* Main content with skip link target */}

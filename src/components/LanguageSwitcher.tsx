@@ -15,7 +15,10 @@ const languageFlags: Record<string, string> = {
   en: "🇬🇧",
   de: "🇩🇪",
   fr: "🇫🇷",
-  es: "🇪🇸"
+  es: "🇪🇸",
+  ru: "🇷🇺",
+  zh: "🇨🇳",
+  ja: "🇯🇵"
 };
 
 // Language names to display in full form
@@ -23,7 +26,10 @@ const languageNames: Record<string, string> = {
   en: "English",
   de: "Deutsch",
   fr: "Français",
-  es: "Español"
+  es: "Español",
+  ru: "Русский",
+  zh: "中文",
+  ja: "日本語"
 };
 
 const LanguageSwitcher = () => {
@@ -45,7 +51,7 @@ const LanguageSwitcher = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end"
-        className="bg-white border border-gray-300 shadow-lg rounded-md w-40 z-50"
+        className="bg-white border border-gray-300 shadow-lg rounded-md w-48 z-50"
         sideOffset={5}
       >
         {availableLanguages.map((lang) => (

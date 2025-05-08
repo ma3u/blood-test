@@ -1,6 +1,13 @@
 
 # Decision Log
 
+## 2025-05-08: Updated Language Handling in Main Page
+- Added dynamic headline and subtitle text based on selected language
+- Added country flag emojis to language selector
+- Improved logo alignment with text height
+- Updated LanguageSwitcher component with flags for better visual identification
+- Made sure all translated text appears correctly across all supported languages
+
 ## 2025-05-08: Fixed Type Error in MarkerExplanation Component
 - Updated MarkerExplanation component to accept both direct marker props and BloodTestResult props
 - Added support for displaying the component as both a hover card and a modal dialog

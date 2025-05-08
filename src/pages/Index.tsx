@@ -16,7 +16,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const handleTestResults = (testResults: BloodTestResult[]) => {
     setResults(testResults);
@@ -30,6 +30,33 @@ const Index = () => {
     setGender(newGender);
   };
 
+  // Language-specific headlines and descriptions
+  const getPageHeadline = () => {
+    switch (language) {
+      case 'de':
+        return "Bluttest-Analyse";
+      case 'fr':
+        return "Analyse de Test Sanguin";
+      case 'es':
+        return "Análisis de Prueba de Sangre";
+      default:
+        return "Blood Test Analysis";
+    }
+  };
+
+  const getPageDescription = () => {
+    switch (language) {
+      case 'de':
+        return "Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch";
+      case 'fr':
+        return "Entrez vos valeurs de test sanguin ou téléchargez les résultats pour une analyse et une interprétation instantanées";
+      case 'es':
+        return "Ingrese sus valores de prueba de sangre o cargue resultados para un análisis e interpretación inmediatos";
+      default:
+        return "Enter your blood test values or upload test results for instant analysis and interpretation";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#FAF6E2]">
       <Header />
@@ -37,7 +64,7 @@ const Index = () => {
       <main className="container mx-auto py-4 px-3">
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="flex flex-col md:flex-row items-center mb-4">
-            <div className="flex-shrink-0 mr-6 mb-4 md:mb-0">
+            <div className="flex-shrink-0 mr-6 mb-4 md:mb-0 flex items-center">
               <img 
                 src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
                 alt="Blood Test Oracle Logo" 
@@ -45,14 +72,14 @@ const Index = () => {
               />
             </div>
             <div className="flex-grow text-center md:text-left">
-              <h1 className="text-2xl font-bold text-blue-800">Bluttest-Analyse</h1>
-              <p className="text-sm text-gray-600 mt-1">Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch</p>
+              <h1 className="text-2xl font-bold text-blue-800">{getPageHeadline()}</h1>
+              <p className="text-sm text-gray-600 mt-1">{getPageDescription()}</p>
               <div className="mt-1">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="ghost" size="sm" className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0">
                       <InfoIcon className="h-4 w-4" />
-                      <span>Mehr erfahren</span>
+                      <span>{t("learn.more")}</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">

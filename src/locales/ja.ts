@@ -136,7 +136,7 @@ const ja = {
   "reference.notes.3": "ホルモンについては、特に女性の場合、周期段階、年齢、ホルモン療法の可能性を考慮してください。",
   "reference.notes.4": "アミノ酸：最適な健康のためには、各アミノ酸が参照範囲の上半分にあるべきです。値は健康で高パフォーマンスの個人に基づいています。",
   "reference.notes.5": "特殊ビタミン：目標値は予防と最適な機能をサポートするため、標準参照範囲よりも高いことがよくあります。",
-  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の炎症は多くの疾患のリス����要因です。",
+  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の���症は多くの疾患のリス����要因です。",
   "reference.sources": "出典：Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
   
   // Edit title
@@ -212,7 +212,7 @@ const ja = {
   "marker.wbc.description": "感染と戦い、免疫系の一部である細胞。",
   "marker.platelets.description": "出血を止めるために血栓を形成する助けとなる微小な血球。",
   "marker.glucose.description": "体の細胞のための主要なエネルギー源。高値は糖尿病を示す可能性があります。",
-  "marker.hba1c.description": "過去2〜3ヶ月の平均血糖値を反映します���",
+  "marker.hba1c.description": "過去2〜3ヶ��の平均血糖値を反映します���",
   "marker.insulin.description": "血糖値とエネルギー貯蔵を調節するホルモン。",
   "marker.cholesterol.description": "血液中に見られる、健康な細胞を構築するために必要なワックス様物質。",
   "marker.ldl.description": "「悪玉」コレステロールとして知られ、高値は心臓病のリスクを高めます。",
@@ -258,7 +258,7 @@ const ja = {
   "intro.why.title": "このホームページが存在する理由",
   "intro.why.content": "加齢、健康、長寿は私たちの遺伝子だけの問題ではなく、環境、生活習慣、そして遺伝子のオン・オフを切り替えるスイッチの間のダイナミックな相互作用に関わっています。このホームページは以下のために存在します：",
   "intro.why.point1": "AIとエピジェネティク��の知見を使って私の健康の旅を形作る中での発見と進歩を共有すること。",
-  "intro.why.point2": "パーソナライズド医療の最新の研究とツールを、科学者や医師だけでなく、誰もがアクセスできるようにすること。",
+  "intro.why.point2": "パーソナライズド医療の最新の研究とツー��を、科学者や医師だけでなく、誰もがアクセスできるようにすること。",
   "intro.why.point3": "一緒に学び、実験し、健康を改善したい人々のコミュニティを構築すること。",
   "intro.next.title": "次のステップ",
   "intro.next.content": "今後数週間で、以下の分野であなた（そして私自身）をガイドする専門AIエージェントを立ち上げる予定です：",

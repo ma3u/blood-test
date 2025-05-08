@@ -228,7 +228,7 @@ const zh = {
   "marker.vitaminB12.description": "对神经功能、DNA合成和红细胞形成至关重要。",
   "marker.ferritin.description": "储存铁并在需要时释放铁的蛋白质。",
   "marker.tsh.description": "控制甲状腺激素产生；甲状腺功能的关键指标。",
-  "marker.folicAcid.description": "对细胞生长、DNA形成���预防先天缺陷至关重要的B族维生素。",
+  "marker.folicAcid.description": "对细胞生长、DNA形成�����预防先天缺陷至关重要的B族维生素。",
   "marker.totalProtein.description": "血液中所有蛋白质的总量，包括白蛋白和球蛋白。",
   
   // Common implications
@@ -250,6 +250,31 @@ const zh = {
   // Impressum translations
   "impressum.title": "法律声明",
   "impressum.menu": "法律声明",
+  
+  // Website intro content
+  "intro.title": "欢迎来到血液测试分析器",
+  "intro.subtitle": "健康优化的个人旅程",
+  "intro.welcome": "欢迎！我是Matthias，我创建这个网站作为一个个人和共享的旅程，探索表观遗传学、长寿和分子医学的世界。我的目标是利用人工智能的力量来改善我自己的健康和教育水平，并帮助那些希望与我一起走这条路的人。",
+  "intro.why.title": "为什么存在这个网站",
+  "intro.why.content": "衰老、健康和长寿不仅仅与我们的基因有关——它们与我们的环境、生活方式以及开启和关闭基因的开关之间的动态相互作用有关。这个网站的存在是为了：",
+  "intro.why.point1": "分享我在使用AI和表观遗传学见解塑造我的健康旅程时的发现和进展。",
+  "intro.why.point2": "让每个人都能获得个性化医学的最新研究和工具，而不仅仅是科学家或医生。",
+  "intro.why.point3": "建立一个希望一起学习、实验和改善健康的社区。",
+  "intro.next.title": "接下来的计划",
+  "intro.next.content": "在接下来的几周里，我计划推出专业AI代理，指导您（和我）通过：",
+  "intro.next.point1": "营养：根据您的生物学定制的个性化策略，如生酮饮食、增肌或间歇性禁食。",
+  "intro.next.point2": "补充剂：基于您的生物标志物和需求的个性化建议。",
+  "intro.next.point3": "生物标志物测试：关于哪些生物标志物可以追踪以获得最佳健康和长寿的指导。",
+  "intro.next.point4": "运动：找到最适合您的目标和生物学的运动类型。",
+  "intro.next.point5": "减压：如冥想、呼吸练习、正念跑步或冷暴露等技术——与您的生活方式相匹配。",
+  "intro.next.conclusion": "通过将AI与表观遗传学的最新成果相结合，我们可以超越一般建议，创造真正个性化的健康体验。",
+  "intro.feedback.title": "我需要您的反馈",
+  "intro.feedback.content": "这个项目既是您的，也是我的。我想知道：",
+  "intro.feedback.point1": "哪些信息或工具对您最有帮助？",
+  "intro.feedback.point2": "我应该优先考虑哪些功能？",
+  "intro.feedback.point3": "我如何使这个网站和即将推出的AI代理对您更有用、更清晰、更有动力？",
+  "intro.feedback.conclusion": "请分享您的想法和创意——您的反馈将直接影响这项服务如何成长和改进。",
+  "intro.feedback.question": "您的健康旅程中有哪些特定问题或挑战想要AI首先帮助解决？请让我知道！"
 };
 
 export default zh;

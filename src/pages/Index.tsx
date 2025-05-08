@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
+import IntroductionSection from "@/components/IntroductionSection";
 import { BloodTestResult } from "@/lib/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -148,6 +149,9 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+          {/* Show Introduction Section if no results are being displayed */}
+          {!results && <IntroductionSection />}
 
           {!results ? (
             <>

@@ -249,6 +249,31 @@ const en = {
   // Impressum translations
   "impressum.title": "Legal Notice",
   "impressum.menu": "Legal Notice",
+  
+  // Website intro content
+  "intro.title": "Welcome to Blood Test Oracle",
+  "intro.subtitle": "A Personal Journey into Health Optimization",
+  "intro.welcome": "Welcome! I'm Matthias, and I've created this website as a personal and shared journey into the world of epigenetics, longevity, and molecular medicine. My goal is to use the power of AI to improve my own health and education—and to help others who want to follow this path with me.",
+  "intro.why.title": "Why This Homepage Exists",
+  "intro.why.content": "Aging, health, and longevity are not just about our genes—they're about the dynamic interplay between our environment, lifestyle, and the switches that turn our genes on and off. The homepage is here to:",
+  "intro.why.point1": "Share my discoveries and progress as I use AI and epigenetic insights to shape my health journey.",
+  "intro.why.point2": "Make the latest research and tools in personalized medicine accessible to everyone, not just scientists or doctors.",
+  "intro.why.point3": "Build a community of people who want to learn, experiment, and improve their health together.",
+  "intro.next.title": "What's Next",
+  "intro.next.content": "In the coming weeks, I plan to launch specialist AI Agents to guide you (and me) through:",
+  "intro.next.point1": "Nutrition: Personalized strategies like ketogenic diets, bulking, or intermittent fasting, tailored to your biology.",
+  "intro.next.point2": "Supplements: Individualized recommendations based on your biomarkers and needs.",
+  "intro.next.point3": "Biomarker Testing: Guidance on which biomarkers to track for optimal health and longevity.",
+  "intro.next.point4": "Exercise: Finding the best type of movement for your goals and biology.",
+  "intro.next.point5": "Stress Relief: Techniques such as meditation, breathing exercises, mindful running, or cold exposure—matched to your lifestyle.",
+  "intro.next.conclusion": "By combining AI with the latest in epigenetics, we can move beyond generic advice and create a truly personalized health experience.",
+  "intro.feedback.title": "I Need Your Feedback",
+  "intro.feedback.content": "This project is as much yours as it is mine. I want to know:",
+  "intro.feedback.point1": "What information or tools would help you most?",
+  "intro.feedback.point2": "Which features should I prioritize?",
+  "intro.feedback.point3": "How can I make this website and the upcoming AI Agents more useful, clear, and motivating for you?",
+  "intro.feedback.conclusion": "Please share your thoughts and ideas—your feedback will directly shape how this service grows and improves.",
+  "intro.feedback.question": "Are there specific questions or challenges in your health journey you'd like the AI to help with first? Let me know!"
 };
 
 export default en;

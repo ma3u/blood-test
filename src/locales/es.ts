@@ -1,4 +1,3 @@
-
 const es = {
   "app.title": "Blood Test Oracle",
   "app.subtitle": "Análisis de Sangre",
@@ -144,7 +143,32 @@ const es = {
   "sign.in": "Iniciar sesión",
   "sign.out": "Cerrar sesión",
   "dashboard": "Panel de control",
-  "language.toggle": "Español"
+  "language.toggle": "Español",
+  
+  // Website intro content
+  "intro.title": "Bienvenido a Blood Test Oracle",
+  "intro.subtitle": "Un Viaje Personal hacia la Optimización de la Salud",
+  "intro.welcome": "¡Bienvenido! Soy Matthias, y he creado este sitio web como un viaje personal y compartido por el mundo de la epigenética, la longevidad y la medicina molecular. Mi objetivo es utilizar el poder de la IA para mejorar mi propia salud y educación, y ayudar a otros que quieran seguir este camino conmigo.",
+  "intro.why.title": "Por qué Existe esta Página",
+  "intro.why.content": "El envejecimiento, la salud y la longevidad no se tratan solo de nuestros genes, sino de la interacción dinámica entre nuestro entorno, estilo de vida y los interruptores que activan y desactivan nuestros genes. Esta página existe para:",
+  "intro.why.point1": "Compartir mis descubrimientos y progresos mientras uso la IA y los conocimientos epigenéticos para dar forma a mi viaje de salud.",
+  "intro.why.point2": "Hacer que las últimas investigaciones y herramientas en medicina personalizada sean accesibles para todos, no solo para científicos o médicos.",
+  "intro.why.point3": "Construir una comunidad de personas que quieran aprender, experimentar y mejorar su salud juntas.",
+  "intro.next.title": "Lo que Viene",
+  "intro.next.content": "En las próximas semanas, planeo lanzar Agentes de IA especializados para guiarte (y guiarme) a través de:",
+  "intro.next.point1": "Nutrición: Estrategias personalizadas como dietas cetogénicas, aumento de masa o ayuno intermitente, adaptadas a tu biología.",
+  "intro.next.point2": "Suplementos: Recomendaciones individualizadas basadas en tus biomarcadores y necesidades.",
+  "intro.next.point3": "Pruebas de Biomarcadores: Orientación sobre qué biomarcadores seguir para una salud y longevidad óptimas.",
+  "intro.next.point4": "Ejercicio: Encontrar el mejor tipo de movimiento para tus objetivos y biología.",
+  "intro.next.point5": "Alivio del Estrés: Técnicas como meditación, ejercicios de respiración, running consciente o exposición al frío, adaptadas a tu estilo de vida.",
+  "intro.next.conclusion": "Al combinar la IA con lo último en epigenética, podemos ir más allá del consejo genérico y crear una experiencia de salud verdaderamente personalizada.",
+  "intro.feedback.title": "Necesito tu Opinión",
+  "intro.feedback.content": "Este proyecto es tanto tuyo como mío. Quiero saber:",
+  "intro.feedback.point1": "¿Qué información o herramientas te ayudarían más?",
+  "intro.feedback.point2": "¿Qué características debería priorizar?",
+  "intro.feedback.point3": "¿Cómo puedo hacer que este sitio web y los próximos Agentes de IA sean más útiles, claros y motivadores para ti?",
+  "intro.feedback.conclusion": "Por favor, comparte tus pensamientos e ideas; tu retroalimentación dará forma directamente a cómo crece y mejora este servicio.",
+  "intro.feedback.question": "¿Hay preguntas o desafíos específicos en tu viaje de salud con los que te gustaría que la IA te ayudara primero? ¡Házmelo saber!"
 };
 
 export default es;

@@ -75,7 +75,7 @@ const ja = {
   // Upload
   "upload.title": "結果をアップロード",
   "upload.description": "検査結果を含むPDFまたは画像をアップロード",
-  "upload.button": "ファ��ルを選択",
+  "upload.button": "ファ����ルを選択",
   "upload.processing": "ファイル処理中...",
   "upload.instructions": "血液検査のPDFまたは画像ファイルをここにドラッグ＆ドロップするか、クリックして選択してください",
   "upload.document": "文書をアップロード",
@@ -136,7 +136,7 @@ const ja = {
   "reference.notes.3": "ホルモンについては、特に女性の場合、周期段階、年齢、ホルモン療法の可能性を考慮してください。",
   "reference.notes.4": "アミノ酸：最適な健康のためには、各アミノ酸が参照範囲の上半分にあるべきです。値は健康で高パフォーマンスの個人に基づいています。",
   "reference.notes.5": "特殊ビタミン：目標値は予防と最適な機能をサポートするため、標準参照範囲よりも高いことがよくあります。",
-  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の炎症は多くの疾患のリス���要因です。",
+  "reference.notes.6": "炎症マーカー：一般に低い値の方が良いです。慢性的な軽度の炎症は多くの疾患のリス����要因です。",
   "reference.sources": "出典：Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
   
   // Edit title
@@ -249,7 +249,32 @@ const ja = {
   
   // Impressum translations
   "impressum.title": "法的通知",
-  "impressum.menu": "法的通知"
+  "impressum.menu": "法的通知",
+  
+  // Website intro content
+  "intro.title": "血液検査オラクルへようこそ",
+  "intro.subtitle": "健康最適化への個人的な旅",
+  "intro.welcome": "ようこそ！私はマティアスで、このウェブサイトをエピジェネティクス、長寿、分子医学の世界への個人的かつ共有の旅として作成しました。私の目標は、AIの力を活用して自分自身の健康と教育を向上させ、私と一緒にこの道を歩みたい人々を助けることです。",
+  "intro.why.title": "このホームページが存在する理由",
+  "intro.why.content": "加齢、健康、長寿は私たちの遺伝子だけの問題ではなく、環境、生活習慣、そして遺伝子のオン・オフを切り替えるスイッチの間のダイナミックな相互作用に関わっています。このホームページは以下のために存在します：",
+  "intro.why.point1": "AIとエピジェネティク��の知見を使って私の健康の旅を形作る中での発見と進歩を共有すること。",
+  "intro.why.point2": "パーソナライズド医療の最新の研究とツールを、科学者や医師だけでなく、誰もがアクセスできるようにすること。",
+  "intro.why.point3": "一緒に学び、実験し、健康を改善したい人々のコミュニティを構築すること。",
+  "intro.next.title": "次のステップ",
+  "intro.next.content": "今後数週間で、以下の分野であなた（そして私自身）をガイドする専門AIエージェントを立ち上げる予定です：",
+  "intro.next.point1": "栄養：ケトジェニックダイエット、バルキング、断続的断食など、あなたの生物学に合わせたパーソナライズされた戦略。",
+  "intro.next.point2": "サプリメント：あなたのバイオマーカーとニーズに基づいた個別化された推奨事項。",
+  "intro.next.point3": "バイオマーカーテスト：最適な健康と長寿のために追跡すべきバイオマーカーに関するガイダンス。",
+  "intro.next.point4": "運動：あなたの目標と生物学に最適な動きのタイプを見つけること。",
+  "intro.next.point5": "ストレス軽減：瞑想、呼吸法、マインドフルランニング、または寒冷暴露などのテクニック—あなたのライフスタイルに合わせたもの。",
+  "intro.next.conclusion": "AIと最新のエピジェネティクスを組み合わせることで、一般的なアドバイスを超え、真にパーソナライズされた健康体験を作り出すことができます。",
+  "intro.feedback.title": "あなたのフィードバックが必要です",
+  "intro.feedback.content": "このプロジェクトは私のものであると同時に、あなたのものでもあります。知りたいこと：",
+  "intro.feedback.point1": "どのような情報やツールがあなたに最も役立つでしょうか？",
+  "intro.feedback.point2": "どの機能を優先すべきでしょうか？",
+  "intro.feedback.point3": "このウェブサイトと今後のAIエージェントをあなたにとってより有用で、明確で、モチベーションを高めるものにするにはどうすればよいでしょうか？",
+  "intro.feedback.conclusion": "あなたの考えやアイデアを共有してください—あなたのフィードバックが、このサービスがどのように成長し改善されるかを直接形作ります。",
+  "intro.feedback.question": "健康の旅で、AIにまず助けてほしい特定の質問や課題はありますか？ぜひ教えてください！"
 };
 
 export default ja;

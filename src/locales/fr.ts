@@ -188,7 +188,32 @@ const fr = {
   
   // Impressum translations
   "impressum.title": "Mentions Légales",
-  "impressum.menu": "Mentions Légales"
+  "impressum.menu": "Mentions Légales",
+  
+  // Website intro content
+  "intro.title": "Bienvenue sur Blood Test Oracle",
+  "intro.subtitle": "Un Voyage Personnel vers l'Optimisation de la Santé",
+  "intro.welcome": "Bienvenue ! Je suis Matthias, et j'ai créé ce site web comme un voyage personnel et partagé dans le monde de l'épigénétique, de la longévité et de la médecine moléculaire. Mon objectif est d'utiliser la puissance de l'IA pour améliorer ma propre santé et mon éducation - et aider d'autres personnes qui souhaitent suivre ce chemin avec moi.",
+  "intro.why.title": "Pourquoi Ce Site Existe",
+  "intro.why.content": "Le vieillissement, la santé et la longévité ne concernent pas seulement nos gènes - ils concernent l'interaction dynamique entre notre environnement, notre mode de vie et les interrupteurs qui activent et désactivent nos gènes. Ce site existe pour :",
+  "intro.why.point1": "Partager mes découvertes et mes progrès alors que j'utilise l'IA et les connaissances épigénétiques pour façonner mon parcours de santé.",
+  "intro.why.point2": "Rendre accessibles à tous les dernières recherches et outils de médecine personnalisée, pas seulement aux scientifiques ou aux médecins.",
+  "intro.why.point3": "Construire une communauté de personnes qui souhaitent apprendre, expérimenter et améliorer leur santé ensemble.",
+  "intro.next.title": "Ce qui Vient Ensuite",
+  "intro.next.content": "Dans les semaines à venir, je prévois de lancer des Agents IA spécialisés pour vous guider (et me guider) à travers :",
+  "intro.next.point1": "Nutrition : Stratégies personnalisées comme les régimes cétogènes, la prise de masse ou le jeûne intermittent, adaptées à votre biologie.",
+  "intro.next.point2": "Compléments : Recommandations individualisées basées sur vos biomarqueurs et vos besoins.",
+  "intro.next.point3": "Tests de Biomarqueurs : Conseils sur les biomarqueurs à suivre pour une santé et une longévité optimales.",
+  "intro.next.point4": "Exercice : Trouver le meilleur type de mouvement pour vos objectifs et votre biologie.",
+  "intro.next.point5": "Gestion du Stress : Techniques telles que la méditation, les exercices de respiration, la course consciente ou l'exposition au froid - adaptées à votre mode de vie.",
+  "intro.next.conclusion": "En combinant l'IA avec les dernières découvertes en épigénétique, nous pouvons aller au-delà des conseils génériques et créer une expérience de santé véritablement personnalisée.",
+  "intro.feedback.title": "J'ai Besoin de Vos Commentaires",
+  "intro.feedback.content": "Ce projet vous appartient autant qu'à moi. Je veux savoir :",
+  "intro.feedback.point1": "Quelles informations ou quels outils vous aideraient le plus ?",
+  "intro.feedback.point2": "Quelles fonctionnalités devrais-je prioriser ?",
+  "intro.feedback.point3": "Comment puis-je rendre ce site web et les futurs Agents IA plus utiles, plus clairs et plus motivants pour vous ?",
+  "intro.feedback.conclusion": "Veuillez partager vos pensées et vos idées - vos commentaires façonneront directement la façon dont ce service se développe et s'améliore.",
+  "intro.feedback.question": "Y a-t-il des questions ou des défis spécifiques dans votre parcours de santé avec lesquels vous aimeriez que l'IA vous aide en premier ? Faites-le moi savoir !"
 };
 
 export default fr;

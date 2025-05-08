@@ -188,7 +188,32 @@ const de = {
   
   // Impressum translations
   "impressum.title": "Impressum",
-  "impressum.menu": "Impressum"
+  "impressum.menu": "Impressum",
+  
+  // Website intro content
+  "intro.title": "Willkommen bei Blood Test Oracle",
+  "intro.subtitle": "Eine persönliche Reise zur Gesundheitsoptimierung",
+  "intro.welcome": "Willkommen! Ich bin Matthias, und ich habe diese Website als eine persönliche und gemeinsame Reise in die Welt der Epigenetik, Langlebigkeit und Molekularmedizin erstellt. Mein Ziel ist es, die Kraft der KI zu nutzen, um meine eigene Gesundheit und Bildung zu verbessern – und anderen zu helfen, die diesen Weg mit mir gehen möchten.",
+  "intro.why.title": "Warum diese Homepage existiert",
+  "intro.why.content": "Altern, Gesundheit und Langlebigkeit betreffen nicht nur unsere Gene – es geht um das dynamische Zusammenspiel zwischen unserer Umwelt, unserem Lebensstil und den Schaltern, die unsere Gene an- und ausschalten. Diese Homepage existiert, um:",
+  "intro.why.point1": "Meine Entdeckungen und Fortschritte zu teilen, während ich KI und epigenetische Erkenntnisse nutze, um meine Gesundheitsreise zu gestalten.",
+  "intro.why.point2": "Die neuesten Forschungen und Werkzeuge der personalisierten Medizin für jeden zugänglich zu machen, nicht nur für Wissenschaftler oder Ärzte.",
+  "intro.why.point3": "Eine Gemeinschaft von Menschen aufzubauen, die gemeinsam lernen, experimentieren und ihre Gesundheit verbessern möchten.",
+  "intro.next.title": "Was kommt als Nächstes",
+  "intro.next.content": "In den kommenden Wochen plane ich, spezialisierte KI-Agenten zu starten, die Sie (und mich) durch folgende Bereiche führen:",
+  "intro.next.point1": "Ernährung: Personalisierte Strategien wie ketogene Diäten, Masseaufbau oder intermittierendes Fasten, zugeschnitten auf Ihre Biologie.",
+  "intro.next.point2": "Nahrungsergänzungsmittel: Individualisierte Empfehlungen basierend auf Ihren Biomarkern und Bedürfnissen.",
+  "intro.next.point3": "Biomarker-Tests: Anleitung, welche Biomarker für optimale Gesundheit und Langlebigkeit zu verfolgen sind.",
+  "intro.next.point4": "Bewegung: Die beste Art der Bewegung für Ihre Ziele und Biologie finden.",
+  "intro.next.point5": "Stressabbau: Techniken wie Meditation, Atemübungen, achtsames Laufen oder Kälteexposition – abgestimmt auf Ihren Lebensstil.",
+  "intro.next.conclusion": "Durch die Kombination von KI mit den neuesten Erkenntnissen der Epigenetik können wir über allgemeine Ratschläge hinausgehen und ein wirklich personalisiertes Gesundheitserlebnis schaffen.",
+  "intro.feedback.title": "Ich brauche Ihr Feedback",
+  "intro.feedback.content": "Dieses Projekt gehört Ihnen genauso wie mir. Ich möchte wissen:",
+  "intro.feedback.point1": "Welche Informationen oder Werkzeuge würden Ihnen am meisten helfen?",
+  "intro.feedback.point2": "Welche Funktionen sollte ich priorisieren?",
+  "intro.feedback.point3": "Wie kann ich diese Website und die kommenden KI-Agenten für Sie nützlicher, klarer und motivierender gestalten?",
+  "intro.feedback.conclusion": "Bitte teilen Sie Ihre Gedanken und Ideen – Ihr Feedback wird direkt beeinflussen, wie dieser Service wächst und sich verbessert.",
+  "intro.feedback.question": "Gibt es bestimmte Fragen oder Herausforderungen auf Ihrem Gesundheitsweg, bei denen die KI Ihnen zuerst helfen soll? Lassen Sie es mich wissen!"
 };
 
 export default de;

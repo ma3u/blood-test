@@ -1,3 +1,4 @@
+
 # Progress Log
 
 ## Timeline
@@ -18,6 +19,7 @@
 "2025-05-08 19:50:00" - Fixed build error in EnhancedRecommendationsPanel by temporarily using hardcoded string instead of translation key for dosage label.
 "2025-05-08 20:05:00" - Fixed duplicated header issue by removing redundant Header component from Index.tsx.
 "2025-05-08 20:30:00" - Fixed theme toggle functionality by updating theme provider implementation and import paths.
+"2025-05-08 21:20:00" - Fixed build error by adding useTheme export to theme-provider component.
 
 ## Completed Tasks
 
@@ -51,6 +53,7 @@
 - Applied temporary workaround for dosage translation key in EnhancedRecommendationsPanel
 - Fixed duplicated header issue in application layout
 - Fixed theme toggle functionality to properly switch between light and dark modes
+- Added useTheme export to theme-provider to fix build error
 
 ## Current Tasks
 - Continue refactoring large files into smaller, more focused components

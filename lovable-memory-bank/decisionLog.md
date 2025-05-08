@@ -31,7 +31,8 @@
 14. [Decision 014: Updated Main Page Layout (UI/UX, 2025-05-08)](#decision-014-updated-main-page-layout-uiux-2025-05-08)
 15. [Decision 015: Fixed Empty Page Issue (Bugfix, 2025-05-08)](#decision-015-fixed-empty-page-issue-bugfix-2025-05-08)
 16. [Decision 016: Adopt WCAG 2.1 as Accessibility Standard (Accessibility, 2025-05-08)](#decision-016-adopt-wcag-21-as-accessibility-standard-accessibility-2025-05-08)
-17. [Outstanding Tasks](#outstanding-tasks)
+17. [Decision 017: Optimize SEO with Open Graph Best Practices (SEO, 2025-05-08)](#decision-017-optimize-seo-with-open-graph-best-practices-seo-2025-05-08)
+18. [Outstanding Tasks](#outstanding-tasks)
 
 ---
 
@@ -110,3 +111,15 @@
   - Test with screen readers and mobile accessibility tools.
   - Document accessibility features and known limitations in project documentation.
   - Add automated accessibility checks to CI/CD pipeline (e.g., axe-core, Lighthouse).
+
+### Decision 017: Optimize SEO with Open Graph Best Practices (SEO, 2025-05-08)
+- **Rationale:** Open Graph meta tags are essential for improving the web app’s visibility, appearance, and engagement on social media platforms and search engines.
+- **Implementation Activities:**
+  - Add Open Graph meta tags (`og:title`, `og:description`, `og:image`, `og:url`, etc.) to all main pages in the HTML `<head>`.
+  - Ensure each page has a unique and descriptive title and description.
+  - Provide high-quality images with correct dimensions for `og:image`.
+  - Add `twitter:card` and related Twitter meta tags for enhanced sharing on Twitter.
+  - Use structured data (JSON-LD) for additional SEO benefits where appropriate.
+  - Test Open Graph tags with Facebook Sharing Debugger and Twitter Card Validator.
+  - Automate meta tag generation for dynamic pages if applicable.
+  - Document Open Graph and SEO strategy in project documentation.

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { BloodTestResult } from "@/lib/types";
@@ -8,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { enhanceAccessibility } from "@/lib/accessibilityUtils";
-import { Apple, Pill, Activity, Wind } from "lucide-react"; // Changed from Nutrition to Apple
+import { Apple, Pill, Activity, Wind } from "lucide-react";
 
 interface RecommendationItemProps {
   recommendation: Recommendation;
@@ -53,7 +52,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({ recommendation 
         
         {recommendation.dosage && (
           <p className="mt-2 text-xs font-medium">
-            {t("recommendation.dosage")}: {recommendation.dosage}
+            Dosage: {recommendation.dosage}
           </p>
         )}
         

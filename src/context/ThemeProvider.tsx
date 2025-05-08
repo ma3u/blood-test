@@ -1,4 +1,7 @@
 
+// This file is deprecated in favor of using @/components/theme-provider
+// It's kept here for backward compatibility but should be removed in future refactors
+
 import { createContext, useContext } from "react"
 import { useTheme as useNextTheme } from "next-themes"
 
@@ -13,6 +16,9 @@ const ThemeProviderContext = createContext<ThemeProviderState>({
 })
 
 export const useTheme = () => {
+  console.warn(
+    "Warning: useTheme from ThemeProvider.tsx is deprecated. Use useTheme from @/components/theme-provider instead."
+  );
   return useContext(ThemeProviderContext)
 }
 

@@ -1,7 +1,5 @@
 
 import { useState } from "react";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
@@ -72,7 +70,6 @@ const Index = () => {
         title={getPageHeadline()}
         description={getPageDescription()}
       />
-      <Header />
 
       {/* Main content with skip link target */}
       <main id="main-content" className="container mx-auto py-4 px-3" tabIndex={-1}>
@@ -189,8 +186,6 @@ const Index = () => {
           <Disclaimer />
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 };

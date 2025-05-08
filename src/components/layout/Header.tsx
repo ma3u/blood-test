@@ -1,10 +1,11 @@
 
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { useTheme } from "@/context/ThemeProvider";
-import { Moon, Sun, UserCircle } from "lucide-react";
+import { Moon, Sun, UserCircle, Accessibility } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/theme-provider";
+import AccessibilityMenu from "@/components/AccessibilityMenu";
+import A11yLanguageSwitcher from "@/components/A11yLanguageSwitcher";
 
 export default function Header() {
   const { t } = useLanguage();
@@ -18,13 +19,23 @@ export default function Header() {
         </Link>
         
         <nav className="flex items-center space-x-4">
-          <LanguageSwitcher />
+          <A11yLanguageSwitcher />
+          <AccessibilityMenu />
           <Link to="/profile" className="flex items-center gap-1 text-sm">
             <UserCircle size={16} />
             <span>{t("profile.title")}</span>
           </Link>
-          <Button variant="ghost" size="sm" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <Moon className="h-[1.2rem] w-[1.2rem]" />
+            ) : (
+              <Sun className="h-[1.2rem] w-[1.2rem]" />
+            )}
             <span className="sr-only">Toggle theme</span>
           </Button>
         </nav>

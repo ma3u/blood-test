@@ -273,7 +273,44 @@ const en = {
   "intro.feedback.point2": "Which features should I prioritize?",
   "intro.feedback.point3": "How can I make this website and the upcoming AI Agents more useful, clear, and motivating for you?",
   "intro.feedback.conclusion": "Please share your thoughts and ideas—your feedback will directly shape how this service grows and improves.",
-  "intro.feedback.question": "Are there specific questions or challenges in your health journey you'd like the AI to help with first? Let me know!"
+  "intro.feedback.question": "Are there specific questions or challenges in your health journey you'd like the AI to help with first? Let me know!",
+  
+  // Profile page translations
+  "profile.page.title": "User Profile",
+  "profile.page.description": "Manage your personal health information to get personalized blood test analysis and recommendations",
+  "profile.title": "Profile",
+  "profile.basic.info": "Basic Information",
+  "profile.health.issues": "Health Conditions",
+  "profile.gender": "Gender",
+  "profile.age": "Age",
+  "profile.height": "Height",
+  "profile.weight": "Weight",
+  "profile.bmi": "BMI",
+  "profile.age.placeholder": "Enter your age",
+  "profile.height.placeholder": "Enter your height",
+  "profile.weight.placeholder": "Enter your weight",
+  "profile.add.health.issue": "Add Health Condition",
+  "profile.health.issue.name": "Condition name",
+  "profile.severity": "Severity",
+  "profile.severity.mild": "Mild",
+  "profile.severity.moderate": "Moderate",
+  "profile.severity.severe": "Severe",
+  "profile.diagnosed": "Diagnosed in",
+  "profile.diagnosed.year": "Year diagnosed",
+  "profile.add": "Add",
+  "profile.save": "Save Profile",
+  "profile.saved": "Profile Saved",
+  "profile.saved.description": "Your health information has been saved successfully",
+  "profile.added.successfully": "added successfully",
+  "profile.health.issue.added": "Health condition added",
+  "profile.health.issue.required": "Please enter a health condition name",
+  
+  // Error messages
+  "error.required": "Required Field",
+  "error.invalid.value": "Invalid Value",
+  "error.positive.number": "Please enter a positive number",
+  "error.invalid.year": "Invalid Year",
+  "error.year.future": "Year cannot be in the future",
 };
 
 export default en;

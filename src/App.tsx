@@ -1,34 +1,44 @@
-
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { ThemeProvider } from "@/components/theme-provider"
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import Auth from "./pages/Auth";
+import NotFound from "./pages/NotFound";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
+import { UserProfileProvider } from "./context/UserProfileContext";
+import Profile from "./pages/Profile";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+function App() {
+  return (
     <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <UserProfileProvider>
+        <ThemeProvider defaultTheme="light" storageKey="blood-test-oracle-theme">
+          <Router>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/auth" element={<Auth />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </ThemeProvider>
+      </UserProfileProvider>
     </LanguageProvider>
-  </QueryClientProvider>
-);
+  );
+}
 
 export default App;

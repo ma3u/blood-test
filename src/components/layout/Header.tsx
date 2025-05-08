@@ -1,102 +1,34 @@
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useTheme } from "@/context/ThemeProvider";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { UserCircle } from "lucide-react";
 
-import React from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { Button } from '@/components/ui/button';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { useLanguage } from '@/context/LanguageContext';
-import AccessibilityMenu from '@/components/AccessibilityMenu';
-import Impressum from '@/components/Impressum';
-
-const Header = () => {
+export default function Header() {
   const { t } = useLanguage();
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkAuth = async () => {
-      const { data } = await supabase.auth.getSession();
-      setIsAuthenticated(!!data.session);
-    };
-    checkAuth();
-  }, []);
-
-  // Skip to content link for improved keyboard accessibility (WCAG 2.1)
-  const skipToContent = () => {
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) {
-      mainContent.focus();
-      mainContent.scrollIntoView();
-    }
-  };
+  const { theme, setTheme } = useTheme();
 
   return (
-    <header className="bg-white border-b border-gray-200 py-3 shadow-sm" role="banner">
-      {/* Skip to content link */}
-      <a 
-        href="#main-content" 
-        className="skip-to-content" 
-        onClick={(e) => {
-          e.preventDefault();
-          skipToContent();
-        }}
-      >
-        Skip to content
-      </a>
-
-      <div className="container mx-auto px-3 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <a 
-            href="/" 
-            className="text-xl font-bold text-blue-800 flex items-center"
-            aria-label="Blood Test Oracle Home"
-          >
-            <span className="hidden sm:inline">Blood Test Oracle</span>
-          </a>
-        </div>
+    <header className="bg-background sticky top-0 z-10 w-full border-b">
+      <div className="container flex h-16 items-center justify-between">
+        <Link to="/" className="font-bold text-xl">
+          Blood Test Oracle
+        </Link>
         
-        <nav className="flex items-center space-x-2" role="navigation" aria-label="Main navigation">
-          {isAuthenticated ? (
-            <>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                asChild
-                className="focus:ring-2 focus:ring-blue-500"
-              >
-                <a href="/dashboard" aria-label="Go to dashboard">{t("dashboard")}</a>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => supabase.auth.signOut()}
-                className="focus:ring-2 focus:ring-blue-500"
-                aria-label="Sign out of your account"
-              >
-                {t("sign.out")}
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                asChild
-                className="focus:ring-2 focus:ring-blue-500"
-              >
-                <a href="/auth" aria-label="Sign in to your account">{t("sign.in")}</a>
-              </Button>
-            </>
-          )}
-          
-          <Impressum />
-          
-          <div className="flex items-center space-x-2">
-            <AccessibilityMenu />
-            <LanguageSwitcher />
-          </div>
+        <nav className="flex items-center space-x-4">
+          <LanguageSwitcher />
+          <Link to="/profile" className="flex items-center gap-1 text-sm">
+            <UserCircle size={16} />
+            <span>{t("profile.title")}</span>
+          </Link>
+          <Button variant="ghost" size="sm" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+            {theme === "light" ? <MoonIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" /> : <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
         </nav>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

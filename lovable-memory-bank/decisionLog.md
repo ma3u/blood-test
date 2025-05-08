@@ -19,6 +19,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [👤 Decision 021: User Profile Management – Personal Health Information](#-decision-021-user-profile-management--personal-health-information)
     - [🔢 Decision 020: Input Validation – Support for International Decimal Formats](#-decision-020-input-validation--support-for-international-decimal-formats)
     - [🟦 Decision 019: Auth – Optional Login & Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
     - [🌐 Decision 018: Added Asian Language Support (Russian, Chinese, Japanese)](#-decision-018-added-asian-language-support-russian-chinese-japanese)
@@ -51,6 +52,25 @@
 - Add automated accessibility testing to the development workflow
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
+
+### 👤 Decision 021: User Profile Management – Personal Health Information
+<div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:** Collecting personal health information enables more accurate and personalized blood test analysis and recommendations. The user profile system enhances the application's value by providing context-aware health insights based on individual characteristics.
+- **Implementation:**
+  - Created a `UserProfileContext` to store and manage user profile data throughout the application
+  - Developed a comprehensive user profile form with the following capabilities:
+    - Basic information input (age, height, weight) with automatic BMI calculation
+    - Gender selection that synchronizes with blood test analysis
+    - Health condition management with severity levels and diagnosis years
+    - Client-side validation for all inputs with appropriate error messages
+    - Local storage persistence to maintain user data between sessions
+  - Implemented a dedicated profile page with a clean, accessible interface
+  - Integrated the profile system with the existing gender selection functionality
+  - Added proper navigation in the header for easy access to the profile page
+  - Enhanced the language system with comprehensive translations for all profile-related elements
+  - Applied consistent validation patterns with user-friendly error messaging
+  - Ensured responsive design that works well on both mobile and desktop devices
 
 ### 🔢 Decision 020: Input Validation – Support for International Decimal Formats
 <div style="background-color:#fff8e1; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Input Validation<br><b>Date:</b> 2025-05-08</div>

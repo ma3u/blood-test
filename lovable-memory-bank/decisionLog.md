@@ -1,3 +1,4 @@
+
 # Decision Log
 
 ## Instructions for AI Tools
@@ -31,7 +32,8 @@
 14. [Decision 014: Updated Main Page Layout (UI/UX, 2025-05-08)](#decision-014-updated-main-page-layout-uiux-2025-05-08)
 15. [Decision 015: Fixed Empty Page Issue (Bugfix, 2025-05-08)](#decision-015-fixed-empty-page-issue-bugfix-2025-05-08)
 16. [Decision 016: Adopt WCAG 2.1 as Accessibility Standard (Accessibility, 2025-05-08)](#decision-016-adopt-wcag-21-as-accessibility-standard-accessibility-2025-05-08)
-17. [Outstanding Tasks](#outstanding-tasks)
+17. [Decision 017: Implemented WCAG 2.1 Accessibility Framework (Accessibility, 2025-05-08)](#decision-017-implemented-wcag-21-accessibility-framework-accessibility-2025-05-08)
+18. [Outstanding Tasks](#outstanding-tasks)
 
 ---
 
@@ -95,11 +97,6 @@
 - **Rationale:** Prevent blank or non-responsive main page.
 - **Implementation:** Updated Index.tsx component to properly display content; fixed responsive layout issues; ensured correct loading of components and language resources.
 
-### Outstanding Tasks
-- Consider refactoring BloodTestContainer.tsx as it's getting too long
-- Organize translations into more logical groupings by feature
-- Ensure all components use consistent language translation patterns
-
 ### Decision 016: Adopt WCAG 2.1 as Accessibility Standard (Accessibility, 2025-05-08)
 - **Rationale:** WCAG 2.1 is the most widely recognized and adopted accessibility guideline for both web and mobile platforms, ensuring inclusivity for users with disabilities and compliance with legal requirements.
 - **Implementation Steps:**
@@ -110,3 +107,23 @@
   - Test with screen readers and mobile accessibility tools.
   - Document accessibility features and known limitations in project documentation.
   - Add automated accessibility checks to CI/CD pipeline (e.g., axe-core, Lighthouse).
+
+### Decision 017: Implemented WCAG 2.1 Accessibility Framework (Accessibility, 2025-05-08)
+- **Rationale:** To systematically adopt WCAG 2.1 standards across the application and provide developers with tools to maintain accessibility compliance.
+- **Implementation:**
+  - Created a dedicated accessibility configuration file with WCAG 2.1 standards documentation
+  - Implemented utility functions for checking color contrast ratios based on WCAG 2.1 AA requirements (4.5:1 for normal text, 3:1 for large text)
+  - Added keyboard navigation helpers to support keyboard-only users
+  - Created standardized ARIA attribute generators for common components like buttons, dialogs, tabs, and list items
+  - Established a structure for consistent application of accessibility features throughout the application
+  - Provided developers with tools to verify accessibility compliance during development
+  - Set AA as the minimum conformance level with clear guidelines for all four WCAG principles: perceivable, operable, understandable, and robust
+
+### Outstanding Tasks
+- Consider refactoring BloodTestContainer.tsx as it's getting too long
+- Organize translations into more logical groupings by feature
+- Ensure all components use consistent language translation patterns
+- Apply the new accessibility framework to all existing components
+- Add automated accessibility testing to the development workflow
+- Create accessibility documentation for the project
+

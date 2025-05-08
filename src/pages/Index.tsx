@@ -61,7 +61,8 @@ const Index = () => {
     <div className="min-h-screen bg-[#FAF6E2]">
       <Header />
 
-      <main className="container mx-auto py-4 px-3">
+      {/* Main content with skip link target */}
+      <main id="main-content" className="container mx-auto py-4 px-3" tabIndex={-1}>
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="flex flex-col md:flex-row items-center mb-4">
             <div className="flex-shrink-0 mr-6 mb-4 md:mb-0 flex items-center">
@@ -69,6 +70,7 @@ const Index = () => {
                 src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
                 alt="Blood Test Oracle Logo" 
                 className="w-24 h-24 object-contain"
+                role="img"
               />
             </div>
             <div className="flex-grow text-center md:text-left">
@@ -77,16 +79,26 @@ const Index = () => {
               <div className="mt-1">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="ghost" size="sm" className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0">
-                      <InfoIcon className="h-4 w-4" />
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0"
+                      aria-label={`${t("learn.more")} about Blood Test Oracle`}
+                    >
+                      <InfoIcon className="h-4 w-4" aria-hidden="true" />
                       <span>{t("learn.more")}</span>
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                  <DialogContent 
+                    className="max-w-3xl max-h-[80vh] overflow-y-auto"
+                    aria-labelledby="dialog-title"
+                  >
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">{t("dialog.title")}</DialogTitle>
+                      <DialogTitle id="dialog-title" className="text-2xl font-bold text-blue-600 mb-4">
+                        {t("dialog.title")}
+                      </DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="space-y-6 text-foreground">
+                    <DialogDescription id="dialog-description" className="space-y-6 text-foreground">
                       <p className="font-medium text-lg">
                         {t("welcome.intro")}
                       </p>
@@ -139,7 +151,8 @@ const Index = () => {
               <div className="mt-6">
                 <button 
                   onClick={() => setResults(null)} 
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                  aria-label={t("back.to.test")}
                 >
                   {t("back.to.test")}
                 </button>

@@ -37,36 +37,36 @@ const MarkerExplanation = ({ result, onClose }: MarkerExplanationProps) => {
         </DialogHeader>
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <p className="font-medium">{t("results.value")}</p>
+            <p className="font-medium">{t("results.value" as any)}</p>
             <div className={`px-3 py-1 rounded-full ${statusColor}`}>
-              {result.value} {result.marker.unit} ({t(statusText)})
+              {result.value} {result.marker.unit} ({t(statusText as any)})
             </div>
           </div>
           
           <div>
-            <p className="font-medium mb-1">{t("marker.description")}</p>
+            <p className="font-medium mb-1">{t("marker.description" as any)}</p>
             <p className="text-sm text-gray-600">{markerDescription}</p>
           </div>
           
           <div>
-            <p className="font-medium mb-1">{t("results.range")}</p>
+            <p className="font-medium mb-1">{t("results.range" as any)}</p>
             <p className="text-sm text-gray-600">
               {result.marker.minValue} - {result.marker.maxValue} {result.marker.unit}
             </p>
           </div>
           
           <div>
-            <p className="font-medium mb-1">{t("implications")}</p>
+            <p className="font-medium mb-1">{t("implications" as any)}</p>
             <p className="text-sm text-gray-600">{implications}</p>
           </div>
           
           <div className="mt-2 pt-2 border-t">
-            <p className="text-xs text-gray-500">{t("reference")}: American Clinical Laboratory Association guidelines</p>
+            <p className="text-xs text-gray-500">{t("reference" as any)}: American Clinical Laboratory Association guidelines</p>
           </div>
         </div>
         <DialogFooter className="flex-col sm:flex-row gap-2">
-          <Button variant="outline" onClick={onClose}>{t("edit.cancel")}</Button>
-          <Button onClick={onClose}>{t("understand")}</Button>
+          <Button variant="outline" onClick={onClose}>{t("edit.cancel" as any)}</Button>
+          <Button onClick={onClose}>{t("understand" as any)}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

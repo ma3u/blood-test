@@ -43,7 +43,7 @@ export const generateNutritionRecommendations = (
     // Different recommendations based on marker type
     switch (marker.id) {
       case "hemoglobin":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "iron_rich_foods",
             type: "nutrition",
@@ -57,7 +57,7 @@ export const generateNutritionRecommendations = (
         break;
         
       case "glucose":
-        if (parseFloat(result.value.toString()) > marker.referenceRange.max) {
+        if (parseFloat(result.value.toString()) > marker.maxValue) {
           recommendations.push({
             id: "low_glycemic_diet",
             type: "nutrition",
@@ -72,7 +72,7 @@ export const generateNutritionRecommendations = (
         
       case "cholesterol":
       case "ldl":
-        if (parseFloat(result.value.toString()) > marker.referenceRange.max) {
+        if (parseFloat(result.value.toString()) > marker.maxValue) {
           recommendations.push({
             id: "heart_healthy_diet",
             type: "nutrition",
@@ -86,7 +86,7 @@ export const generateNutritionRecommendations = (
         break;
         
       case "vitaminD":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "vitamin_d_foods",
             type: "nutrition",
@@ -100,7 +100,7 @@ export const generateNutritionRecommendations = (
         break;
         
       case "calcium":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "calcium_rich_foods",
             type: "nutrition",
@@ -114,7 +114,7 @@ export const generateNutritionRecommendations = (
         break;
         
       case "sodium":
-        if (parseFloat(result.value.toString()) > marker.referenceRange.max) {
+        if (parseFloat(result.value.toString()) > marker.maxValue) {
           recommendations.push({
             id: "low_sodium_diet",
             type: "nutrition",
@@ -128,7 +128,7 @@ export const generateNutritionRecommendations = (
         break;
         
       case "potassium":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "potassium_rich_foods",
             type: "nutrition",
@@ -166,7 +166,7 @@ export const generateSupplementRecommendations = (
     
     switch (marker.id) {
       case "hemoglobin":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "iron_supplement",
             type: "supplement",
@@ -181,7 +181,7 @@ export const generateSupplementRecommendations = (
         break;
         
       case "vitaminD":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "vitamin_d_supplement",
             type: "supplement",
@@ -195,7 +195,7 @@ export const generateSupplementRecommendations = (
         break;
         
       case "calcium":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "calcium_supplement",
             type: "supplement",
@@ -210,7 +210,7 @@ export const generateSupplementRecommendations = (
         break;
         
       case "vitaminB12":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "vitamin_b12_supplement",
             type: "supplement",
@@ -224,7 +224,7 @@ export const generateSupplementRecommendations = (
         break;
         
       case "ferritin":
-        if (parseFloat(result.value.toString()) < marker.referenceRange.min) {
+        if (parseFloat(result.value.toString()) < marker.minValue) {
           recommendations.push({
             id: "iron_supplement",
             type: "supplement",
@@ -271,7 +271,7 @@ export const generateExerciseRecommendations = (
   
   // Check glucose levels
   const glucoseResult = results.find(r => r.marker.id === "glucose");
-  if (glucoseResult && parseFloat(glucoseResult.value.toString()) > glucoseResult.marker.referenceRange.max) {
+  if (glucoseResult && parseFloat(glucoseResult.value.toString()) > glucoseResult.marker.maxValue) {
     recommendations.push({
       id: "combine_aerobic_strength",
       type: "exercise",
@@ -285,7 +285,7 @@ export const generateExerciseRecommendations = (
   
   // Check cholesterol levels
   const cholesterolResult = results.find(r => r.marker.id === "cholesterol" || r.marker.id === "ldl");
-  if (cholesterolResult && parseFloat(cholesterolResult.value.toString()) > cholesterolResult.marker.referenceRange.max) {
+  if (cholesterolResult && parseFloat(cholesterolResult.value.toString()) > cholesterolResult.marker.maxValue) {
     recommendations.push({
       id: "aerobic_exercise",
       type: "exercise",
@@ -353,7 +353,7 @@ export const generateStressReductionRecommendations = (
   
   // Check cortisol levels if available
   const cortisolResult = results.find(r => r.marker.id === "cortisol");
-  if (cortisolResult && parseFloat(cortisolResult.value.toString()) > cortisolResult.marker.referenceRange.max) {
+  if (cortisolResult && parseFloat(cortisolResult.value.toString()) > cortisolResult.marker.maxValue) {
     recommendations.push({
       id: "stress_reduction_techniques",
       type: "lifestyle",

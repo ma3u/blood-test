@@ -13,6 +13,7 @@
 "2025-05-08 16:45:00" - Fixed build errors related to missing modules and incorrect imports.
 "2025-05-08 17:05:00" - Fixed runtime error by adding QueryClientProvider for React Query.
 "2025-05-08 18:10:00" - Implemented personalized recommendations system with nutrition, supplements, exercise, and stress reduction advice based on blood test results.
+"2025-05-08 18:20:00" - Fixed build errors in recommendationUtils.ts by replacing referenceRange property with minValue and maxValue.
 
 ## Completed Tasks
 
@@ -39,6 +40,7 @@
 - Fixed build errors related to missing modules and incorrect imports
 - Added QueryClientProvider for React Query support
 - Implemented personalized recommendations for nutrition, supplements, exercise, and stress reduction
+- Fixed build errors in recommendation system by using proper BloodMarker properties
 
 ## Current Tasks
 - Organize translations into more logical groupings by feature

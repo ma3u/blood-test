@@ -12,21 +12,25 @@ Create a comprehensive blood test analytics web tool that allows users to:
 2. Track and visualize trends over time
 3. Receive personalized recommendations for nutrition, supplements, physical activity, and stress reduction techniques based on their blood test results and personal information
 
-## User Journey
+## User Journey (High Level)
 
-1. User see the common values of the blood test as Input fields with the range of the reference values based on ReferenceValues.md, he can switch between male and female to update the reference values
-2. He can upload the diagnostic results as PDF or images a varous formats
-3. After upload show the analysted values in the input field for final confirmation
-4. Show the recommendations based on the values (male/female)
-5. show a dialog window to ask if you want to register with his preferedAuthentication Provider
-6. if yes register the user and store the user data, validate the email, via email request, generate email validation with a confirmation link, automatically login the user
-7. store the analysted data and the recommendations in the database for the user
-8. He can compare the results and get the recommendations in a timeline view
-9. Create a user profile with sex, age, height, weight, known health issues
+1. User accesses the app and selects their gender to view reference values for common blood markers.
+2. User enters or uploads blood test results (manual input, PDF, or image upload with OCR).
+3. App validates input, supporting both dot and comma decimal formats, and provides accessible error feedback.
+4. User can proceed anonymously or register/login (optional, via OAuth 2.1 providers) to store results securely.
+5. If registered, user profile is created (age, gender, height, weight, health conditions) and confirmed via email.
+6. Personalized recommendations for nutrition, supplements, activity, and stress reduction are generated based on results and profile.
+7. User can view and compare results over time in a timeline, with recommendations updated as new data is added.
+8. The app supports multiple languages and is accessible (WCAG 2.1 compliant) on all devices.
 
-## Key Features
+---
 
-1. Blood test data input and upload functionality without login
+## Learn more
+
+- **Decision Log:** See `lovable-memory-bank/decisionLog.md` for all architectural, UI, and business decisions.
+- **Reference Values:** See `public/ReferenceValues.md` for medical reference ranges.
+- **README:** Project overview, architecture, and folder structure.
+- **Contribution:** Follow guidelines in the README and document major changes in the memory bank.
 2. Timeline view of test results with trend visualization after login
 3. Personalized recommendation system based on:
    - Blood test results

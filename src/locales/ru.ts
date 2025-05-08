@@ -1,4 +1,4 @@
-// Russian translations
+
 const ru = {
   // Header and navigation
   "sign.in": "Войти",

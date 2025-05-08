@@ -1,76 +1,60 @@
 
-import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import type { SupportedLanguage } from "@/locales";
 
-// Flag emojis for each language
-const languageFlags: Record<string, string> = {
-  en: "🇬🇧",
-  de: "🇩🇪",
-  fr: "🇫🇷",
-  es: "🇪🇸",
-  ru: "🇷🇺",
-  zh: "🇨🇳",
-  ja: "🇯🇵"
+// Language display names and flags
+const languageInfo: Record<SupportedLanguage, { name: string; flag: string }> = {
+  en: { name: "English", flag: "🇬🇧" },
+  de: { name: "Deutsch", flag: "🇩🇪" },
+  fr: { name: "Français", flag: "🇫🇷" },
+  es: { name: "Español", flag: "🇪🇸" },
+  ru: { name: "Русский", flag: "🇷🇺" },
+  zh: { name: "中文", flag: "🇨🇳" },
+  ja: { name: "日本語", flag: "🇯🇵" }
 };
 
-// Language names to display in full form
-const languageNames: Record<string, string> = {
-  en: "English",
-  de: "Deutsch",
-  fr: "Français",
-  es: "Español",
-  ru: "Русский",
-  zh: "中文",
-  ja: "日本語"
-};
-
-const LanguageSwitcher = () => {
-  const { language, setLanguage, availableLanguages } = useLanguage();
+export default function LanguageSwitcher() {
+  const { language, setLanguage, t, availableLanguages } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button 
-          variant="outline" 
+          variant="ghost" 
           size="sm" 
-          className="flex items-center gap-1 h-8 bg-white text-gray-800 border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          aria-label={`Change language, current language is ${languageNames[language]}`}
+          className="h-8 w-16 md:w-auto px-3 text-base font-medium flex gap-2 items-center"
+          aria-label="Select language"
         >
-          <Globe className="h-4 w-4 mr-1" aria-hidden="true" />
-          <span className="mr-1" aria-hidden="true">{languageFlags[language]}</span>
-          <span className="text-sm font-medium uppercase">{language}</span>
+          <span aria-hidden="true">{languageInfo[language].flag}</span>
+          <span className="sr-only md:not-sr-only">{languageInfo[language].name}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent 
-        align="end"
-        className="bg-white border border-gray-300 shadow-lg rounded-md w-48 z-50"
-        sideOffset={5}
-      >
+      <DropdownMenuContent align="end" className="w-48">
         {availableLanguages.map((lang) => (
           <DropdownMenuItem
             key={lang}
-            onClick={() => setLanguage(lang)}
-            className={`${
-              language === lang ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-100"
-            } focus:bg-blue-100 focus:text-blue-800 focus:outline-none`}
+            onClick={() => {
+              setLanguage(lang);
+              setIsOpen(false);
+            }}
+            className={`flex gap-2 items-center ${
+              language === lang ? "font-semibold bg-accent" : ""
+            }`}
           >
-            <div className="flex items-center w-full px-1 py-1">
-              <span className="mr-2" aria-hidden="true">{languageFlags[lang]}</span>
-              <span className="font-medium">{languageNames[lang]}</span>
-            </div>
+            <span aria-hidden="true">{languageInfo[lang].flag}</span>
+            <span>{languageInfo[lang].name}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
-
-export default LanguageSwitcher;
+}

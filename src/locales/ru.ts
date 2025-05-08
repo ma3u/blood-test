@@ -1,9 +1,10 @@
-
+// Russian translations
 const ru = {
   // Header and navigation
   "sign.in": "Войти",
   "sign.out": "Выйти",
   "dashboard": "Панель управления",
+  "language.toggle": "РУ",
   
   // Main page
   "learn.more": "Узнать больше",
@@ -135,7 +136,7 @@ const ru = {
   "app.subtitle": "Инструмент медицинского анализа",
   "page.title": "Анализ крови",
   "page.description": "Введите значения вашего анализа крови или загрузите результаты тестов для мгновенного анализа и интерпретации",
-  "language.toggle": "RU",
+  "language.toggle": "РУ",
   "footer.text": "Blood Test Oracle - Инструмент медицинского анализа для образовательных целей",
   
   // Blood test form
@@ -149,7 +150,7 @@ const ru = {
   // Gender reference
   "gender.reference": "Референсные значения для:",
   "gender.info": "Показать справочную информацию",
-  "gender.info.text": "Референсные значения могут различаться в зависимости от пола.",
+  "gender.info.text": "Референсные значения могут различа��ься в зависимости от пола.",
   "gender.female": "Женщины",
   "gender.male": "Мужчины",
   

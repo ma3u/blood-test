@@ -4,6 +4,7 @@ const zh = {
   "sign.in": "登录",
   "sign.out": "登出",
   "dashboard": "控制面板",
+  "language.toggle": "中文",
   
   // Main page
   "learn.more": "了解更多",
@@ -149,7 +150,6 @@ const zh = {
   "app.subtitle": "医疗分析工具",
   "page.title": "血液测试分析",
   "page.description": "输入您的血液测试值或上传测试结果以获得即时分析和解释",
-  "language.toggle": "中文",
   "footer.text": "血液测试分析 - 一款用于教育目的的医疗分析工具",
   
   // Blood test form
@@ -228,7 +228,7 @@ const zh = {
   "marker.vitaminB12.description": "对神经功能、DNA合成和红细胞形成至关重要。",
   "marker.ferritin.description": "储存铁并在需要时释放铁的蛋白质。",
   "marker.tsh.description": "控制甲状腺激素产生；甲状腺功能的关键指标。",
-  "marker.folicAcid.description": "对细胞生长、DNA形成�����预防先天缺陷至关重要的B族维生素。",
+  "marker.folicAcid.description": "对细胞生长、DNA形成�����预防先��缺陷至关重要的B族维生素。",
   "marker.totalProtein.description": "血液中所有蛋白质的总量，包括白蛋白和球蛋白。",
   
   // Common implications

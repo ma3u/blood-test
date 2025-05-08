@@ -311,6 +311,24 @@ const en = {
   "error.positive.number": "Please enter a positive number",
   "error.invalid.year": "Invalid Year",
   "error.year.future": "Year cannot be in the future",
+  
+  // Recommendation translations
+  "recommendations.title": "Personal Recommendations",
+  "recommendations.description": "Based on your blood test results and profile",
+  "recommendation.type.nutrition": "Nutrition",
+  "recommendation.type.supplement": "Supplements",
+  "recommendation.type.exercise": "Exercise",
+  "recommendation.type.lifestyle": "Stress Relief",
+  "recommendation.importance.high": "High Priority",
+  "recommendation.importance.medium": "Recommended",
+  "recommendation.importance.low": "Optional",
+  "recommendation.related.to": "Related to",
+  "recommendation.contraindications": "Not recommended if you have",
+  "recommendation.evidence.strong": "Strong scientific evidence",
+  "recommendation.evidence.moderate": "Moderate scientific evidence",
+  "recommendation.evidence.preliminary": "Preliminary scientific evidence",
+  "recommendation.none": "No specific recommendations for this category",
+  "recommendation.none.all": "No specific recommendations based on your current results",
 };
 
 export default en;

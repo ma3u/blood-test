@@ -1,3 +1,4 @@
+
 # Decision Log
 
 ## 📝 How to Update This Decision Record
@@ -19,6 +20,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [🌿 Decision 022: Personalized Health Recommendations System](#-decision-022-personalized-health-recommendations-system)
     - [👤 Decision 021: User Profile Management – Personal Health Information](#-decision-021-user-profile-management--personal-health-information)
     - [🔢 Decision 020: Input Validation – Support for International Decimal Formats](#-decision-020-input-validation--support-for-international-decimal-formats)
     - [🟦 Decision 019: Auth – Optional Login & Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
@@ -45,13 +47,34 @@
 
 ### 📋 Outstanding Tasks
 
-- Consider refactoring BloodTestContainer.tsx as it's getting too long
 - Organize translations into more logical groupings by feature
 - Ensure all components use consistent language translation patterns
 - Apply the new accessibility framework to all existing components
 - Add automated accessibility testing to the development workflow
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
+
+### 🌿 Decision 022: Personalized Health Recommendations System
+<div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:** Provide actionable, personalized health recommendations based on blood test results to help users understand what lifestyle changes might improve their health markers.
+
+- **Implementation:**
+  - Created a comprehensive recommendations utility library with specialized functions for different health domains:
+    - Nutrition recommendations based on specific blood marker abnormalities
+    - Supplement suggestions tied to specific deficiencies and health needs
+    - Exercise recommendations considering both blood markers and user profile data (age, BMI)
+    - Stress reduction techniques focused on mindfulness and breathing exercises
+  - Developed a custom hook `useRecommendations` that integrates with the user profile system to generate personalized recommendations
+  - Implemented a tabbed recommendations panel UI with clear categorization of different recommendation types
+  - Added visual priority indicators (high, medium, low) to help users identify the most important recommendations
+  - Included scientific evidence level indicators for each recommendation
+  - Listed contraindications where applicable for safety considerations
+  - Created responsive tabs with icon-only display on mobile devices
+  - Added badge counters to show number of recommendations in each category at a glance
+  - Integrated with the existing internationalization system for multi-language support
+  - Connected recommendations to specific markers for better context
+  - Applied consistent styling matching the overall application design
 
 ### 👤 Decision 021: User Profile Management – Personal Health Information
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature<br><b>Date:</b> 2025-05-08</div>

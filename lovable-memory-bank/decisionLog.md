@@ -1,4 +1,3 @@
-
 # Decision Log
 
 ## 📝 How to Update This Decision Record
@@ -20,6 +19,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [🟦 Decision 019: Auth – Optional Login & Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
     - [🌐 Decision 018: Added Asian Language Support (Russian, Chinese, Japanese)](#-decision-018-added-asian-language-support-russian-chinese-japanese)
     - [🔍 Decision 017: Optimize SEO with Open Graph Best Practices](#-decision-017-optimize-seo-with-open-graph-best-practices)
     - [♿ Decision 016: Adopt WCAG 2.1 as Accessibility Standard](#-decision-016-adopt-wcag-21-as-accessibility-standard)
@@ -38,7 +38,6 @@
     - [🟦 Decision 003: UI/UX – Gender Switch Functionality \& UI Organization](#-decision-003-uiux--gender-switch-functionality--ui-organization)
     - [🟦 Decision 002: UI/UX – Compact, Responsive Blood Test Input Form](#-decision-002-uiux--compact-responsive-blood-test-input-form)
     - [🛠️ Decision 001: Type System – Support `string | number` for BloodTestResult.value](#️-decision-001-type-system--support-string--number-for-bloodtestresultvalue)
-    - [🟦 Decision 018: Auth – Optional Login \& Health Record Storage](#-decision-018-auth--optional-login--health-record-storage)
 
 ---
 
@@ -51,6 +50,16 @@
 - Add automated accessibility testing to the development workflow
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
+
+### 🟦 Decision 019: Auth – Optional Login & Health Record Storage
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Auth<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:** Lower the barrier for user adoption by making login optional. Allow users to use the tool without authentication, but enable them to store and track their diagnosis results and recommendations in Supabase if they choose to log in. Storing the original test date (not just entry date) is required for meaningful health development tracking. After getting the personal recommandation, ask the user to register will varuous OAuth 2.1 providers. 
+- **Implementation:**  
+  - Users can use the health tool without logging in.  
+  - Implement a login modal with OAuth 2.1 providers (Google, GitHub, etc.) with the provided functions of Supabase
+  - Logging in is only required to save results and recommendations in Supabase.  
+  - Each stored record must include the original date of the test, enabling longitudinal health comparisons.
 
 ### 🌐 Decision 018: Added Asian Language Support (Russian, Chinese, Japanese)
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Internationalization<br><b>Date:</b> 2025-05-08</div>
@@ -200,13 +209,3 @@
   - Modified `analyzeBloodTest` function to handle string values by parsing them to float.
   - Updated chart components to convert string values to numbers before calculations.
   - Added type assertions in components where TypeScript couldn't infer the correct types.
-
-### 🟦 Decision 018: Auth – Optional Login & Health Record Storage
-<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Auth<br><b>Date:</b> 2025-05-08</div>
-
-- **Rationale:** Lower the barrier for user adoption by making login optional. Allow users to use the tool without authentication, but enable them to store and track their diagnosis results and recommendations in Supabase if they choose to log in. Storing the original test date (not just entry date) is required for meaningful health development tracking. After getting the personal recommandation, ask the user to register will varuous OAuth 2.1 providers. 
-- **Implementation:**  
-  - Users can use the health tool without logging in.  
-  - Implement a login modal with OAuth 2.1 providers (Google, GitHub, etc.) with the provided functions of Supabase
-  - Logging in is only required to save results and recommendations in Supabase.  
-  - Each stored record must include the original date of the test, enabling longitudinal health comparisons.

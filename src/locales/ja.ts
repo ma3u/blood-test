@@ -1,3 +1,4 @@
+
 // Japanese translations
 const ja = {
   // Header and navigation
@@ -150,7 +151,6 @@ const ja = {
   "app.subtitle": "医療分析ツール",
   "page.title": "血液検査分析",
   "page.description": "血液検査の値を入力するか、テスト結果をアップロードして、即座に分析と解釈を行います",
-  "language.toggle": "日本語",
   "footer.text": "血液検査分析 - 教育目的の医療分析ツール",
   
   // Blood test form

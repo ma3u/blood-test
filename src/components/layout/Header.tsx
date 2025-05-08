@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/context/LanguageContext';
 import AccessibilityMenu from '@/components/AccessibilityMenu';
+import Impressum from '@/components/Impressum';
 
 const Header = () => {
   const { t } = useLanguage();
@@ -61,7 +62,7 @@ const Header = () => {
                 asChild
                 className="focus:ring-2 focus:ring-blue-500"
               >
-                <a href="/dashboard" aria-label="Go to dashboard">Dashboard</a>
+                <a href="/dashboard" aria-label="Go to dashboard">{t("dashboard")}</a>
               </Button>
               <Button 
                 variant="outline" 
@@ -70,7 +71,7 @@ const Header = () => {
                 className="focus:ring-2 focus:ring-blue-500"
                 aria-label="Sign out of your account"
               >
-                Sign Out
+                {t("sign.out")}
               </Button>
             </>
           ) : (
@@ -81,10 +82,12 @@ const Header = () => {
                 asChild
                 className="focus:ring-2 focus:ring-blue-500"
               >
-                <a href="/auth" aria-label="Sign in to your account">Sign In</a>
+                <a href="/auth" aria-label="Sign in to your account">{t("sign.in")}</a>
               </Button>
             </>
           )}
+          
+          <Impressum />
           
           <div className="flex items-center space-x-2">
             <AccessibilityMenu />

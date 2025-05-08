@@ -23,6 +23,7 @@ const en = {
   "entry.methods": "Entry Methods",
   "manual.entry": "Manual Entry",
   "file.upload": "File Upload",
+  "upload.document": "Upload Document",
   
   "gender.reference": "Reference values for:",
   "gender.female": "Female",
@@ -108,10 +109,12 @@ const en = {
   "marker.calcium": "Calcium",
   "marker.magnesium": "Magnesium",
   "marker.vitaminD": "Vitamin D",
+  "marker.vitaminD25OH": "Vitamin D (25-OH)",
   "marker.vitaminB12": "Vitamin B12",
   "marker.ferritin": "Ferritin",
   "marker.tsh": "TSH",
   "marker.folicAcid": "Folic Acid",
+  "marker.totalProtein": "Total Protein",
   
   // Common marker descriptions
   "marker.hemoglobin.description": "Protein in red blood cells that carries oxygen throughout the body.",
@@ -130,10 +133,12 @@ const en = {
   "marker.calcium.description": "Mineral essential for bone health, muscle function, and nerve signaling.",
   "marker.magnesium.description": "Mineral involved in over 300 biochemical reactions in the body.",
   "marker.vitaminD.description": "Fat-soluble vitamin important for immune function and bone health.",
+  "marker.vitaminD25OH.description": "Storage form of vitamin D, best indicator of vitamin D status.",
   "marker.vitaminB12.description": "Essential for nerve function, DNA synthesis, and red blood cell formation.",
   "marker.ferritin.description": "Protein that stores iron and releases it when needed.",
   "marker.tsh.description": "Controls thyroid hormone production; key indicator of thyroid function.",
   "marker.folicAcid.description": "B vitamin essential for cell growth, DNA formation and preventing birth defects.",
+  "marker.totalProtein.description": "The total amount of all proteins in the blood, including albumin and globulins.",
   
   // Common implications
   "marker.low.general": "May indicate deficiency or underlying health issue.",

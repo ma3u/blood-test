@@ -79,6 +79,7 @@ const zh = {
   "upload.button": "选择文件",
   "upload.processing": "处理文件中...",
   "upload.instructions": "拖放您的血液测试PDF或图像文件到此处，或点击选择",
+  "upload.document": "上传文档",
   
   // Results
   "results.title": "分析结果",
@@ -164,6 +165,8 @@ const zh = {
   "gender.reference": "参考值适用于：",
   "gender.info": "显示参考信息",
   "gender.info.text": "参考值可能因性别而异。",
+  "gender.female": "女性",
+  "gender.male": "男性",
   
   // Health categories
   "health.category.critical": "关键标记物",
@@ -198,10 +201,12 @@ const zh = {
   "marker.calcium": "钙",
   "marker.magnesium": "镁",
   "marker.vitaminD": "维生素D",
+  "marker.vitaminD25OH": "维生素D (25-OH)",
   "marker.vitaminB12": "维生素B12",
   "marker.ferritin": "铁蛋白",
   "marker.tsh": "促甲状腺激素",
   "marker.folicAcid": "叶酸",
+  "marker.totalProtein": "总蛋白",
   
   // Common marker descriptions
   "marker.hemoglobin.description": "红细胞中携带氧气到全身的蛋白质。",
@@ -220,10 +225,12 @@ const zh = {
   "marker.calcium.description": "对骨骼健康、肌肉功能和神经信号传导至关重要的矿物质。",
   "marker.magnesium.description": "参与体内300多种生化反应的矿物质。",
   "marker.vitaminD.description": "脂溶性维生素，对免疫功能和骨骼健康很重要。",
+  "marker.vitaminD25OH.description": "维生素D的存储形式，是评估维生素D状态的最佳指标。",
   "marker.vitaminB12.description": "对神经功能、DNA合成和红细胞形成至关重要。",
   "marker.ferritin.description": "储存铁并在需要时释放铁的蛋白质。",
   "marker.tsh.description": "控制甲状腺激素产生；甲状腺功能的关键指标。",
   "marker.folicAcid.description": "对细胞生长、DNA形成和预防先天缺陷至关重要的B族维生素。",
+  "marker.totalProtein.description": "血液中所有蛋白质的总量，包括白蛋白和球蛋白。",
   
   // Common implications
   "marker.low.general": "可能表示缺乏或潜在健康问题。",

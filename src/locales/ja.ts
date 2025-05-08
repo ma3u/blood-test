@@ -79,6 +79,7 @@ const ja = {
   "upload.button": "ファイルを選択",
   "upload.processing": "ファイル処理中...",
   "upload.instructions": "血液検査のPDFまたは画像ファイルをここにドラッグ＆ドロップするか、クリックして選択してください",
+  "upload.document": "文書をアップロード",
   
   // Results
   "results.title": "分析結果",
@@ -164,6 +165,8 @@ const ja = {
   "gender.reference": "基準値の対象：",
   "gender.info": "参照情報を表示",
   "gender.info.text": "基準値は性別によって異なる場合があります。",
+  "gender.female": "女性",
+  "gender.male": "男性",
   
   // Health categories
   "health.category.critical": "重要マーカー",
@@ -198,10 +201,12 @@ const ja = {
   "marker.calcium": "カルシウム",
   "marker.magnesium": "マグネシウム",
   "marker.vitaminD": "ビタミンD",
+  "marker.vitaminD25OH": "ビタミンD（25-OH）",
   "marker.vitaminB12": "ビタミンB12",
   "marker.ferritin": "フェリチン",
   "marker.tsh": "TSH",
   "marker.folicAcid": "葉酸",
+  "marker.totalProtein": "総タンパク質",
   
   // Common marker descriptions
   "marker.hemoglobin.description": "赤血球中の、体中に酸素を運ぶタンパク質。",
@@ -220,10 +225,12 @@ const ja = {
   "marker.calcium.description": "骨の健康、筋肉機能、神経シグナル伝達に不可欠なミネラル。",
   "marker.magnesium.description": "体内の300以上の生化学反応に関わるミネラル。",
   "marker.vitaminD.description": "免疫機能と骨の健康に重要な脂溶性ビタミン。",
+  "marker.vitaminD25OH.description": "ビタミンDの貯蔵形態で、ビタミンD状態の最良の指標です。",
   "marker.vitaminB12.description": "神経機能、DNAの合成、赤血球形成に不可欠。",
   "marker.ferritin.description": "鉄を貯蔵し、必要に応じて放出するタンパク質。",
   "marker.tsh.description": "甲状腺ホルモンの産生をコントロール。甲状腺機能の重要な指標。",
   "marker.folicAcid.description": "細胞成長、DNA形成、先天性欠損の予防に不可欠なBビタミン。",
+  "marker.totalProtein.description": "アルブミンやグロブリンを含む、血液中のすべてのタンパク質の総量。",
   
   // Common implications
   "marker.low.general": "欠乏または根本的な健康問題を示す可能性があります。",

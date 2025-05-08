@@ -79,6 +79,7 @@ const ru = {
   "upload.button": "Выбрать файл",
   "upload.processing": "Обработка файла...",
   "upload.instructions": "Перетащите файл PDF или изображение с результатами анализов сюда, или нажмите для выбора",
+  "upload.document": "Загрузить документ",
   
   // Results
   "results.title": "Результаты анализа",
@@ -164,6 +165,8 @@ const ru = {
   "gender.reference": "Референсные значения для:",
   "gender.info": "Показать справочную информацию",
   "gender.info.text": "Референсные значения могут различаться в зависимости от пола.",
+  "gender.female": "Женщины",
+  "gender.male": "Мужчины",
   
   // Health categories
   "health.category.critical": "Критические маркеры",
@@ -198,10 +201,12 @@ const ru = {
   "marker.calcium": "Кальций",
   "marker.magnesium": "Магний",
   "marker.vitaminD": "Витамин D",
+  "marker.vitaminD25OH": "Витамин D (25-OH)",
   "marker.vitaminB12": "Витамин B12",
   "marker.ferritin": "Ферритин",
   "marker.tsh": "ТТГ",
   "marker.folicAcid": "Фолиевая кислота",
+  "marker.totalProtein": "Общий белок",
   
   // Common marker descriptions
   "marker.hemoglobin.description": "Белок в эритроцитах, который переносит кислород по всему телу.",
@@ -220,10 +225,12 @@ const ru = {
   "marker.calcium.description": "Минерал, необходимый для здоровья костей, функции мышц и передачи нервных сигналов.",
   "marker.magnesium.description": "Минерал, участвующий в более чем 300 биохимических реакциях в организме.",
   "marker.vitaminD.description": "Жирорастворимый витамин, важный для иммунной функции и здоровья костей.",
+  "marker.vitaminD25OH.description": "Форма хранения витамина D, лучший показатель статуса витамина D.",
   "marker.vitaminB12.description": "Необходим для функции нервов, синтеза ДНК и образования эритроцитов.",
   "marker.ferritin.description": "Белок, который хранит железо и высвобождает его при необходимости.",
   "marker.tsh.description": "Контролирует производство гормонов щитовидной железы; ключевой показатель функции щитовидной железы.",
   "marker.folicAcid.description": "Витамин группы В, необходимый для роста клеток, формирования ДНК и предотвращения врожденных дефектов.",
+  "marker.totalProtein.description": "Общее количество всех белков в крови, включая альбумин и глобулины.",
   
   // Common implications
   "marker.low.general": "Может указывать на дефицит или основное заболевание.",

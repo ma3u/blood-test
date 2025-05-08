@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -5,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider"
+import { QueryProvider } from "@/context/QueryProvider";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
@@ -17,27 +19,29 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <LanguageProvider>
-      <UserProfileProvider>
-        <ThemeProvider defaultTheme="light" storageKey="blood-test-oracle-theme">
-          <Router>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/auth" element={<Auth />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </Router>
-        </ThemeProvider>
-      </UserProfileProvider>
-    </LanguageProvider>
+    <QueryProvider>
+      <LanguageProvider>
+        <UserProfileProvider>
+          <ThemeProvider defaultTheme="light" storageKey="blood-test-oracle-theme">
+            <Router>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            </Router>
+          </ThemeProvider>
+        </UserProfileProvider>
+      </LanguageProvider>
+    </QueryProvider>
   );
 }
 

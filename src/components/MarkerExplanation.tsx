@@ -1,75 +1,76 @@
 
+import React from 'react';
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { BloodTestResult } from "@/lib/types";
-import { getStatusColor, getStatusText } from "@/lib/bloodTestUtils";
-import { useLanguage } from "@/context/LanguageContext";
+import { InfoIcon } from "lucide-react";
+import { BloodMarker } from '@/lib/types';
+import { useLanguage } from '@/context/LanguageContext';
+import { TranslationKey } from '@/locales';
 
 interface MarkerExplanationProps {
-  result: BloodTestResult;
-  onClose: () => void;
+  marker: BloodMarker;
+  gender: "male" | "female";
 }
 
-const MarkerExplanation = ({ result, onClose }: MarkerExplanationProps) => {
+const MarkerExplanation = ({ marker, gender }: MarkerExplanationProps) => {
   const { t } = useLanguage();
-  const statusColor = getStatusColor(result.status);
-  const statusText = getStatusText(result.status);
   
-  // Get translated marker name and description if available
-  const markerNameKey = `marker.${result.marker.id}`;
-  const markerDescKey = `marker.${result.marker.id}.description`;
-  
-  const markerName = t(markerNameKey as any) !== markerNameKey ? t(markerNameKey as any) : result.marker.name;
-  const markerDescription = t(markerDescKey as any) !== markerDescKey ? t(markerDescKey as any) : result.marker.description;
+  // Get gender-specific reference range
+  const refRange = marker.genderSpecificRanges && marker.genderSpecificRanges[gender]
+    ? marker.genderSpecificRanges[gender]
+    : marker.normalRange;
 
-  const implications =
-    result.status === "low"
-      ? result.marker.lowImplication
-      : result.status === "high"
-      ? result.marker.highImplication
-      : "Values are within normal range.";
+  // Translate marker name and description if translation keys exist
+  const markerNameKey = `marker.${marker.id}` as TranslationKey;
+  const markerDescKey = `marker.${marker.id}.description` as TranslationKey;
+  const markerLowKey = `marker.low.${marker.id}` as TranslationKey;
+  const markerHighKey = `marker.high.${marker.id}` as TranslationKey;
+  
+  // Use dynamic translations or fall back to original values
+  const markerName = t(markerNameKey) !== markerNameKey ? t(markerNameKey) : marker.name;
+  const markerDesc = t(markerDescKey as any) !== markerDescKey ? t(markerDescKey as any) : marker.description;
+  const markerLow = t(markerLowKey) !== markerLowKey ? t(markerLowKey) : (marker.lowImplication || t("marker.low.general" as TranslationKey));
+  const markerHigh = t(markerHighKey) !== markerHighKey ? t(markerHighKey) : (marker.highImplication || t("marker.high.general" as TranslationKey));
 
   return (
-    <Dialog open={true} onOpenChange={() => onClose()}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{markerName}</DialogTitle>
-        </DialogHeader>
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <p className="font-medium">{t("results.value" as any)}</p>
-            <div className={`px-3 py-1 rounded-full ${statusColor}`}>
-              {result.value} {result.marker.unit} ({t(statusText as any)})
-            </div>
-          </div>
+    <HoverCard>
+      <HoverCardTrigger asChild>
+        <Button variant="ghost" size="icon" className="h-6 w-6 rounded-full p-0">
+          <InfoIcon className="h-4 w-4" />
+          <span className="sr-only">More information</span>
+        </Button>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="space-y-2">
+          <h4 className="font-medium">{markerName}</h4>
+          <p className="text-sm">{t("marker.description" as any)}: {markerDesc}</p>
           
-          <div>
-            <p className="font-medium mb-1">{t("marker.description" as any)}</p>
-            <p className="text-sm text-gray-600">{markerDescription}</p>
-          </div>
+          {(marker.lowImplication || marker.highImplication) && (
+            <>
+              <h5 className="text-sm font-medium">{t("implications" as any)}:</h5>
+              {marker.lowImplication && (
+                <p className="text-sm text-blue-600">{t("results.status.low" as TranslationKey)}: {markerLow}</p>
+              )}
+              {marker.highImplication && (
+                <p className="text-sm text-red-600">{t("results.status.high" as TranslationKey)}: {markerHigh}</p>
+              )}
+            </>
+          )}
           
-          <div>
-            <p className="font-medium mb-1">{t("results.range" as any)}</p>
-            <p className="text-sm text-gray-600">
-              {result.marker.minValue} - {result.marker.maxValue} {result.marker.unit}
-            </p>
-          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            <span className="font-medium">{t("reference" as any)}:</span> {refRange} {marker.unit}
+          </p>
           
-          <div>
-            <p className="font-medium mb-1">{t("implications" as any)}</p>
-            <p className="text-sm text-gray-600">{implications}</p>
-          </div>
-          
-          <div className="mt-2 pt-2 border-t">
-            <p className="text-xs text-gray-500">{t("reference" as any)}: American Clinical Laboratory Association guidelines</p>
-          </div>
+          <Button variant="link" size="sm" className="text-blue-500 p-0 h-auto">
+            {t("understand" as any)}
+          </Button>
         </div>
-        <DialogFooter className="flex-col sm:flex-row gap-2">
-          <Button variant="outline" onClick={onClose}>{t("edit.cancel" as any)}</Button>
-          <Button onClick={onClose}>{t("understand" as any)}</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+      </HoverCardContent>
+    </HoverCard>
   );
 };
 

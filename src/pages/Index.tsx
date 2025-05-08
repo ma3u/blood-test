@@ -1,7 +1,7 @@
+
 import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import PageIntro from "@/components/layout/PageIntro";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
@@ -36,23 +36,23 @@ const Index = () => {
 
       <main className="container mx-auto py-4 px-3">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="flex items-center mb-4">
-            <div className="flex-shrink-0 mr-6">
+          <div className="flex flex-col md:flex-row items-center mb-4">
+            <div className="flex-shrink-0 mr-6 mb-4 md:mb-0">
               <img 
                 src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
                 alt="Blood Test Oracle Logo" 
                 className="w-24 h-24 object-contain"
               />
             </div>
-            <div className="flex-grow">
-              <h1 className="text-2xl font-bold text-blue-800">{t("page.title")}</h1>
-              <p className="text-sm text-gray-600 mt-1">{t("page.description")}</p>
+            <div className="flex-grow text-center md:text-left">
+              <h1 className="text-2xl font-bold text-blue-800">Bluttest-Analyse</h1>
+              <p className="text-sm text-gray-600 mt-1">Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch</p>
               <div className="mt-1">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="ghost" size="sm" className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0">
                       <InfoIcon className="h-4 w-4" />
-                      <span>{t("learn.more")}</span>
+                      <span>Mehr erfahren</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">

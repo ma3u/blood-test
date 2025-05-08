@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Trash2, Plus } from "lucide-react";
-import { GenderSwitch } from "@/components/GenderSwitch";
+import GenderSwitch from "@/components/GenderSwitch";
 import { useToast } from "@/hooks/use-toast";
 
 export function UserProfileForm() {

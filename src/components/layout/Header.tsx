@@ -1,10 +1,10 @@
+
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useTheme } from "@/context/ThemeProvider";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Moon, Sun, UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { UserCircle } from "lucide-react";
 
 export default function Header() {
   const { t } = useLanguage();
@@ -24,7 +24,7 @@ export default function Header() {
             <span>{t("profile.title")}</span>
           </Link>
           <Button variant="ghost" size="sm" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? <MoonIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" /> : <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />}
+            {theme === "light" ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
             <span className="sr-only">Toggle theme</span>
           </Button>
         </nav>

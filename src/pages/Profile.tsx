@@ -1,7 +1,7 @@
 
 import { UserProfileForm } from "@/components/profile/UserProfileForm";
 import { useLanguage } from "@/context/LanguageContext";
-import { SEOHead } from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 
 export default function Profile() {
   const { t } = useLanguage();

@@ -19,6 +19,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [🔢 Decision 020: Input Validation – Support for International Decimal Formats](#-decision-020-input-validation--support-for-international-decimal-formats)
     - [🟦 Decision 019: Auth – Optional Login & Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
     - [🌐 Decision 018: Added Asian Language Support (Russian, Chinese, Japanese)](#-decision-018-added-asian-language-support-russian-chinese-japanese)
     - [🔍 Decision 017: Optimize SEO with Open Graph Best Practices](#-decision-017-optimize-seo-with-open-graph-best-practices)
@@ -51,10 +52,24 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
+### 🔢 Decision 020: Input Validation – Support for International Decimal Formats
+<div style="background-color:#fff8e1; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Input Validation<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:** Enhance user experience by accommodating international number format conventions, specifically allowing both comma (,) and dot (.) as decimal separators. This improves data entry for users from countries where commas are the standard decimal separator.
+- **Implementation:**  
+  - Updated `BloodValueInput` component to accept and properly normalize decimal values with both comma and dot separators.
+  - Added validation to ensure only valid numerical inputs are accepted.
+  - Implemented error handling with visual indicators when invalid input is detected.
+  - Normalized comma-separated values to dot-separated format for internal processing.
+  - Added accessibility attributes (`aria-invalid`) for screen reader support.
+  - Enhanced visual feedback with red border and error message for invalid inputs.
+  - Maintained original input display while converting to standardized format for processing.
+  - Ensured empty inputs are handled correctly to allow clearing of values.
+
 ### 🟦 Decision 019: Auth – Optional Login & Health Record Storage
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Auth<br><b>Date:</b> 2025-05-08</div>
 
-- **Rationale:** Lower the barrier for user adoption by making login optional. Allow users to use the tool without authentication, but enable them to store and track their diagnosis results and recommendations in Supabase if they choose to log in. Storing the original test date (not just entry date) is required for meaningful health development tracking. After getting the personal recommandation, ask the user to register will varuous OAuth 2.1 providers. 
+- **Rationale:** Lower the barrier for user adoption by making login optional. Allow users to use the tool without authentication, but enable them to store and track their diagnosis results and recommendations in Supabase if they choose to log in. Storing the original test date (not just entry date) is required for meaningful health development tracking. After getting the personal recommandation, ask the user to register will various OAuth 2.1 providers. 
 - **Implementation:**  
   - Users can use the health tool without logging in.  
   - Implement a login modal with OAuth 2.1 providers (Google, GitHub, etc.) with the provided functions of Supabase

@@ -16,6 +16,7 @@ import Footer from "./components/layout/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
 import { UserProfileProvider } from "./context/UserProfileContext";
 import Profile from "./pages/Profile";
+import Longevity from "./pages/Longevity";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/auth" element={<Auth />} />
+                    <Route path="/longevity" element={<Longevity />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

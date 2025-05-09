@@ -11,6 +11,7 @@ import { InfoIcon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
@@ -110,7 +111,10 @@ const Index = () => {
                     </DialogHeader>
                     <DialogDescription id="dialog-description" className="space-y-6 text-foreground">
                       <p className="font-medium text-lg">
-                        {t("intro.welcome")}
+                        {t("intro.welcome")} {" "}
+                        <Link to="/longevity" className="text-blue-600 hover:text-blue-800 underline font-medium">
+                          Learn more about longevity and healthspan
+                        </Link>.
                       </p>
                       
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">

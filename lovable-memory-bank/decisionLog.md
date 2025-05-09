@@ -70,7 +70,7 @@
   - Provide a foundation for future features (personalized recommendations, diagnostics, and user education).
 
 - **Implementation:**
-  - Created `public/longevity.md`, a comprehensive longevity and healthspan guide integrating:
+  - Use the existing `public/longevity.md` as a template for the new longevity and healthspan guide integrating:
     - Personal health journey and motivation for change
     - Detailed protocols: proactive diagnostics, blood markers, microbiome, and digital health tracking
     - Quantified, evidence-based table of longevity factors, with impact estimates and references
@@ -78,6 +78,8 @@
     - Extensive scientific literature review (60+ references) supporting all recommendations
     - User-focused structure: summary, routines, references, and key takeaways
   - Designed for clarity, accessibility, and practical use—enabling users to apply the findings to their own lives.
+  - Generate a longevity page using the existing `public/longevity.md` as a template.
+  - create accessable links to the sources
 
 - **Impact:**
   - Establishes a new documentation standard for healthspan topics in the project
@@ -85,7 +87,6 @@
   - Demonstrates the value of integrating personal narrative with scientific rigor
   - Empowers users to take control of their health, regardless of genetic background
 
-- **File:** [`public/longevity.md`](../public/longevity.md)
 
 ---
 

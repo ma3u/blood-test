@@ -1,8 +1,6 @@
 
 # Decision Log
 
----
-
 ## 📝 How to Update This Decision Record
 
 1. 🆕 **Add new decisions after the TOC** 
@@ -22,6 +20,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+  - [📖 Decision 026: Simplified Longevity Content to One Static Page Per Language](#-decision-026-simplified-longevity-content-to-one-static-page-per-language)
     - [📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page](#-decision-025-comprehensive-mind-body-section-for-longevity-page)
     - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
@@ -63,7 +62,19 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
----
+## 📖 Decision 026: Simplified Longevity Content to One Static Page Per Language
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-09</div>
+
+- **Rationale:**
+  - The longevity content was overly complex due to locale-based dynamic loading and translation logic.
+  - Content for longevity is static and best maintained as one dedicated page per language, improving maintainability and clarity.
+  - Reduces code duplication, avoids unnecessary indirection, and makes it easier to add or update languages.
+- **Implementation:**
+  - Removed all locale and translation logic from `Longevity.tsx` and related components.
+  - Created new static pages: `LongevityEn.tsx` (English) and `LongevityDe.tsx` (German placeholder), each containing the full content for that language.
+  - Updated `Longevity.tsx` to point users to the new static language-specific pages.
+  - Followed the content structure of `public/longevity.md` for the English version.
+  - Updated this decision log and the Table of Contents to reflect the change.
 
 ### 📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page
 <div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature / Documentation<br><b>Date:</b> 2025-05-09</div>

@@ -1,3 +1,8 @@
+/**
+ * Accessibility Configuration
+ * Following Web Content Accessibility Guidelines (WCAG) 2.1
+ * https://www.w3.org/WAI/standards-guidelines/wcag/
+ */
 
 type AccessibilityProps = {
   role?: string;
@@ -8,6 +13,51 @@ type AccessibilityProps = {
   pressed?: boolean;
   checked?: boolean;
   level?: number;
+  label?: string;
+  controls?: string;
+  describedby?: string;
+  labelledby?: string;
+  live?: "polite" | "assertive" | "off";
+  atomic?: boolean;
+  relevant?: string;
+  busy?: boolean;
+};
+
+export const accessibilityConfig = {
+  standard: "WCAG 2.1",
+  level: "AA", // Conformance level (A, AA, or AAA)
+  guidelines: {
+    perceivable: [
+      "Provide text alternatives for non-text content",
+      "Provide captions and alternatives for audio and video",
+      "Make content adaptable",
+      "Make content distinguishable",
+    ],
+    operable: [
+      "Make all functionality available from a keyboard",
+      "Provide users enough time to read and use content",
+      "Do not design content in a way that is known to cause seizures or physical reactions",
+      "Provide ways to help users navigate, find content, and determine where they are",
+      "Make it easier to use inputs other than keyboard",
+    ],
+    understandable: [
+      "Make text readable and understandable",
+      "Make content appear and operate in predictable ways",
+      "Help users avoid and correct mistakes",
+    ],
+    robust: [
+      "Maximize compatibility with current and future user tools",
+    ],
+  },
+  minimumContrastRatio: {
+    normalText: 4.5, // 4.5:1 for normal text
+    largeText: 3.0, // 3:1 for large text
+    uiComponents: 3.0, // 3:1 for UI components and graphical objects
+  },
+  screenReaderSupport: true,
+  keyboardAccessibility: true,
+  focusVisible: true,
+  textResizing: true,
 };
 
 /**
@@ -54,6 +104,40 @@ export const enhanceAccessibility = (props: AccessibilityProps): Record<string, 
     a11yProps["aria-level"] = props.level;
   }
   
+  // Relationship attributes
+  if (props.label) {
+    a11yProps["aria-label"] = props.label;
+  }
+  
+  if (props.controls) {
+    a11yProps["aria-controls"] = props.controls;
+  }
+  
+  if (props.describedby) {
+    a11yProps["aria-describedby"] = props.describedby;
+  }
+  
+  if (props.labelledby) {
+    a11yProps["aria-labelledby"] = props.labelledby;
+  }
+  
+  // Live region attributes
+  if (props.live) {
+    a11yProps["aria-live"] = props.live;
+  }
+  
+  if (props.atomic !== undefined) {
+    a11yProps["aria-atomic"] = props.atomic;
+  }
+  
+  if (props.relevant) {
+    a11yProps["aria-relevant"] = props.relevant;
+  }
+  
+  if (props.busy !== undefined) {
+    a11yProps["aria-busy"] = props.busy;
+  }
+  
   return a11yProps;
 };
 
@@ -79,18 +163,23 @@ export const keyboardNavigation = (
       options.onEnter?.();
       break;
     case " ":
+      event.preventDefault(); // Prevent page scroll on space
       options.onSpace?.();
       break;
     case "ArrowDown":
+      event.preventDefault();
       options.onArrowDown?.();
       break;
     case "ArrowUp":
+      event.preventDefault();
       options.onArrowUp?.();
       break;
     case "ArrowLeft":
+      event.preventDefault();
       options.onArrowLeft?.();
       break;
     case "ArrowRight":
+      event.preventDefault();
       options.onArrowRight?.();
       break;
     case "Escape":
@@ -159,7 +248,61 @@ export const manageFocus = (
   };
 };
 
-// Export additional accessibility helper functions
+/**
+ * Creates an anchor link that meets accessibility standards
+ */
+export const createAccessibleLink = (
+  href: string,
+  text: string,
+  options: {
+    isExternal?: boolean;
+    className?: string;
+    ariaLabel?: string;
+    onClick?: (e: React.MouseEvent) => void;
+  } = {}
+): React.ReactElement => {
+  const props = {
+    href,
+    className: options.className || "text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1",
+    onClick: options.onClick,
+    ...(options.ariaLabel ? { "aria-label": options.ariaLabel } : {}),
+    ...(options.isExternal ? {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      "aria-label": options.ariaLabel || `${text} (opens in a new tab)`,
+    } : {}),
+  };
+  
+  return React.createElement(
+    "a", 
+    props, 
+    [
+      text,
+      options.isExternal && React.createElement("span", { 
+        className: "sr-only", 
+        key: "sr-only" 
+      }, " (opens in a new tab)"),
+      options.isExternal && React.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-4 w-4 inline-block ml-1",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        key: "external-icon",
+        "aria-hidden": true,
+      }, React.createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+      })),
+    ].filter(Boolean)
+  );
+};
+
+/**
+ * Announces messages to screen readers
+ */
 export const announceToScreenReader = (message: string, priority: 'polite' | 'assertive' = 'polite'): void => {
   // Create or get existing live region
   let liveRegion = document.getElementById('a11y-announcer');
@@ -182,4 +325,41 @@ export const announceToScreenReader = (message: string, priority: 'polite' | 'as
   setTimeout(() => {
     liveRegion.textContent = '';
   }, 3000);
+};
+
+/**
+ * Returns ARIA attributes for common components
+ */
+export const getAriaAttributes = {
+  button: (label: string) => ({
+    role: "button",
+    "aria-label": label,
+    tabIndex: 0,
+  }),
+  
+  dialog: (title: string, description?: string) => ({
+    role: "dialog",
+    "aria-modal": true,
+    "aria-labelledby": `dialog-title-${title.toLowerCase().replace(/\s/g, "-")}`,
+    ...(description && { "aria-describedby": `dialog-desc-${title.toLowerCase().replace(/\s/g, "-")}` }),
+  }),
+  
+  tab: (selected: boolean, controls: string) => ({
+    role: "tab",
+    "aria-selected": selected,
+    "aria-controls": controls,
+    tabIndex: selected ? 0 : -1,
+  }),
+  
+  tabpanel: (labelledBy: string) => ({
+    role: "tabpanel",
+    "aria-labelledby": labelledBy,
+    tabIndex: 0,
+  }),
+  
+  listitem: (position: number, totalItems: number) => ({
+    role: "listitem",
+    "aria-posinset": position,
+    "aria-setsize": totalItems,
+  }),
 };

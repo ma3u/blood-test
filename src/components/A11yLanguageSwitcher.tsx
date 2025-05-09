@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -22,9 +23,24 @@ const languageInfo: Record<SupportedLanguage, { name: string; flag: string }> = 
   ja: { name: "日本語", flag: "🇯🇵" }
 };
 
+// Map of supported languages to their corresponding page routes
+const languagePageMap: Record<string, Record<SupportedLanguage, string>> = {
+  'longevity': {
+    en: '/longevityEn',
+    de: '/longevityDe',
+    fr: '/longevityEn', // Currently redirecting to English for unsupported languages
+    es: '/longevityEn',
+    ru: '/longevityEn',
+    zh: '/longevityEn',
+    ja: '/longevityEn'
+  }
+};
+
 export default function A11yLanguageSwitcher() {
   const { language, setLanguage, t, availableLanguages } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Apply accessibility enhancements
   const a11yProps = enhanceAccessibility({
@@ -32,6 +48,19 @@ export default function A11yLanguageSwitcher() {
     component: "language-selector",
     expanded: isOpen
   });
+
+  // Check if we're on a page that has language-specific versions
+  const isLongevityPage = location.pathname.includes('longevity');
+
+  const handleLanguageChange = (lang: SupportedLanguage) => {
+    setLanguage(lang);
+    setIsOpen(false);
+    
+    // If we're on a longevity page, navigate to the corresponding language version
+    if (isLongevityPage) {
+      navigate(languagePageMap['longevity'][lang]);
+    }
+  };
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -50,15 +79,12 @@ export default function A11yLanguageSwitcher() {
       <DropdownMenuContent 
         align="end" 
         className="w-48"
-        aria-label="language.toggle" // Using an existing translation key instead of "accessibility.language.selector"
+        aria-label="language.toggle" 
       >
         {availableLanguages.map((lang) => (
           <DropdownMenuItem
             key={lang}
-            onClick={() => {
-              setLanguage(lang);
-              setIsOpen(false);
-            }}
+            onClick={() => handleLanguageChange(lang)}
             className={`flex gap-2 items-center ${
               language === lang ? "font-semibold bg-accent" : ""
             }`}

@@ -3,8 +3,11 @@ import React from "react";
 import SEOHead from "@/components/SEOHead";
 import { Separator } from "@/components/ui/separator";
 import { enhanceAccessibility } from "@/lib/accessibilityUtils";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LongevityDe = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-[#FAF6E2]">
       <SEOHead 
@@ -47,15 +50,21 @@ const LongevityDe = () => {
               Meine persönliche Reise zu Langlebigkeit und Gesundheit
             </h2>
             <p className="mb-4">
-              Diese Seite ist in der deutschen Version noch in Bearbeitung. Bitte besuchen Sie die englische Version für den vollständigen Inhalt.
+              Diese Seite repräsentiert meine persönliche Reise durch die sich ständig weiterentwickelnde Welt der Langlebigkeitswissenschaft. Mein Ziel ist es, ein umfassendes und aktuelles Verständnis dafür zu entwickeln, wie wir durch evidenzbasierte Entscheidungen und Gewohnheiten unsere Gesundheitsspanne und potenzielle Lebensdauer optimieren können.
             </p>
             <p className="mb-4">
-              <a 
-                href="/longevityEn"
-                className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1"
-              >
-                Zur englischen Version
-              </a>
+              Als Wissenschaftler und Enthusiast für Gesundheitsoptimierung sammle ich fortlaufend Erkenntnisse aus der neuesten Forschung, bewährten Langlebigkeitsinterventionen und persönlichen Experimenten. Auf dieser Seite teile ich strukturiert, was ich lerne, teste und umsetze.
+            </p>
+          </section>
+
+          <Separator className="my-8" />
+          
+          <section id="diagnostik" className="mb-8">
+            <h2 className="text-2xl font-bold text-blue-800 mb-4">
+              Diagnostik & Selbstverfolgung
+            </h2>
+            <p className="mb-4">
+              "Was nicht gemessen wird, kann nicht verbessert werden." Diese Seite ist noch in Bearbeitung, aber ich werde hier bald meine Ansätze zur Messung und Verfolgung von Biomarkern teilen.
             </p>
           </section>
 
@@ -63,10 +72,18 @@ const LongevityDe = () => {
 
           <section id="praktische-beispiele" className="mb-8">
             <h2 className="text-2xl font-bold text-blue-800 mb-4">
-              In Bearbeitung
+              Praktische Beispiele
             </h2>
             <p className="mb-4">
-              Die deutsche Version wird in Kürze verfügbar sein. Wir arbeiten daran, alle Inhalte zu übersetzen und anzupassen.
+              Diese Seite wird kontinuierlich aktualisiert und erweitert. In Kürze finden Sie hier praktische Beispiele für Ernährung, Bewegung, Stressmanagement und mehr auf Deutsch.
+            </p>
+            <p className="mt-4">
+              <a 
+                href="/longevityEn"
+                className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1"
+              >
+                Zur vollständigen englischen Version
+              </a>
             </p>
           </section>
           

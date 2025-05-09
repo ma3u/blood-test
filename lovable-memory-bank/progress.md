@@ -18,10 +18,13 @@
 - Updated PracticalExamplesSection to use static text instead of translation keys for improved readability
 - Implemented Decision 026: Created separate static pages for each language (LongevityEn.tsx and LongevityDe.tsx)
 - Configured proper redirects in Longevity.tsx based on user's selected language
+- Improved language switching functionality to correctly navigate between language-specific pages
+- Fixed routing issues when switching languages on the Longevity pages
 
 ### In Progress
 - Creating a system to automatically generate HTML from markdown files
 - Improving the German translation for the LongevityDe page
+- Supporting additional languages for the longevity pages (French, Spanish, etc.)
 - Checking and validating all external references for broken links
 - Adding more comprehensive content to language-specific longevity pages
 
@@ -30,4 +33,5 @@
 - Create a link validation system to automatically check for broken references
 - Consider implementing a full-text search feature for content
 - Add language-specific SEO metadata for improved search engine visibility
-- Add support for additional languages to the longevity pages (Spanish, French, etc.)
+- Add support for additional languages to the longevity pages (Russian, Chinese, Japanese, etc.)
+

@@ -1,14 +1,20 @@
 
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
 
 const Longevity = () => {
   const { language } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
+    // Check if we're already on a language-specific page
+    if (location.pathname === "/longevityEn" || location.pathname === "/longevityDe") {
+      return;
+    }
+
     // Redirect based on the user's language
     if (language === 'de') {
       navigate('/longevityDe');
@@ -16,7 +22,7 @@ const Longevity = () => {
       // Default to English for all other languages
       navigate('/longevityEn');
     }
-  }, [language, navigate]);
+  }, [language, navigate, location.pathname]);
 
   // This component will only be visible briefly before redirect
   return (

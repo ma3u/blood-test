@@ -1,0 +1,41 @@
+
+const welcome = {
+  "welcome.intro": "Wo bahnbrechende Forschung in Epigenetik, Langlebigkeit und Molekularmedizin zusammenkommt, um ein gesünderes, längeres Leben zu ermöglichen.",
+  "welcome.paragraph1": "Altern wird nicht nur durch unsere Gene geprägt, sondern durch dynamische Wechselwirkungen zwischen epigenetischen Schaltern, Umweltfaktoren und zellulärer Gesundheit. Die neueste Wissenschaft zeigt, dass Langlebigkeit von der Aufrechterhaltung eines Biomarker-Gleichgewichts abhängt – messbare Indikatoren wie DNA-Methylierungsmuster, Nährstoffspiegel und Hormonaktivität. Diese Biomarker fungieren als \"Gesundheits-Dashboard\" und decken Lücken in essenziellen Nährstoffen (z.B. Vitamin D, Magnesium), Aminosäuren und Hormonen auf, die bei Nichtbehandlung das Altern beschleunigen.",
+  "welcome.strategies.title": "Personalisierte Gesundheitsstrategien",
+  "welcome.strategies.item1": "Biomarker-Diagnostik: Fortschrittliche Tests identifizieren Mängel an Nährstoffen (z.B. Eisen, B-Vitamine), Antioxidantien und Hormonen wie Cortisol und ermöglichen maßgeschneiderte Interventionen.",
+  "welcome.strategies.item2": "Mikronährstoff-Optimierung: Gezielte Ergänzungsmittel – wie Resveratrol (DNA-Reparatur), Omega-3 (Gehirngesundheit) und CoQ10 (Zellenergie) – beheben durch Tests identifizierte Defizite.",
+  "welcome.strategies.item3": "Hormonelles & metabolisches Gleichgewicht: Änderungen des Lebensstils stellen den Rhythmus in Systemen wieder her, die durch Alterung gestört wurden, einschließlich Insulinsensitivität und Stressreaktion.",
+  "welcome.practices.title": "Wissenschaftlich fundierte Langlebigkeitspraktiken",
+  "welcome.practices.item1": "Bewegung: Regelmäßige Bewegung fördert die mitochondriale Gesundheit und muskelabgeleitete Antioxidantien wie EcSOD, wodurch oxidativer Stress reduziert wird.",
+  "welcome.practices.item2": "Schlafoptimierung: 7+ Stunden nächtlich senken das Sterblichkeitsrisiko um 18% und unterstützen die metabolische Reparatur.",
+  "welcome.practices.item3": "Stressresilienz: Techniken wie aktive Erholung (leichtes Yoga, Spazierengehen) und Achtsamkeit modulieren Entzündungen, die mit chronischen Krankheiten verbunden sind.",
+  "welcome.outro": "Durch das Überbrücken von Biomarker-Lücken und die Ausrichtung des Lebensstils an zellulären Bedürfnissen eröffnen wir Möglichkeiten zur Verlängerung der Gesundheitsspanne. Entdecken Sie, wie diese Erkenntnisse auf Ihre einzigartige Biologie anwendbar sind – bereit, tiefer einzusteigen?",
+  
+  // Website intro content
+  "intro.title": "Willkommen bei Blood Test Oracle",
+  "intro.subtitle": "Eine persönliche Reise zur Gesundheitsoptimierung",
+  "intro.welcome": "Willkommen! Ich bin Matthias, und ich habe diese Website als eine persönliche und gemeinsame Reise in die Welt der Epigenetik, Langlebigkeit und Molekularmedizin erstellt. Mein Ziel ist es, die Kraft der KI zu nutzen, um meine eigene Gesundheit und Bildung zu verbessern – und anderen zu helfen, die diesen Weg mit mir zu gehen möchten.",
+  "intro.why.title": "Warum diese Homepage existiert",
+  "intro.why.content": "Altern, Gesundheit und Langlebigkeit betreffen nicht nur unsere Gene – es geht um das dynamische Zusammenspiel zwischen unserer Umwelt, unserem Lebensstil und den Schaltern, die unsere Gene an- und ausschalten. Diese Homepage existiert, um:",
+  "intro.why.point1": "Meine Entdeckungen und Fortschritte zu teilen, während ich KI und epigenetische Erkenntnisse nutze, um meine Gesundheitsreise zu gestalten.",
+  "intro.why.point2": "Die neuesten Forschungen und Werkzeuge der personalisierten Medizin für jeden zugänglich zu machen, nicht nur für Wissenschaftler oder Ärzte.",
+  "intro.why.point3": "Eine Gemeinschaft von Menschen aufzubauen, die gemeinsam lernen, experimentieren und ihre Gesundheit verbessern möchten.",
+  "intro.next.title": "Was kommt als Nächstes",
+  "intro.next.content": "In den kommenden Wochen plane ich, spezialisierte KI-Agenten zu starten, die Sie (und mich) durch folgende Bereiche führen:",
+  "intro.next.point1": "Ernährung: Personalisierte Strategien wie ketogene Diäten, Masseaufbau oder intermittierendes Fasten, zugeschnitten auf Ihre Biologie.",
+  "intro.next.point2": "Nahrungsergänzungsmittel: Individualisierte Empfehlungen basierend auf Ihren Biomarkern und Bedürfnissen.",
+  "intro.next.point3": "Biomarker-Tests: Anleitung, welche Biomarker für optimale Gesundheit und Langlebigkeit zu verfolgen sind.",
+  "intro.next.point4": "Bewegung: Die beste Art der Bewegung für Ihre Ziele und Biologie finden.",
+  "intro.next.point5": "Stressabbau: Techniken wie Meditation, Atemübungen, achtsames Laufen oder Kälteexposition – abgestimmt auf Ihren Lebensstil.",
+  "intro.next.conclusion": "Durch die Kombination von KI mit den neuesten Erkenntnissen der Epigenetik können wir über allgemeine Ratschläge hinausgehen und ein wirklich personalisiertes Gesundheitserlebnis schaffen.",
+  "intro.feedback.title": "Ich brauche Ihr Feedback",
+  "intro.feedback.content": "Dieses Projekt gehört Ihnen genauso wie mir. Ich möchte wissen:",
+  "intro.feedback.point1": "Welche Informationen oder Werkzeuge würden Ihnen am meisten helfen?",
+  "intro.feedback.point2": "Welche Funktionen sollte ich priorisieren?",
+  "intro.feedback.point3": "Wie kann ich diese Website und die kommenden KI-Agenten für Sie nützlicher, klarer und motivierender gestalten?",
+  "intro.feedback.conclusion": "Bitte teilen Sie Ihre Gedanken und Ideen – Ihr Feedback wird direkt beeinflussen, wie dieser Service wächst und sich verbessert.",
+  "intro.feedback.question": "Gibt es bestimmte Fragen oder Herausforderungen auf Ihrem Gesundheitsweg, bei denen die KI Ihnen zuerst helfen soll? Lassen Sie es mich wissen!",
+};
+
+export default welcome;

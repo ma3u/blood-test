@@ -1,6 +1,6 @@
 
 import en from './en';
-import de from './de';
+import de from './de/index';
 import fr from './fr';
 import es from './es';
 import ru from './ru';

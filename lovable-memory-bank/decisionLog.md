@@ -1,26 +1,6 @@
 
 # Decision Log
 
-### 🧪 Decision 023: Automated Testing Strategy for Vite/React/TS
-<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Tooling<br><b>Date:</b> 2025-05-08</div>
-
-- **Rationale:**
-  - Ensure code quality and prevent regressions as the project grows.
-  - Align testing tools with the Vite + React + TypeScript stack for fast, reliable feedback and modern syntax support.
-  - Enable automated CI to catch errors before merging changes.
-
-- **Decision:**
-  - Use **Vitest** as the primary test runner (native Vite support, fast, TypeScript-friendly).
-  - Use **@testing-library/react** for React component/unit/integration testing (best practice for user-centric UI tests).
-  - Add a **GitHub Actions** workflow to run all tests on every push and pull request.
-
-- **Action Items:**
-  1. Add `vitest`, `@testing-library/react`, and related dependencies to `devDependencies`.
-  2. Configure `vitest.config.ts` for the project (setup files, coverage, etc.).
-  3. Write initial unit and integration tests for core components and the recommendations system (see decisionLog and progress.md for coverage targets).
-  4. Create `.github/workflows/test.yml` to run tests automatically on push/PR.
-  5. Ensure test results are visible in PRs and failing tests block merges.
-
 ---
 
 ## 📝 How to Update This Decision Record
@@ -42,10 +22,11 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
     - [🌿 Decision 022: Personalized Health Recommendations System](#-decision-022-personalized-health-recommendations-system)
     - [👤 Decision 021: User Profile Management – Personal Health Information](#-decision-021-user-profile-management--personal-health-information)
     - [🔢 Decision 020: Input Validation – Support for International Decimal Formats](#-decision-020-input-validation--support-for-international-decimal-formats)
-    - [🟦 Decision 019: Auth – Optional Login & Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
+    - [🟦 Decision 019: Auth – Optional Login \& Health Record Storage](#-decision-019-auth--optional-login--health-record-storage)
     - [🌐 Decision 018: Added Asian Language Support (Russian, Chinese, Japanese)](#-decision-018-added-asian-language-support-russian-chinese-japanese)
     - [🔍 Decision 017: Optimize SEO with Open Graph Best Practices](#-decision-017-optimize-seo-with-open-graph-best-practices)
     - [♿ Decision 016: Adopt WCAG 2.1 as Accessibility Standard](#-decision-016-adopt-wcag-21-as-accessibility-standard)
@@ -76,6 +57,26 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
+### 🧪 Decision 023: Automated Testing Strategy for Vite/React/TS
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Tooling<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:**
+  - Ensure code quality and prevent regressions as the project grows.
+  - Align testing tools with the Vite + React + TypeScript stack for fast, reliable feedback and modern syntax support.
+  - Enable automated CI to catch errors before merging changes.
+
+- **Decision:**
+  - Use **Vitest** as the primary test runner (native Vite support, fast, TypeScript-friendly).
+  - Use **@testing-library/react** for React component/unit/integration testing (best practice for user-centric UI tests).
+  - Add a **GitHub Actions** workflow to run all tests on every push and pull request.
+
+- **Action Items:**
+  1. Add `vitest`, `@testing-library/react`, and related dependencies to `devDependencies`.
+  2. Configure `vitest.config.ts` for the project (setup files, coverage, etc.).
+  3. Write initial unit and integration tests for core components and the recommendations system (see decisionLog and progress.md for coverage targets).
+  4. Create `.github/workflows/test.yml` to run tests automatically on push/PR.
+  5. Ensure test results are visible in PRs and failing tests block merges.
+   
 ### 🌿 Decision 022: Personalized Health Recommendations System
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature<br><b>Date:</b> 2025-05-08</div>
 

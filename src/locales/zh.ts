@@ -1,3 +1,4 @@
+
 // Chinese (Mandarin) translations
 const zh = {
   // Header and navigation
@@ -299,7 +300,7 @@ const zh = {
   "longevity.mindBody.stressReduction.meditation": "定期进行正念冥想（每天15+分钟）在科学上已被证实与端粒保护和炎症标志物减少有关。2018年的一项荟萃分析显示皮质醇水平显著降低。",
   "longevity.mindBody.stressReduction.breathwork": "方框呼吸、4-7-8呼吸法和Wim Hof方法等技术能调节自主神经系统功能，减轻压力并提高生理韧性。仅5-10分钟的有意识呼吸练习就能改变神经系统状态。",
   "longevity.mindBody.stressReduction.yoga": "结合运动、呼吸工作和正念。研究表明，定期练习（每周2+次）可减少炎症标志物并提高抗压能力。特别有益的风格包括哈他瑜伽、阴瑜伽和恢复性瑜伽。",
-  "longevity.mindBody.stressReduction.nature": "即使在自然环境中待20-30分钟也能显著降低皮质醇水平。日本关于"森林浴"（Shinrin-yoku）的研究表明，自然杀伤细胞活性增加，这种效果可持续至暴露后30天。",
+  "longevity.mindBody.stressReduction.nature": "即使在自然环境中待20-30分钟也能显著降低皮质醇水平。日本关于\"森林浴\"（Shinrin-yoku）的研究表明，自然杀伤细胞活性增加，这种效果可持续至暴露后30天。",
   
   "longevity.mindBody.sleepOptimization.title": "2. 睡眠优化",
   "longevity.mindBody.sleepOptimization.intro": "睡眠质量直接影响每个衰老生物标志物：",
@@ -316,10 +317,10 @@ const zh = {
   "longevity.mindBody.social.title": "4. 社交联系与目的",
   "longevity.mindBody.social.intro": "常被忽视但至关重要的长寿因素：",
   "longevity.mindBody.social.community": "蓝区研究表明，定期社交互动和社区归属感是长寿的最强预测因素之一。定期安排有意义的社交联系。",
-  "longevity.mindBody.social.purpose": "日本的"生き甲斐"（生活目的）概念与更长寿命相关。纵向研究表明，有明确目标的人全因死亡率降低。",
+  "longevity.mindBody.social.purpose": "日本的\"生き甲斐\"（生活目的）概念与更长寿命相关。纵向研究表明，有明确目标的人全因死亡率降低。",
   "longevity.mindBody.social.gratitude": "定期感恩练习已被证明可以提高心率变异性，减少炎症，并增强心理健康——这些都是促进长寿的因素。",
   
-  "longevity.mindBody.conclusion": "这些身心实践代表了一些最强大、最具成本效益的可用干预措施，可延长寿命和健康寿命。随着时间的推移，即使只是一致地融入其中的一些实践，也能产生实质性的益处。",
+  "longevity.mindBody.conclusion": "这些身心实践代表了一些最强大、最具成本效益的可用干预措施，可延长寿命和健康寿命。随着时间的推移，即使只是一致地融入其中的一些实践，也能产生实质性的益处。"
 };
 
 export default zh;

@@ -1,3 +1,6 @@
+
+import React from 'react';
+
 /**
  * Accessibility Configuration
  * Following Web Content Accessibility Guidelines (WCAG) 2.1

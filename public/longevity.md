@@ -142,7 +142,7 @@ The average disparity between lifespan and healthspan is ~9 years, with individu
 
 To optimize both lifespan and healthspan, it’s not just about what you avoid, but also about the positive, evidence-based habits you build. Here are detailed, actionable examples based on leading molecular medicine and lifestyle research:
 
-### 1. Nutrition: Low-Carb Diets & the 80% Rule
+### 1. Nutrition 
 
 **Low-Carb/Ketogenic Diet**
 - **What it is:** A diet where carbohydrates are restricted (often below 50g/day), protein is moderate, and fat is the main energy source.
@@ -150,9 +150,13 @@ To optimize both lifespan and healthspan, it’s not just about what you avoid, 
 - **How to implement:** Start with 20g carbs/day, then adjust upwards in 5-10g increments weekly to find your personal carb tolerance. Focus on non-starchy vegetables, meats, fish, eggs, nuts, seeds, and healthy fats (butter, olive oil, coconut oil). Avoid sugars, grains, starchy foods, and most fruits (berries in moderation are usually fine). Monitor with blood glucose and ketone testing if needed for precision[1].
 
 **Eat Until 80% Full ("Hara Hachi Bu")**
-- **What it is:** A principle from Okinawan longevity culture—stop eating when you feel about 80% full.
-- **Benefits:** Promotes calorie moderation naturally, prevents overeating, supports healthy weight and metabolic function.
-- **How to implement:** Eat slowly and mindfully, pausing before feeling completely full. Use smaller plates, and focus on satiety cues rather than finishing everything on the plate.
+- **What it is:** The Japanese practice of eating until you are just 80% full, rather than stuffed.
+- **Benefits:** Reduces total calorie intake, supports weight management, and may improve longevity by reducing metabolic stress and oxidative damage.
+- **How to implement:** Eat slowly, pay attention to satiety cues, and stop eating when you feel comfortably satisfied, not full. Use smaller plates and avoid distractions during meals.
+
+**Microbiome and Fiber**
+- **High-fiber, plant-rich diets** (whole vegetables, legumes, resistant starches) foster a healthy gut microbiome, which is crucial for immune function, inflammation control, and metabolic health[2].
+- **Example:** Add a serving of beans, lentils, or leafy greens to every meal; avoid ultra-processed foods.
 
 ### 2. Exercise: What Kind and How Much?
 
@@ -189,11 +193,6 @@ To optimize both lifespan and healthspan, it’s not just about what you avoid, 
 **Other Stress Management**
 - **Examples:** Nature walks, journaling, gratitude practice, social connection.
 - **Why:** Chronic stress accelerates aging and disease risk; managing it is critical for both lifespan and healthspan.
-
-### 4. Microbiome and Fiber
-
-- **High-fiber, plant-rich diets** (whole vegetables, legumes, resistant starches) foster a healthy gut microbiome, which is crucial for immune function, inflammation control, and metabolic health[2].
-- **Example:** Add a serving of beans, lentils, or leafy greens to every meal; avoid ultra-processed foods.
 
 ### Summary Table: Practical Longevity & Healthspan Strategies
 

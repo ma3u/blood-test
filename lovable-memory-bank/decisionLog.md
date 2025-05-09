@@ -25,7 +25,7 @@
 
 ## 📝 How to Update This Decision Record
 
-1. 🆕 **Add new decisions at the top** of the file.
+1. 🆕 **Add new decisions after the TOC** 
 2. 🔄 **Sort all decisions** in the content and the TOC by date (latest first)—the newest decision is always at the top.
 3. 🗂️ **Update the Table of Contents (TOC)** so it matches the order and headlines of decisions.
 4. ✅ **Number each decision sequentially** (e.g., Decision 017, 016, ... 001).

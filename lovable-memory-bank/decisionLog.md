@@ -22,6 +22,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page](#-decision-025-comprehensive-mind-body-section-for-longevity-page)
     - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
     - [🌿 Decision 022: Personalized Health Recommendations System](#-decision-022-personalized-health-recommendations-system)
@@ -52,12 +53,45 @@
 
 ### 📋 Outstanding Tasks
 
-- Organize translations into more logical groupings by feature
-- Ensure all components use consistent language translation patterns
+- Create automated tests for core application features
+- Improve application responsiveness on various devices
+- Implement personalized health recommendations based on blood test results
+- Enhance data visualization for blood test trends
+- Add more comprehensive educational content
 - Apply the new accessibility framework to all existing components
 - Add automated accessibility testing to the development workflow
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
+
+---
+
+### 📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page
+<div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature / Documentation<br><b>Date:</b> 2025-05-09</div>
+
+- **Rationale:**
+  - Implement a detailed mind-body practices section based on the source content in longevity.md
+  - Provide scientific evidence-based information on stress management techniques and their impact on longevity
+  - Make the information accessible and structured for optimal user comprehension
+  - Ensure the content is properly internationalized for all supported languages
+
+- **Implementation:**
+  - Created a dedicated `MindBodySection.tsx` component with detailed information on:
+    - Stress reduction practices (meditation, breathwork, yoga, nature exposure)
+    - Sleep optimization techniques (circadian alignment, environment optimization, sleep tracking)
+    - Hormetic stressors focusing on cold exposure and its benefits
+    - Social connection and purpose as key longevity factors
+  - Updated the Longevity page to include the new MindBodySection component
+  - Added navigation links to access the mind-body section directly
+  - Implemented comprehensive translation keys in the English locale file
+  - Structured the content with clear headings, subheadings, and bullet points for readability
+  - Included scientific backing and practical implementation guidance for each practice
+  - Connected the mind-body content with the overall theme of evidence-based longevity
+
+- **Impact:**
+  - Provides users with actionable mind-body practices that complement the physical health aspects
+  - Enhances the educational value of the Longevity page with scientifically-supported information
+  - Creates a more holistic view of health by integrating mental, social, and physical aspects of longevity
+  - Maintains consistent, high-quality formatting and organization across all longevity content
 
 ---
 

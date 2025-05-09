@@ -34,8 +34,28 @@ const PracticalExamplesSection: React.FC = () => {
 
       <h4 className="text-lg font-semibold text-blue-700 mt-4 mb-2">3. Mind-Body: Breathing, Meditation, and Stress Management</h4>
       <ul className="list-disc pl-8 space-y-2 mb-4">
-        <li><strong>Breathing Techniques:</strong> Diaphragmatic breathing, box breathing, or slow nasal breathing reduce stress hormones, lower blood pressure, and improve heart rate variability.</li>
+        <li><strong>Advanced Breathing Techniques:</strong>
+          <ul className="list-disc pl-8 mt-2 space-y-1">
+            <li><strong>Box Breathing:</strong> Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. This Navy SEAL technique quickly rebalances the nervous system.</li>
+            <li><strong>4-7-8 Breathing:</strong> Inhale for 4 counts, hold for 7, exhale for 8. This pattern activates the parasympathetic nervous system and is particularly effective before sleep.</li>
+            <li><strong>Wim Hof Method:</strong> Combines deep breathing with cold exposure to boost immunity, reduce inflammation, and improve stress resilience.</li>
+          </ul>
+        </li>
+        <li><strong>Cold Exposure Therapy:</strong>
+          <ul className="list-disc pl-8 mt-2 space-y-1">
+            <li><strong>Cold Showers:</strong> Starting with just 30 seconds at the end of a regular shower can activate brown adipose tissue, improve circulation, boost mood via norepinephrine release, and strengthen immune function.</li>
+            <li><strong>Gradual Progression:</strong> Start with 15-30 seconds of cold water at the end of showers, then gradually increase duration. Aim for 2-3 minutes of cold exposure 3-4 times per week.</li>
+            <li><strong>Benefits:</strong> Research shows cold exposure activates longevity pathways, increases mitochondrial efficiency, and improves stress resilience.</li>
+          </ul>
+        </li>
         <li><strong>Meditation and Mindfulness:</strong> Regular practice decreases chronic stress, improves emotional regulation, and is linked to longer telomeres (a marker of biological aging). Start with 5-10 minutes daily.</li>
+        <li><strong>Meditational Running:</strong>
+          <ul className="list-disc pl-8 mt-2 space-y-1">
+            <li><strong>Mindful Movement:</strong> Combining running with mindfulness by focusing on breath, footfall rhythm, and bodily sensations rather than distractions.</li>
+            <li><strong>Benefits:</strong> Reduces exercise-induced stress, improves running economy, and creates a sense of flow that may enhance cognitive function alongside physical benefits.</li>
+            <li><strong>Practice:</strong> Start with shorter, slower runs (20 minutes) where you focus entirely on breath and movement, gradually building to longer sessions with maintained awareness.</li>
+          </ul>
+        </li>
         <li><strong>Other Stress Management:</strong> Nature walks, journaling, gratitude practice, social connection help manage chronic stress, which accelerates aging and disease risk.</li>
       </ul>
     </div>

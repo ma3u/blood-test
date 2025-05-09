@@ -20,8 +20,8 @@ import Longevity from "./pages/Longevity";
 
 function App() {
   return (
-    <QueryProvider>
-      <LanguageProvider>
+    <LanguageProvider>
+      <QueryProvider>
         <UserProfileProvider>
           <ThemeProvider defaultTheme="light" storageKey="blood-test-oracle-theme">
             <Router>
@@ -42,8 +42,8 @@ function App() {
             </Router>
           </ThemeProvider>
         </UserProfileProvider>
-      </LanguageProvider>
-    </QueryProvider>
+      </QueryProvider>
+    </LanguageProvider>
   );
 }
 

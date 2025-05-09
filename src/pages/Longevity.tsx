@@ -9,28 +9,16 @@ import HabitsSection from "@/components/longevity/HabitsSection";
 import LongevityFactorsSection from "@/components/longevity/LongevityFactorsSection";
 import ReferencesSection from "@/components/longevity/ReferencesSection";
 import MindBodySection from "@/components/longevity/MindBodySection";
+import PracticalExamplesSection from "@/components/longevity/PracticalExamplesSection";
 
 const Longevity = () => {
   const { t } = useLanguage();
 
-  // Translations for page sections
-  const translations = {
-    pageTitle: t("longevity.title") || "My Personal Journey to Longevity and Healthspan",
-    pageDescription: t("longevity.description") || "Insights on longevity, healthspan, and evidence-based lifestyle practices for optimal health and well-being.",
-    personalJourney: t("longevity.sections.journey") || "Personal Journey",
-    proactiveDiagnostics: t("longevity.sections.diagnostics") || "Proactive Diagnostics",
-    habits: t("longevity.sections.habits") || "Habits",
-    mindBody: t("longevity.sections.mindBody") || "Mind-Body Practices",
-    longevityFactors: t("longevity.sections.factors") || "Longevity Factors",
-    references: t("references") || "References",
-    backToTop: t("longevity.back.to.top") || "Back to top"
-  };
-
   return (
     <div className="min-h-screen bg-[#FAF6E2]">
       <SEOHead 
-        title={translations.pageTitle}
-        description={translations.pageDescription}
+        title={t("longevity.title")}
+        description={t("longevity.description")}
       />
 
       <div className="container mx-auto py-8 px-4">
@@ -44,10 +32,10 @@ const Longevity = () => {
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-              {translations.pageTitle}
+              {t("longevity.title")}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              {translations.pageDescription}
+              {t("longevity.description")}
             </p>
           </div>
         </div>
@@ -55,12 +43,13 @@ const Longevity = () => {
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
           <nav className="mb-8" aria-label="Page sections">
             <ul className="flex flex-wrap gap-4 text-sm">
-              <li><a href="#personal-journey" className="text-blue-600 hover:underline">{translations.personalJourney}</a></li>
-              <li><a href="#diagnostics" className="text-blue-600 hover:underline">{translations.proactiveDiagnostics}</a></li>
-              <li><a href="#habits" className="text-blue-600 hover:underline">{translations.habits}</a></li>
-              <li><a href="#mind-body" className="text-blue-600 hover:underline">{translations.mindBody}</a></li>
-              <li><a href="#longevity-factors" className="text-blue-600 hover:underline">{translations.longevityFactors}</a></li>
-              <li><a href="#references" className="text-blue-600 hover:underline">{translations.references}</a></li>
+              <li><a href="#personal-journey" className="text-blue-600 hover:underline">{t("longevity.sections.journey")}</a></li>
+              <li><a href="#diagnostics" className="text-blue-600 hover:underline">{t("longevity.sections.diagnostics")}</a></li>
+              <li><a href="#habits" className="text-blue-600 hover:underline">{t("longevity.sections.habits")}</a></li>
+              <li><a href="#mind-body" className="text-blue-600 hover:underline">{t("longevity.sections.mindBody")}</a></li>
+              <li><a href="#longevity-factors" className="text-blue-600 hover:underline">{t("longevity.sections.factors")}</a></li>
+              <li><a href="#practical-examples" className="text-blue-600 hover:underline">{t("longevity.sections.practical")}</a></li>
+              <li><a href="#references" className="text-blue-600 hover:underline">{t("references")}</a></li>
             </ul>
           </nav>
           
@@ -94,6 +83,12 @@ const Longevity = () => {
           
           <Separator className="my-8" />
           
+          <section id="practical-examples">
+            <PracticalExamplesSection />
+          </section>
+          
+          <Separator className="my-8" />
+          
           <ReferencesSection />
 
           <div className="mt-8 text-center">
@@ -102,7 +97,7 @@ const Longevity = () => {
               className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
               aria-label="Return to the top of the page"
             >
-              {translations.backToTop}
+              {t("longevity.back.to.top")}
             </a>
           </div>
         </div>

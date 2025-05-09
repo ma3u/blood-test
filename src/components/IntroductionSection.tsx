@@ -3,6 +3,7 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 // This component is no longer rendered directly, but its content is used in the dialog
 const IntroductionSection: React.FC = () => {
@@ -15,7 +16,12 @@ const IntroductionSection: React.FC = () => {
           <h2 className="text-2xl font-bold text-blue-800 mb-2">{t("intro.title")}</h2>
           <h3 className="text-xl text-blue-700 mb-4">{t("intro.subtitle")}</h3>
           
-          <p className="text-gray-700 mb-6">{t("intro.welcome")}</p>
+          <p className="text-gray-700 mb-6">
+            {t("intro.welcome")} {" "}
+            <Link to="/longevity" className="text-blue-600 hover:text-blue-800 underline font-medium">
+              Learn more about longevity and healthspan
+            </Link>.
+          </p>
           
           <h4 className="text-xl font-semibold text-blue-700 mb-3">{t("intro.why.title")}</h4>
           <p className="text-gray-700 mb-4">{t("intro.why.content")}</p>

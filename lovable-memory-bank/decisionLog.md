@@ -20,7 +20,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
-  - [📖 Decision 026: Simplified Longevity Content to One Static Page Per Language](#-decision-026-simplified-longevity-content-to-one-static-page-per-language)
+    - [📖 Decision 026: Simplified Longevity Content to One Static Page Per Language](#-decision-026-simplified-longevity-content-to-one-static-page-per-language)
     - [📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page](#-decision-025-comprehensive-mind-body-section-for-longevity-page)
     - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
@@ -62,7 +62,7 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
-## 📖 Decision 026: Simplified Longevity Content to One Static Page Per Language
+### 📖 Decision 026: Simplified Longevity Content to One Static Page Per Language
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-09</div>
 
 - **Rationale:**

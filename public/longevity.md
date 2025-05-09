@@ -1,5 +1,14 @@
 # My Personal Journey to Longevity and Healthspan
 
+## Table of Contents
+
+1. [My Personal Journey to Longevity and Healthspan](#my-personal-journey-to-longevity-and-healthspan)
+2. [Proactive Diagnostics and Self-Monitoring: My Holistic Approach](#proactive-diagnostics-and-self-monitoring-my-holistic-approach)
+3. [Key Factors Impacting Longevity & Healthspan (Evidence-based)](#key-factors-impacting-longevity--healthspan-evidence-based)
+4. [Taking Action: Building My New Habits](#taking-action-building-my-new-habits)
+5. [Practical Examples for Longevity and Healthspan: Diet, Exercise, and Mind-Body Practices](#practical-examples-for-longevity-and-healthspan-diet-exercise-and-mind-body-practices)
+6. [References](#references)
+
 Growing up, I watched my parents struggle with serious health issues—problems that were largely the result of unhealthy habits: smoking, poor diet, lack of physical activity, and chronic stress. Their experiences became a powerful warning for me. I saw firsthand how smoking, physical inactivity, and poor nutrition can lead to years lost from both lifespan and healthspan, and I realized that I didn’t want to follow the same path. Avoiding smoking became a conscious priority in my own lifestyle changes.
 
 A few years ago, I faced my own health wake-up call. My cholesterol values were high, and I was teetering on the edge of being overweight. The numbers were clear: if I didn’t change, I could be heading toward the same fate as my parents. But research shows that genetics account for less than 2% of mortality risk, while about 17% is shaped by modifiable lifestyle and environmental factors. That meant my future was largely in my own hands[4].

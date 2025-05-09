@@ -236,7 +236,10 @@ const de = {
   "recommendations.no.nutrition": "Keine spezifischen Ernährungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
   "recommendations.no.supplements": "Keine spezifischen Nahrungsergänzungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
   "recommendations.no.exercise": "Keine spezifischen Bewegungsempfehlungen basierend auf Ihren aktuellen Ergebnissen",
-  "recommendations.no.stress": "Keine spezifischen Empfehlungen zum Stressabbau basierend auf Ihren aktuellen Ergebnissen"
+  "recommendations.no.stress": "Keine spezifischen Empfehlungen zum Stressabbau basierend auf Ihren aktuellen Ergebnissen",
+  
+  // References section
+  "references": "Referenzen"
 };
 
 export default de;

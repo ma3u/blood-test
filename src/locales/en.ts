@@ -348,7 +348,10 @@ const en = {
   "recommendations.no.nutrition": "No specific nutrition recommendations based on your current results",
   "recommendations.no.supplements": "No specific supplement recommendations based on your current results",
   "recommendations.no.exercise": "No specific exercise recommendations based on your current results",
-  "recommendations.no.stress": "No specific stress management recommendations based on your current results"
+  "recommendations.no.stress": "No specific stress management recommendations based on your current results",
+  
+  // References section
+  "references": "References",
 };
 
 export default en;

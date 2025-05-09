@@ -32,20 +32,22 @@ const Longevity = () => {
       />
 
       <div className="container mx-auto py-8 px-4">
-        <div className="flex flex-col items-center mb-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
+        <div className="flex flex-col md:flex-row items-center justify-center mb-8 gap-6">
+          <div className="flex-shrink-0">
             <img 
               src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
               alt="Blood Test Oracle Logo" 
-              className="w-16 h-16 md:w-20 md:h-20 object-contain"
+              className="w-32 h-32 md:w-40 md:h-40 object-contain"
             />
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+          </div>
+          <div className="text-center md:text-left md:ml-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
               {translations.pageTitle}
             </h1>
+            <p className="text-xl text-gray-600 max-w-3xl">
+              {translations.pageDescription}
+            </p>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl text-center">
-            {translations.pageDescription}
-          </p>
         </div>
 
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">

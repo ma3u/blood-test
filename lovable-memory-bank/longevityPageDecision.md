@@ -22,14 +22,16 @@ We have decided to generate the longevity page content from the `longevity.md` f
 - Added section IDs for direct linking and improved accessibility
 - Preserved all references from the markdown file, including those by James Nestor, Wim Hof, and Ulrich Strunz
 - Added proper target and rel attributes to external links for security and accessibility
-- Included the Blood Test Oracle logo alongside the main heading
+- Included a larger Blood Test Oracle logo alongside the main heading
 - Made tables responsive with overflow handling for mobile devices
 - Added a "Back to top" link for better navigation on long pages
 - Implemented translation support for all languages in the application
+- Improved visual layout with logo and heading in a side-by-side arrangement
 
 ## Future Considerations
 - Consider implementing a full markdown parser to automatically generate HTML content from the markdown file
 - Set up a content management system to allow non-technical users to update the markdown content
 - Implement a link checker to periodically verify that external references remain valid
 - Add language-specific SEO metadata for improved search engine visibility
+- Improve the visual layout and design for better readability across devices
 

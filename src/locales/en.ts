@@ -1,3 +1,4 @@
+
 const en = {
   // Header and navigation
   "sign.in": "Sign In",
@@ -11,18 +12,6 @@ const en = {
   
   // Dialog
   "dialog.title": "Welcome to Blood Test Oracle",
-  
-  // References section
-  "references": "References",
-  
-  // Longevity page translations
-  "longevity.title": "My Personal Journey to Longevity and Healthspan",
-  "longevity.description": "Insights on longevity, healthspan, and evidence-based lifestyle practices for optimal health and well-being.",
-  "longevity.sections.journey": "Personal Journey",
-  "longevity.sections.diagnostics": "Proactive Diagnostics",
-  "longevity.sections.habits": "Habits",
-  "longevity.sections.factors": "Longevity Factors",
-  "longevity.back.to.top": "Back to top",
   
   // Welcome content
   "welcome.intro": "Personalized Analysis of Your Blood Markers",
@@ -161,8 +150,6 @@ const en = {
   "app.subtitle": "Medical Analysis Tool",
   "page.title": "Blood Test Analysis",
   "page.description": "Enter your blood test values or upload test results for instant analysis and interpretation",
-  "language.toggle": "EN",
-  "footer.text": "Blood Test Oracle - A medical analysis tool for educational purposes",
   
   // Blood test form
   "blood.test.title": "Blood Test Values",
@@ -255,7 +242,7 @@ const en = {
   
   // Test date display
   "test.date.info": "Your Blood Test Date",
-
+  
   // Date extraction
   "date.extracted": "Dates found in your document",
   
@@ -366,6 +353,18 @@ const en = {
   
   // References section
   "references": "References",
+  
+  // Longevity page translations
+  "longevity.title": "My Personal Journey to Longevity and Healthspan",
+  "longevity.description": "Insights on longevity, healthspan, and evidence-based lifestyle practices for optimal health and well-being.",
+  "longevity.sections.journey": "Personal Journey",
+  "longevity.sections.diagnostics": "Proactive Diagnostics",
+  "longevity.sections.habits": "Habits",
+  "longevity.sections.factors": "Longevity Factors",
+  "longevity.back.to.top": "Back to top",
+  
+  // Footer
+  "footer.text": "Blood Test Oracle - A medical analysis tool for educational purposes",
 };
 
 export default en;

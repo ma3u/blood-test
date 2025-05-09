@@ -1,10 +1,10 @@
+
 // Japanese translations
 const ja = {
   // Header and navigation
   "sign.in": "ログイン",
   "sign.out": "ログアウト",
   "dashboard": "ダッシュボード",
-  "language.toggle": "日本語",
   
   // Main page
   "learn.more": "詳しくはこちら",
@@ -274,7 +274,6 @@ const ja = {
   "intro.feedback.point3": "このウェブサイトと今後のAIエージェントを、より役立ち、明確で、あなたにとってやる気を起こさせるものにするにはどうすればよいですか？",
   "intro.feedback.conclusion": "あなたの考えやアイデアを共有してください。あなたのフィードバックは、このサービスがどのように成長し、改善されるかを直接的に形作ります。",
   "intro.feedback.question": "あなたの健康の旅で、AIに最初に手伝ってほしい特定の質問や課題はありますか？教えてください！",
-  "language.toggle": "日本語",
   
   // References section
   "references": "参考文献",
@@ -287,6 +286,9 @@ const ja = {
   "longevity.sections.habits": "習慣",
   "longevity.sections.factors": "長寿要因",
   "longevity.back.to.top": "トップに戻る",
+  
+  // Language toggle
+  "language.toggle": "日本語",
 };
 
 export default ja;

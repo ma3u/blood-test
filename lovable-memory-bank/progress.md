@@ -6,8 +6,10 @@
 ### Completed Tasks
 - Fixed runtime error with LanguageProvider
 - Added missing translation keys for references in language files
+- Removed duplicate properties in language files (en.ts and ja.ts) causing build errors
 - Updated the ReferencesSection to include all external references from the markdown file
 - Enhanced the Longevity page with proper navigation and accessibility features
+- Made the logo bigger and repositioned heading elements for better visual hierarchy
 - Added the Blood Test Oracle logo to the Longevity page header
 - Created a decision record for generating HTML content from markdown
 - Made external links more secure and accessible with proper attributes

@@ -56,7 +56,7 @@ const ReferencesSection: React.FC = () => {
     {
       title: "Der Schlüssel zur Gesundheit: Erfahrungen und Überzeugungen",
       authors: "Ulrich Strunz",
-      url: "https://strunz.com/buecher/",
+      url: "https://www.penguin.de/autoren/ulrich-strunz/108225",
     },
   ];
 
@@ -72,6 +72,7 @@ const ReferencesSection: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-start hover:text-blue-600 transition-colors group"
+              aria-label={`${ref.title} by ${ref.authors} (opens in new tab)`}
             >
               <div>
                 <div className="font-medium">{ref.title}</div>
@@ -80,6 +81,7 @@ const ReferencesSection: React.FC = () => {
               <ExternalLink 
                 size={16} 
                 className="ml-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" 
+                aria-hidden="true"
               />
             </a>
           </li>

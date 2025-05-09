@@ -14,6 +14,7 @@
 - Created a decision record for generating HTML content from markdown
 - Made external links more secure and accessible with proper attributes
 - Added responsive design for tables on mobile devices
+- Fixed broken link for Ulrich Strunz in the References section
 
 ### In Progress
 - Implementing full translation support for the Longevity page in all supported languages

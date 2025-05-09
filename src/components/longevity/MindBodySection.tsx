@@ -8,7 +8,7 @@ const MindBodySection: React.FC = () => {
   return (
     <div>
       <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">
-        {t("longevity.mindBody.title") || "Mind-Body Practices for Longevity"}
+        {t("longevity.sections.mindBody") || "Mind-Body Practices for Longevity"}
       </h3>
       <p className="mb-4">
         {t("longevity.mindBody.intro") || 

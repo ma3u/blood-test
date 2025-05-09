@@ -18,6 +18,11 @@ const locales = {
 };
 
 export type SupportedLanguage = keyof typeof locales;
-export type TranslationKey = keyof typeof en;
+export type TranslationKey = keyof typeof en | 
+  `longevity.mindBody.${string}` | 
+  `longevity.mindBody.stressReduction.${string}` |
+  `longevity.mindBody.sleepOptimization.${string}` |
+  `longevity.mindBody.coldExposure.${string}` |
+  `longevity.mindBody.social.${string}`;
 
 export default locales;

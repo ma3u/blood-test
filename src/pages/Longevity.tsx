@@ -9,7 +9,6 @@ import HabitsSection from "@/components/longevity/HabitsSection";
 import LongevityFactorsSection from "@/components/longevity/LongevityFactorsSection";
 import ReferencesSection from "@/components/longevity/ReferencesSection";
 import MindBodySection from "@/components/longevity/MindBodySection";
-import PracticalExamplesSection from "@/components/longevity/PracticalExamplesSection";
 
 const Longevity = () => {
   const { t } = useLanguage();
@@ -21,8 +20,7 @@ const Longevity = () => {
     personalJourney: t("longevity.sections.journey") || "Personal Journey",
     proactiveDiagnostics: t("longevity.sections.diagnostics") || "Proactive Diagnostics",
     habits: t("longevity.sections.habits") || "Habits",
-    mindBody: t("longevity.sections.mindBody") || "Mind-Body",
-    practicalExamples: t("longevity.sections.practicalExamples") || "Practical Examples",
+    mindBody: t("longevity.sections.mindBody") || "Mind-Body Practices",
     longevityFactors: t("longevity.sections.factors") || "Longevity Factors",
     references: t("references") || "References",
     backToTop: t("longevity.back.to.top") || "Back to top"
@@ -61,7 +59,6 @@ const Longevity = () => {
               <li><a href="#diagnostics" className="text-blue-600 hover:underline">{translations.proactiveDiagnostics}</a></li>
               <li><a href="#habits" className="text-blue-600 hover:underline">{translations.habits}</a></li>
               <li><a href="#mind-body" className="text-blue-600 hover:underline">{translations.mindBody}</a></li>
-              <li><a href="#practical-examples" className="text-blue-600 hover:underline">{translations.practicalExamples}</a></li>
               <li><a href="#longevity-factors" className="text-blue-600 hover:underline">{translations.longevityFactors}</a></li>
               <li><a href="#references" className="text-blue-600 hover:underline">{translations.references}</a></li>
             </ul>
@@ -87,12 +84,6 @@ const Longevity = () => {
           
           <section id="mind-body">
             <MindBodySection />
-          </section>
-          
-          <Separator className="my-8" />
-          
-          <section id="practical-examples">
-            <PracticalExamplesSection />
           </section>
           
           <Separator className="my-8" />

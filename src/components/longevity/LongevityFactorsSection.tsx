@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import PositiveFactorsTable from "./PositiveFactorsTable";
 import NegativeFactorsTable from "./NegativeFactorsTable";
 import CombinedEffectsTable from "./CombinedEffectsTable";
-import PracticalExamplesSection from "./PracticalExamplesSection";
 
 const LongevityFactorsSection: React.FC = () => {
   const { t } = useLanguage();
@@ -31,11 +30,6 @@ const LongevityFactorsSection: React.FC = () => {
       <div className="overflow-x-auto">
         <CombinedEffectsTable />
       </div>
-
-      <Separator className="my-6" />
-      
-      <h3 id="practical-examples" className="text-xl font-semibold text-blue-700 mt-6 mb-3">Practical Examples for Longevity and Healthspan</h3>
-      <PracticalExamplesSection />
     </section>
   );
 };

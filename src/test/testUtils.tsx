@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { UserProfileProvider } from '@/context/UserProfileContext';
 import { QueryProvider } from '@/context/QueryProvider';
+import { expect } from 'vitest';
 
 // Wrapper with all providers for testing components
 export function renderWithProviders(

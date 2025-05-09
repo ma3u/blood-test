@@ -1,10 +1,9 @@
 
 import '@testing-library/jest-dom';
-
-// Extend expect with custom matchers
-import { expect } from 'vitest';
+import { vi, expect } from 'vitest';
 import * as matchers from '@testing-library/jest-dom/matchers';
 
+// Extend expect with custom matchers
 expect.extend(matchers);
 
 // Mock window.matchMedia which is not available in jsdom
@@ -23,14 +22,22 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 // Mock IntersectionObserver which is not available in jsdom
-global.IntersectionObserver = class IntersectionObserver {
-  constructor(callback: IntersectionObserverCallback) {
-    this.callback = callback;
-  }
-  callback: IntersectionObserverCallback;
+class MockIntersectionObserver implements IntersectionObserver {
+  readonly root: Element | null = null;
+  readonly rootMargin: string = '';
+  readonly thresholds: ReadonlyArray<number> = [];
+  
+  constructor(private callback: IntersectionObserverCallback) {}
+  
   observe = vi.fn();
   unobserve = vi.fn();
   disconnect = vi.fn();
-};
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+}
+
+// Replace the global IntersectionObserver
+global.IntersectionObserver = MockIntersectionObserver as any;
 
 // Add any other global mocks that might be needed

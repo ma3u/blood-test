@@ -1,3 +1,4 @@
+
 const es = {
   "app.title": "Blood Test Oracle",
   "app.subtitle": "Análisis de Sangre",
@@ -145,8 +146,41 @@ const es = {
   "longevity.sections.journey": "Viaje Personal",
   "longevity.sections.diagnostics": "Diagnósticos Proactivos",
   "longevity.sections.habits": "Hábitos",
+  "longevity.sections.mindBody": "Prácticas Mente-Cuerpo",
   "longevity.sections.factors": "Factores de Longevidad",
+  "longevity.sections.practical": "Ejemplos Prácticos",
   "longevity.back.to.top": "Volver arriba",
+  
+  // MindBody section translations
+  "longevity.mindBody.title": "Prácticas Mente-Cuerpo para la Longevidad",
+  "longevity.mindBody.introduction": "La conexión entre la mente y el cuerpo es cada vez más reconocida como crucial para la salud y la longevidad. La investigación moderna confirma lo que las tradiciones antiguas han enseñado durante milenios: las prácticas mente-cuerpo influyen significativamente en los procesos biológicos del envejecimiento.",
+  
+  "longevity.mindBody.stressReduction.title": "1. Prácticas de Reducción del Estrés",
+  "longevity.mindBody.stressReduction.intro": "El estrés psicológico crónico acelera el envejecimiento celular y debilita la inmunidad:",
+  "longevity.mindBody.stressReduction.meditation": "La meditación de atención plena regular (15+ minutos al día) se ha relacionado científicamente con la preservación de los telómeros y la reducción de marcadores inflamatorios. Un meta-análisis de 2018 mostró una reducción significativa en los niveles de cortisol.",
+  "longevity.mindBody.stressReduction.breathwork": "Técnicas como la respiración cuadrada, respiración 4-7-8 y el método Wim Hof regulan la función del sistema nervioso autónomo, reducen el estrés y mejoran la resiliencia fisiológica. Solo 5-10 minutos de ejercicios de respiración consciente pueden cambiar el estado del sistema nervioso.",
+  "longevity.mindBody.stressReduction.yoga": "Combina movimiento, trabajo respiratorio y atención plena. La investigación muestra que la práctica regular (2+ veces por semana) reduce los marcadores inflamatorios y mejora la resiliencia al estrés. Los estilos particularmente beneficiosos incluyen Hatha, Yin y Yoga Restaurativo.",
+  "longevity.mindBody.stressReduction.nature": "Pasar incluso 20-30 minutos en entornos naturales reduce significativamente los niveles de cortisol. Estudios japoneses sobre 'baños de bosque' (Shinrin-yoku) muestran una mayor actividad de células asesinas naturales que persiste hasta 30 días después de la exposición.",
+  
+  "longevity.mindBody.sleepOptimization.title": "2. Optimización del Sueño",
+  "longevity.mindBody.sleepOptimization.intro": "La calidad del sueño impacta directamente en cada biomarcador del envejecimiento:",
+  "longevity.mindBody.sleepOptimization.circadian": "Horarios consistentes de sueño/vigilia, incluso los fines de semana, optimizan la producción hormonal. La exposición a la luz del sol por la mañana (dentro de los 30-60 minutos después de despertar) ayuda a regular la producción de melatonina.",
+  "longevity.mindBody.sleepOptimization.environment": "Temperaturas frescas (18-20°C), oscuridad completa y exposición reducida a EMF crean condiciones óptimas para dormir. Use bloqueadores de luz azul después de la puesta del sol.",
+  "longevity.mindBody.sleepOptimization.tracking": "El uso de Oura Ring o dispositivos similares para monitorear el sueño profundo, sueño REM y VFC durante el sueño proporciona datos objetivos para la optimización. Apunte a 7-9 horas con 1.5-2 horas de sueño profundo.",
+  
+  "longevity.mindBody.coldExposure.title": "3. Estresores Horméticos: Exposición al Frío",
+  "longevity.mindBody.coldExposure.intro": "La hormesis se refiere a adaptaciones beneficiosas que ocurren cuando el cuerpo está expuesto a estresores leves:",
+  "longevity.mindBody.coldExposure.benefits": "La exposición al frío activa el tejido adiposo marrón, aumenta la adiponectina, mejora la sensibilidad a la insulina y desencadena la liberación de noradrenalina, mejorando el estado de ánimo y reduciendo la inflamación.",
+  "longevity.mindBody.coldExposure.practice": "Comience con duchas frías de 30 segundos y aumente gradualmente a 2-3 minutos, 3-4 veces por semana. Los practicantes más avanzados pueden explorar baños de hielo (5-10 minutos a 10-15°C).",
+  "longevity.mindBody.coldExposure.research": "La exposición regular al frío muestra resultados prometedores para aumentar el metabolismo, reducir la inflamación y activar vías de señalización celular que promueven la longevidad.",
+  
+  "longevity.mindBody.social.title": "4. Conexión Social y Propósito",
+  "longevity.mindBody.social.intro": "A menudo pasados por alto pero cruciales factores de longevidad:",
+  "longevity.mindBody.social.community": "La investigación de las Zonas Azules muestra que la interacción social regular y la pertenencia a una comunidad están entre los predictores más fuertes de longevidad. Programe conexiones sociales significativas regularmente.",
+  "longevity.mindBody.social.purpose": "El concepto japonés de 'ikigai' (razón de ser) se correlaciona con una vida más larga. Las personas con un propósito claro muestran una reducción de la mortalidad por todas las causas en estudios longitudinales.",
+  "longevity.mindBody.social.gratitude": "La práctica regular de gratitud ha demostrado mejorar la variabilidad de la frecuencia cardíaca, reducir la inflamación y fortalecer el bienestar psicológico, todos factores que contribuyen a la longevidad.",
+  
+  "longevity.mindBody.conclusion": "Estas prácticas mente-cuerpo representan algunas de las intervenciones más poderosas y rentables disponibles para extender la duración de la vida y la salud. Incorporar consistentemente incluso algunas de estas prácticas puede producir beneficios sustanciales con el tiempo.",
   
   // Impressum translations
   "impressum.title": "Aviso Legal",

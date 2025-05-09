@@ -1,6 +1,6 @@
 
 import { describe, it, expect, vi } from 'vitest';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithProviders } from '@/test/testUtils';
 import Header from '@/components/layout/Header';
 
@@ -16,9 +16,6 @@ describe('Header Component', () => {
     
     // Check profile link is present
     expect(screen.getByText(/profile/i)).toBeInTheDocument();
-    
-    // Check theme toggle is present
-    expect(screen.getByRole('button', { name: /Toggle theme/i })).toBeInTheDocument();
   });
 
   it('navigates to profile page when profile link is clicked', () => {
@@ -26,16 +23,6 @@ describe('Header Component', () => {
     
     const profileLink = screen.getByText(/profile/i).closest('a');
     expect(profileLink).toHaveAttribute('href', '/profile');
-  });
-
-  it('toggles theme when theme button is clicked', () => {
-    const { container } = renderWithProviders(<Header />);
-    
-    const themeButton = screen.getByRole('button', { name: /Toggle theme/i });
-    fireEvent.click(themeButton);
-    
-    // Check for theme change (note: actual theme state would be in localStorage)
-    expect(themeButton).toBeInTheDocument();
   });
 
   it('meets basic accessibility requirements', () => {

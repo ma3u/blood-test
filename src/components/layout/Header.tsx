@@ -1,15 +1,13 @@
 
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
-import { Moon, Sun, UserCircle, Accessibility } from "lucide-react";
+import { UserCircle, Accessibility } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/theme-provider";
 import AccessibilityMenu from "@/components/AccessibilityMenu";
 import A11yLanguageSwitcher from "@/components/A11yLanguageSwitcher";
 
 export default function Header() {
   const { t } = useLanguage();
-  const { theme, setTheme } = useTheme();
 
   return (
     <header className="bg-background sticky top-0 z-10 w-full border-b">
@@ -25,19 +23,6 @@ export default function Header() {
             <UserCircle size={16} />
             <span>{t("profile.title")}</span>
           </Link>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <Moon className="h-[1.2rem] w-[1.2rem]" />
-            ) : (
-              <Sun className="h-[1.2rem] w-[1.2rem]" />
-            )}
-            <span className="sr-only">Toggle theme</span>
-          </Button>
         </nav>
       </div>
     </header>

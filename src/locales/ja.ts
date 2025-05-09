@@ -1,3 +1,4 @@
+
 // Japanese translations
 const ja = {
   // Header and navigation
@@ -256,7 +257,7 @@ const ja = {
   "intro.welcome": "ようこそ！私はマティアスです。このウェブサイトは、エピジェネティクス、長寿、分子医学の世界への個人的かつ共有の旅として作成しました。私の目標は、AIの力を利用して自分自身の健康と教育を改善し、この道を私と一緒に歩みたい人を支援することです。",
   "intro.why.title": "このウェブサイトが存在する理由",
   "intro.why.content": "老化、健康、長寿は、単に私たちの遺伝子だけではありません。それらは、私たちの環境、ライフスタイル、そして遺伝子をオン/オフにするスイッチの間の動的な相互作用についてです。このウェブサイトは、次の目的のために存在します。",
-  "intro.why.point1": "AIとエピジェネティックな洞察を使用して自分の�����康の旅を形作る際に、私の発見と進歩を共有します。",
+  "intro.why.point1": "AIとエピジェネティックな洞察を使用して自分の健康の旅を形作る際に、私の発見と進歩を共有します。",
   "intro.why.point2": "最新の研究とパーソナライズされた医療のツールを、科学者や医師だけでなく、誰もが利用できるようにします。",
   "intro.why.point3": "一緒に学び、実験し、健康を改善したい人々のコミュニティを構築します。",
   "intro.next.title": "今後の計画",
@@ -294,7 +295,7 @@ const ja = {
   "longevity.mindBody.introduction": "心と体のつながりは、健康と長寿にとって重要であるとますます認識されています。現代の研究は、古代の伝統が数千年にわたって教えてきたことを確認しています：心身の実践は生物学的加齢プロセスに大きな影響を与えます。",
   
   "longevity.mindBody.stressReduction.title": "1. ストレス軽減の実践",
-  "longevity.mindBody.stressReduction.intro": "慢性的な心理的���トレスは細胞の老化を加速し、免疫力を弱めます：",
+  "longevity.mindBody.stressReduction.intro": "慢性的な心理的ストレスは細胞の老化を加速し、免疫力を弱めます：",
   "longevity.mindBody.stressReduction.meditation": "定期的なマインドフルネス瞑想（1日15分以上）は、科学的にテロメアの保存と炎症マーカーの減少に関連付けられています。2018年のメタ分析では、コルチゾールレベルの有意な低下が示されました。",
   "longevity.mindBody.stressReduction.breathwork": "ボックスブリージング、4-7-8呼吸法、ヴィム・ホフ法などの技術は、自律神経系の機能を調整し、ストレスを軽減し、生理的レジリエンスを向上させます。たった5〜10分の意識的な呼吸エクササイズで神経系の状態を変えることができます。",
   "longevity.mindBody.stressReduction.yoga": "動き、呼吸の仕事、マインドフルネスを組み合わせます。研究によると、定期的な練習（週2回以上）は炎症マーカーを減少させ、ストレスへの耐性を向上させます。特に有益なスタイルには、ハタ、陰、リストラティブヨガが含まれます。",
@@ -309,7 +310,7 @@ const ja = {
   "longevity.mindBody.coldExposure.title": "3. ホルメティックストレッサー：寒冷曝露",
   "longevity.mindBody.coldExposure.intro": "ホルメシスとは、体が軽度のストレッサーにさらされたときに起こる有益な適応を指します：",
   "longevity.mindBody.coldExposure.benefits": "寒冷曝露は褐色脂肪組織を活性化し、アディポネクチンを増加させ、インスリン感受性を改善し、ノルアドレナリンの放出を引き起こし、気分を良くし、炎症を軽減します。",
-  "longevity.mindBody.coldExposure.practice": "30秒の冷水シャワーから始め、徐々に2〜3分まで増やし��週に3〜4回行います。より高度な実践者は氷風呂（10〜15°Cで5〜10分）を探索できます。",
+  "longevity.mindBody.coldExposure.practice": "30秒の冷水シャワーから始め、徐々に2〜3分まで増やし、週に3〜4回行います。より高度な実践者は氷風呂（10〜15°Cで5〜10分）を探索できます。",
   "longevity.mindBody.coldExposure.research": "定期的な寒冷曝露は、代謝を高め、炎症を軽減し、長寿を促進する細胞シグナル経路を活性化する有望な結果を示しています。",
   
   "longevity.mindBody.social.title": "4. 社会的つながりと目的",
@@ -318,10 +319,7 @@ const ja = {
   "longevity.mindBody.social.purpose": "日本の「生きがい」（人生の目的）の概念は、より長い寿命と相関しています。明確な目的を持つ人々は、縦断的研究において全原因死亡率の低下を示しています。",
   "longevity.mindBody.social.gratitude": "定期的な感謝の実践は、心拍変動性の向上、炎症の減少、心理的幸福感の強化を示しています—これらはすべて長寿に貢献する要因です。",
   
-  "longevity.mindBody.conclusion": "これらの心身の実践は、寿命と健康寿命を延ばすために利用できる最も強力で費用対効果の高い介入の一部を表しています。これらの実践のいくつかでも一貫して組み込むことで、時間の経過とともに実質的な利益をもたらすことができます。",
-  
-  // Language toggle
-  "language.toggle": "日本語",
+  "longevity.mindBody.conclusion": "これらの心身の実践は、寿命と健康寿命を延ばすために利用できる最も強力で費用対効果の高い介入の一部を表しています。これらの実践のいくつかでも一貫して組み込むことで、時間の経過とともに実質的な利益をもたらすことができます。"
 };
 
 export default ja;

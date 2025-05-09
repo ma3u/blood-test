@@ -21,12 +21,14 @@
 - Improved language switching functionality to correctly navigate between language-specific pages
 - Fixed routing issues when switching languages on the Longevity pages
 - Completed full German translation of the Longevity page with all sections and tables
+- Fixed build errors in LongevityDe.tsx (syntax issues with unclosed tags and string literals)
 
 ### In Progress
 - Creating a system to automatically generate HTML from markdown files
 - Supporting additional languages for the longevity pages (French, Spanish, Russian, etc.)
 - Checking and validating all external references for broken links
 - Implementing full content for language-specific longevity pages in additional languages
+- Refactoring the LongevityDe.tsx file to make it more manageable (currently over 300 lines)
 
 ### Next Steps
 - Set up a content management interface for updating markdown content
@@ -35,4 +37,4 @@
 - Add language-specific SEO metadata for improved search engine visibility
 - Add support for additional languages to the longevity pages (Russian, Chinese, Japanese, etc.)
 - Create an interactive bibliography system with citation metadata
-
+- Split the large LongevityDe.tsx file into smaller component files for better maintainability

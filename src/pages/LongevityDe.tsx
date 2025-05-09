@@ -1,3 +1,4 @@
+
 import React from "react";
 import SEOHead from "@/components/SEOHead";
 import { Separator } from "@/components/ui/separator";
@@ -320,5 +321,37 @@ const LongevityDe = () => {
               <li><strong>Hochintensives Intervalltraining (HIIT):</strong> Kurze intensive Belastungsphasen (z.B. 30 Sekunden Sprint, 90 Sekunden Pause, 4-8 Mal wiederholen). Verbessert die Insulinsensitivität, die kardiovaskuläre Fitness und die Gesundheit der Mitochondrien in kürzerer Zeit als gleichmäßiges Cardio-Training.</li>
               <li><strong>Krafttraining:</strong> Erhält die Muskelmasse und Knochendichte, die mit dem Alter abnehmen. Reduziert das Risiko von Stürzen, unterstützt den Glukosestoffwechsel und verbessert die allgemeine Funktion.</li>
             </ul>
+          </section>
 
-            <h4 className="text-lg
+          <section id="referenzen" className="mb-8">
+            <h2 className="text-2xl font-bold text-blue-800 mb-4">Referenzen</h2>
+            <ul className="list-disc pl-8 space-y-2">
+              <li>
+                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5830305/" className="text-blue-600 hover:underline">
+                  Langlebigkeitsgenomik - Die Rolle der Genetik bei der Bestimmung der Lebensdauer (2018)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.aarp.org/health/healthy-living/info-2018/extending-life-expectancy-fd.html" className="text-blue-600 hover:underline">
+                  AARP-Bericht: Langlebigkeitsfaktoren im modernen Leben
+                </a>
+              </li>
+              <li>
+                <a href="https://www.strunzundpartner.de" className="text-blue-600 hover:underline">
+                  Dr. Ulrich Strunz: Präventivmedizin und leistungsorientierte Gesundheit
+                </a>
+              </li>
+              <li>
+                <a href="https://time.com/6051632/live-to-100-longevity-diet/" className="text-blue-600 hover:underline">
+                  TIME-Artikel: Die Wissenschaft hinter der Langlebigkeitsdiät
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LongevityDe;

@@ -3,6 +3,7 @@ const en = {
   "sign.in": "Sign In",
   "sign.out": "Sign Out",
   "dashboard": "Dashboard",
+  "language.toggle": "English",
   
   // Main page
   "learn.more": "Learn More",
@@ -10,6 +11,18 @@ const en = {
   
   // Dialog
   "dialog.title": "Welcome to Blood Test Oracle",
+  
+  // References section
+  "references": "References",
+  
+  // Longevity page translations
+  "longevity.title": "My Personal Journey to Longevity and Healthspan",
+  "longevity.description": "Insights on longevity, healthspan, and evidence-based lifestyle practices for optimal health and well-being.",
+  "longevity.sections.journey": "Personal Journey",
+  "longevity.sections.diagnostics": "Proactive Diagnostics",
+  "longevity.sections.habits": "Habits",
+  "longevity.sections.factors": "Longevity Factors",
+  "longevity.back.to.top": "Back to top",
   
   // Welcome content
   "welcome.intro": "Personalized Analysis of Your Blood Markers",
@@ -289,6 +302,7 @@ const en = {
   "profile.age.placeholder": "Enter your age",
   "profile.height.placeholder": "Enter your height",
   "profile.weight.placeholder": "Enter your weight",
+  "profile.bmi.placeholder": "Enter your BMI",
   "profile.add.health.issue": "Add Health Condition",
   "profile.health.issue.name": "Condition name",
   "profile.severity": "Severity",

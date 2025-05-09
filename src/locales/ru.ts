@@ -1,4 +1,3 @@
-
 // Russian translations
 const ru = {
   // Header and navigation
@@ -112,7 +111,7 @@ const ru = {
   "reference.caption.general": "Референсные значения общих параметров",
   "reference.caption.amino": "Референсные значения аминокислот (Аминограмма, сыворотка/плазма)",
   "reference.caption.vitamins": "Референсные значения специальных витаминов",
-  "reference.caption.inflammation": "Референсные значения маркеров воспаления",
+  "reference.caption.inflammation": "Референсные значения маркеров восп��ления",
   "reference.column.parameter": "Параметр",
   "reference.column.unit": "Единица",
   "reference.column.women": "Женщины (Референс/Цель)",
@@ -202,7 +201,7 @@ const ru = {
   "marker.hba1c.description": "Отражает средний уровень глюкозы в крови за последние 2-3 месяца.",
   "marker.insulin.description": "Гормон, регулирующий уровень сахара в крови и накопление энергии.",
   "marker.cholesterol.description": "Воскообразное вещество, находящееся в крови, необходимое для построения здоровых клеток.",
-  "marker.ldl.description": "Известен как 'плохой' холестерин, высокий уровень увеличивает риск сердечных заболеваний.",
+  "marker.ldl.description": "Известен как 'плохой' холестерин, высокий урове��ь увеличивает риск сердечных заболеваний.",
   "marker.hdl.description": "Известен как 'хороший' холестерин, помогает удалять другие формы холестерина из кровотока.",
   "marker.triglycerides.description": "Тип жира в крови; высокие уровни связаны с сердечными заболеваниями.",
   "marker.creatinine.description": "Продукт распада из нормального расщепления мышц; используется для оценки функции почек.",
@@ -242,7 +241,7 @@ const ru = {
   "timeline.history": "История",
   "timeline.clear": "Очистить историю",
   "timeline.clear.confirm": "Вы уверены? Это удалит все сохраненные результаты тестов.",
-  "timeline.clear.yes": "Да, удалить все",
+  "timeline.clear.yes": "Да, уд��лить все",
   "timeline.clear.no": "Отменить",
   
   // Date extraction
@@ -275,7 +274,19 @@ const ru = {
   "intro.feedback.point2": "Какие функции я должен приоритизировать?",
   "intro.feedback.point3": "Как я могу сделать этот сайт и предстоящих ИИ-агентов более полезными, понятными и мотивирующими для вас?",
   "intro.feedback.conclusion": "Пожалуйста, поделитесь своими мыслями и идеями – ваша обратная связь напрямую повлияет на то, как этот сервис будет расти и совершенствоваться.",
-  "intro.feedback.question": "Есть ли конкретные вопросы или проблемы в вашем пути к здоровью, с которыми вы хотели бы, чтобы ИИ помог вам в первую очередь? Дайте мне знать!"
+  "intro.feedback.question": "Есть ли конкретные вопросы или проблемы в вашем пути к здоровью, с которыми вы хотели бы, чтобы ИИ помог вам в первую очередь? Дайте мне знать!",
+  
+  // References section
+  "references": "Ссылки",
+  
+  // Longevity page translations
+  "longevity.title": "Мой личный путь к долголетию и здоровью",
+  "longevity.description": "Сведения о долголетии, здоровье и научно обоснованных практиках образа жизни для оптимального здоровья и благополучия.",
+  "longevity.sections.journey": "Личный путь",
+  "longevity.sections.diagnostics": "Проактивная диагностика",
+  "longevity.sections.habits": "Привычки",
+  "longevity.sections.factors": "Факторы долголетия",
+  "longevity.back.to.top": "Наверх",
 };
 
 export default ru;

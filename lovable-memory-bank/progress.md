@@ -14,10 +14,13 @@
 - Added responsive design for tables on mobile devices
 
 ### In Progress
-- Implementing a system to automatically generate HTML from markdown files
+- Implementing full translation support for the Longevity page in all supported languages
+- Creating a system to automatically generate HTML from markdown files
 - Checking and validating all external references for broken links
 
 ### Next Steps
 - Set up a content management interface for updating markdown content
 - Create a link validation system to automatically check for broken references
 - Consider implementing a full-text search feature for content
+- Add language-specific SEO metadata for improved search engine visibility
+

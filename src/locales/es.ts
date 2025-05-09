@@ -136,6 +136,18 @@ const es = {
   "marker.folicAcid.description": "Vitamina B crucial para el crecimiento celular, formación de ADN y prevención de defectos congénitos.",
   "marker.totalProtein.description": "Cantidad total de todas las proteínas en la sangre, incluyendo albúmina y globulinas.",
   
+  // References section
+  "references": "Referencias",
+  
+  // Longevity page translations
+  "longevity.title": "Mi Viaje Personal hacia la Longevidad y la Salud",
+  "longevity.description": "Perspectivas sobre longevidad, salud y prácticas de estilo de vida basadas en evidencia para una salud y bienestar óptimos.",
+  "longevity.sections.journey": "Viaje Personal",
+  "longevity.sections.diagnostics": "Diagnósticos Proactivos",
+  "longevity.sections.habits": "Hábitos",
+  "longevity.sections.factors": "Factores de Longevidad",
+  "longevity.back.to.top": "Volver arriba",
+  
   // Impressum translations
   "impressum.title": "Aviso Legal",
   "impressum.menu": "Aviso Legal",

@@ -1,4 +1,3 @@
-
 // Japanese translations
 const ja = {
   // Header and navigation
@@ -151,7 +150,6 @@ const ja = {
   "app.subtitle": "医療分析ツール",
   "page.title": "血液検査分析",
   "page.description": "血液検査の値を入力するか、テスト結果をアップロードして、即座に分析と解釈を行います",
-  "footer.text": "血液検査分析 - 教育目的の医療分析ツール",
   
   // Blood test form
   "blood.test.title": "血液検査の値",
@@ -275,7 +273,20 @@ const ja = {
   "intro.feedback.point2": "どの機能を優先すべきですか？",
   "intro.feedback.point3": "このウェブサイトと今後のAIエージェントを、より役立ち、明確で、あなたにとってやる気を起こさせるものにするにはどうすればよいですか？",
   "intro.feedback.conclusion": "あなたの考えやアイデアを共有してください。あなたのフィードバックは、このサービスがどのように成長し、改善されるかを直接的に形作ります。",
-  "intro.feedback.question": "あなたの健康の旅で、AIに最初に手伝ってほしい特定の質問や課題はありますか？教えてください！"
+  "intro.feedback.question": "あなたの健康の旅で、AIに最初に手伝ってほしい特定の質問や課題はありますか？教えてください！",
+  "language.toggle": "日本語",
+  
+  // References section
+  "references": "参考文献",
+  
+  // Longevity page translations
+  "longevity.title": "長寿と健康への私の個人的な旅",
+  "longevity.description": "最適な健康と幸福のための長寿、健康寿命、根拠に基づくライフスタイル実践に関する洞察。",
+  "longevity.sections.journey": "個人的な旅",
+  "longevity.sections.diagnostics": "積極的診断",
+  "longevity.sections.habits": "習慣",
+  "longevity.sections.factors": "長寿要因",
+  "longevity.back.to.top": "トップに戻る",
 };
 
 export default ja;

@@ -27,12 +27,12 @@ const zh = {
   "welcome.practices.item2": "整体健康方法",
   "welcome.practices.item3": "专注于长期健康",
   
-  "welcome.outro": "立即开始您的最佳健康之旅！",
+  "welcome.outro": "今天开始您的最佳健康之旅！",
   
   // Disclaimer
   "disclaimer.title": "医疗免责声明",
   "disclaimer.paragraph1": "本应用程序提供的信息仅用于教育目的，并不能替代专业医疗建议。",
-  "disclaimer.paragraph2": "在改变饮食、运动计划或补充剂摄入之前，请始终咨询您的医生。",
+  "disclaimer.paragraph2": "在改变饮食、运动计划、或补充剂摄入之前，请始终咨询您的医生。",
   "disclaimer.paragraph3": "本工具不用于诊断、治疗或预防任何疾病。",
   "disclaimer.paragraph4": "结果和建议基于一般科学数据，可能无法考虑所有个人健康因素。",
   
@@ -146,14 +146,14 @@ const zh = {
   "edit.cancel": "取消",
   
   // App information
-  "app.title": "血液测试分析",
+  "app.title": "血液检查分析",
   "app.subtitle": "医疗分析工具",
-  "page.title": "血液测试分析",
-  "page.description": "输入您的血液测试值或上传测试结果以获得即时分析和解释",
-  "footer.text": "血液测试分析 - 一款用于教育目的的医疗分析工具",
+  "page.title": "血液检查分析",
+  "page.description": "输入您的血液检查值或上传测试结果以获得即时分析和解释",
+  "footer.text": "血液检查分析 - 一款用于教育目的的医疗分析工具",
   
   // Blood test form
-  "blood.test.title": "输入您的血液测试值",
+  "blood.test.title": "输入您的血液检查值",
   "blood.test.submit": "分析结果",
   "select.date": "选择测试日期",
   "entry.methods": "输入方法",
@@ -161,7 +161,7 @@ const zh = {
   "file.upload": "文件上传",
   
   // Gender reference
-  "gender.reference": "参考值适用于：",
+  "gender.reference": "参考值的适用对象：",
   "gender.info": "显示参考信息",
   "gender.info.text": "参考值可能因性别而异。",
   "gender.female": "女性",
@@ -228,7 +228,7 @@ const zh = {
   "marker.vitaminB12.description": "对神经功能、DNA合成和红细胞形成至关重要。",
   "marker.ferritin.description": "储存铁并在需要时释放铁的蛋白质。",
   "marker.tsh.description": "控制甲状腺激素产生；甲状腺功能的关键指标。",
-  "marker.folicAcid.description": "对细胞生长、DNA形成�����预防先��缺陷至关重要的B族维生素。",
+  "marker.folicAcid.description": "对细胞生长、DNA形成和预防先天缺陷至关重要的B族维生素。",
   "marker.totalProtein.description": "血液中所有蛋白质的总量，包括白蛋白和球蛋白。",
   
   // Common implications
@@ -274,7 +274,19 @@ const zh = {
   "intro.feedback.point2": "我应该优先考虑哪些功能？",
   "intro.feedback.point3": "我如何使这个网站和即将推出的AI代理对您更有用、更清晰、更有动力？",
   "intro.feedback.conclusion": "请分享您的想法和创意——您的反馈将直接影响这项服务如何成长和改进。",
-  "intro.feedback.question": "您的健康旅程中有哪些特定问题或挑战想要AI首先帮助解决？请让我知道！"
+  "intro.feedback.question": "您的健康旅程中有哪些特定问题或挑战想要AI首先帮助解决？请让我知道！",
+  
+  // References section
+  "references": "参考文献",
+  
+  // Longevity page translations
+  "longevity.title": "我的长寿与健康之旅",
+  "longevity.description": "关于长寿、健康寿命和基于证据的生活方式实践，以实现最佳健康和福祉的见解。",
+  "longevity.sections.journey": "个人旅程",
+  "longevity.sections.diagnostics": "主动诊断",
+  "longevity.sections.habits": "习惯",
+  "longevity.sections.factors": "长寿因素",
+  "longevity.back.to.top": "返回顶部",
 };
 
 export default zh;

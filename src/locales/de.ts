@@ -239,7 +239,16 @@ const de = {
   "recommendations.no.stress": "Keine spezifischen Empfehlungen zum Stressabbau basierend auf Ihren aktuellen Ergebnissen",
   
   // References section
-  "references": "Referenzen"
+  "references": "Referenzen",
+  
+  // Longevity page translations
+  "longevity.title": "Meine persönliche Reise zu Langlebigkeit und Gesundheitsspanne",
+  "longevity.description": "Erkenntnisse über Langlebigkeit, Gesundheitsspanne und evidenzbasierte Lifestyle-Praktiken für optimale Gesundheit und Wohlbefinden.",
+  "longevity.sections.journey": "Persönliche Reise",
+  "longevity.sections.diagnostics": "Proaktive Diagnostik",
+  "longevity.sections.habits": "Gewohnheiten",
+  "longevity.sections.factors": "Langlebigkeitsfaktoren",
+  "longevity.back.to.top": "Zurück nach oben",
 };
 
 export default de;

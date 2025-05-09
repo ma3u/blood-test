@@ -17,6 +17,8 @@ import { LanguageProvider } from "./context/LanguageContext";
 import { UserProfileProvider } from "./context/UserProfileContext";
 import Profile from "./pages/Profile";
 import Longevity from "./pages/Longevity";
+import LongevityEn from "./pages/LongevityEn";
+import LongevityDe from "./pages/LongevityDe";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/auth" element={<Auth />} />
                     <Route path="/longevity" element={<Longevity />} />
+                    <Route path="/longevityEn" element={<LongevityEn />} />
+                    <Route path="/longevityDe" element={<LongevityDe />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

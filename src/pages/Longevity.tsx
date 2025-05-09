@@ -4,6 +4,15 @@ import { useLanguage } from "@/context/LanguageContext";
 import PageIntro from "@/components/layout/PageIntro";
 import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/components/SEOHead";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table";
 
 const Longevity = () => {
   const { t } = useLanguage();
@@ -111,82 +120,229 @@ const Longevity = () => {
 
             <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Positive Factors Enhancing Longevity and Healthspan</h3>
             <div className="overflow-x-auto">
-              <table className="min-w-full border-collapse border border-gray-300 mb-6">
-                <thead>
-                  <tr className="bg-blue-50">
-                    <th className="border border-gray-300 px-4 py-2 text-left">Factor</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Impact on Longevity</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Impact on Healthspan</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Evidence</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Regular Physical Activity</td>
-                    <td className="border border-gray-300 px-4 py-2">Adds 4.5 years</td>
-                    <td className="border border-gray-300 px-4 py-2">Reduces risk of 17 diseases (e.g., CVD, diabetes)</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://www.tandfonline.com/doi/full/10.1080/02640414.2020.1803630" className="text-blue-600 hover:underline">Source 1</a>, <a href="https://www.nature.com/articles/s41598-020-61241-6" className="text-blue-600 hover:underline">Source 2</a></td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-2">- Aerobic (e.g., running)</td>
-                    <td className="border border-gray-300 px-4 py-2">25–40% lower mortality</td>
-                    <td className="border border-gray-300 px-4 py-2">Improves cardiovascular health</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://www.nature.com/articles/s41598-020-61241-6" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2">- Resistance Training</td>
-                    <td className="border border-gray-300 px-4 py-2">15% lower all-cause mortality</td>
-                    <td className="border border-gray-300 px-4 py-2">Preserves muscle mass and bone density</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://www.fisiologiadelejercicio.com/wp-content/uploads/2019/05/The-association-of-resistance-training.pdf" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Mediterranean Diet</td>
-                    <td className="border border-gray-300 px-4 py-2">23% lower mortality</td>
-                    <td className="border border-gray-300 px-4 py-2">Reduces inflammation and metabolic disease risk</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3489349/" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Not Smoking</td>
-                    <td className="border border-gray-300 px-4 py-2">Prevents 5–10 years lost</td>
-                    <td className="border border-gray-300 px-4 py-2">Lowers risk of 21 diseases</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://onlinelibrary.wiley.com/doi/10.1111/add.16757" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table className="w-full border-collapse border border-gray-300 mb-6">
+                <TableHeader>
+                  <TableRow className="bg-blue-50">
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Factor</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Impact on Longevity</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Impact on Healthspan</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Evidence</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Regular Physical Activity</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Adds 4.5 years</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Reduces risk of 17 diseases (e.g., CVD, diabetes)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.tandfonline.com/doi/full/10.1080/02640414.2020.1803630" className="text-blue-600 hover:underline" aria-label="Read research on exercise science and longevity">Exercise Science Research</a>, <a href="https://www.nature.com/articles/s41598-020-61241-6" className="text-blue-600 hover:underline" aria-label="Read Nature journal article on exercise and mortality">Nature: Exercise & Mortality Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2">- Aerobic (e.g., running)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">25–40% lower mortality</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Improves cardiovascular health</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.nature.com/articles/s41598-020-61241-6" className="text-blue-600 hover:underline" aria-label="Read Nature journal article on aerobic exercise benefits">Nature: Aerobic Exercise Benefits</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2">- Resistance Training</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">15% lower all-cause mortality</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Preserves muscle mass and bone density</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.fisiologiadelejercicio.com/wp-content/uploads/2019/05/The-association-of-resistance-training.pdf" className="text-blue-600 hover:underline" aria-label="Read research on resistance training and longevity">Resistance Training Longevity Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Mediterranean Diet</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">23% lower mortality</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Reduces inflammation and metabolic disease risk</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3489349/" className="text-blue-600 hover:underline" aria-label="Read PMC article on Mediterranean diet and longevity">Mediterranean Diet Longevity Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Not Smoking</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Prevents 5–10 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Lowers risk of 21 diseases</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://onlinelibrary.wiley.com/doi/10.1111/add.16757" className="text-blue-600 hover:underline" aria-label="Read Wiley journal article on smoking and life expectancy">Smoking & Life Expectancy Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Moderate Alcohol Intake</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Part of lifestyle adding 5.5 years</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Cardiovascular benefits at ≤1 drink/day (women) or ≤2/day (men)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1326149/" className="text-blue-600 hover:underline" aria-label="Read PMC article on alcohol consumption and mortality">Alcohol Consumption Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Optimal Sleep (7–8 hours)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Prevents 2–3 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Enhances cognitive function and metabolism</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.sleepdiplomat.com/book" className="text-blue-600 hover:underline" aria-label="Learn about sleep science and its impact on health">Why We Sleep Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Strong Social Connections</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">50% higher survival rates</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Reduces dementia risk and improves mental health</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.pnas.org/doi/10.1073/pnas.1900712116" className="text-blue-600 hover:underline" aria-label="Read PNAS article on social integration and mortality risk">Social Integration Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Stress Management</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Mitigates 23–24 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Lowers chronic inflammation</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://news.harvard.edu/gazette/story/2022/06/optimism-lengthens-life-study-finds/" className="text-blue-600 hover:underline" aria-label="Read Harvard study on optimism and longevity">Optimism & Longevity Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Healthy BMI (18.5–24.9)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Prevents 3–10 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Reduces diabetes, CVD, and metabolic syndrome</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.hopkinsarthritis.org/arthritis-news/years-of-life-lost-due-to-obesity/" className="text-blue-600 hover:underline" aria-label="Read Hopkins research on obesity and life expectancy">Years Lost to Obesity Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">High Socioeconomic Status</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">2.5x higher longevity</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Better healthcare access and nutrition</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://gh.bmj.com/content/6/3/e004124" className="text-blue-600 hover:underline" aria-label="Read BMJ article on socioeconomic status and longevity">Global Health & Longevity Study</a>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
 
             <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Negative Factors Reducing Longevity and Healthspan</h3>
             <div className="overflow-x-auto">
-              <table className="min-w-full border-collapse border border-gray-300 mb-6">
-                <thead>
-                  <tr className="bg-blue-50">
-                    <th className="border border-gray-300 px-4 py-2 text-left">Factor</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Impact on Longevity</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Impact on Healthspan</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left">Evidence</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Smoking</td>
-                    <td className="border border-gray-300 px-4 py-2">5–10 years lost</td>
-                    <td className="border border-gray-300 px-4 py-2">Increases risk of 21 diseases</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://onlinelibrary.wiley.com/doi/10.1111/add.16757" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Physical Inactivity</td>
-                    <td className="border border-gray-300 px-4 py-2">4.7 years lost</td>
-                    <td className="border border-gray-300 px-4 py-2">Linked to 17 diseases</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://pubmed.ncbi.nlm.nih.gov/33609364/" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2 font-semibold">Obesity (BMI ≥30)</td>
-                    <td className="border border-gray-300 px-4 py-2">3–10 years lost</td>
-                    <td className="border border-gray-300 px-4 py-2">Raises diabetes, CVD, and cancer risk</td>
-                    <td className="border border-gray-300 px-4 py-2"><a href="https://www.hopkinsarthritis.org/arthritis-news/years-of-life-lost-due-to-obesity/" className="text-blue-600 hover:underline">Source</a></td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table className="w-full border-collapse border border-gray-300 mb-6">
+                <TableHeader>
+                  <TableRow className="bg-blue-50">
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Factor</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Impact on Longevity</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Impact on Healthspan</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Evidence</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Smoking</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">5–10 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Increases risk of 21 diseases</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://onlinelibrary.wiley.com/doi/10.1111/add.16757" className="text-blue-600 hover:underline" aria-label="Read systematic review on smoking and lifespan">Smoking Impact Systematic Review</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Physical Inactivity</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">4.7 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Linked to 17 diseases</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://pubmed.ncbi.nlm.nih.gov/33609364/" className="text-blue-600 hover:underline" aria-label="Read PubMed article on physical activity and mortality">Physical Inactivity Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Obesity (BMI ≥30)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">3–10 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Raises diabetes, CVD, and cancer risk</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.hopkinsarthritis.org/arthritis-news/years-of-life-lost-due-to-obesity/" className="text-blue-600 hover:underline" aria-label="Read Hopkins study on obesity and lifespan">Obesity & Lifespan Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Diabetes (Type 2)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">2 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Reduces disease-free years by 1.7 years</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.nature.com/articles/s41591-025-03570-5" className="text-blue-600 hover:underline" aria-label="Read Nature Medicine study on diabetes and healthspan">Healthspan & Diabetes Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Hypertension</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">4–5 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Increases stroke and kidney disease risk</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/484996" className="text-blue-600 hover:underline" aria-label="Read JAMA article on hypertension mortality impact">JAMA Hypertension Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Low Socioeconomic Status</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">5–7 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Limits access to healthcare and healthy food</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1432701/pdf" className="text-blue-600 hover:underline" aria-label="Read Frontiers article on socioeconomic status and health outcomes">Public Health Impact Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Poor Diet (High processed foods)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">3–5 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Elevates chronic inflammation and metabolic disorders</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.mdpi.com/2072-6643/11/12/2862" className="text-blue-600 hover:underline" aria-label="Read MDPI article on dietary patterns and longevity">Dietary Patterns Research</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2 font-semibold">Excessive Alcohol</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">2–3 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Linked to liver disease and cancers</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1326149/" className="text-blue-600 hover:underline" aria-label="Read PMC article on excessive alcohol consumption health impacts">Alcohol Mortality Study</a>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+
+            <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Combined Effects & Healthspan-Lifespan Gap</h3>
+            <div className="overflow-x-auto">
+              <Table className="w-full border-collapse border border-gray-300 mb-6">
+                <TableHeader>
+                  <TableRow className="bg-blue-50">
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Combined Factors</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Impact</TableHead>
+                    <TableHead className="border border-gray-300 px-4 py-2 text-left">Evidence</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2">Smoking + Diabetes</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">16.2 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.nature.com/articles/s41591-024-03483-9" className="text-blue-600 hover:underline" aria-label="Read Nature Medicine article on combined lifestyle risk factors">Combined Risk Factors Study</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2">Inactivity + Hypertension</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">9.2 years lost</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7325954/" className="text-blue-600 hover:underline" aria-label="Read PMC article on lifestyle factors and mortality in older adults">Lifestyle Factors in Older Adults</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="border border-gray-300 px-4 py-2">Adopting 8 Healthy Habits by Age 40</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">Adds 23–24 years</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://www.eurekalert.org/news-releases/1059853" className="text-blue-600 hover:underline" aria-label="Read Eurekalert article on lifestyle factors and biological aging">Lifestyle & Biological Aging</a>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="bg-gray-50">
+                    <TableCell className="border border-gray-300 px-4 py-2">Healthspan-Lifespan Gap</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">~9 years (20% of life with morbidity)</TableCell>
+                    <TableCell className="border border-gray-300 px-4 py-2">
+                      <a href="https://nutritionsource.hsph.harvard.edu/healthy-longevity/" className="text-blue-600 hover:underline" aria-label="Read Harvard article on healthy longevity">Harvard Healthy Longevity Research</a>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
 
             <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Practical Examples for Longevity and Healthspan</h3>
@@ -225,16 +381,16 @@ const Longevity = () => {
           <section>
             <h2 className="text-2xl font-bold text-blue-800 mb-4">References</h2>
             <div className="text-sm space-y-2">
-              <p><a href="https://www.amazon.com/Keto-Clarity-Definitive-Benefits-Ketogenic/dp/1628600071" className="text-blue-600 hover:underline">[1] Keto Clarity: Your Definitive Guide to the Benefits (Jimmy Moore, Eric C. Westman, MD)</a></p>
-              <p><a href="https://www.harpercollins.com/products/10-human-alanna-collen" className="text-blue-600 hover:underline">[2] 10% Human: How Your Body's Microbes Hold the Key to Health and Happiness (Alanna Collen)</a></p>
-              <p><a href="https://www.nature.com/articles/s41392-021-00831-w" className="text-blue-600 hover:underline">[3] The Gut Microbiome and Healthy Aging (Nature Review)</a></p>
-              <p><a href="https://www.frontiersin.org/articles/10.3389/fmicb.2021.634349/full" className="text-blue-600 hover:underline">[4] Effect of Diet on the Gut Microbiome: Rethinking Intervention Duration (Frontiers in Microbiology)</a></p>
-              <p><a href="https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/" className="text-blue-600 hover:underline">[5] The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection</a></p>
-              <p><a href="https://www.mdpi.com/2072-6643/11/12/2862" className="text-blue-600 hover:underline">[6] Dietary Patterns and Longevity (Nutrients Journal)</a></p>
-              <p><a href="https://www.dge.de/wissenschaft/weitere-publikationen/fachinformationen/ketogene-diaeten/" className="text-blue-600 hover:underline">[7] Ketogene Diäten: Grundlagen und Anwendung (German Society for Nutrition)</a></p>
-              <p><a href="https://www.wimhofmethod.com/" className="text-blue-600 hover:underline">[8] The Wim Hof Method: Activate Your Full Human Potential (Wim Hof)</a></p>
-              <p><a href="https://www.mrjamesnestor.com/breath-book" className="text-blue-600 hover:underline">[9] Breath: The New Science of a Lost Art (James Nestor)</a></p>
-              <p><a href="https://www.strunz.com/de/buecher/der-schluessel-zur-gesundheit.html" className="text-blue-600 hover:underline">[10] Der Schlüssel zur Gesundheit: Erfahrungen und Überzeugungen (Ulrich Strunz)</a></p>
+              <p><a href="https://www.amazon.com/Keto-Clarity-Definitive-Benefits-Ketogenic/dp/1628600071" className="text-blue-600 hover:underline">Keto Clarity: Your Definitive Guide to the Benefits (Jimmy Moore, Eric C. Westman, MD)</a></p>
+              <p><a href="https://www.harpercollins.com/products/10-human-alanna-collen" className="text-blue-600 hover:underline">10% Human: How Your Body's Microbes Hold the Key to Health and Happiness (Alanna Collen)</a></p>
+              <p><a href="https://www.nature.com/articles/s41392-021-00831-w" className="text-blue-600 hover:underline">The Gut Microbiome and Healthy Aging (Nature Review)</a></p>
+              <p><a href="https://www.frontiersin.org/articles/10.3389/fmicb.2021.634349/full" className="text-blue-600 hover:underline">Effect of Diet on the Gut Microbiome: Rethinking Intervention Duration (Frontiers in Microbiology)</a></p>
+              <p><a href="https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/" className="text-blue-600 hover:underline">The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection</a></p>
+              <p><a href="https://www.mdpi.com/2072-6643/11/12/2862" className="text-blue-600 hover:underline">Dietary Patterns and Longevity (Nutrients Journal)</a></p>
+              <p><a href="https://www.dge.de/wissenschaft/weitere-publikationen/fachinformationen/ketogene-diaeten/" className="text-blue-600 hover:underline">Ketogene Diäten: Grundlagen und Anwendung (German Society for Nutrition)</a></p>
+              <p><a href="https://www.wimhofmethod.com/" className="text-blue-600 hover:underline">The Wim Hof Method: Activate Your Full Human Potential (Wim Hof)</a></p>
+              <p><a href="https://www.mrjamesnestor.com/breath-book" className="text-blue-600 hover:underline">Breath: The New Science of a Lost Art (James Nestor)</a></p>
+              <p><a href="https://www.strunz.com/de/buecher/der-schluessel-zur-gesundheit.html" className="text-blue-600 hover:underline">Der Schlüssel zur Gesundheit: Erfahrungen und Überzeugungen (Ulrich Strunz)</a></p>
             </div>
           </section>
         </div>

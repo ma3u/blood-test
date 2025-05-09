@@ -22,6 +22,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
+    - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
     - [🌿 Decision 022: Personalized Health Recommendations System](#-decision-022-personalized-health-recommendations-system)
     - [👤 Decision 021: User Profile Management – Personal Health Information](#-decision-021-user-profile-management--personal-health-information)
@@ -48,6 +49,7 @@
 
 ---
 
+
 ### 📋 Outstanding Tasks
 
 - Organize translations into more logical groupings by feature
@@ -56,6 +58,59 @@
 - Add automated accessibility testing to the development workflow
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
+
+---
+
+### 📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide
+<div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Documentation / Feature<br><b>Date:</b> 2025-05-09</div>
+
+- **Rationale:**
+  - Empower users with a single, accessible resource synthesizing personal experience, clinical best practices, and scientific evidence for maximizing both lifespan and healthspan.
+  - Bridge the gap between technical diagnostics and actionable lifestyle change using a relatable narrative and quantified, referenced data.
+  - Provide a foundation for future features (personalized recommendations, diagnostics, and user education).
+
+- **Implementation:**
+  - Created `public/longevity.md`, a comprehensive longevity and healthspan guide integrating:
+    - Personal health journey and motivation for change
+    - Detailed protocols: proactive diagnostics, blood markers, microbiome, and digital health tracking
+    - Quantified, evidence-based table of longevity factors, with impact estimates and references
+    - Actionable lifestyle routines (nutrition, movement, mind-body, gut health, social connection)
+    - Extensive scientific literature review (60+ references) supporting all recommendations
+    - User-focused structure: summary, routines, references, and key takeaways
+  - Designed for clarity, accessibility, and practical use—enabling users to apply the findings to their own lives.
+
+- **Impact:**
+  - Establishes a new documentation standard for healthspan topics in the project
+  - Serves as a blueprint for future educational and personalized features
+  - Demonstrates the value of integrating personal narrative with scientific rigor
+  - Empowers users to take control of their health, regardless of genetic background
+
+- **File:** [`public/longevity.md`](../public/longevity.md)
+
+---
+
+
+### 🧪 Decision 023: Automated Testing Strategy for Vite/React/TS
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Tooling<br><b>Date:</b> 2025-05-08</div>
+
+- **Rationale:**
+  - Ensure code quality and prevent regressions as the project grows.
+  - Align testing tools with the Vite + React + TypeScript stack for fast, reliable feedback and modern syntax support.
+  - Enable automated CI to catch errors before merging changes.
+
+- **Decision:**
+  - Use **Vitest** as the primary test runner (native Vite support, fast, TypeScript-friendly).
+  - Use **@testing-library/react** for React component/unit/integration testing (best practice for user-centric UI tests).
+  - Add a **GitHub Actions** workflow to run all tests on every push and pull request.
+
+- **Action Items:**
+  1. Add `vitest`, `@testing-library/react`, and related dependencies to `devDependencies`.
+  2. Configure `vitest.config.ts` for the project (setup files, coverage, etc.).
+  3. Write initial unit and integration tests for core components and the recommendations system (see decisionLog and progress.md for coverage targets).
+  4. Create `.github/workflows/test.yml` to run tests automatically on push/PR.
+  5. Ensure test results are visible in PRs and failing tests block merges.
+
+---
 
 
 ### 🌿 Decision 022: Personalized Health Recommendations System

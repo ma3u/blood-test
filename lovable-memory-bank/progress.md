@@ -1,5 +1,6 @@
 
 
+
 # Project Progress
 
 ## Last Updated: 2025-05-10
@@ -31,6 +32,7 @@
 - Added contributing section for users, experts, and developers
 - Added additional health experts to references section (Dr. Helena Orfanos-Boeckel, Dr. Ulrich Strunz, Thiemo Osterhaus, Dr. Ingo Froböse)
 - Updated GitHub repository links to correct URL (ma3u/blood-test)
+- Enhanced Blood Test Oracle logo display on homepage for better visibility and branding
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -54,4 +56,5 @@
 - Fixed accessibility issues with learn more content - now shows content directly in main view
 - Fixed formatting and readability issues in longevity content display
 - Fixed incorrect GitHub repository URLs from mabuos to ma3u
+
 

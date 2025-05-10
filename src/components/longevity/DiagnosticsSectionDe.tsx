@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const DiagnosticsSectionDe: React.FC = () => {
   return (
@@ -12,11 +13,25 @@ const DiagnosticsSectionDe: React.FC = () => {
       <p className="mb-4"><strong>Aminosäureprofil:</strong> Periodisch bewerte ich mein Aminosäurespektrum, um Defizite oder Ungleichgewichte zu erkennen. Essentielle und bedingt essentielle Aminosäuren wie Tryptophan, Lysin, Methionin, Leucin, Isoleucin, Valin, Glutamin und Glycin sind besonders wichtig für die Muskelerhaltung, Immunfunktion und das Neurotransmitter-Gleichgewicht.</p>
       <p className="mb-4"><strong>Mikronährstoffstatus:</strong> Ergänzende Kontrollen für Vitamine (C, E, B-Komplex, Coenzym Q10, Alpha-Liponsäure) und Mineralien (Chrom, Magnesium) helfen, subklinische Defizite zu identifizieren, die Alterung, Immunität und Energiestoffwechsel beeinflussen können.</p>
 
+      <Card className="mb-6 bg-blue-50 border-blue-200">
+        <CardContent className="pt-6">
+          <h4 className="text-lg font-semibold text-blue-700 mb-2">Bluttest-Oracle Tool</h4>
+          <p className="mb-4">
+            Nutzen Sie unser interaktives Bluttest-Tool, um Ihre Werte einzugeben, zu verfolgen und personalisierte Empfehlungen zu erhalten.
+          </p>
+          <div className="flex justify-end">
+            <a href="/" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+              Zum Bluttest-Tool
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+
       <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Mikrobiomanalyse</h3>
       <p className="mb-4"><strong>Darm-Mikrobiom-Sequenzierung:</strong> Ich führe periodische stuhlbasierte Mikrobiomanalysen durch, um die Vielfalt und Balance meiner Darmflora zu bewerten. Dies umfasst die Quantifizierung nützlicher Gattungen (z.B. Bifidobakterien, Akkermansia), die Bewertung des Vorhandenseins von kurzkettige Fettsäureproduzenten und das Screening auf Dysbiose oder Überwucherung pathogener Spezies.</p>
       <p className="mb-4"><strong>Interpretation und Handlung:</strong> Erkenntnisse aus Mikrobiom-Tests leiten meine Ernährungsentscheidungen, insbesondere die Ballaststoff- und Präbiotika-Aufnahme, und helfen mir, meine Probiotika-Ergänzung zu personalisieren. Ein gesundes, diverses Mikrobiom wird heute als eine kritische Säule für die Stoffwechselgesundheit, Immunregulation und sogar das mentale Wohlbefinden anerkannt.</p>
 
-      <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Digitale Fitness- und Gesundheitsüberwachung (Apple Health & Geräte)</h3>
+      <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Digitale Fitness- und Gesundheitsüberwachung</h3>
       <ul className="list-disc pl-8 space-y-2 mb-4">
         <li><strong>VO2Max:</strong> Ich verfolge meinen VO2Max als Marker für aerobe Fitness und kardiovaskuläre Gesundheit. Verbesserungen hier sind mit niedrigerer Gesamtmortalität und verbesserter Gesundheitsspanne verbunden.</li>
         <li><strong>Ruheherzfrequenz und Herzfrequenzvariabilität (HRV):</strong> Beide werden kontinuierlich überwacht; eine niedrigere Ruheherzfrequenz und höhere HRV sind Anzeichen für gute kardiovaskuläre und autonome Gesundheit.</li>

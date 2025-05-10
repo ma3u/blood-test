@@ -4,11 +4,13 @@ import React from "react";
 const PracticalExamplesSectionDe: React.FC = () => {
   return (
     <>
+      <h2 className="text-2xl font-bold text-blue-800 mb-4">Praktische Beispiele für ein längeres, gesünderes Leben</h2>
+      
       <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">
-        Praktische Beispiele für Langlebigkeit und Gesundheitsspanne: Ernährung, Bewegung und Geist-Körper-Praktiken
+        Ernährung, Bewegung und Geist-Körper-Praktiken
       </h3>
       <p className="mb-4">
-        Um sowohl die Lebensdauer als auch die Gesundheitsspanne zu optimieren, geht es nicht nur darum, was Sie vermeiden, sondern auch um die positiven, evidenzbasierten Gewohnheiten, die Sie aufbauen. Hier sind detaillierte, umsetzbare Beispiele basierend auf führender Molekularmedizin und Lifestyle-Forschung:
+        Um sowohl die Lebensdauer als auch die Gesundheitsspanne zu optimieren, geht es nicht nur darum, was man vermeidet, sondern auch um die positiven, evidenzbasierten Gewohnheiten, die man aufbaut. Hier sind detaillierte, umsetzbare Beispiele basierend auf führender Molekularmedizin und Lifestyle-Forschung:
       </p>
 
       <h4 className="text-lg font-semibold text-blue-700 mt-4 mb-2">
@@ -35,6 +37,15 @@ const PracticalExamplesSectionDe: React.FC = () => {
         <li><strong>Ausdauer (Laufen, Gehen, Radfahren):</strong> Verbessert die kardiovaskuläre Gesundheit, senkt den Blutdruck, verbessert das Lipidprofil und unterstützt den Fettstoffwechsel. Regelmäßiges zügiges Gehen (30+ Minuten täglich) ist mit niedrigerer Gesamtsterblichkeit und besserer Gesundheitsspanne verbunden.</li>
         <li><strong>Hochintensives Intervalltraining (HIIT):</strong> Kurze intensive Belastungsphasen (z.B. 30 Sekunden Sprint, 90 Sekunden Pause, 4-8 Mal wiederholen). Verbessert die Insulinsensitivität, die kardiovaskuläre Fitness und die Gesundheit der Mitochondrien in kürzerer Zeit als gleichmäßiges Cardio-Training.</li>
         <li><strong>Krafttraining:</strong> Erhält die Muskelmasse und Knochendichte, die mit dem Alter abnehmen. Reduziert das Risiko von Stürzen, unterstützt den Glukosestoffwechsel und verbessert die allgemeine Funktion.</li>
+      </ul>
+
+      <h4 className="text-lg font-semibold text-blue-700 mt-4 mb-2">
+        Geist-Körper-Praktiken für Stressabbau
+      </h4>
+      <ul className="list-disc pl-8 space-y-2 mb-4">
+        <li><strong>Atemübungen:</strong> Einfache Atemtechniken wie Box-Atmung (4-4-4-4) oder verlängerte Ausatmung (4-7-8) aktivieren den Parasympathikus und reduzieren Stresshormone.</li>
+        <li><strong>Meditation:</strong> Tägliche 10-20 Minuten achtsame Meditation können Entzündungswerte senken, Stressresistenz erhöhen und sogar die Telomerlänge positiv beeinflussen.</li>
+        <li><strong>Kältetherapie:</strong> Kurze Kälteexpositionen (kalte Duschen, Eisbäder) stimulieren die mitochondriale Biogenese und stärken das Immunsystem durch hormetische Prozesse.</li>
       </ul>
     </>
   );

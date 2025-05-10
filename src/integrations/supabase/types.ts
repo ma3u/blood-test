@@ -122,13 +122,10 @@ export type Database = {
         }[]
       }
       match_documents: {
-        Args: { query_embedding: string; match_count?: number; filter?: Json }
-        Returns: {
-          id: number
-          content: string
-          metadata: Json
-          similarity: number
-        }[]
+        Args:
+          | Record<PropertyKey, never>
+          | { query_embedding: string; match_count?: number; filter?: Json }
+        Returns: undefined
       }
       sparsevec_out: {
         Args: { "": unknown }

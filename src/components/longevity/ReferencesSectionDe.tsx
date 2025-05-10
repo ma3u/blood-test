@@ -4,7 +4,7 @@ import React from "react";
 const ReferencesSectionDe: React.FC = () => {
   return (
     <>
-      <h2 className="text-2xl font-bold text-blue-800 mb-4">Referenzen und weiterführende Lektüre</h2>
+      <h2 className="text-2xl font-bold text-blue-800 mb-4">Referenzen und weiterführende Literatur</h2>
       <p className="mb-4">Dieser Leitfaden basiert auf wissenschaftlicher Forschung und evidenzbasierten Strategien. Hier sind einige wichtige Quellen für weitere Informationen:</p>
       
       <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">Bücher</h3>

@@ -1,11 +1,7 @@
 
 import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
-import { Separator } from "@/components/ui/separator";
 
 const PersonalJourneySectionDe: React.FC = () => {
-  const { t } = useLanguage();
-
   return (
     <section className="mb-8">
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Meine persönliche Reise</h2>

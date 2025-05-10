@@ -11,8 +11,11 @@ import PracticalExamplesSectionDe from "@/components/longevity/PracticalExamples
 import ReferencesSectionDe from "@/components/longevity/ReferencesSectionDe";
 import MindBodySectionDe from "@/components/longevity/MindBodySectionDe";
 import ContributingSectionDe from "@/components/longevity/ContributingSectionDe";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LongevityDe = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-[#FAF6E2]">
       <SEOHead 

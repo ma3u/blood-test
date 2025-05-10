@@ -9,6 +9,7 @@ import LongevityFactorsSection from "@/components/longevity/LongevityFactorsSect
 import PracticalExamplesSection from "@/components/longevity/PracticalExamplesSection";
 import ReferencesSection from "@/components/longevity/ReferencesSection";
 import HabitsSection from "@/components/longevity/HabitsSection";
+import ContributingSection from "@/components/longevity/ContributingSection";
 
 interface EnhancedLongevityContentProps {
   onBackClick: () => void;
@@ -42,6 +43,7 @@ const EnhancedLongevityContent: React.FC<EnhancedLongevityContentProps> = ({ onB
             <li><a href="#factors" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Longevity Factors</a></li>
             <li><a href="#practical-examples" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Practical Examples</a></li>
             <li><a href="#references" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">References</a></li>
+            <li><a href="#contributing" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Contributing</a></li>
           </ul>
         </nav>
 
@@ -77,6 +79,12 @@ const EnhancedLongevityContent: React.FC<EnhancedLongevityContentProps> = ({ onB
 
         <section id="references" className="mb-8">
           <ReferencesSection />
+        </section>
+        
+        <Separator className="my-8" />
+        
+        <section id="contributing" className="mb-8">
+          <ContributingSection />
         </section>
         
         <div className="mt-10 pt-6 border-t border-gray-200">

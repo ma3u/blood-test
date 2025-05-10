@@ -27,6 +27,8 @@
   - Improving table formatting and visual design
   - Removing references in text and table for cleaner presentation
   - Formatting references with accessible links that open in new tabs
+- Added contributing section for users, experts, and developers
+- Added additional health experts to references section (Dr. Helena Orfanos-Boeckel, Dr. Ulrich Strunz, Thiemo Osterhaus, Dr. Ingo Froböse)
 
 ### In Progress
 - Enhancing data persistence with Supabase

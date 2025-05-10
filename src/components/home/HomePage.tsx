@@ -17,18 +17,23 @@ const HomePage: React.FC<HomePageProps> = ({ onSubmit, onLearnMoreClick, gender 
   
   return (
     <div className="max-w-3xl mx-auto space-y-6">
-      <div className="text-center">
-        <img 
-          src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
-          alt="Blood Test Oracle Logo" 
-          className="w-40 h-40 mx-auto object-contain animate-fade-in"
-          role="img"
-        />
-        <PageIntro
-          title={getPageHeadline(language)}
-          description={getPageDescription(language)}
-          onLearnMoreClick={onLearnMoreClick}
-        />
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
+        <div className="md:w-1/3 flex justify-center md:justify-start">
+          <img 
+            src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
+            alt="Blood Test Oracle Logo" 
+            className="w-32 h-32 object-contain animate-fade-in"
+            role="img"
+          />
+        </div>
+        <div className="md:w-2/3">
+          <PageIntro
+            title={getPageHeadline(language)}
+            description={getPageDescription(language)}
+            onLearnMoreClick={onLearnMoreClick}
+            compact={true}
+          />
+        </div>
       </div>
 
       <BloodTestContainer 

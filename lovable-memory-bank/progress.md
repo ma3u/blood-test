@@ -33,6 +33,7 @@
 - Added additional health experts to references section (Dr. Helena Orfanos-Boeckel, Dr. Ulrich Strunz, Thiemo Osterhaus, Dr. Ingo Froböse)
 - Updated GitHub repository links to correct URL (ma3u/blood-test)
 - Enhanced Blood Test Oracle logo display on homepage for better visibility and branding
+- Fixed blank page issue by adding proper loading state and client-side rendering checks
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -56,5 +57,6 @@
 - Fixed accessibility issues with learn more content - now shows content directly in main view
 - Fixed formatting and readability issues in longevity content display
 - Fixed incorrect GitHub repository URLs from mabuos to ma3u
+- Fixed blank page issue by adding loading state and client-side rendering safeguards
 
 

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
 import Disclaimer from "@/components/Disclaimer";
@@ -18,6 +18,12 @@ const Index = () => {
   const [gender, setGender] = useState<"male" | "female">("male");
   const { t, language } = useLanguage();
   const [showLongevityContent, setShowLongevityContent] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  
+  // Set loaded state after component mounts to ensure client-side rendering
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
   
   // Language-specific headlines and descriptions
   const getPageHeadline = () => {
@@ -65,6 +71,18 @@ const Index = () => {
     // as per User Journey step 5
     console.log("Blood test results received, user could be prompted to register here");
   };
+
+  // Show a simple loading state until the component is fully loaded
+  if (!loaded) {
+    return (
+      <div className="min-h-screen bg-[#FAF6E2] flex items-center justify-center">
+        <div className="text-center p-4">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-blue-800 font-medium">Loading Blood Test Oracle...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF6E2]"> 

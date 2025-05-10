@@ -1,8 +1,7 @@
 
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
-import EnhancedLongevityContent from "@/components/longevity/EnhancedLongevityContent";
 import LongevityEn from "./LongevityEn";
 import LongevityDe from "./LongevityDe";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,6 @@ const SUPPORTED_LANGUAGES = ["en", "de"];
 
 const Longevity = () => {
   const { language, t } = useLanguage();
-  const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 
   const selectedLocale = useMemo(() => {

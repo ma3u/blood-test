@@ -14,66 +14,112 @@ import EnhancedLongevityContent from "@/components/longevity/EnhancedLongevityCo
 import PageIntro from "@/components/layout/PageIntro";
 
 const Index = () => {
+  // Log that the component is initializing
+  console.log("Index component initializing");
+  
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
-  const { t, language } = useLanguage();
   const [showLongevityContent, setShowLongevityContent] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  // Try to access language context (might be the source of the error)
+  let languageContext;
+  try {
+    languageContext = useLanguage();
+    console.log("Language context loaded successfully");
+  } catch (err) {
+    console.error("Error loading language context:", err);
+    setError("Error loading language context");
+  }
+  
+  const { t, language } = languageContext || { t: (key: string) => key, language: 'en' };
   
   // Set loaded state after component mounts to ensure client-side rendering
   useEffect(() => {
-    setLoaded(true);
+    console.log("Setting loaded state to true");
+    try {
+      setLoaded(true);
+    } catch (err) {
+      console.error("Error in useEffect:", err);
+      setError("Error setting loaded state");
+    }
   }, []);
   
   // Language-specific headlines and descriptions
   const getPageHeadline = () => {
-    switch (language) {
-      case 'de':
-        return "Bluttest-Analyse";
-      case 'fr':
-        return "Analyse de Test Sanguin";
-      case 'es':
-        return "Análisis de Prueba de Sangre";
-      case 'ru':
-        return "Анализ крови";
-      case 'zh':
-        return "血液测试分析";
-      case 'ja':
-        return "血液検査分析";
-      default:
-        return "Blood Test Analysis";
+    try {
+      switch (language) {
+        case 'de':
+          return "Bluttest-Analyse";
+        case 'fr':
+          return "Analyse de Test Sanguin";
+        case 'es':
+          return "Análisis de Prueba de Sangre";
+        case 'ru':
+          return "Анализ крови";
+        case 'zh':
+          return "血液测试分析";
+        case 'ja':
+          return "血液検査分析";
+        default:
+          return "Blood Test Analysis";
+      }
+    } catch (err) {
+      console.error("Error in getPageHeadline:", err);
+      return "Blood Test Analysis";
     }
   };
 
   const getPageDescription = () => {
-    switch (language) {
-      case 'de':
-        return "Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch";
-      case 'fr':
-        return "Entrez vos valeurs de test sanguin ou téléchargez les résultats pour une analyse et une interprétation instantanées";
-      case 'es':
-        return "Ingrese sus valores de prueba de sangre o cargue resultados para un análisis e interpretación inmediatos";
-      case 'ru':
-        return "Введите результаты анализа крови или загрузите их для мгновенного анализа и интерпретации";
-      case 'zh':
-        return "输入您的血液测试值或上传测试结果以获取即时分析和解释";
-      case 'ja':
-        return "血液検査値を入力するか、テスト結果をアップロードして即時分析と解釈を得る";
-      default:
-        return "Enter your blood test values or upload test results for instant analysis and interpretation";
+    try {
+      switch (language) {
+        case 'de':
+          return "Geben Sie Ihre Blutwerte ein oder laden Sie Testergebnisse für eine sofortige Analyse und Interpretation hoch";
+        case 'fr':
+          return "Entrez vos valeurs de test sanguin ou téléchargez les résultats pour une analyse et une interprétation instantanées";
+        case 'es':
+          return "Ingrese sus valores de prueba de sangre o cargue resultados para un análisis e interpretación inmediatos";
+        case 'ru':
+          return "Введите результаты анализа крови или загрузите их для мгновенного анализа и интерпретации";
+        case 'zh':
+          return "输入您的血液测试值或上传测试结果以获取即时分析和解释";
+        case 'ja':
+          return "血液検査値を入力するか、テスト結果をアップロードして即時分析と解釈を得る";
+        default:
+          return "Enter your blood test values or upload test results for instant analysis and interpretation";
+      }
+    } catch (err) {
+      console.error("Error in getPageDescription:", err);
+      return "Enter your blood test values or upload test results for instant analysis and interpretation";
     }
   };
 
   const handleTestResults = (testResults: BloodTestResult[]) => {
-    setResults(testResults);
-    
-    // This would be a good place to prompt for registration after showing results
-    // as per User Journey step 5
-    console.log("Blood test results received, user could be prompted to register here");
+    try {
+      setResults(testResults);
+      console.log("Blood test results received, user could be prompted to register here");
+    } catch (err) {
+      console.error("Error in handleTestResults:", err);
+      setError("Error processing test results");
+    }
   };
+
+  // Show error state if there's an error
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#FAF6E2] flex items-center justify-center">
+        <div className="text-center p-4">
+          <p className="text-red-600 font-medium">Error: {error}</p>
+          <p className="mt-4">Please refresh the page or contact support.</p>
+        </div>
+      </div>
+    );
+  }
 
   // Show a simple loading state until the component is fully loaded
   if (!loaded) {
+    console.log("Rendering loading state");
     return (
       <div className="min-h-screen bg-[#FAF6E2] flex items-center justify-center">
         <div className="text-center p-4">
@@ -84,6 +130,7 @@ const Index = () => {
     );
   }
 
+  console.log("Rendering main content");
   return (
     <div className="min-h-screen bg-[#FAF6E2]"> 
       <SEOHead 

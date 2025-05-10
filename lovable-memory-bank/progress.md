@@ -38,3 +38,5 @@
 - Created proper German longevity translations file
 - Fixed missing default export in German longevity translations
 - Fixed bloodMarkers type in utils to be Record instead of array for proper property access
+- Fixed type errors when accessing bloodMarkers as a Record in other components
+

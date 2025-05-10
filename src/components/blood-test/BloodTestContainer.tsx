@@ -78,7 +78,7 @@ const BloodTestContainer = ({
 
   useEffect(() => {
     // Process bloodMarkers and assign categories
-    const updatedMarkers = bloodMarkers.map(marker => ({
+    const updatedMarkers = Object.values(bloodMarkers).map(marker => ({
       ...marker,
       category: assignHealthCategory(marker.id)
     }));

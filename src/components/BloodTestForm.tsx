@@ -48,7 +48,7 @@ export default function BloodTestForm({
     try {
       // Convert values to BloodTestResult array
       const results: BloodTestResult[] = Object.entries(values).map(([markerId, value]) => {
-        const marker = bloodMarkers.find(m => m.id === markerId);
+        const marker = bloodMarkers[markerId];
         if (!marker) throw new Error(`Invalid marker: ${markerId}`);
         
         const numValue = Number(value);
@@ -131,7 +131,7 @@ export default function BloodTestForm({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {bloodMarkers.map((marker) => (
+        {Object.values(bloodMarkers).map((marker) => (
           <div key={marker.id} className="space-y-2">
             <label className="block text-sm font-medium">
               {marker.name} ({marker.unit})

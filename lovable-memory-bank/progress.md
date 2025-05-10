@@ -19,6 +19,7 @@
 - Added blood test visualization components for tracking trends over time
 - Implemented recommendations system based on blood test results
 - Fixed TypeScript errors related to bloodMarkers access in visualization components
+- Modified "Learn more" link to show longevity content in a modal that respects user language
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -39,4 +40,3 @@
 - Fixed missing default export in German longevity translations
 - Fixed bloodMarkers type in utils to be Record instead of array for proper property access
 - Fixed type errors when accessing bloodMarkers as a Record in other components
-

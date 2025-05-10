@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
 import ResultsPanel from "@/components/ResultsPanel";
@@ -155,16 +154,14 @@ const Index = () => {
                 title={getPageHeadline()}
                 description={getPageDescription()}
               />
-              <div className="mt-2">
-                <button
-                  className="inline-flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0 bg-transparent border-0"
-                  onClick={() => setShowLongevityContent(true)}
-                  aria-label={`${t("learn.more")} about Blood Test Oracle`}
-                >
-                  <InfoIcon className="h-4 w-4" aria-hidden="true" />
-                  <span className="underline">{t("learn.more")}</span>
-                </button>
-              </div>
+              <button
+                className="inline-flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0 bg-transparent border-0 mt-2"
+                onClick={() => setShowLongevityContent(true)}
+                aria-label={`${t("learn.more")} about Blood Test Oracle`}
+              >
+                <InfoIcon className="h-4 w-4" aria-hidden="true" />
+                <span className="underline">{t("learn.more")}</span>
+              </button>
             </div>
 
             <BloodTestContainer 

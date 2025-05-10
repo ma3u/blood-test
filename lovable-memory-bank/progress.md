@@ -16,18 +16,18 @@
 - Fixed translation issues for German longevity content
 - Updated TypeScript TranslationKey type to include all needed blood test keys
 - Fixed runtime error with German longevity translations default export
+- Added blood test visualization components for tracking trends over time
+- Implemented recommendations system based on blood test results
 
 ### In Progress
-- Adding blood test results visualization
-- Enhancing recommendations system based on blood test results
-- Implementing data persistence with Supabase
+- Enhancing data persistence with Supabase
+- Adding more detailed analytics for blood test results
 
 ### Backlog
-- Create detailed analytics for blood test results
+- Create user authentication flow
 - Add supplement and nutrition recommendation engine
 - Implement exercise recommendation system
 - Create stress management recommendation module
-- Add user authentication flow
 
 ### Issues Fixed
 - Fixed screen and fireEvent imports in test files

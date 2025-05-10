@@ -1,9 +1,11 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { renderWithProviders } from '@/test/testUtils';
 import AccessibilityMenu from '@/components/AccessibilityMenu';
 import userEvent from '@testing-library/user-event';
+import * as testingLibrary from '@testing-library/dom';
+const { screen, fireEvent } = testingLibrary;
 
 describe('AccessibilityMenu Component', () => {
   beforeEach(() => {

@@ -1,8 +1,10 @@
 
 import { describe, it, expect, vi } from 'vitest';
-import { screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { renderWithProviders } from '@/test/testUtils';
 import Header from '@/components/layout/Header';
+import * as testingLibrary from '@testing-library/dom';
+const { screen } = testingLibrary;
 
 describe('Header Component', () => {
   it('renders correctly with all required elements', () => {

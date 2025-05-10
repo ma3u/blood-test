@@ -19,7 +19,7 @@
 - Added blood test visualization components for tracking trends over time
 - Implemented recommendations system based on blood test results
 - Fixed TypeScript errors related to bloodMarkers access in visualization components
-- Modified "Learn more" link to show longevity content in a modal that respects user language
+- Modified "Learn more" link to show longevity content directly in the same view without using a hidden modal
 
 ### In Progress
 - Enhancing data persistence with Supabase

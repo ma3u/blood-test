@@ -16,7 +16,7 @@ const Index = () => {
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
   const { t, language } = useLanguage();
-  const [longevityOpen, setLongevityOpen] = useState(false);
+  const [showLongevityContent, setShowLongevityContent] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   
   const SUPPORTED_LANGUAGES = ["en", "de", "fr", "es", "ru", "zh", "ja"];
@@ -76,18 +76,6 @@ const Index = () => {
     }
   };
 
-  // Accessibility: close on ESC
-  const modalRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!longevityOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLongevityOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    if (modalRef.current) modalRef.current.focus();
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [longevityOpen]);
-
   return (
     <div className="min-h-screen bg-[#FAF6E2]"> 
       <SEOHead 
@@ -97,166 +85,158 @@ const Index = () => {
 
       {/* Main content with skip link target */}
       <main id="main-content" className="container mx-auto py-4 px-3" tabIndex={-1}>
-        <div className="max-w-3xl mx-auto space-y-6">
-          <div className="flex flex-col md:flex-row items-center mb-4">
-            <div className="flex-shrink-0 mr-6 mb-4 md:mb-0 flex items-center">
-              <img 
-                src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
-                alt="Blood Test Oracle Logo" 
-                className="w-24 h-24 object-contain"
-                role="img"
-              />
+        {showLongevityContent ? (
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-6 rounded-lg shadow mb-6 flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-blue-800">
+                {t("longevity.title")}
+              </h2>
+              <Button 
+                onClick={() => setShowLongevityContent(false)}
+                variant="outline"
+                className="flex items-center gap-1"
+              >
+                {t("back.to.test")}
+              </Button>
             </div>
-            <div className="flex-grow text-center md:text-left">
-              <h1 className="text-2xl font-bold text-blue-800">{getPageHeadline()}</h1>
-              <p className="text-sm text-gray-600 mt-1">{getPageDescription()}</p>
-              <div className="mt-1">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0"
-                      aria-label={`${t("learn.more")} about Blood Test Oracle`}
+            
+            <div className="bg-white rounded-lg shadow-md p-0">
+              <iframe
+                src={getIframeSrc()}
+                title="Longevity Guide"
+                className="w-full h-[80vh] border-0 rounded-lg"
+                onError={() => setIframeError(true)}
+                aria-label="Longevity and Healthspan Guide"
+              />
+              {iframeError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/80 text-red-600 text-center font-semibold">
+                  Could not load the selected language. Showing English version instead.
+                </div>
+              )}
+            </div>
+          </div>
+        ) : !results ? (
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="flex flex-col md:flex-row items-center mb-4">
+              <div className="flex-shrink-0 mr-6 mb-4 md:mb-0 flex items-center">
+                <img 
+                  src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
+                  alt="Blood Test Oracle Logo" 
+                  className="w-24 h-24 object-contain"
+                  role="img"
+                />
+              </div>
+              <div className="flex-grow text-center md:text-left">
+                <h1 className="text-2xl font-bold text-blue-800">{getPageHeadline()}</h1>
+                <p className="text-sm text-gray-600 mt-1">{getPageDescription()}</p>
+                <div className="mt-1">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="flex items-center gap-1 text-blue-500 hover:text-blue-700 p-0"
+                        aria-label={`${t("learn.more")} about Blood Test Oracle`}
+                      >
+                        <InfoIcon className="h-4 w-4" aria-hidden="true" />
+                        <span>{t("learn.more")}</span>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent 
+                      className="max-w-3xl max-h-[80vh] overflow-y-auto"
+                      aria-labelledby="dialog-title"
                     >
-                      <InfoIcon className="h-4 w-4" aria-hidden="true" />
-                      <span>{t("learn.more")}</span>
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent 
-                    className="max-w-3xl max-h-[80vh] overflow-y-auto"
-                    aria-labelledby="dialog-title"
-                  >
-                    <DialogHeader>
-                      <DialogTitle id="dialog-title" className="text-2xl font-bold text-blue-600 mb-4">
-                        {t("dialog.title")}
-                      </DialogTitle>
-                    </DialogHeader>
-                    <DialogDescription id="dialog-description" className="space-y-6 text-foreground">
-                      <p className="font-medium text-lg">
-                        {t("intro.welcome")} {" "}
-                        <button
-                          type="button"
-                          className="text-blue-600 hover:text-blue-800 underline font-medium focus:outline-none"
-                          onClick={() => setLongevityOpen(true)}
-                          aria-haspopup="dialog"
-                          aria-controls="longevity-modal"
-                        >
-                          Learn more about longevity and healthspan
-                        </button>.
-                      </p>
-                      
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.why.title")}</h3>
-                        <p className="text-gray-700 mb-4">{t("intro.why.content")}</p>
+                      <DialogHeader>
+                        <DialogTitle id="dialog-title" className="text-2xl font-bold text-blue-600 mb-4">
+                          {t("dialog.title")}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <DialogDescription id="dialog-description" className="space-y-6 text-foreground">
+                        <p className="font-medium text-lg">
+                          {t("intro.welcome")} {" "}
+                          <button
+                            type="button"
+                            className="text-blue-600 hover:text-blue-800 underline font-medium focus:outline-none"
+                            onClick={() => {
+                              setShowLongevityContent(true);
+                            }}
+                            aria-haspopup="dialog"
+                            aria-controls="longevity-content"
+                          >
+                            Learn more about longevity and healthspan
+                          </button>.
+                        </p>
                         
-                        <ul className="list-disc pl-6 space-y-2 mb-6">
-                          <li className="text-gray-700">{t("intro.why.point1")}</li>
-                          <li className="text-gray-700">{t("intro.why.point2")}</li>
-                          <li className="text-gray-700">{t("intro.why.point3")}</li>
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.next.title")}</h3>
-                        <p className="text-gray-700 mb-4">{t("intro.next.content")}</p>
+                        <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                          <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.why.title")}</h3>
+                          <p className="text-gray-700 mb-4">{t("intro.why.content")}</p>
+                          
+                          <ul className="list-disc pl-6 space-y-2 mb-6">
+                            <li className="text-gray-700">{t("intro.why.point1")}</li>
+                            <li className="text-gray-700">{t("intro.why.point2")}</li>
+                            <li className="text-gray-700">{t("intro.why.point3")}</li>
+                          </ul>
+                        </div>
                         
-                        <ul className="list-disc pl-6 space-y-2 mb-4">
-                          <li className="text-gray-700">{t("intro.next.point1")}</li>
-                          <li className="text-gray-700">{t("intro.next.point2")}</li>
-                          <li className="text-gray-700">{t("intro.next.point3")}</li>
-                          <li className="text-gray-700">{t("intro.next.point4")}</li>
-                          <li className="text-gray-700">{t("intro.next.point5")}</li>
-                        </ul>
+                        <div>
+                          <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.next.title")}</h3>
+                          <p className="text-gray-700 mb-4">{t("intro.next.content")}</p>
+                          
+                          <ul className="list-disc pl-6 space-y-2 mb-4">
+                            <li className="text-gray-700">{t("intro.next.point1")}</li>
+                            <li className="text-gray-700">{t("intro.next.point2")}</li>
+                            <li className="text-gray-700">{t("intro.next.point3")}</li>
+                            <li className="text-gray-700">{t("intro.next.point4")}</li>
+                            <li className="text-gray-700">{t("intro.next.point5")}</li>
+                          </ul>
+                          
+                          <p className="text-gray-700 italic mb-6">{t("intro.next.conclusion")}</p>
+                        </div>
                         
-                        <p className="text-gray-700 italic mb-6">{t("intro.next.conclusion")}</p>
-                      </div>
-                      
-                      <div>
-                        <Separator className="my-6" />
-                        <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.feedback.title")}</h3>
-                        <p className="text-gray-700 mb-4">{t("intro.feedback.content")}</p>
-                        
-                        <ul className="list-disc pl-6 space-y-2 mb-4">
-                          <li className="text-gray-700">{t("intro.feedback.point1")}</li>
-                          <li className="text-gray-700">{t("intro.feedback.point2")}</li>
-                          <li className="text-gray-700">{t("intro.feedback.point3")}</li>
-                        </ul>
-                        
-                        <p className="text-gray-700 mb-3">{t("intro.feedback.conclusion")}</p>
-                        <p className="text-gray-700 font-medium">{t("intro.feedback.question")}</p>
-                      </div>
-                    </DialogDescription>
-                  </DialogContent>
-                </Dialog>
+                        <div>
+                          <Separator className="my-6" />
+                          <h3 className="text-xl font-semibold text-blue-700 mb-2">{t("intro.feedback.title")}</h3>
+                          <p className="text-gray-700 mb-4">{t("intro.feedback.content")}</p>
+                          
+                          <ul className="list-disc pl-6 space-y-2 mb-4">
+                            <li className="text-gray-700">{t("intro.feedback.point1")}</li>
+                            <li className="text-gray-700">{t("intro.feedback.point2")}</li>
+                            <li className="text-gray-700">{t("intro.feedback.point3")}</li>
+                          </ul>
+                          
+                          <p className="text-gray-700 mb-3">{t("intro.feedback.conclusion")}</p>
+                          <p className="text-gray-700 font-medium">{t("intro.feedback.question")}</p>
+                        </div>
+                      </DialogDescription>
+                    </DialogContent>
+                  </Dialog>
+                </div>
               </div>
             </div>
-          </div>
 
-          {!results ? (
-            <>
-              <BloodTestContainer 
-                onSubmit={handleTestResults} 
-                userId="anonymous-user" 
-                gender={gender}
-              />
-            </>
-          ) : (
-            <>
-              <ResultsPanel results={results} />
-              <div className="mt-6">
-                <button 
-                  onClick={() => setResults(null)} 
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-                  aria-label={t("back.to.test")}
-                >
-                  {t("back.to.test")}
-                </button>
-              </div>
-            </>
-          )}
-
-          <Disclaimer />
-        </div>
-      </main>
-
-      {longevityOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
-          role="dialog"
-          aria-modal="true"
-          tabIndex={-1}
-          id="longevity-modal"
-          onClick={() => setLongevityOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-4xl h-[90vh] bg-white rounded-lg shadow-lg flex flex-col outline-none"
-            ref={modalRef}
-            tabIndex={0}
-            onClick={e => e.stopPropagation()}
-          >
-            <button
-              className="absolute top-4 right-4 text-gray-700 hover:text-red-600 text-2xl font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              onClick={() => setLongevityOpen(false)}
-              aria-label="Close longevity guide"
-            >
-              &times;
-            </button>
-            <iframe
-              src={getIframeSrc()}
-              title="Longevity Guide"
-              className="w-full h-full border-0 rounded-b-lg"
-              onError={() => setIframeError(true)}
-              aria-label="Longevity and Healthspan Guide"
+            <BloodTestContainer 
+              onSubmit={handleTestResults} 
+              userId="anonymous-user" 
+              gender={gender}
             />
-            {iframeError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-white/80 text-red-600 text-center font-semibold">
-                Could not load the selected language. Showing English version instead.
-              </div>
-            )}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="max-w-3xl mx-auto space-y-6">
+            <ResultsPanel results={results} />
+            <div className="mt-6">
+              <button 
+                onClick={() => setResults(null)} 
+                className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-md text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                aria-label={t("back.to.test")}
+              >
+                {t("back.to.test")}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {!showLongevityContent && <Disclaimer />}
+      </main>
     </div>
   );
 };

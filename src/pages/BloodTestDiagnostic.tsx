@@ -24,8 +24,8 @@ const BloodTestDiagnostic = () => {
     if (dates && dates.length) {
       setAvailableDates(dates);
       toast({
-        title: t("blood-test.results_processed"),
-        description: `${dates.length} ${t("blood-test.test_dates_found")}`,
+        title: t("blood-test.results_processed" as any),
+        description: `${dates.length} ${t("blood-test.test_dates_found" as any)}`,
       });
     }
   };
@@ -41,26 +41,26 @@ const BloodTestDiagnostic = () => {
     e.preventDefault();
     
     toast({
-      title: t("blood-test.data_saved"),
-      description: t("blood-test.results_available_dashboard"),
+      title: t("blood-test.data_saved" as any),
+      description: t("blood-test.results_available_dashboard" as any),
     });
   };
 
   return (
     <div className="container mx-auto py-8">
       <SEOHead
-        title={t("blood-test.diagnostic_title")}
-        description={t("blood-test.diagnostic_description")}
+        title={t("blood-test.diagnostic_title" as any)}
+        description={t("blood-test.diagnostic_description" as any)}
       />
       
       <h1 className="text-3xl font-bold mb-6 text-center">
-        {t("blood-test.diagnostic_title")}
+        {t("blood-test.diagnostic_title" as any)}
       </h1>
       
       <Tabs value={entryMethod} onValueChange={(v) => setEntryMethod(v as "manual" | "upload")} className="w-full max-w-4xl mx-auto">
         <TabsList className="grid grid-cols-2 mb-6">
-          <TabsTrigger value="upload">{t("blood-test.upload_results")}</TabsTrigger>
-          <TabsTrigger value="manual">{t("blood-test.manual_entry")}</TabsTrigger>
+          <TabsTrigger value="upload">{t("blood-test.upload_results" as any)}</TabsTrigger>
+          <TabsTrigger value="manual">{t("blood-test.manual_entry" as any)}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="upload" className="space-y-6">
@@ -70,7 +70,7 @@ const BloodTestDiagnostic = () => {
             <Card className="mt-6">
               <CardHeader>
                 <CardTitle className="text-xl">
-                  {t("blood-test.extracted_values")}
+                  {t("blood-test.extracted_values" as any)}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -85,7 +85,7 @@ const BloodTestDiagnostic = () => {
                 
                 <div className="mt-6 flex justify-end">
                   <Button onClick={handleSubmit}>
-                    {t("blood-test.save_results")}
+                    {t("blood-test.save_results" as any)}
                   </Button>
                 </div>
               </CardContent>
@@ -97,7 +97,7 @@ const BloodTestDiagnostic = () => {
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">
-                {t("blood-test.manual_entry_title")}
+                {t("blood-test.manual_entry_title" as any)}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -110,7 +110,7 @@ const BloodTestDiagnostic = () => {
                         <Input 
                           id={key}
                           type="text"
-                          placeholder={`${t("blood-test.enter")} ${marker.name.toLowerCase()}`}
+                          placeholder={`${t("blood-test.enter" as any)} ${marker.name.toLowerCase()}`}
                           value={formValues[key] || ''}
                           onChange={(e) => handleInputChange(key, e.target.value)}
                         />
@@ -122,7 +122,7 @@ const BloodTestDiagnostic = () => {
                 
                 <div className="flex justify-end">
                   <Button type="submit">
-                    {t("blood-test.save_results")}
+                    {t("blood-test.save_results" as any)}
                   </Button>
                 </div>
               </form>

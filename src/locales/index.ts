@@ -76,6 +76,24 @@ export type TranslationKey = keyof typeof en |
   `longevity.practical.mindbody.running.mindful` |
   `longevity.practical.mindbody.running.benefits` |
   `longevity.practical.mindbody.running.practice` |
-  `longevity.practical.mindbody.stress`;
+  `longevity.practical.mindbody.stress` |
+  `blood.test.title` |
+  `blood.test.submit` |
+  `select.date` |
+  `entry.methods` |
+  `manual.entry` |
+  `file.upload` |
+  `blood-test.results_processed` |
+  `blood-test.test_dates_found` |
+  `blood-test.data_saved` |
+  `blood-test.results_available_dashboard` |
+  `blood-test.diagnostic_title` |
+  `blood-test.diagnostic_description` |
+  `blood-test.upload_results` |
+  `blood-test.manual_entry` |
+  `blood-test.extracted_values` |
+  `blood-test.save_results` |
+  `blood-test.manual_entry_title` |
+  `blood-test.enter`;
 
 export default locales;

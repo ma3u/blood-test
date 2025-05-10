@@ -5,7 +5,7 @@ import { bloodMarkers } from './bloodTestUtils';
 // Get all blood markers
 export const getBloodMarkers = async (): Promise<BloodMarker[]> => {
   // In a real app, this would fetch from an API
-  return bloodMarkers;
+  return Object.values(bloodMarkers);
 };
 
 // Add a new timeline entry

@@ -33,7 +33,7 @@ interface TimelineTrendChartProps {
 }
 
 const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
-  const [selectedMarker, setSelectedMarker] = useState<string>(bloodMarkers[0].id);
+  const [selectedMarker, setSelectedMarker] = useState<string>(Object.keys(bloodMarkers)[0]);
   const [viewMode, setViewMode] = useState<"chart" | "table">("chart");
   
   // Sort timeline data by date (newest first for display)
@@ -59,13 +59,13 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
   }, [timelineData, selectedMarker]);
 
   const selectedMarkerInfo = useMemo(() => 
-    bloodMarkers.find(marker => marker.id === selectedMarker),
+    bloodMarkers[selectedMarker],
     [selectedMarker]
   );
 
   const getLineColor = () => {
     const hasHighValues = transformedData.some(item => {
-      const marker = bloodMarkers.find(m => m.id === selectedMarker);
+      const marker = bloodMarkers[selectedMarker];
       if (!marker) return false;
       
       const numericValue = typeof item.value === 'string' ? parseFloat(item.value) : item.value;
@@ -73,7 +73,7 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
     });
     
     const hasLowValues = transformedData.some(item => {
-      const marker = bloodMarkers.find(m => m.id === selectedMarker);
+      const marker = bloodMarkers[selectedMarker];
       if (!marker) return false;
       
       const numericValue = typeof item.value === 'string' ? parseFloat(item.value) : item.value;
@@ -127,8 +127,8 @@ const TimelineTrendChart = ({ timelineData }: TimelineTrendChartProps) => {
                   <SelectValue placeholder="Select a marker" />
                 </SelectTrigger>
                 <SelectContent>
-                  {bloodMarkers.map(marker => (
-                    <SelectItem key={marker.id} value={marker.id}>
+                  {Object.entries(bloodMarkers).map(([id, marker]) => (
+                    <SelectItem key={id} value={id}>
                       {marker.name}
                     </SelectItem>
                   ))}

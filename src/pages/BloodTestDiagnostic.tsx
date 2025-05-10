@@ -10,6 +10,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
 import FileUploader from "@/components/FileUploader";
 import { bloodMarkers } from "@/lib/bloodTestUtils";
+import BloodTestTrends from "@/components/BloodTestTrends";
+import BloodTestRecommendations from "@/components/BloodTestRecommendations";
 
 const BloodTestDiagnostic = () => {
   const { t } = useLanguage();
@@ -17,6 +19,8 @@ const BloodTestDiagnostic = () => {
   const [entryMethod, setEntryMethod] = useState<"manual" | "upload">("upload");
   const [formValues, setFormValues] = useState<Record<string, string>>({});
   const [availableDates, setAvailableDates] = useState<Array<{date: Date, label: string}>>([]);
+  const [savedResults, setSavedResults] = useState<Array<{date: string, values: Record<string, number | string>}>>([]);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   
   const handleResultsExtracted = (values: Record<string, string>, dates?: Array<{date: Date, label: string}>) => {
     setFormValues(values);
@@ -24,8 +28,8 @@ const BloodTestDiagnostic = () => {
     if (dates && dates.length) {
       setAvailableDates(dates);
       toast({
-        title: t("blood-test.results_processed"),
-        description: `${dates.length} ${t("blood-test.test_dates_found")}`,
+        title: t("blood-test.results_processed" as any),
+        description: `${dates.length} ${t("blood-test.test_dates_found" as any)}`,
       });
     }
   };
@@ -40,27 +44,43 @@ const BloodTestDiagnostic = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    const testDate = selectedDate || new Date().toISOString().split('T')[0];
+    
+    // Save the current results
+    const newResults = {
+      date: testDate,
+      values: { ...formValues }
+    };
+    
+    // Add to saved results, replacing if same date exists
+    const updatedResults = savedResults.filter(r => r.date !== testDate);
+    updatedResults.push(newResults);
+    setSavedResults(updatedResults);
+    
+    // Reset form after saving if needed
+    // setFormValues({});
+    
     toast({
-      title: t("blood-test.data_saved"),
-      description: t("blood-test.results_available_dashboard"),
+      title: t("blood-test.data_saved" as any),
+      description: t("blood-test.results_available_dashboard" as any),
     });
   };
 
   return (
     <div className="container mx-auto py-8">
       <SEOHead
-        title={t("blood-test.diagnostic_title")}
-        description={t("blood-test.diagnostic_description")}
+        title={t("blood-test.diagnostic_title" as any)}
+        description={t("blood-test.diagnostic_description" as any)}
       />
       
       <h1 className="text-3xl font-bold mb-6 text-center">
-        {t("blood-test.diagnostic_title")}
+        {t("blood-test.diagnostic_title" as any)}
       </h1>
       
       <Tabs value={entryMethod} onValueChange={(v) => setEntryMethod(v as "manual" | "upload")} className="w-full max-w-4xl mx-auto">
         <TabsList className="grid grid-cols-2 mb-6">
-          <TabsTrigger value="upload">{t("blood-test.upload_results")}</TabsTrigger>
-          <TabsTrigger value="manual">{t("blood-test.manual_entry")}</TabsTrigger>
+          <TabsTrigger value="upload">{t("blood-test.upload_results" as any)}</TabsTrigger>
+          <TabsTrigger value="manual">{t("blood-test.manual_entry" as any)}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="upload" className="space-y-6">
@@ -70,7 +90,7 @@ const BloodTestDiagnostic = () => {
             <Card className="mt-6">
               <CardHeader>
                 <CardTitle className="text-xl">
-                  {t("blood-test.extracted_values")}
+                  {t("blood-test.extracted_values" as any)}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -85,7 +105,7 @@ const BloodTestDiagnostic = () => {
                 
                 <div className="mt-6 flex justify-end">
                   <Button onClick={handleSubmit}>
-                    {t("blood-test.save_results")}
+                    {t("blood-test.save_results" as any)}
                   </Button>
                 </div>
               </CardContent>
@@ -97,8 +117,19 @@ const BloodTestDiagnostic = () => {
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">
-                {t("blood-test.manual_entry_title")}
+                {t("blood-test.manual_entry_title" as any)}
               </CardTitle>
+              
+              <div className="mt-2">
+                <Label htmlFor="test-date">Test Date</Label>
+                <Input 
+                  id="test-date" 
+                  type="date" 
+                  value={selectedDate || new Date().toISOString().split('T')[0]} 
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full md:w-[250px]"
+                />
+              </div>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -110,7 +141,7 @@ const BloodTestDiagnostic = () => {
                         <Input 
                           id={key}
                           type="text"
-                          placeholder={`${t("blood-test.enter")} ${marker.name.toLowerCase()}`}
+                          placeholder={`${t("blood-test.enter" as any)} ${marker.name.toLowerCase()}`}
                           value={formValues[key] || ''}
                           onChange={(e) => handleInputChange(key, e.target.value)}
                         />
@@ -122,7 +153,7 @@ const BloodTestDiagnostic = () => {
                 
                 <div className="flex justify-end">
                   <Button type="submit">
-                    {t("blood-test.save_results")}
+                    {t("blood-test.save_results" as any)}
                   </Button>
                 </div>
               </form>
@@ -130,6 +161,75 @@ const BloodTestDiagnostic = () => {
           </Card>
         </TabsContent>
       </Tabs>
+      
+      {/* Sample data for demonstration - in real app, this would use the actual savedResults */}
+      {(savedResults.length > 0 || true) && (
+        <>
+          <BloodTestTrends 
+            data={savedResults.length > 0 ? savedResults : [
+              { 
+                date: '2023-01-15', 
+                values: { 
+                  glucose: 95, 
+                  cholesterol: 180, 
+                  hdl: 55, 
+                  ldl: 110,
+                  triglycerides: 120,
+                  vitaminD: 35
+                } 
+              },
+              { 
+                date: '2023-04-20', 
+                values: { 
+                  glucose: 92, 
+                  cholesterol: 175, 
+                  hdl: 58, 
+                  ldl: 105,
+                  triglycerides: 115,
+                  vitaminD: 38
+                } 
+              },
+              { 
+                date: '2023-07-10', 
+                values: { 
+                  glucose: 88, 
+                  cholesterol: 170, 
+                  hdl: 60, 
+                  ldl: 100,
+                  triglycerides: 110,
+                  vitaminD: 42
+                } 
+              },
+              { 
+                date: '2023-10-05', 
+                values: { 
+                  glucose: 86, 
+                  cholesterol: 165, 
+                  hdl: 62, 
+                  ldl: 95,
+                  triglycerides: 105,
+                  vitaminD: 45
+                } 
+              }
+            ]} 
+          />
+          
+          <BloodTestRecommendations 
+            values={
+              savedResults.length > 0 
+                ? savedResults[savedResults.length - 1].values
+                : { 
+                    glucose: 86, 
+                    cholesterol: 165, 
+                    hdl: 62, 
+                    ldl: 95,
+                    triglycerides: 105,
+                    vitaminD: 45
+                  }
+            } 
+          />
+        </>
+      )}
     </div>
   );
 };

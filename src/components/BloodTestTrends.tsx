@@ -40,8 +40,8 @@ const BloodTestTrends: React.FC<BloodTestTrendsProps> = ({ data }) => {
         key,
         name: marker.name,
         unit: marker.unit,
-        referenceMin: marker.referenceMin,
-        referenceMax: marker.referenceMax
+        minValue: marker.minValue,
+        maxValue: marker.maxValue
       }));
   }, [data]);
 
@@ -71,11 +71,11 @@ const BloodTestTrends: React.FC<BloodTestTrendsProps> = ({ data }) => {
 
   const formatReferenceLines = (marker: string) => {
     const markerInfo = bloodMarkers[marker];
-    if (!markerInfo || !markerInfo.referenceMin || !markerInfo.referenceMax) return [];
+    if (!markerInfo || !markerInfo.minValue || !markerInfo.maxValue) return [];
     
     return [
-      { y: markerInfo.referenceMin, stroke: '#ffaeae', strokeDasharray: '3 3', label: `Min (${markerInfo.referenceMin})` },
-      { y: markerInfo.referenceMax, stroke: '#ffaeae', strokeDasharray: '3 3', label: `Max (${markerInfo.referenceMax})` }
+      { y: markerInfo.minValue, stroke: '#ffaeae', strokeDasharray: '3 3', label: `Min (${markerInfo.minValue})` },
+      { y: markerInfo.maxValue, stroke: '#ffaeae', strokeDasharray: '3 3', label: `Max (${markerInfo.maxValue})` }
     ];
   };
 

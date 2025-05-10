@@ -30,7 +30,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const glucose = Number(values.glucose);
       const glucoseRef = bloodMarkers.glucose;
       
-      if (glucose > (glucoseRef?.referenceMax || 100)) {
+      if (glucose > (glucoseRef?.maxValue || 100)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Reduce Simple Carbohydrates',
@@ -57,7 +57,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const cholesterol = Number(values.cholesterol);
       const cholesterolRef = bloodMarkers.cholesterol;
       
-      if (cholesterol > (cholesterolRef?.referenceMax || 200)) {
+      if (cholesterol > (cholesterolRef?.maxValue || 200)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Heart-Healthy Diet',
@@ -76,7 +76,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const hdl = Number(values.hdl);
       const hdlRef = bloodMarkers.hdl;
       
-      if (hdl < (hdlRef?.referenceMin || 40)) {
+      if (hdl < (hdlRef?.minValue || 40)) {
         result.exercise.push({
           type: 'exercise',
           title: 'Aerobic Exercise',
@@ -95,7 +95,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const ldl = Number(values.ldl);
       const ldlRef = bloodMarkers.ldl;
       
-      if (ldl > (ldlRef?.referenceMax || 100)) {
+      if (ldl > (ldlRef?.maxValue || 100)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Increase Soluble Fiber',
@@ -116,7 +116,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const altRef = bloodMarkers.alt;
       const astRef = bloodMarkers.ast;
       
-      if (alt > (altRef?.referenceMax || 40) || ast > (astRef?.referenceMax || 40)) {
+      if (alt > (altRef?.maxValue || 40) || ast > (astRef?.maxValue || 40)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Liver-Supportive Diet',
@@ -135,7 +135,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const vitD = Number(values.vitaminD);
       const vitDRef = bloodMarkers.vitaminD;
       
-      if (vitD < (vitDRef?.referenceMin || 30)) {
+      if (vitD < (vitDRef?.minValue || 30)) {
         result.supplements.push({
           type: 'supplements',
           title: 'Vitamin D Supplementation',
@@ -154,7 +154,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
       const iron = Number(values.iron);
       const ironRef = bloodMarkers.iron;
       
-      if (iron < (ironRef?.referenceMin || 60)) {
+      if (iron < (ironRef?.minValue || 60)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Iron-Rich Foods',
@@ -165,7 +165,7 @@ const BloodTestRecommendations: React.FC<BloodTestRecommendationsProps> = ({ val
           title: 'Iron Supplementation',
           description: 'Iron supplements may be beneficial. Consult your healthcare provider before starting.'
         });
-      } else if (iron > (ironRef?.referenceMax || 170)) {
+      } else if (iron > (ironRef?.maxValue || 170)) {
         result.nutrition.push({
           type: 'nutrition',
           title: 'Limit Iron-Rich Foods',

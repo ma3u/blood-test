@@ -3,8 +3,9 @@ import type { BloodMarker, BloodTestResult, TimelineEntry } from "./types";
 // Export types for convenience
 export type { BloodMarker, BloodTestResult, TimelineEntry };
 
-export const bloodMarkers: BloodMarker[] = [
-  {
+// Changed from array to record for easier access by key
+export const bloodMarkers: Record<string, BloodMarker> = {
+  ferritin: {
     id: "ferritin",
     name: "Ferritin (storage iron)",
     unit: "ng/ml",
@@ -20,7 +21,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "15-150"
     }
   },
-  {
+  vitamin_d: {
     id: "vitamin_d",
     name: "Vitamin D (25-OH)",
     unit: "ng/ml",
@@ -36,7 +37,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "50-70"
     }
   },
-  {
+  vitamin_b12: {
     id: "vitamin_b12",
     name: "Vitamin B12 (total)",
     unit: "pg/ml",
@@ -52,7 +53,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: ">600 (optimal 1000)"
     }
   },
-  {
+  holo_transcobalamin: {
     id: "holo_transcobalamin",
     name: "Holo-transcobalamin",
     unit: "pmol/l",
@@ -68,7 +69,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: ">100"
     }
   },
-  {
+  folic_acid: {
     id: "folic_acid",
     name: "Folic acid",
     unit: "ng/ml",
@@ -84,7 +85,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: ">16"
     }
   },
-  {
+  zinc: {
     id: "zinc",
     name: "Zinc (whole blood)",
     unit: "mg/l",
@@ -100,7 +101,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "6-7"
     }
   },
-  {
+  magnesium: {
     id: "magnesium",
     name: "Magnesium (serum)",
     unit: "mmol/l",
@@ -116,7 +117,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "0.85-1.0"
     }
   },
-  {
+  selenium: {
     id: "selenium",
     name: "Selenium (whole blood)",
     unit: "µg/l",
@@ -132,7 +133,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "140-160"
     }
   },
-  {
+  omega3: {
     id: "omega3",
     name: "Omega-3 Index",
     unit: "%",
@@ -148,7 +149,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: ">8"
     }
   },
-  {
+  total_protein: {
     id: "total_protein",
     name: "Total protein",
     unit: "g/dl",
@@ -164,7 +165,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: ">7.0 (optimal 7.3-7.6)"
     }
   },
-  {
+  hemoglobin: {
     id: "hemoglobin",
     name: "Hemoglobin",
     unit: "g/dL",
@@ -180,7 +181,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "13.5 - 17.5"
     }
   },
-  {
+  wbc: {
     id: "wbc",
     name: "White Blood Cell Count",
     unit: "10³/µL",
@@ -196,7 +197,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "4.5 - 11.0"
     }
   },
-  {
+  platelets: {
     id: "platelets",
     name: "Platelets",
     unit: "10³/µL",
@@ -212,7 +213,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "150 - 450"
     }
   },
-  {
+  glucose: {
     id: "glucose",
     name: "Glucose",
     unit: "mg/dL",
@@ -228,7 +229,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "70 - 99"
     }
   },
-  {
+  cholesterol: {
     id: "cholesterol",
     name: "Total Cholesterol",
     unit: "mg/dL",
@@ -244,7 +245,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "125 - 200"
     }
   },
-  {
+  ldl: {
     id: "ldl",
     name: "LDL Cholesterol",
     unit: "mg/dL",
@@ -260,7 +261,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "0 - 100"
     }
   },
-  {
+  hdl: {
     id: "hdl",
     name: "HDL Cholesterol",
     unit: "mg/dL",
@@ -276,7 +277,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "40 - 60"
     }
   },
-  {
+  triglycerides: {
     id: "triglycerides",
     name: "Triglycerides",
     unit: "mg/dL",
@@ -292,7 +293,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "0 - 150"
     }
   },
-  {
+  creatinine: {
     id: "creatinine",
     name: "Creatinine",
     unit: "mg/dL",
@@ -308,7 +309,7 @@ export const bloodMarkers: BloodMarker[] = [
       female: "0.6 - 1.2"
     }
   },
-  {
+  sodium: {
     id: "sodium",
     name: "Sodium",
     unit: "mmol/L",
@@ -324,9 +325,73 @@ export const bloodMarkers: BloodMarker[] = [
       female: "135 - 145"
     }
   },
-];
+  alt: {
+    id: "alt",
+    name: "ALT",
+    unit: "U/L",
+    normalRange: "7 - 56",
+    minValue: 7,
+    maxValue: 56,
+    description: "Enzyme found primarily in the liver that helps convert proteins into energy for liver cells.",
+    lowImplication: "Generally not a concern.",
+    highImplication: "May indicate liver damage, hepatitis, or other liver conditions.",
+    category: "Liver",
+    genderSpecificRanges: {
+      male: "7 - 56",
+      female: "7 - 56"
+    }
+  },
+  ast: {
+    id: "ast",
+    name: "AST",
+    unit: "U/L",
+    normalRange: "8 - 48",
+    minValue: 8,
+    maxValue: 48,
+    description: "Enzyme found in various tissues, including liver, heart, and muscles.",
+    lowImplication: "Generally not a concern.",
+    highImplication: "May indicate liver damage, heart attack, or other conditions affecting tissues containing this enzyme.",
+    category: "Liver",
+    genderSpecificRanges: {
+      male: "8 - 48",
+      female: "8 - 48"
+    }
+  },
+  vitaminD: {
+    id: "vitaminD",
+    name: "Vitamin D",
+    unit: "ng/mL",
+    normalRange: "30 - 80",
+    minValue: 30,
+    maxValue: 80,
+    description: "Fat-soluble vitamin essential for bone health and immune function.",
+    lowImplication: "May lead to bone softening, weakness, and increased risk of fractures.",
+    highImplication: "Excessive levels can cause calcium to build up in the blood, affecting heart and kidney function.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "30 - 80",
+      female: "30 - 80"
+    }
+  },
+  iron: {
+    id: "iron",
+    name: "Iron",
+    unit: "μg/dL",
+    normalRange: "60 - 170",
+    minValue: 60,
+    maxValue: 170,
+    description: "Essential mineral needed for hemoglobin production and oxygen transport.",
+    lowImplication: "May lead to iron deficiency anemia, fatigue, and compromised immune function.",
+    highImplication: "May indicate hemochromatosis or iron poisoning.",
+    category: "General Parameters",
+    genderSpecificRanges: {
+      male: "60 - 170",
+      female: "60 - 170"
+    }
+  },
+};
 
-// Updated getStatus function to optionally accept gender parameter
+// Updated getStatus function to work with the new bloodMarkers structure
 export const getStatus = (marker: BloodMarker, value: number | string, gender?: "male" | "female"): { status: "normal" | "low" | "high"; isNormal: boolean } => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
   

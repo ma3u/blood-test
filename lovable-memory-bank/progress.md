@@ -18,6 +18,7 @@
 - Fixed runtime error with German longevity translations default export
 - Added blood test visualization components for tracking trends over time
 - Implemented recommendations system based on blood test results
+- Fixed TypeScript errors related to bloodMarkers access in visualization components
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -36,3 +37,4 @@
 - Fixed missing TypeScript translation keys
 - Created proper German longevity translations file
 - Fixed missing default export in German longevity translations
+- Fixed bloodMarkers type in utils to be Record instead of array for proper property access

@@ -79,7 +79,7 @@ const LongevityFactorsSectionDe: React.FC = () => {
             <TableCell>Moderat negativ - Mit Übergewicht, Insulinresistenz und systemischen Entzündungen verbunden</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Schlafmangel (<6 oder >9 Stunden)</TableCell>
+            <TableCell className="font-medium">Schlafmangel ({'<'}6 oder {'>'}9 Stunden)</TableCell>
             <TableCell>Leicht bis moderat negativ - J-förmiger Zusammenhang zwischen Schlafdauer und Mortalität</TableCell>
             <TableCell>Moderat negativ - Beeinträchtigte kognitive Funktion, Stoffwechselgesundheit und Immunität</TableCell>
           </TableRow>

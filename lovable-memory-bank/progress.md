@@ -15,6 +15,7 @@
 - Fixed build errors in test files for proper TypeScript definitions
 - Fixed translation issues for German longevity content
 - Updated TypeScript TranslationKey type to include all needed blood test keys
+- Fixed runtime error with German longevity translations default export
 
 ### In Progress
 - Adding blood test results visualization
@@ -34,4 +35,4 @@
 - Added proper routing for all pages
 - Fixed missing TypeScript translation keys
 - Created proper German longevity translations file
-
+- Fixed missing default export in German longevity translations

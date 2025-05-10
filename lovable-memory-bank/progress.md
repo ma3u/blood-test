@@ -20,6 +20,13 @@
 - Implemented recommendations system based on blood test results
 - Fixed TypeScript errors related to bloodMarkers access in visualization components
 - Modified "Learn more" link to show longevity content directly in the same view without using a hidden modal
+- Optimized longevity page for readability and accessibility by:
+  - Reducing horizontal TOC to just top-level entries
+  - Removing redundant headline
+  - Removing table of contents from display
+  - Improving table formatting and visual design
+  - Removing references in text and table for cleaner presentation
+  - Formatting references with accessible links that open in new tabs
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -40,3 +47,5 @@
 - Fixed missing default export in German longevity translations
 - Fixed bloodMarkers type in utils to be Record instead of array for proper property access
 - Fixed type errors when accessing bloodMarkers as a Record in other components
+- Fixed accessibility issues with learn more content - now shows content directly in main view
+- Fixed formatting and readability issues in longevity content display

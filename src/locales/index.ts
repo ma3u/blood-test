@@ -77,6 +77,11 @@ export type TranslationKey = keyof typeof en |
   `longevity.practical.mindbody.running.benefits` |
   `longevity.practical.mindbody.running.practice` |
   `longevity.practical.mindbody.stress` |
+  `longevity.sections` |
+  `longevity.sections.taking_action` |
+  `longevity.sections.factors` |
+  `longevity.sections.contributing` |
+  `back.to.test` |
   `blood.test.title` |
   `blood.test.submit` |
   `select.date` |

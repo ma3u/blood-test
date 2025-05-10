@@ -16,18 +16,18 @@ interface EnhancedLongevityContentProps {
 }
 
 const EnhancedLongevityContent: React.FC<EnhancedLongevityContentProps> = ({ onBackClick }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white p-6 rounded-lg shadow mb-6 flex justify-between items-center">
         <h2 className="text-2xl font-bold text-blue-800">
-          My Personal Journey to Longevity and Healthspan
+          {t("longevity.title")}
         </h2>
         <button
           onClick={onBackClick}
           className="px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Back to blood test"
+          aria-label={t("back.to.test")}
         >
           {t("back.to.test")}
         </button>
@@ -35,15 +35,15 @@ const EnhancedLongevityContent: React.FC<EnhancedLongevityContentProps> = ({ onB
       
       <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
         {/* Simplified top-level navigation */}
-        <nav className="mb-8" aria-label="Page sections">
+        <nav className="mb-8" aria-label={t("longevity.sections")}>
           <ul className="flex flex-wrap gap-4 text-sm" role="list">
-            <li><a href="#personal-journey" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Personal Journey</a></li>
-            <li><a href="#diagnostics" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Diagnostics</a></li>
-            <li><a href="#taking-action" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Taking Action</a></li>
-            <li><a href="#factors" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Longevity Factors</a></li>
-            <li><a href="#practical-examples" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Practical Examples</a></li>
-            <li><a href="#references" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">References</a></li>
-            <li><a href="#contributing" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Contributing</a></li>
+            <li><a href="#personal-journey" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.introduction")}</a></li>
+            <li><a href="#diagnostics" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.diagnostics")}</a></li>
+            <li><a href="#taking-action" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.taking_action")}</a></li>
+            <li><a href="#factors" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.factors")}</a></li>
+            <li><a href="#practical-examples" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.practical")}</a></li>
+            <li><a href="#references" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.references")}</a></li>
+            <li><a href="#contributing" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">{t("longevity.sections.contributing")}</a></li>
           </ul>
         </nav>
 
@@ -97,7 +97,7 @@ const EnhancedLongevityContent: React.FC<EnhancedLongevityContentProps> = ({ onB
             }}
             {...enhanceAccessibility({ role: "button" })}
           >
-            Back to top
+            {t("longevity.back.to.top")}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
             </svg>

@@ -1,17 +1,17 @@
 
 const longevity = {
-  "longevity.title": "Langlebigkeit",
+  "longevity.title": "Meine persönliche Reise zu Langlebigkeit und Gesundheit",
   "longevity.description": "Ein umfassender Leitfaden für ein längeres und gesünderes Leben",
   "longevity.back.to.top": "Zurück nach oben",
   
-  "longevity.sections.introduction": "Einleitung",
+  "longevity.sections": "Seitenabschnitte",
+  "longevity.sections.introduction": "Persönliche Reise",
   "longevity.sections.diagnostics": "Diagnostik",
-  "longevity.sections.mind_body": "Geist-Körper-Verbindung",
-  "longevity.sections.nutrition": "Ernährung",
-  "longevity.sections.exercise": "Bewegung",
-  "longevity.sections.sleep": "Schlaf",
-  "longevity.sections.supplements": "Nahrungsergänzungsmittel",
+  "longevity.sections.taking_action": "Handeln",
+  "longevity.sections.factors": "Langlebigkeitsfaktoren",
+  "longevity.sections.practical": "Praktische Beispiele",
   "longevity.sections.references": "Referenzen",
+  "longevity.sections.contributing": "Mitwirken",
   
   "longevity.mindBody.title": "Geist-Körper-Verbindung",
   "longevity.mindBody.introduction": "Die Verbindung zwischen Geist und Körper ist entscheidend für die Langlebigkeit.",
@@ -67,7 +67,8 @@ const longevity = {
   "longevity.practical.mindbody.running.mindful": "Fokus auf Atmung und Körperbewegungen während des Laufens.",
   "longevity.practical.mindbody.running.benefits": "Verbindet körperliche Aktivität mit Achtsamkeitspraxis.",
   "longevity.practical.mindbody.running.practice": "Beginnen Sie mit kurzen, langsamen Läufen ohne Kopfhörer.",
-  "longevity.practical.mindbody.stress": "Regelmäßige Stressmanagement-Praktiken einbauen."
+  "longevity.practical.mindbody.stress": "Regelmäßige Stressmanagement-Praktiken einbauen.",
+  "back.to.test": "Zurück zur Bluttesteingabe"
 };
 
 export default longevity;

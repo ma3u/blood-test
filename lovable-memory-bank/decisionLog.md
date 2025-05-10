@@ -76,9 +76,17 @@
   - Removed all locale and translation logic from `Longevity.tsx`. Remove the related components for the longevity pages.
   - All translations of the static longevity.md page will be generated as static HTML files (one per supported language).
   - These HTML files will be stored directly in the /public/longevity/ folder in the GitHub repository.
+  - The script [`node scripts/generateLongevityHtml.cjs`](../scripts/generateLongevityHtml.cjs) automates this process: it scans for every `longevity.{lang}.md` in `/public`, converts each to accessible HTML, and outputs `/public/longevity/{lang}.html`. Run this script after adding or updating any longevity markdown file for any supported language.
   - The English source (longevity.md) remains the origin for all translations.
   - Locale JSON files in /src/locales/ will continue to be used for UI functionality and dynamic strings only.
   - Static content (like longevity pages) will be rendered by loading the appropriate HTML file based on the user's language, with no additional runtime transformation or locale logic.
+  - Open the the longevity text in the same window/layer as the welcome page
+  - Use the same CSS and style of the app. Open the html as layer in the web app
+  - Make a horizontal menu with internal links to the headlines for the longevity pages
+  - format and struzcture the text for better readability
+  - format the table and improve the accessability for all links
+  - replace the references with accessable external links with link text
+  - create a bibliography section with all references with accessable links
 
 ### 📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page
 <div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature / Documentation<br><b>Date:</b> 2025-05-09</div>

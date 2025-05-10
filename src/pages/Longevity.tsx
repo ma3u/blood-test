@@ -1,38 +1,45 @@
 
-import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useMemo, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
 
+const SUPPORTED_LANGUAGES = ["en", "de", "fr", "es", "ru", "zh", "ja"];
+
 const Longevity = () => {
   const { language } = useLanguage();
-  const navigate = useNavigate();
-  const location = useLocation();
-  
-  useEffect(() => {
-    // Check if we're already on a language-specific page
-    if (location.pathname === "/longevityEn" || location.pathname === "/longevityDe") {
-      return;
-    }
+  const [iframeError, setIframeError] = useState(false);
 
-    // Redirect based on the user's language
-    if (language === 'de') {
-      navigate('/longevityDe');
-    } else {
-      // Default to English for all other languages
-      navigate('/longevityEn');
-    }
-  }, [language, navigate, location.pathname]);
+  const selectedLocale = useMemo(() => {
+    return SUPPORTED_LANGUAGES.includes(language) ? language : "en";
+  }, [language]);
 
-  // This component will only be visible briefly before redirect
+  // Fallback to English if the iframe fails to load (e.g., missing file)
+  const getIframeSrc = () => {
+    if (iframeError || !SUPPORTED_LANGUAGES.includes(language)) {
+      return "/longevity/en.html";
+    }
+    return `/longevity/${selectedLocale}.html`;
+  };
+
   return (
     <div className="min-h-screen bg-[#FAF6E2] flex flex-col items-center justify-center">
       <SEOHead 
         title="Longevity Content"
-        description="Redirecting to your language-specific longevity page."
+        description="Localized longevity and healthspan guide."
       />
-      <div className="bg-white rounded-lg shadow-md p-8 mt-8 text-center">
-        <h1 className="text-3xl font-bold mb-4 text-gray-800">Redirecting...</h1>
+      <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-2 md:p-8 mt-8 mb-8">
+        <iframe
+          src={getIframeSrc()}
+          title="Longevity Guide"
+          className="w-full min-h-[80vh] border-0 rounded"
+          onError={() => setIframeError(true)}
+          aria-label="Longevity and Healthspan Guide"
+        />
+        {iframeError && (
+          <div className="mt-4 text-red-600 text-center">
+            Could not load the selected language. Showing English version instead.
+          </div>
+        )}
       </div>
     </div>
   );

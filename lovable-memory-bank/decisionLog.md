@@ -20,7 +20,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
-    - [📖 Decision 026: Simplified Longevity Content to One Static Page Per Language](#-decision-026-simplified-longevity-content-to-one-static-page-per-language)
+    - [📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder](#-decision-026-store-static-generated-html-pages-for-longevity-content-in-public-folder)
     - [📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page](#-decision-025-comprehensive-mind-body-section-for-longevity-page)
     - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
@@ -62,19 +62,23 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
-### 📖 Decision 026: Simplified Longevity Content to One Static Page Per Language
+### 📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-09</div>
 
 - **Rationale:**
-  - The longevity content was overly complex due to locale-based dynamic loading and translation logic.
-  - Content for longevity is static and best maintained as one dedicated page per language, improving maintainability and clarity.
-  - Reduces code duplication, avoids unnecessary indirection, and makes it easier to add or update languages.
+- To simplify localization and content management, the strategy for the blood-test app was updated. Previously, translations of the longevity page were managed through TSX components and locale files, leading to complexity and unresolved locales.
+- Reduces i18n complexity and maintenance overhead.
+- Ensures parity and consistency for all supported languages.
+- Keeps static and dynamic content clearly separated.
+- Enables fast, reliable static content delivery from GitHub.
+
 - **Implementation:**
-  - Removed all locale and translation logic from `Longevity.tsx` and related components.
-  - Created new static pages: `LongevityEn.tsx` (English) and `LongevityDe.tsx` (German placeholder), each containing the full content for that language.
-  - Updated `Longevity.tsx` to point users to the new static language-specific pages.
-  - Followed the content structure of `public/longevity.md` for the English version.
-  - Updated this decision log and the Table of Contents to reflect the change.
+  - Removed all locale and translation logic from `Longevity.tsx`. Remove the related components for the longevity pages.
+  - All translations of the static longevity.md page will be generated as static HTML files (one per supported language).
+  - These HTML files will be stored directly in the /public/longevity/ folder in the GitHub repository.
+  - The English source (longevity.md) remains the origin for all translations.
+  - Locale JSON files in /src/locales/ will continue to be used for UI functionality and dynamic strings only.
+  - Static content (like longevity pages) will be rendered by loading the appropriate HTML file based on the user's language, with no additional runtime transformation or locale logic.
 
 ### 📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page
 <div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature / Documentation<br><b>Date:</b> 2025-05-09</div>

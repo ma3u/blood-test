@@ -9,6 +9,7 @@ const longevity = {
   "longevity.sections.diagnostics": "Diagnostik",
   "longevity.sections.taking_action": "Handeln",
   "longevity.sections.factors": "Langlebigkeitsfaktoren",
+  "longevity.sections.mindbody": "Geist-Körper",
   "longevity.sections.practical": "Praktische Beispiele",
   "longevity.sections.references": "Referenzen",
   "longevity.sections.contributing": "Mitwirken",
@@ -68,6 +69,16 @@ const longevity = {
   "longevity.practical.mindbody.running.benefits": "Verbindet körperliche Aktivität mit Achtsamkeitspraxis.",
   "longevity.practical.mindbody.running.practice": "Beginnen Sie mit kurzen, langsamen Läufen ohne Kopfhörer.",
   "longevity.practical.mindbody.stress": "Regelmäßige Stressmanagement-Praktiken einbauen.",
+  
+  "longevity.contributing.title": "Mitwirken und Gemeinschaft",
+  "longevity.contributing.intro": "Teile deine Erkenntnisse und verbinde dich mit anderen.",
+  "longevity.contributing.share": "Teile dein Wissen",
+  "longevity.contributing.placeholder": "Teile deine Erkenntnisse, Fragen oder Feedback zur Langlebigkeit...",
+  "longevity.contributing.submit": "Beitrag einreichen",
+  "longevity.contributing.community": "Verbinde dich mit der Gemeinschaft",
+  "longevity.contributing.disclaimer": "Die geteilten Informationen dienen nur zu Bildungszwecken und sollten nicht als medizinischer Rat ausgelegt werden.",
+  "longevity.contributing.thanks": "Danke für deine Teilnahme an dieser Reise zu einem längeren, gesünderen Leben.",
+  
   "back.to.test": "Zurück zur Bluttesteingabe"
 };
 

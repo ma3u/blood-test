@@ -9,6 +9,8 @@ import HabitsSectionDe from "@/components/longevity/HabitsSectionDe";
 import LongevityFactorsSectionDe from "@/components/longevity/LongevityFactorsSectionDe";
 import PracticalExamplesSectionDe from "@/components/longevity/PracticalExamplesSectionDe";
 import ReferencesSectionDe from "@/components/longevity/ReferencesSectionDe";
+import MindBodySectionDe from "@/components/longevity/MindBodySectionDe";
+import ContributingSectionDe from "@/components/longevity/ContributingSectionDe";
 
 const LongevityDe = () => {
   return (
@@ -43,8 +45,10 @@ const LongevityDe = () => {
               <li><a href="#diagnostik" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Diagnostik & Selbstverfolgung</a></li>
               <li><a href="#handeln" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Handeln</a></li>
               <li><a href="#faktoren" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Langlebigkeitsfaktoren</a></li>
+              <li><a href="#geist-koerper" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Geist-Körper</a></li>
               <li><a href="#praktische-beispiele" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Praktische Beispiele</a></li>
               <li><a href="#referenzen" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Referenzen</a></li>
+              <li><a href="#mitwirken" className="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-sm px-1">Mitwirken</a></li>
             </ul>
           </nav>
 
@@ -72,6 +76,12 @@ const LongevityDe = () => {
 
           <Separator className="my-8" />
 
+          <section id="geist-koerper" className="mb-8">
+            <MindBodySectionDe />
+          </section>
+
+          <Separator className="my-8" />
+
           <section id="praktische-beispiele" className="mb-8">
             <PracticalExamplesSectionDe />
           </section>
@@ -80,6 +90,12 @@ const LongevityDe = () => {
 
           <section id="referenzen" className="mb-8">
             <ReferencesSectionDe />
+          </section>
+
+          <Separator className="my-8" />
+
+          <section id="mitwirken" className="mb-8">
+            <ContributingSectionDe />
           </section>
           
           <div className="mt-10 pt-6 border-t border-gray-200">

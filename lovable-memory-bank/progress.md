@@ -1,4 +1,5 @@
 
+
 # Project Progress
 
 ## Last Updated: 2025-05-10
@@ -29,6 +30,7 @@
   - Formatting references with accessible links that open in new tabs
 - Added contributing section for users, experts, and developers
 - Added additional health experts to references section (Dr. Helena Orfanos-Boeckel, Dr. Ulrich Strunz, Thiemo Osterhaus, Dr. Ingo Froböse)
+- Updated GitHub repository links to correct URL (ma3u/blood-test)
 
 ### In Progress
 - Enhancing data persistence with Supabase
@@ -51,3 +53,5 @@
 - Fixed type errors when accessing bloodMarkers as a Record in other components
 - Fixed accessibility issues with learn more content - now shows content directly in main view
 - Fixed formatting and readability issues in longevity content display
+- Fixed incorrect GitHub repository URLs from mabuos to ma3u
+

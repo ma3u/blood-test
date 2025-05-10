@@ -41,7 +41,7 @@ const ContributingSection: React.FC = () => {
               <div className="mt-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => window.open("https://github.com/mabuos/blood-test/issues/new/choose", "_blank", "noopener,noreferrer")}
+                  onClick={() => window.open("https://github.com/ma3u/blood-test/issues/new/choose", "_blank", "noopener,noreferrer")}
                   className="mr-4"
                 >
                   Open Issue on GitHub
@@ -72,7 +72,7 @@ const ContributingSection: React.FC = () => {
               <div className="mt-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => window.open("https://github.com/mabuos/blood-test/discussions", "_blank", "noopener,noreferrer")}
+                  onClick={() => window.open("https://github.com/ma3u/blood-test/discussions", "_blank", "noopener,noreferrer")}
                 >
                   Join the Discussion on GitHub
                 </Button>
@@ -93,7 +93,7 @@ const ContributingSection: React.FC = () => {
               <h3 className="text-lg font-semibold mt-4">Step 1: Fork and Clone</h3>
               <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
                 <code>
-                  git clone https://github.com/yourusername/blood-test.git{"\n"}
+                  git clone https://github.com/ma3u/blood-test.git{"\n"}
                   cd blood-test{"\n"}
                   npm install
                 </code>
@@ -124,13 +124,13 @@ const ContributingSection: React.FC = () => {
               <div className="mt-6">
                 <Button 
                   variant="outline" 
-                  onClick={() => window.open("https://github.com/mabuos/blood-test", "_blank", "noopener,noreferrer")}
+                  onClick={() => window.open("https://github.com/ma3u/blood-test", "_blank", "noopener,noreferrer")}
                   className="mr-4"
                 >
                   View Repository
                 </Button>
                 <Button 
-                  onClick={() => window.open("https://github.com/mabuos/blood-test/blob/main/CONTRIBUTING.md", "_blank", "noopener,noreferrer")}
+                  onClick={() => window.open("https://github.com/ma3u/blood-test/blob/main/CONTRIBUTING.md", "_blank", "noopener,noreferrer")}
                 >
                   Read Full Contributing Guide
                 </Button>

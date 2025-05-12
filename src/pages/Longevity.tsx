@@ -2,33 +2,15 @@
 import React, { useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
-import LongevityEn from "./LongevityEn";
-import LongevityDe from "./LongevityDe";
+import EnhancedLongevityContent from "@/components/longevity/EnhancedLongevityContent";
 import { useNavigate } from "react-router-dom";
 
-const SUPPORTED_LANGUAGES = ["en", "de"];
-
 const Longevity = () => {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   const navigate = useNavigate();
 
-  const selectedLocale = useMemo(() => {
-    return SUPPORTED_LANGUAGES.includes(language) ? language : "en";
-  }, [language]);
-
-  // Handle back button
   const handleBackClick = () => {
     navigate('/');
-  };
-
-  // Render the appropriate component based on language
-  const renderContent = () => {
-    switch (selectedLocale) {
-      case "de":
-        return <LongevityDe />;
-      default:
-        return <LongevityEn />;
-    }
   };
 
   return (
@@ -37,9 +19,7 @@ const Longevity = () => {
         title={t("longevity.title")}
         description={t("longevity.description")}
       />
-      
-      {renderContent()}
-
+      <EnhancedLongevityContent onBackClick={handleBackClick} />
       <div className="fixed bottom-4 right-4">
         <button
           onClick={handleBackClick}

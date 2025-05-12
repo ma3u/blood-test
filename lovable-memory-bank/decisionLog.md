@@ -62,18 +62,36 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
-### 📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder
-<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-09</div>
+### 📖 Decision 026: Longevity Page Localization & Refactor
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-12</div>
 
-- **Rationale:**
-- To simplify localization and content management, the strategy for the blood-test app was updated. Previously, translations of the longevity page were managed through TSX components and locale files, leading to complexity and unresolved locales.
-- Reduces i18n complexity and maintenance overhead.
-- Ensures parity and consistency for all supported languages.
-- Keeps static and dynamic content clearly separated.
-- Enables fast, reliable static content delivery from GitHub.
+**Rationale:**
+- All user-facing English text for longevity content was previously hardcoded in TSX components, making localization, consistency, and content updates difficult.
+- Migrating all text to a structured locale file (`public/locales/en/longevity.json` and `longevity.ts`) enables scalable i18n, easier updates, and better separation of content and presentational logic.
+- Ensures all presentational logic remains in code, not in locale files, and no user-facing English text remains hardcoded.
 
-- **Implementation:**
-  - Removed all locale and translation logic from `Longevity.tsx`. Remove the related components for the longevity pages.
+**Implementation:**
+- Extracted all longevity-related English text from `/src/components/longevity/` and `/src/pages/Longevity.tsx`.
+- Structured locale file (`public/locales/en/longevity.json`) for all headings, paragraphs, tables, references, navigation, and contribution instructions.
+- Created `public/locales/en/longevity.ts` to export the locale as a typed module for IDE/type safety.
+- Refactored all longevity-related components:
+  - Replaced hardcoded English text with `t()` or `<Trans>` using correct keys.
+  - Rendered tables/lists dynamically from locale arrays/objects.
+  - Removed all language-specific pages/components (e.g., `LongevityEN.tsx`).
+  - Updated main page logic to use only language-agnostic components and translation keys.
+- Context comments added for ambiguous keys.
+
+**Validation:**
+- Scanned all affected files to ensure:
+  - No user-facing English text remains hardcoded in TSX/JSX.
+  - All text is sourced from the locale file.
+  - All presentational logic remains in code.
+- Started dev server and visually checked longevity page for correct rendering and translations.
+
+**Next Steps:**
+- Expand locale files for additional languages as needed.
+- Continue to update documentation and automated tests for i18n coverage.
+
   - All translations of the static longevity.md page will be generated as static HTML files (one per supported language).
   - These HTML files will be stored directly in the /public/longevity/ folder in the GitHub repository.
   - The script [`node scripts/generateLongevityHtml.cjs`](../scripts/generateLongevityHtml.cjs) automates this process: it scans for every `longevity.{lang}.md` in `/public`, converts each to accessible HTML, and outputs `/public/longevity/{lang}.html`. Run this script after adding or updating any longevity markdown file for any supported language.

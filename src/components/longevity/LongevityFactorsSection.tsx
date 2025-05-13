@@ -1,23 +1,20 @@
-
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { Separator } from "@/components/ui/separator";
 import PositiveFactorsTable from "./PositiveFactorsTable";
 import NegativeFactorsTable from "./NegativeFactorsTable";
 import CombinedEffectsTable from "./CombinedEffectsTable";
 
 const LongevityFactorsSection: React.FC = () => {
+  const { t } = useTranslation('longevity');
   return (
     <>
       <h2 id="longevity-factors-title" className="text-2xl font-bold text-blue-800 mb-4">
         Factors Influencing Longevity and Healthspan: Evidence-Based Overview
       </h2>
-      
       <p className="mb-4 text-gray-700">
-        The average disparity between lifespan and healthspan is ~9 years, with individuals spending 
-        nearly 20% of life with morbidity. Addressing modifiable factors (e.g., smoking, diet) is critical 
-        to closing this gap.
+        The average disparity between lifespan and healthspan is ~9 years, with individuals spending nearly 20% of life with morbidity. Addressing modifiable factors (e.g., smoking, diet) is critical to closing this gap.
       </p>
-      
       <p className="mb-6 text-gray-700">
         Below is a comprehensive analysis of critical factors, their quantified impacts, and supporting evidence.
       </p>

@@ -20,7 +20,7 @@
   - [📝 How to Update This Decision Record](#-how-to-update-this-decision-record)
 - [Table Of Contents](#table-of-contents)
     - [📋 Outstanding Tasks](#-outstanding-tasks)
-    - [📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder](#-decision-026-store-static-generated-html-pages-for-longevity-content-in-public-folder)
+    - [📖 Decision 026: Reference List UI: Linked Title, Plain Subtitle, Author](#-decision-026-reference-list-ui-linked-title-plain-subtitle-author)
     - [📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page](#-decision-025-comprehensive-mind-body-section-for-longevity-page)
     - [📖 Decision 024: Comprehensive Longevity Page – Evidence-Based Healthspan Guide](#-decision-024-comprehensive-longevity-page--evidence-based-healthspan-guide)
     - [🧪 Decision 023: Automated Testing Strategy for Vite/React/TS](#-decision-023-automated-testing-strategy-for-vitereactts)
@@ -49,7 +49,6 @@
 
 ---
 
-
 ### 📋 Outstanding Tasks
 
 - Create automated tests for core application features
@@ -62,49 +61,38 @@
 - Create accessibility documentation for the project
 - Add automated SEO validation to CI/CD pipeline
 
-### 📖 Decision 026: Longevity Page Localization & Refactor
-<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Architecture<br><b>Date:</b> 2025-05-12</div>
+### 📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Structure<br><b>Date:</b> 2025-05-08</div>
 
-**Rationale:**
-- All user-facing English text for longevity content was previously hardcoded in TSX components, making localization, consistency, and content updates difficult.
-- Migrating all text to a structured locale file (`public/locales/en/longevity.json` and `longevity.ts`) enables scalable i18n, easier updates, and better separation of content and presentational logic.
-- Ensures all presentational logic remains in code, not in locale files, and no user-facing English text remains hardcoded.
+- **Rationale:** Serve longevity content as static HTML for SEO and performance.
+- **Implementation:**
+  - Generated static HTML files from markdown sources using a build script.
+  - Placed generated HTML in the `/public` folder for direct serving.
+  - Updated navigation and sitemap to point to static HTML.
 
-**Implementation:**
-- Extracted all longevity-related English text from `/src/components/longevity/` and `/src/pages/Longevity.tsx`.
-- Structured locale file (`public/locales/en/longevity.json`) for all headings, paragraphs, tables, references, navigation, and contribution instructions.
-- Created `public/locales/en/longevity.ts` to export the locale as a typed module for IDE/type safety.
-- Refactored all longevity-related components:
-  - Replaced hardcoded English text with `t()` or `<Trans>` using correct keys.
-  - Rendered tables/lists dynamically from locale arrays/objects.
-  - Removed all language-specific pages/components (e.g., `LongevityEN.tsx`).
-  - Updated main page logic to use only language-agnostic components and translation keys.
-- Context comments added for ambiguous keys.
+### 📖 Decision 027: Reference List Layout – Multi-Line, Simple Text Style
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-12</div>
 
-**Validation:**
-- Scanned all affected files to ensure:
-  - No user-facing English text remains hardcoded in TSX/JSX.
-  - All text is sourced from the locale file.
-  - All presentational logic remains in code.
-- Started dev server and visually checked longevity page for correct rendering and translations.
-
-**Next Steps:**
-- Expand locale files for additional languages as needed.
-- Continue to update documentation and automated tests for i18n coverage.
-
-  - All translations of the static longevity.md page will be generated as static HTML files (one per supported language).
-  - These HTML files will be stored directly in the /public/longevity/ folder in the GitHub repository.
-  - The script [`node scripts/generateLongevityHtml.cjs`](../scripts/generateLongevityHtml.cjs) automates this process: it scans for every `longevity.{lang}.md` in `/public`, converts each to accessible HTML, and outputs `/public/longevity/{lang}.html`. Run this script after adding or updating any longevity markdown file for any supported language.
-  - The English source (longevity.md) remains the origin for all translations.
-  - Locale JSON files in /src/locales/ will continue to be used for UI functionality and dynamic strings only.
-  - Static content (like longevity pages) will be rendered by loading the appropriate HTML file based on the user's language, with no additional runtime transformation or locale logic.
-  - Open the the longevity text in the same window/layer as the welcome page
-  - Use the same CSS and style of the app. Open the html as layer in the web app
-  - Make a horizontal menu with internal links to the headlines for the longevity pages
-  - format and struzcture the text for better readability
-  - format the table and improve the accessability for all links
-  - replace the references with accessable external links with link text
-  - create a bibliography section with all references with accessable links
+- **Rationale:**
+  - Ensure all references are readable, accessible, and visually consistent.
+  - Avoid any table or overly complex formatting.
+  - Match the desired example style for clarity and ease of use.
+- **Implementation:**
+  - References are rendered as follows:
+    - Main title (up to first colon or dash) is a clickable link.
+    - Subtitle (after colon/dash) is plain text, on a new line.
+    - Author is appended on a new line, prefixed with a dash.
+    - No table, icon, or extra formatting is used.
+    - Example:
+      ```
+      The Complete Guide to Intermittent Fasting:
+      How to Improve Your Health, Increase Your Energy, and Extend Your Life
+      - Jason Fung
+      ```
+    - No table or icon is used; the list is compact and accessible.
+  - Used a regex split in the component to separate main title and subtitle.
+  - Example:
+    - `01. [The Primal Blueprint:] Reprogram Your Genes for Effortless Weight Loss, Vibrant Health, and Boundless Energy - Mark Sisson`
 
 ### 📖 Decision 025: Comprehensive Mind-Body Section for Longevity Page
 <div style="background-color:#fffde7; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature / Documentation<br><b>Date:</b> 2025-05-09</div>
@@ -169,7 +157,6 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
 
 ---
 
-
 ### 🧪 Decision 023: Automated Testing Strategy for Vite/React/TS
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Tooling<br><b>Date:</b> 2025-05-08</div>
 
@@ -191,7 +178,6 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
   5. Ensure test results are visible in PRs and failing tests block merges.
 
 ---
-
 
 ### 🌿 Decision 022: Personalized Health Recommendations System
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Feature<br><b>Date:</b> 2025-05-08</div>

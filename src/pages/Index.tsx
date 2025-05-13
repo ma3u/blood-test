@@ -4,7 +4,7 @@ import { BloodTestResult } from "@/lib/types";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
 import Disclaimer from "@/components/Disclaimer";
-import EnhancedLongevityContent from "@/components/longevity/EnhancedLongevityContent";
+
 import HomePage from "@/components/home/HomePage";
 import ResultsPage from "@/components/home/ResultsPage";
 import LoadingState from "@/components/home/LoadingState";
@@ -76,7 +76,7 @@ const Index = () => {
       {/* Main content with skip link target */}
       <main id="main-content" className="container mx-auto py-4 px-3" tabIndex={-1}>
         {showLongevityContent ? (
-          <EnhancedLongevityContent onBackClick={() => setShowLongevityContent(false)} />
+          {/* Longevity content moved to /pages/Longevity.tsx */}
         ) : !results ? (
           <HomePage 
             onSubmit={handleTestResults} 

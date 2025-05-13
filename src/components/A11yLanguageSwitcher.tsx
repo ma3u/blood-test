@@ -26,13 +26,13 @@ const languageInfo: Record<SupportedLanguage, { name: string; flag: string }> = 
 // Map of supported languages to their corresponding page routes
 const languagePageMap: Record<string, Record<SupportedLanguage, string>> = {
   'longevity': {
-    en: '/longevityEn',
-    de: '/longevityDe',
-    fr: '/longevityEn', // Currently redirecting to English for unsupported languages
-    es: '/longevityEn',
-    ru: '/longevityEn',
-    zh: '/longevityEn',
-    ja: '/longevityEn'
+    en: '/longevity',
+    de: '/longevity',
+    fr: '/longevity',
+    es: '/longevity',
+    ru: '/longevity',
+    zh: '/longevity',
+    ja: '/longevity'
   }
 };
 

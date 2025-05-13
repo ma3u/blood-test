@@ -1,0 +1,294 @@
+{
+  "longevity": {
+    "title": "Longevity & Healthspan Guide",
+    "sections": {
+      "introduction": "Introduction",
+      "diagnostics": "Diagnostics & Self-Monitoring",
+      "taking_action": "Taking Action",
+      "factors": "Longevity Factors",
+      "practical": "Practical Examples",
+      "references": "References",
+      "contributing": "Contributing"
+    }
+  },
+  "back": {
+    "to": {
+      "test": "Back to Test"
+    }
+  },
+  "header": "My Personal Journey to Longevity and Healthspan",
+  "description": "A comprehensive, evidence-based guide to diagnostics, habits, and routines for maximum lifespan and health.",
+  "navigation": {
+    "personalJourney": "Personal Journey",
+    "diagnostics": "Diagnostics & Self-Tracking",
+    "takingAction": "Taking Action",
+    "factors": "Longevity Factors",
+    "practicalExamples": "Practical Examples",
+    "references": "References"
+  },
+  "sections": {
+    "personalJourney": {
+      "title": "My Personal Journey",
+      "paragraphs": [
+        "Growing up, I watched my parents struggle with serious health issues—problems that were largely the result of unhealthy habits: smoking, poor diet, lack of physical activity, and chronic stress. Their experiences became a powerful warning for me. I saw firsthand how smoking, physical inactivity, and poor nutrition can lead to years lost from both lifespan and healthspan, and I realized that I didn't want to follow the same path. Avoiding smoking became a conscious priority in my own lifestyle changes.",
+        "A few years ago, I faced my own health wake-up call. My cholesterol values were high, and I was teetering on the edge of being overweight. The numbers were clear: if I didn't change, I could be heading toward the same fate as my parents. But research shows that genetics account for less than 2% of mortality risk, while about 17% is shaped by modifiable lifestyle and environmental factors. That meant my future was largely in my own hands."
+      ]
+    },
+    "diagnostics": {
+      "title": "Proactive Diagnostics and Self-Monitoring",
+      "intro": "To ensure a holistic and proactive approach to my health and longevity, I have established a routine of regular diagnostic checks and continuous self-monitoring. This comprehensive strategy includes laboratory analysis, advanced molecular diagnostics, and digital health tracking, all aimed at early detection of risk factors and optimization of my healthspan.",
+      "labDiagnostics": {
+        "title": "Regular Laboratory Diagnostics",
+        "bloodValues": "Blood Values: I routinely monitor standard blood markers such as cholesterol (total, LDL, HDL, triglycerides), fasting glucose, HbA1c, liver and kidney function, inflammatory markers (hs-CRP), vitamin D, magnesium, zinc, and homocysteine. These values provide insights into my metabolic health, cardiovascular risk, and micronutrient status.",
+        "aminoAcids": "Amino Acid Profile: Periodically, I assess my amino acid spectrum to detect deficiencies or imbalances. Essential and conditionally essential amino acids such as tryptophan, lysine, methionine, leucine, isoleucine, valine, glutamine, and glycine are particularly important for muscle maintenance, immune function, and neurotransmitter balance.",
+        "micronutrients": "Micronutrient Status: Supplementary checks for vitamins (C, E, B-complex, coenzyme Q10, alpha-lipoic acid) and minerals (chromium, magnesium) help identify subclinical deficiencies that may affect aging, immunity, and energy metabolism."
+      },
+      "microbiome": {
+        "title": "Microbiome Analysis",
+        "sequencing": "Gut Microbiome Sequencing: I perform periodic stool-based microbiome analyses to assess the diversity and balance of my gut flora. This includes quantifying beneficial genera (e.g., Bifidobacterium, Akkermansia), evaluating the presence of short-chain fatty acid producers, and screening for dysbiosis or overgrowth of pathogenic species.",
+        "interpretation": "Interpretation and Action: Insights from microbiome testing guide my dietary choices, especially fiber and prebiotic intake, and help me personalize my probiotic supplementation. A healthy, diverse microbiome is now recognized as a critical pillar for metabolic health, immune regulation, and even mental well-being."
+      },
+      "digitalTracking": {
+        "title": "Digital Fitness and Health Tracking (Apple Health & Devices)",
+        "metrics": [
+          "VO2Max: I track my VO2Max as a marker of aerobic fitness and cardiovascular health. Improvements here are linked to lower all-cause mortality and enhanced healthspan.",
+          "Resting Heart Rate and Heart Rate Variability (HRV): Both are monitored continuously; a lower resting heart rate and higher HRV are signs of good cardiovascular and autonomic health.",
+          "Blood Pressure: Regular readings help me detect early hypertension and assess the impact of lifestyle changes.",
+          "Body Composition: Weight, BMI, body fat percentage, and waist circumference are tracked to monitor metabolic health and prevent obesity-related risks.",
+          "Activity Metrics: Steps per day, active energy expenditure, exercise minutes, and workout types (endurance, strength, HIIT) are all logged to ensure I meet recommended activity levels.",
+          "Sleep Tracking: I monitor sleep duration and quality, as restorative sleep is essential for recovery, hormonal balance, and cognitive function.",
+          "Blood Oxygen Saturation (SpO2): Periodic checks, especially during exercise or sleep, help ensure adequate oxygenation and detect potential respiratory issues.",
+          "ECG/EKG: If available, I use this feature for early detection of arrhythmias or other cardiac abnormalities.",
+          "Mindfulness Minutes: Tracking meditation and breathing exercises supports my stress management and mental resilience."
+        ]
+      },
+      "integration": {
+        "title": "Integrating Results for Personalized Prevention",
+        "paragraph": "By combining regular laboratory diagnostics, in-depth microbiome analysis, and continuous digital health tracking, I gain a multidimensional understanding of my health. This approach enables me to:",
+        "benefits": [
+          "Detect early warning signs before symptoms arise.",
+          "Tailor my nutrition, supplementation, and lifestyle interventions (e.g., adjusting fiber intake for microbiome health, optimizing amino acid supply for muscle and immune support, or targeting specific deficiencies with orthomolecular supplements).",
+          "Monitor the effectiveness of interventions in real time and adjust as needed."
+        ],
+        "conclusion": "This comprehensive diagnostic and monitoring routine forms the foundation of my strategy to extend both lifespan and healthspan, allowing me to age actively and healthily, despite my genetic predispositions and family history."
+      }
+    },
+    "factors": {
+      "title": "Factors Influencing Longevity and Healthspan: Evidence-Based Overview",
+      "intro": "The average disparity between lifespan and healthspan is ~9 years, with individuals spending nearly 20% of life with morbidity. Addressing modifiable factors (e.g., smoking, diet) is critical to closing this gap.",
+      "analysis": "Below is a comprehensive analysis of critical factors, their quantified impacts, and supporting evidence.",
+      "positiveTitle": "Positive Factors Enhancing Longevity and Healthspan",
+      "negativeTitle": "Negative Factors Reducing Longevity and Healthspan",
+      "combinedTitle": "Quantified Combined Effects",
+      "positiveTable": {
+        "headers": [
+          "Factor",
+          "Years Gained/Benefit",
+          "Healthspan Mechanism",
+          "Key Evidence/References"
+        ],
+        "rows": [
+          [
+            "Not Smoking",
+            "Prevents 5–10 years lost",
+            "Lowers risk of 21 diseases (e.g., lung cancer, COPD)",
+            "[Dietary Patterns and Longevity (Nutrients Journal)](https://www.mdpi.com/2072-6643/11/12/2862); [Why We Sleep: Unlocking the Power of Sleep and Dreams (Matthew Walker)](https://www.sleepdiplomat.com/book); [The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)](https://www.dietdoctor.com/the-obesity-code)"
+          ],
+          [
+            "Moderate Alcohol Intake",
+            "Part of lifestyle adding 5.5 years",
+            "Cardiovascular benefits at ≤1 drink/day (women) or ≤2/day (men)",
+            "[10% Human: How Your Body's Microbes Hold the Key to Health and Happiness (Alanna Collen)](https://www.harpercollins.com/products/10-human-alanna-collen); [Der Schlüssel zur Gesundheit: Erfahrungen und Überzeugungen (Ulrich Strunz)](https://www.strunz.com/de/buecher/der-schluessel-zur-gesundheit.html)"
+          ],
+          [
+            "Optimal Sleep (7–8 hours)",
+            "Prevents 2–3 years lost",
+            "Enhances cognitive function and metabolism",
+            "[The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection (Scott C. Anderson, John F. Cryan, Timothy G. Dinan)](https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/)"
+          ],
+          [
+            "Strong Social Connections",
+            "50% higher survival rates",
+            "Reduces dementia risk and improves mental health",
+            "[The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection (Scott C. Anderson, John F. Cryan, Timothy G. Dinan)](https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/); [The Complete Guide to Intermittent Fasting: How to Improve Your Health, Increase Your Energy, and Extend Your Life (Jason Fung)](https://www.dietdoctor.com/the-complete-guide-to-intermittent-fasting)"
+          ],
+          [
+            "Stress Management (incl. cold showers)",
+            "Mitigates 23–24 years lost",
+            "Lowers chronic inflammation; cold showers may help reduce stress and improve mood",
+            "[The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection (Scott C. Anderson, John F. Cryan, Timothy G. Dinan)](https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/); [The Complete Guide to Intermittent Fasting: How to Improve Your Health, Increase Your Energy, and Extend Your Life (Jason Fung)](https://www.dietdoctor.com/the-complete-guide-to-intermittent-fasting); [The End of Alzheimer's: The First Program to Prevent and Reverse Cognitive Decline (Dale E. Bredesen)](https://www.drbredesen.com/the-end-of-alzheimers)"
+          ]
+        ]
+      },
+      "negativeTable": {
+        "headers": [
+          "Factor",
+          "Years Lost/Impact",
+          "Healthspan Mechanism",
+          "Key Evidence/References"
+        ],
+        "rows": [
+          [
+            "Physical Inactivity",
+            "4.7 years lost",
+            "Linked to 17 diseases (e.g., stroke, diabetes)",
+            "[10% Human: How Your Body's Microbes Hold the Key to Health and Happiness (Alanna Collen)](https://www.harpercollins.com/products/10-human-alanna-collen); [Effect of Diet on the Gut Microbiota: Rethinking Intervention Duration (Frontiers in Microbiology)](https://www.frontiersin.org/articles/10.3389/fmicb.2021.634349/full); [The Wim Hof Method: Activate Your Full Human Potential (Wim Hof)](https://www.wimhofmethod.com/)"
+          ],
+          [
+            "Obesity (BMI ≥30)",
+            "3–10 years lost",
+            "Raises diabetes, CVD, and cancer risk",
+            "[Ketogene Diäten: Grundlagen und Anwendung (German Society for Nutrition)](https://www.dge.de/wissenschaft/weitere-publikationen/fachinformationen/ketogene-diaeten/); [The Plant Paradox: The Hidden Dangers in 'Healthy' Foods That Cause Disease and Weight Gain (Steven Gundry)](https://www.drgundry.com/the-plant-paradox-book/)"
+          ],
+          [
+            "Diabetes (Type 2)",
+            "2 years lost",
+            "Reduces disease-free years by 1.7 years",
+            "[Breath: The New Science of a Lost Art (James Nestor)](https://www.mrjamesnestor.com/breath-book); [The Plant Paradox: The Hidden Dangers in 'Healthy' Foods That Cause Disease and Weight Gain (Steven Gundry)](https://www.drgundry.com/the-plant-paradox-book/)"
+          ],
+          [
+            "Hypertension",
+            "4–5 years lost",
+            "Increases stroke and kidney disease risk",
+            "[The Plant Paradox: The Hidden Dangers in 'Healthy' Foods That Cause Disease and Weight Gain (Steven Gundry)](https://www.drgundry.com/the-plant-paradox-book/)"
+          ],
+          [
+            "Low Socioeconomic Status",
+            "5–7 years lost",
+            "Limits access to healthcare and healthy food",
+            "[Effect of Diet on the Gut Microbiota: Rethinking Intervention Duration (Frontiers in Microbiology)](https://www.frontiersin.org/articles/10.3389/fmicb.2021.634349/full); [The Complete Guide to Intermittent Fasting: How to Improve Your Health, Increase Your Energy, and Extend Your Life (Jason Fung)](https://www.dietdoctor.com/the-complete-guide-to-intermittent-fasting)"
+          ]
+        ]
+      },
+      "combinedTable": {
+        "headers": [
+          "Combination",
+          "Total Years Impact",
+          "Notes / Synergy",
+          "Key Evidence/References"
+        ],
+        "rows": [
+          [
+            "Not Smoking + Physical Activity + Optimal Weight",
+            "+14 years",
+            "Synergistic effect: risk reduction greater than sum of individual factors",
+            "[Exercise and Longevity (PubMed 35310455)](https://pubmed.ncbi.nlm.nih.gov/35310455/); [Physical Activity and Mortality (PubMed 33609364)](https://pubmed.ncbi.nlm.nih.gov/33609364/)"
+          ],
+          [
+            "Healthy Diet + Social Connections + Sleep",
+            "+8–10 years",
+            "Combined: improved metabolic, immune, and cognitive outcomes",
+            "[Frontiers in Public Health: Longevity and Public Health (PDF)](https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1432701/pdf); [Why We Sleep (Matthew Walker)](https://www.sleepdiplomat.com/book)"
+          ],
+          [
+            "Stress Management + Mindfulness + Cold Exposure",
+            "Mitigates >20 years lost",
+            "Reduces inflammation, improves resilience, may slow aging",
+            "[The Wim Hof Method (Wim Hof)](https://www.wimhofmethod.com/); [The Psychobiotic Revolution (Scott C. Anderson et al.)](https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/)"
+          ]
+        ]
+      }
+    },
+    "practicalExamples": {
+      "title": "Practical Examples for Longevity and Healthspan: Diet, Exercise, and Mind-Body Practices",
+      "intro": "To optimize both lifespan and healthspan, it's not just about what you avoid, but also about the positive, evidence-based habits you build. Here are detailed, actionable examples based on leading molecular medicine and lifestyle research:"
+    },
+    "habits": {
+      "title": "Taking Action: Building My New Habits",
+      "sections": [
+        {
+          "heading": "Nutrition: Adopting a Low-Carb and \"80% Full\" Approach",
+          "paragraphs": [
+            "I started by transforming my diet. Inspired by the science behind low-carb and Mediterranean diets, I reduced my intake of sugars and processed carbohydrates, focusing instead on vegetables, healthy fats, fish, and lean meats.",
+            "I also embraced the Japanese \"hara hachi bu\" or 80% rule—eating until I felt just satisfied, not stuffed. This simple practice helped me control my portions and avoid mindless overeating, supporting both weight loss and metabolic health."
+          ]
+        },
+        {
+          "heading": "Movement: Making Exercise Non-Negotiable",
+          "paragraphs": [
+            "Knowing that physical inactivity can cost up to five years of life and increase the risk of at least 17 chronic diseases, I made regular movement a priority. I built a routine that includes:"
+          ],
+          "list": [
+            "Endurance training: Brisk walks or cycling 30–60 minutes most days, which is linked to lower all-cause mortality and improved cardiovascular health.",
+            "Strength training: Twice a week, focusing on major muscle groups to maintain muscle mass, bone density, and metabolic function.",
+            "HIIT (High-Intensity Interval Training): Once or twice a week, using short bursts of intense effort to boost insulin sensitivity and mitochondrial health."
+          ]
+        },
+        {
+          "heading": "Mind-Body Balance: Breathing and Stress Management",
+          "paragraphs": [
+            "I learned that chronic stress and poor sleep can undermine even the best diet and exercise plans. So I began practicing daily breathing exercises—simple diaphragmatic breathing or \"box breathing\"—to reduce stress and support my heart and immune system.",
+            "I also set aside 10 minutes each day for meditation or mindfulness, which research shows can lower inflammation and even slow biological aging."
+          ]
+        },
+        {
+          "heading": "Gut Health: Feeding My Microbiome",
+          "paragraphs": [
+            "I discovered that gut health is deeply connected to both mental and physical well-being. I increased my intake of fiber-rich foods—beans, leafy greens, and fermented foods like yogurt and sauerkraut—to nourish my gut bacteria and reduce inflammation."
+          ]
+        },
+        {
+          "heading": "Social and Emotional Wellbeing",
+          "paragraphs": [
+            "I made an effort to connect more with friends and family, knowing that strong social ties are linked to longer, healthier lives. I also focused on cultivating optimism and gratitude, which studies show can add years to life and improve resilience."
+          ]
+        },
+        {
+          "heading": "The Results and What I've Learned",
+          "paragraphs": [
+            "By making these changes, my cholesterol levels improved, my weight stabilized, and I felt more energetic and resilient. I realized that the most powerful medicine is not in a pill, but in the daily choices I make—what I eat, how I move, how I manage stress, and how I connect with others.",
+            "My journey is ongoing, but I'm motivated by the knowledge that every healthy choice adds not just years to my life, but life to my years. I'm determined to age actively and gracefully, closing the gap between lifespan and healthspan, and setting a new example for the next generation."
+          ]
+        },
+        {
+          "heading": "Key Takeaway",
+          "paragraphs": [
+            "My story is proof that even with a family history of illness, it's possible to rewrite your health destiny. By focusing on nutrition, movement, stress management, gut health, and social connection, I'm building a foundation for a longer, healthier, and more fulfilling life."
+          ]
+        }
+      ]
+    },
+    "references": {
+      "title": "References",
+      "intro": "Below are the key studies, books, and resources cited throughout this guide.",
+      "list": [
+        { "id": "1", "title": "Keto Clarity: Your Definitive Guide to the Benefits", "author": "Jimmy Moore, Eric C. Westman, MD", "url": "https://www.amazon.com/Keto-Clarity-Definitive-Benefits-Ketogenic/dp/1628600071" },
+        { "id": "2", "title": "10% Human: How Your Body's Microbes Hold the Key to Health and Happiness", "author": "Alanna Collen", "url": "https://www.harpercollins.com/products/10-human-alanna-collen" },
+        { "id": "3", "title": "The Gut Microbiome and Healthy Aging (Nature Review)", "author": "", "url": "https://www.nature.com/articles/s41392-021-00831-w" },
+        { "id": "4", "title": "Effect of Diet on the Gut Microbiota: Rethinking Intervention Duration", "author": "Frontiers in Microbiology", "url": "https://www.frontiersin.org/articles/10.3389/fmicb.2021.634349/full" },
+        { "id": "5", "title": "The Psychobiotic Revolution: Mood, Food, and the New Science of the Gut-Brain Connection", "author": "Scott C. Anderson, John F. Cryan, Timothy G. Dinan", "url": "https://www.penguinrandomhouse.com/books/547404/the-psychobiotic-revolution-by-scott-c-anderson-john-f-cryan-phd-and-timothy-g-dinan-md-phd/" },
+        { "id": "6", "title": "Dietary Patterns and Longevity (Nutrients Journal)", "author": "", "url": "https://www.mdpi.com/2072-6643/11/12/2862" },
+        { "id": "7", "title": "Ketogene Diäten: Grundlagen und Anwendung", "author": "German Society for Nutrition", "url": "https://www.dge.de/wissenschaft/weitere-publikationen/fachinformationen/ketogene-diaeten/" },
+        { "id": "8", "title": "The Wim Hof Method: Activate Your Full Human Potential", "author": "Wim Hof", "url": "https://www.wimhofmethod.com/" },
+        { "id": "9", "title": "Breath: The New Science of a Lost Art", "author": "James Nestor", "url": "https://www.mrjamesnestor.com/breath-book" },
+        { "id": "10", "title": "Der Schlüssel zur Gesundheit: Erfahrungen und Überzeugungen", "author": "Ulrich Strunz", "url": "https://www.strunz.com/de/buecher/der-schluessel-zur-gesundheit.html" },
+        { "id": "11", "title": "Nährstoff-Therapie – Der Praxisleitfaden", "author": "Helena Orfanos-Boeckel", "url": "https://shop.thieme.de/nahrstoff-therapie-9783437453564.html" },
+        { "id": "12", "title": "The Blue Zones: Lessons for Living Longer From the People Who've Lived the Longest", "author": "Dan Buettner", "url": "https://www.bluezones.com/book/the-blue-zones/" },
+        { "id": "13", "title": "The Plant Paradox: The Hidden Dangers in 'Healthy' Foods That Cause Disease and Weight Gain", "author": "Steven Gundry", "url": "https://www.drgundry.com/the-plant-paradox-book/" },
+        { "id": "14", "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams", "author": "Matthew Walker", "url": "https://www.sleepdiplomat.com/book" },
+        { "id": "15", "title": "The Telomere Effect: A Revolutionary Approach to Living Younger, Healthier, Longer", "author": "Elizabeth Blackburn, Elissa Epel", "url": "https://www.telomereeffect.com/" },
+        { "id": "16", "title": "The Longevity Diet: Discover the New Science Behind Stem Cell Activation and Regeneration to Slow Aging, Fight Disease, and Optimize Weight", "author": "Valter Longo", "url": "https://www.valterlongo.com/the-longevity-diet/" },
+        { "id": "17", "title": "The Circadian Code: Lose Weight, Supercharge Your Energy, and Sleep Better Than You Have in Years", "author": "Satchin Panda", "url": "https://www.satchinpanada.com/the-circadian-code/" },
+        { "id": "18", "title": "The Obesity Code: Unlocking the Secrets of Weight Loss", "author": "Jason Fung", "url": "https://www.dietdoctor.com/the-obesity-code" },
+        { "id": "19", "title": "The Complete Guide to Intermittent Fasting: How to Improve Your Health, Increase Your Energy, and Extend Your Life", "author": "Jason Fung", "url": "https://www.dietdoctor.com/the-complete-guide-to-intermittent-fasting" },
+        { "id": "20", "title": "The End of Alzheimer's: The First Program to Prevent and Reverse Cognitive Decline", "author": "Dale E. Bredesen", "url": "https://www.drbredesen.com/the-end-of-alzheimers" },
+        { "id": "21", "title": "The Wahls Protocol: A Radical New Way to Treat All Chronic Autoimmune Conditions Using Paleo Principles", "author": "Terry Wahls", "url": "https://terrywahls.com/the-wahls-protocol-book/" },
+        { "id": "22", "title": "The Paleo Solution: The Original Human Diet", "author": "Robb Wolf", "url": "https://robbwolf.com/the-paleo-solution/" },
+        { "id": "23", "title": "The Primal Blueprint: Reprogram Your Genes for Effortless Weight Loss, Vibrant Health, and Boundless Energy", "author": "Mark Sisson", "url": "https://www.marksdailyapple.com/the-primal-blueprint/" },
+        { "id": "24", "title": "The 4-Hour Body: An Uncommon Guide to Rapid Fat-Loss, Incredible Sex, and Becoming Superhuman", "author": "Timothy Ferriss", "url": "https://tim.blog/the-4-hour-body/" },
+        { "id": "25", "title": "The 4-Hour Work Week: Escape the 9-5, Live Anywhere and Join the New Rich", "author": "Timothy Ferriss", "url": "https://tim.blog/the-4-hour-work-week/" },
+        { "id": "26", "title": "Das Stress-weg-Buch – Das Geheimnis der Resilienz", "author": "Ulrich Strunz", "url": "https://www.goodreads.com/book/show/61274412-das-stress-weg-buch-das-geheimnis-der-resilienz" },
+        { "id": "27", "title": "Blut – Die Geheimnisse unseres 'flüssigen Organs': Schlüssel zur Heilung", "author": "Ulrich Strunz", "url": "https://www.goodreads.com/book/show/28925107-blut---die-geheimnisse-unseres-fl-ssigen-organs" },
+        { "id": "28", "title": "Du bist so alt wie dein schwächstes Organ", "author": "Prof. Dr. Bernd Kleine-Gunk", "url": "https://www.amazon.de/bist-dein-schw%C3%A4chstes-Organ-zur%C3%BCckstellst/dp/3833895594" },
+        { "id": "29", "title": "Verjünge deine Gene", "author": "Prof. Dr. Bernd Kleine-Gunk", "url": "https://www.amazon.de/Verj%C3%BCnge-deine-Gene-Erkenntnisse-Einzeltitel/dp/3833889705" },
+        { "id": "30", "title": "Homo Ex Machina: Der Mensch von morgen – Chancen und Risiken des Transhumanismus", "author": "Prof. Dr. Bernd Kleine-Gunk", "url": "https://www.amazon.de/Homo-machina-Mensch-differenzierter-Transhumanismus/dp/3442316693" }
+      ]
+    }
+  },
+
+  "contributing": {
+    "title": "Contributing",
+    "welcomeMessage": "Thank you for your interest in contributing! Please read our guidelines before submitting a pull request."
+  }
+}
+

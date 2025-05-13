@@ -1,9 +1,9 @@
 
 import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 
 const MindBodySection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation('longevity');
 
   return (
     <div>

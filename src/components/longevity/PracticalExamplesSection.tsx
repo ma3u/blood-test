@@ -1,14 +1,15 @@
-
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const PracticalExamplesSection: React.FC = () => {
+  const { t } = useTranslation('longevity');
   return (
     <div>
       <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">
-        Practical Examples for Longevity and Healthspan: Diet, Exercise, and Mind-Body Practices
+        {t('Practical Examples for Longevity and Healthspan: Diet, Exercise, and Mind-Body Practices')}
       </h3>
       <p className="mb-4">
-        To optimize both lifespan and healthspan, it's not just about what you avoid, but also about the positive, evidence-based habits you build. Here are detailed, actionable examples based on leading molecular medicine and lifestyle research:
+        {t('To optimize both lifespan and healthspan, it\'s not just about what you avoid, but also about the positive, evidence-based habits you build. Here are detailed, actionable examples based on leading molecular medicine and lifestyle research:')}
       </p>
 
       <h4 className="text-lg font-semibold text-blue-700 mt-4 mb-2">

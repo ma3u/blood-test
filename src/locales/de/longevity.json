@@ -1,0 +1,31 @@
+{
+  "longevity": {
+    "title": "Langlebigkeits- & Gesundheitsratgeber",
+    "sections": {
+      "introduction": "Einleitung",
+      "diagnostics": "Diagnostik & Selbstüberwachung",
+      "taking_action": "Handeln",
+      "factors": "Langlebigkeitsfaktoren",
+      "practical": "Praktische Beispiele",
+      "references": "Quellen",
+      "contributing": "Mitwirken"
+    }
+  },
+  "back": {
+    "to": {
+      "test": "Zurück zum Test"
+    }
+  },
+  "header": "Meine persönliche Reise zu Langlebigkeit und Gesundheitsspanne",
+  "description": "Ein umfassender, evidenzbasierter Leitfaden zu Diagnostik, Gewohnheiten und Routinen für maximale Lebensdauer und Gesundheit.",
+  "navigation": {
+    "home": "Startseite",
+    "longevity": "Langlebigkeit"
+  },
+  "sections": {
+    "references": {
+      "title": "Quellen",
+      "intro": "Nachfolgend finden Sie die wichtigsten Studien, Bücher und Ressourcen, die in diesem Leitfaden zitiert werden."
+    }
+  }
+}

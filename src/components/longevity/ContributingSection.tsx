@@ -1,16 +1,16 @@
-
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ContributingSection: React.FC = () => {
+  const { t } = useTranslation('longevity');
   return (
     <div className="my-8">
-      <h2 className="text-2xl font-bold text-blue-800 mb-4" id="contributing">Contributing</h2>
+      <h2 className="text-2xl font-bold text-blue-800 mb-4" id="contributing">{t('contributing.title')}</h2>
       <p className="mb-6">
-        We welcome contributions from users, health experts, and developers to help improve this platform.
-        Your knowledge and expertise can help others on their journey to better health and longevity.
+        {t('contributing.welcomeMessage')}
       </p>
 
       <Tabs defaultValue="users" className="w-full">

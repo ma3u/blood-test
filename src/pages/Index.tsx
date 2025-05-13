@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { BloodTestResult } from "@/lib/types";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
@@ -12,12 +13,13 @@ import ErrorState from "@/components/home/ErrorState";
 import { getPageHeadline, getPageDescription } from "@/components/home/LanguageUtils";
 
 const Index = () => {
+  const navigate = useNavigate();
   // Log that the component is initializing
   console.log("Index component initializing");
   
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
-  const [showLongevityContent, setShowLongevityContent] = useState(false);
+  
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
@@ -66,6 +68,7 @@ const Index = () => {
   }
 
   console.log("Rendering main content");
+
   return (
     <div className="min-h-screen bg-[#FAF6E2]"> 
       <SEOHead 
@@ -75,12 +78,10 @@ const Index = () => {
 
       {/* Main content with skip link target */}
       <main id="main-content" className="container mx-auto py-4 px-3" tabIndex={-1}>
-        {showLongevityContent ? (
-          {/* Longevity content moved to /pages/Longevity.tsx */}
-        ) : !results ? (
+        {!results ? (
           <HomePage 
             onSubmit={handleTestResults} 
-            onLearnMoreClick={() => setShowLongevityContent(true)}
+            onLearnMoreClick={() => navigate("/longevity")}
             gender={gender}
           />
         ) : (
@@ -89,8 +90,7 @@ const Index = () => {
             onBack={() => setResults(null)} 
           />
         )}
-
-        {!showLongevityContent && <Disclaimer />}
+        <Disclaimer />
       </main>
     </div>
   );

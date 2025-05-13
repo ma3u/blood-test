@@ -13,25 +13,26 @@ import {
 
 const PositiveFactorsTable: React.FC = () => {
   const { t } = useTranslation('longevity');
-  const headers = t('sections.factors.positiveTable.headers', { returnObjects: true }) as string[];
-  const rows = t('sections.factors.positiveTable.rows', { returnObjects: true }) as string[][];
-
-  // Defensive checks
-  const safeHeaders = Array.isArray(headers) ? headers : [];
-  const safeRows = Array.isArray(rows) ? rows : [];
+  
+  // Get headers and rows with defensive checks
+  const headersData = t('sections.factors.positiveTable.headers', { returnObjects: true });
+  const rowsData = t('sections.factors.positiveTable.rows', { returnObjects: true });
+  
+  const headers = Array.isArray(headersData) ? headersData : [];
+  const rows = Array.isArray(rowsData) ? rowsData : [];
 
   return (
     <div className="overflow-x-auto">
       <Table className="w-full border-collapse border border-gray-300">
         <TableHeader>
           <TableRow className="bg-blue-50">
-            {safeHeaders.map((header, idx) => (
+            {headers.map((header, idx) => (
               <TableHead key={idx} className="border border-gray-300 px-4 py-2 text-left font-bold">{header}</TableHead>
             ))}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {safeRows.map((row: string[], idx: number) => (
+          {rows.map((row, idx) => (
             <TableRow key={idx} className={idx % 2 === 1 ? "bg-gray-50" : undefined}>
               {Array.isArray(row) ? row.map((cell, cidx) => {
                 // Convert markdown links to accessible anchor tags

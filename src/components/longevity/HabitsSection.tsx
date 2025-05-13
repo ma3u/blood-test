@@ -5,17 +5,15 @@ import { useTranslation } from 'react-i18next';
 const HabitsSection: React.FC = () => {
   const { t } = useTranslation('longevity');
   const title = t('sections.habits.title');
-  const sections = t('sections.habits.sections', { returnObjects: true }) as Array<{
-    heading: string;
-    paragraphs: string[];
-    list?: string[];
-  }>;
-  const safeSections = Array.isArray(sections) ? sections : [];
+  const sectionsData = t('sections.habits.sections', { returnObjects: true });
+  
+  // Ensure we have an array to map over
+  const sections = Array.isArray(sectionsData) ? sectionsData : [];
 
   return (
     <section className="mb-8">
       <h2 className="text-2xl font-bold text-blue-800 mb-4">{title}</h2>
-      {safeSections.map((section, idx) => (
+      {sections.map((section, idx) => (
         <div key={idx} className="mb-8">
           <h3 className="text-xl font-semibold text-blue-700 mt-6 mb-3">{section.heading}</h3>
           {Array.isArray(section.paragraphs) && section.paragraphs.map((para, pidx) => (

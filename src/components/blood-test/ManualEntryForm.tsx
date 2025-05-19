@@ -69,7 +69,7 @@ const ManualEntryForm: React.FC<ManualEntryFormProps> = ({
           </div>
           
           <div className="flex justify-end">
-            <Button type="submit">
+            <Button type="submit" className="bg-primary text-white hover:bg-primary/90">
               {t("blood-test.save_results" as any)}
             </Button>
           </div>

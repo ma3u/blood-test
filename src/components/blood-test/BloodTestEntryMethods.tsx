@@ -38,11 +38,13 @@ const BloodTestEntryMethods: React.FC<BloodTestEntryMethodsProps> = ({
     <Tabs value={entryMethod} onValueChange={(v) => setEntryMethod(v as "manual" | "upload")} className="w-full max-w-4xl mx-auto">
       <EntryMethodTabs activeTab={entryMethod} setActiveTab={(tab) => setEntryMethod(tab as "manual" | "upload")} />
       
-      <TabsContent value="upload" className="space-y-6">
-        <FileUploader onResultsExtracted={onResultsExtracted} />
+      <TabsContent value="upload" className="space-y-6 mt-0">
+        <Card className="shadow-md border-gray-200">
+          <FileUploader onResultsExtracted={onResultsExtracted} />
+        </Card>
         
         {Object.keys(formValues).length > 0 && (
-          <Card className="mt-6">
+          <Card className="mt-6 shadow-md border-gray-200">
             <ManualEntryForm
               formValues={formValues}
               setFormValues={setFormValues}
@@ -55,8 +57,8 @@ const BloodTestEntryMethods: React.FC<BloodTestEntryMethodsProps> = ({
         )}
       </TabsContent>
       
-      <TabsContent value="manual" className="space-y-6">
-        <Card>
+      <TabsContent value="manual" className="space-y-6 mt-0">
+        <Card className="shadow-md border-gray-200">
           <ManualEntryForm
             formValues={formValues}
             setFormValues={setFormValues}

@@ -47,10 +47,15 @@ const BloodTestDiagnostic = () => {
       title: t("blood-test.data_saved" as any),
       description: t("blood-test.results_available_dashboard" as any),
     });
+    
+    // Reset form values after saving
+    if (entryMethod === "manual") {
+      setFormValues({});
+    }
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 px-4">
       <SEOHead
         title={t("blood-test.diagnostic_title" as any)}
         description={t("blood-test.diagnostic_description" as any)}
@@ -73,10 +78,11 @@ const BloodTestDiagnostic = () => {
         onResultsExtracted={handleResultsExtracted}
       />
       
-      {/* Show results section only if we have saved results or using sample data */}
-      <div className="mt-12">
-        <BloodTestResults savedResults={savedResults} />
-      </div>
+      {savedResults.length > 0 && (
+        <div className="mt-12">
+          <BloodTestResults savedResults={savedResults} />
+        </div>
+      )}
     </div>
   );
 };

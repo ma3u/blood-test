@@ -99,6 +99,12 @@ export type TranslationKey = keyof typeof en |
   `blood-test.extracted_values` |
   `blood-test.save_results` |
   `blood-test.manual_entry_title` |
-  `blood-test.enter`;
+  `blood-test.enter` |
+  `reference.hematology` |
+  `reference.hormones` |
+  `reference.caption.hematology` |
+  `reference.caption.hormones` |
+  `gender.male` |
+  `gender.female`;
 
 export default locales;

@@ -59,19 +59,12 @@ const ManualEntryForm: React.FC<ManualEntryFormProps> = ({
         <form onSubmit={onSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {Object.entries(bloodMarkers).map(([key, marker]) => (
-              <div key={key} className="space-y-2">
-                <Label htmlFor={key}>{marker.name}</Label>
-                <div className="flex items-center">
-                  <Input 
-                    id={key}
-                    type="text"
-                    placeholder={`${t("blood-test.enter" as any)} ${marker.name.toLowerCase()}`}
-                    value={formValues[key] || ''}
-                    onChange={(e) => handleInputChange(key, e.target.value)}
-                  />
-                  <span className="ml-2 text-gray-500 text-sm">{marker.unit}</span>
-                </div>
-              </div>
+              <BloodValueInput
+                key={key}
+                marker={marker}
+                value={formValues[key] || ''}
+                onChange={(value) => handleInputChange(key, value)}
+              />
             ))}
           </div>
           

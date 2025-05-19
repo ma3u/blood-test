@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/context/LanguageContext";
-import { cn } from "@/lib/utils";
 
 interface ReferenceValuesDialogProps {
   gender?: "male" | "female";
@@ -29,11 +28,6 @@ interface ReferenceValuesDialogProps {
 
 const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) => {
   const { t } = useLanguage();
-  
-  // Function to determine if a cell should be highlighted based on gender
-  const highlightCell = (cellGender: "male" | "female") => {
-    return cellGender === gender ? "bg-blue-50 font-semibold" : "";
-  };
   
   return (
     <Dialog>
@@ -43,7 +37,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
           {t("reference.title")}
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl max-h-[85vh]">
+      <DialogContent className="max-w-4xl max-h-[85vh]">
         <DialogHeader>
           <DialogTitle>
             {t("reference.title")} - {gender === "male" ? t("gender.male") : t("gender.female")}
@@ -66,110 +60,115 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                 <TableCaption>{t("reference.caption.general")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>{t("reference.column.parameter")}</TableHead>
-                    <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead className={cn(highlightCell("female"), "border-r")}>{t("reference.column.women")}</TableHead>
-                    <TableHead className={cn(highlightCell("male"), "border-r")}>{t("reference.column.men")}</TableHead>
-                    <TableHead>{t("reference.column.comment")}</TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.ferritin")}</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200</TableCell>
-                    <TableCell className={highlightCell("male")}>30–400<br/>optimal: 100–300</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200" :
+                        "30–400<br/>optimal: 100–300"}
+                    </TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminD")}</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>50–70 (optimal)</TableCell>
-                    <TableCell className={highlightCell("male")}>50–70 (optimal)</TableCell>
+                    <TableCell>50–70 (optimal)</TableCell>
                     <TableCell>Reference: 10–100, optimal higher</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminB12")}</TableCell>
                     <TableCell>pg/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;600 (optimal 1000)</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;600 (optimal 1000)</TableCell>
+                    <TableCell>&gt;600 (optimal 1000)</TableCell>
                     <TableCell>Reference: 200–2000</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Holo-transcobalamin</TableCell>
                     <TableCell>pmol/l</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;100</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;100</TableCell>
+                    <TableCell>&gt;100</TableCell>
                     <TableCell>Reference: 37.5–150</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.folicAcid")}</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;16</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;16</TableCell>
+                    <TableCell>&gt;16</TableCell>
                     <TableCell>Reference: 4.5–20</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Zinc (whole blood)</TableCell>
                     <TableCell>mg/l</TableCell>
-                    <TableCell className={highlightCell("female")}>6–7</TableCell>
-                    <TableCell className={highlightCell("male")}>6–7</TableCell>
+                    <TableCell>6–7</TableCell>
                     <TableCell>Reference: 4.5–7.5</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Magnesium (serum)</TableCell>
                     <TableCell>mmol/l</TableCell>
-                    <TableCell className={highlightCell("female")}>0.85–1.0</TableCell>
-                    <TableCell className={highlightCell("male")}>0.85–1.0</TableCell>
+                    <TableCell>0.85–1.0</TableCell>
                     <TableCell>Reference: 0.75–1.0</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Selenium (whole blood)</TableCell>
                     <TableCell>µg/l</TableCell>
-                    <TableCell className={highlightCell("female")}>140–160</TableCell>
-                    <TableCell className={highlightCell("male")}>140–160</TableCell>
+                    <TableCell>140–160</TableCell>
                     <TableCell>Reference: 100–140</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Omega-3 Index</TableCell>
                     <TableCell>%</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;8</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;8</TableCell>
+                    <TableCell>&gt;8</TableCell>
                     <TableCell>Reference: 4–11, optimal &gt;8</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Total protein</TableCell>
                     <TableCell>g/dl</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;7.0 (optimal 7.3–7.6)</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;7.0 (optimal 7.3–7.6)</TableCell>
+                    <TableCell>&gt;7.0 (optimal 7.3–7.6)</TableCell>
                     <TableCell>Reference: 6.2–8.5</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">DHEA-S</TableCell>
                     <TableCell>µg/dl</TableCell>
-                    <TableCell className={highlightCell("female")}>35.4–256 (age-dependent, optimal upper third)</TableCell>
-                    <TableCell className={highlightCell("male")}>44.3–331 (age-dependent, optimal upper third)</TableCell>
+                    <TableCell>
+                      {gender === "female" ?
+                        "35.4–256 (age-dependent, optimal upper third)" :
+                        "44.3–331 (age-dependent, optimal upper third)"}
+                    </TableCell>
                     <TableCell>Age-dependent, measure in morning</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Total testosterone</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>up to 50 yrs: 0.5–2<br/>over 50 yrs: 0.4–2</TableCell>
-                    <TableCell className={highlightCell("male")}>3.0–9.0</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "up to 50 yrs: 0.5–2<br/>over 50 yrs: 0.4–2" :
+                        "3.0–9.0"}
+                    </TableCell>
                     <TableCell>Target: upper range</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Free testosterone</TableCell>
                     <TableCell>pg/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>2–4</TableCell>
-                    <TableCell className={highlightCell("male")}>8–30 (age-dependent)</TableCell>
+                    <TableCell>
+                      {gender === "female" ? "2–4" : "8–30 (age-dependent)"}
+                    </TableCell>
                     <TableCell>Target: upper reference third</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Estradiol (E2)</TableCell>
                     <TableCell>pg/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>Follicular: 12–170<br/>Ovulation: 100–500<br/>Luteal: 40–200<br/>Postmeno: up to 40</TableCell>
-                    <TableCell className={highlightCell("male")}>up to 40<br/>optimal: 20–25</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "Follicular: 12–170<br/>Ovulation: 100–500<br/>Luteal: 40–200<br/>Postmeno: up to 40" :
+                        "up to 40<br/>optimal: 20–25"}
+                    </TableCell>
                     <TableCell>Under HRT: 60–80 (max. 100)</TableCell>
                   </TableRow>
                 </TableBody>
@@ -181,82 +180,73 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                 <TableCaption>{t("reference.caption.amino")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>{t("reference.column.parameter")}</TableHead>
-                    <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead className={cn(highlightCell("female"), "border-r")}>{t("reference.column.women")}</TableHead>
-                    <TableHead className={cn(highlightCell("male"), "border-r")}>{t("reference.column.men")}</TableHead>
-                    <TableHead>{t("reference.column.comment")}</TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">Leucine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>110–217 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>110–217 (target: upper half)</TableCell>
+                    <TableCell>110–217 (target: upper half)</TableCell>
                     <TableCell>BCAA, endurance, muscle</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Isoleucine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>58–117 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>58–117 (target: upper half)</TableCell>
+                    <TableCell>58–117 (target: upper half)</TableCell>
                     <TableCell>BCAA, mental performance</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Valine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>206–317 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>206–317 (target: upper half)</TableCell>
+                    <TableCell>206–317 (target: upper half)</TableCell>
                     <TableCell>BCAA, immune system</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Methionine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>25–40 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>25–40 (target: upper half)</TableCell>
+                    <TableCell>25–40 (target: upper half)</TableCell>
                     <TableCell>Antioxidant, methylation</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Lysine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>139–240 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>139–240 (target: upper half)</TableCell>
+                    <TableCell>139–240 (target: upper half)</TableCell>
                     <TableCell>Collagen, immune defense</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Phenylalanine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>51–109 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>51–109 (target: upper half)</TableCell>
+                    <TableCell>51–109 (target: upper half)</TableCell>
                     <TableCell>Mood, neurotransmitters</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Tryptophan</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>36–125 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>36–125 (target: upper half)</TableCell>
+                    <TableCell>36–125 (target: upper half)</TableCell>
                     <TableCell>Mood, sleep, serotonin</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Threonine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>118–210 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>118–210 (target: upper half)</TableCell>
+                    <TableCell>118–210 (target: upper half)</TableCell>
                     <TableCell>Connective tissue, immunity</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Arginine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>110–180 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>110–180 (target: upper half)</TableCell>
+                    <TableCell>110–180 (target: upper half)</TableCell>
                     <TableCell>Circulation, NO production</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Glutamine</TableCell>
                     <TableCell>µmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>500–900 (target: upper half)</TableCell>
-                    <TableCell className={highlightCell("male")}>500–900 (target: upper half)</TableCell>
+                    <TableCell>500–900 (target: upper half)</TableCell>
                     <TableCell>Gut, immune system</TableCell>
                   </TableRow>
                 </TableBody>
@@ -268,61 +258,55 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                 <TableCaption>{t("reference.caption.vitamins")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>{t("reference.column.parameter")}</TableHead>
-                    <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead className={cn(highlightCell("female"), "border-r")}>{t("reference.column.women")}</TableHead>
-                    <TableHead className={cn(highlightCell("male"), "border-r")}>{t("reference.column.men")}</TableHead>
-                    <TableHead>{t("reference.column.comment")}</TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin A (Retinol)</TableCell>
                     <TableCell>µg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>700–900 (optimal: 800)</TableCell>
-                    <TableCell className={highlightCell("male")}>700–900 (optimal: 800)</TableCell>
+                    <TableCell>700–900 (optimal: 800)</TableCell>
                     <TableCell>For healthy skin, immune system</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin B1 (Thiamine, active)</TableCell>
                     <TableCell>µg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>39.8–60 (target: 60)</TableCell>
-                    <TableCell className={highlightCell("male")}>39.8–60 (target: 60)</TableCell>
+                    <TableCell>39.8–60 (target: 60)</TableCell>
                     <TableCell>Nerve health, energy</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin B2 (Riboflavin, active)</TableCell>
                     <TableCell>µg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>85–300 (target: 250)</TableCell>
-                    <TableCell className={highlightCell("male")}>85–300 (target: 250)</TableCell>
+                    <TableCell>85–300 (target: 250)</TableCell>
                     <TableCell>Mitochondria, energy</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin B6 (P5P, active)</TableCell>
                     <TableCell>µg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>10.1–36 (target: 36)</TableCell>
-                    <TableCell className={highlightCell("male")}>10.1–36 (target: 36)</TableCell>
+                    <TableCell>10.1–36 (target: 36)</TableCell>
                     <TableCell>Neurotransmitters, homocysteine</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin B9 (Folate, active)</TableCell>
                     <TableCell>µg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>100–270 (target: 160)</TableCell>
-                    <TableCell className={highlightCell("male")}>100–270 (target: 160)</TableCell>
+                    <TableCell>100–270 (target: 160)</TableCell>
                     <TableCell>DNA synthesis, methylation</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin B12 (active, Holo-TC)</TableCell>
                     <TableCell>pmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>&gt;100 (target: 100–150)</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;100 (target: 100–150)</TableCell>
+                    <TableCell>&gt;100 (target: 100–150)</TableCell>
                     <TableCell>Nerve, blood, methylation</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Vitamin C</TableCell>
                     <TableCell>mg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>10–20 (target: 10–20, up to 100 possible)</TableCell>
-                    <TableCell className={highlightCell("male")}>10–20 (target: 10–20, up to 100 possible)</TableCell>
+                    <TableCell>10–20 (target: 10–20, up to 100 possible)</TableCell>
                     <TableCell>Antioxidant, immune system</TableCell>
                   </TableRow>
                 </TableBody>
@@ -334,47 +318,47 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                 <TableCaption>{t("reference.caption.inflammation")}</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>{t("reference.column.parameter")}</TableHead>
-                    <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead className={cn(highlightCell("female"), "border-r")}>{t("reference.column.women")}</TableHead>
-                    <TableHead className={cn(highlightCell("male"), "border-r")}>{t("reference.column.men")}</TableHead>
-                    <TableHead>{t("reference.column.comment")}</TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">CRP (C-reactive protein, hsCRP)</TableCell>
                     <TableCell>mg/L</TableCell>
-                    <TableCell className={highlightCell("female")}>15 (optimal: up to 80)</TableCell>
-                    <TableCell className={highlightCell("male")}>&gt;15 (optimal: up to 80)</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "15 (optimal: up to 80)" : 
+                        "&gt;15 (optimal: up to 80)"}
+                    </TableCell>
                     <TableCell>Histamine breakdown</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">BDNF (Brain-derived neurotrophic factor)</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>30–40 (target)</TableCell>
-                    <TableCell className={highlightCell("male")}>30–40 (target)</TableCell>
+                    <TableCell>30–40 (target)</TableCell>
                     <TableCell>Brain health, avoid &lt;20</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">AGEs (Advanced glycation endproducts)</TableCell>
                     <TableCell>µg/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>&lt;50 (the lower the better)</TableCell>
-                    <TableCell className={highlightCell("male")}>&lt;50 (the lower the better)</TableCell>
+                    <TableCell>&lt;50 (the lower the better)</TableCell>
                     <TableCell>Aging, metabolic health</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Nitrotyrosine</TableCell>
                     <TableCell>nmol/L</TableCell>
-                    <TableCell className={highlightCell("female")}>&lt;200 (target)</TableCell>
-                    <TableCell className={highlightCell("male")}>&lt;200 (target)</TableCell>
+                    <TableCell>&lt;200 (target)</TableCell>
                     <TableCell>Nitrosative stress</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Zonulin (leaky gut marker)</TableCell>
-                    <TableCell>ng/ml</TableCell>
-                    <TableCell className={highlightCell("female")}>&lt;30 (the lower the better)</TableCell>
-                    <TableCell className={highlightCell("male")}>&lt;30 (the lower the better)</TableCell>
+                    <TableCell>µg/ml</TableCell>
+                    <TableCell>&lt;30 (the lower the better)</TableCell>
                     <TableCell>Intestinal permeability</TableCell>
                   </TableRow>
                 </TableBody>

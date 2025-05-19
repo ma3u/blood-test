@@ -7,10 +7,14 @@ const reference = {
   "reference.amino": "Aminosäuren",
   "reference.vitamins": "Spezielle Vitamine",
   "reference.inflammation": "Entzündungsmarker",
+  "reference.hematology": "Hämatologie",
+  "reference.hormones": "Hormone",
   "reference.caption.general": "Referenzwerte für Allgemeine Parameter",
   "reference.caption.amino": "Referenzwerte für Aminosäuren (Aminogramm, Serum/Plasma)",
   "reference.caption.vitamins": "Referenzwerte für Spezielle Vitamine",
   "reference.caption.inflammation": "Referenzwerte für Entzündungsmarker",
+  "reference.caption.hematology": "Referenzwerte für Hämatologie",
+  "reference.caption.hormones": "Referenzwerte für Hormone",
   "reference.column.parameter": "Parameter",
   "reference.column.unit": "Einheit",
   "reference.column.women": "Frauen (Referenz/Ziel)",
@@ -23,6 +27,7 @@ const reference = {
   "reference.notes.4": "Aminosäuren: Für optimale Gesundheit sollte jede Aminosäure in der oberen Hälfte des Referenzbereichs liegen; Werte basieren auf gesunden, leistungsstarken Individuen.",
   "reference.notes.5": "Spezielle Vitamine: Zielwerte liegen oft höher als Standard-Referenzbereiche, um Prävention und optimale Funktion zu unterstützen.",
   "reference.notes.6": "Entzündungsmarker: Niedrigere Werte sind generell besser; chronische niedriggradige Entzündungen sind ein Risikofaktor für viele Krankheiten.",
+  "reference.notes.indicators": "Indikatoren: ✓ Tests werden von der gesetzlichen Krankenversicherung bezahlt, ⭐ Tests werden von Experten besonders empfohlen",
   "reference.sources": "Quellen: Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
 };
 

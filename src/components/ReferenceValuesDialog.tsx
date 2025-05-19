@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/context/LanguageContext";
+import { dangerouslySetInnerHTML } from "react";
 
 interface ReferenceValuesDialogProps {
   gender?: "male" | "female";
@@ -28,6 +29,11 @@ interface ReferenceValuesDialogProps {
 
 const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) => {
   const { t } = useLanguage();
+  
+  // Helper function to determine which column to show based on gender
+  const getGenderSpecificValue = (femaleValue: string, maleValue: string) => {
+    return gender === "female" ? femaleValue : maleValue;
+  };
   
   return (
     <Dialog>
@@ -53,6 +59,8 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
               <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
               <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
               <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
+              <TabsTrigger value="hematology">Hematology</TabsTrigger>
+              <TabsTrigger value="hormones">Hormones</TabsTrigger>
             </TabsList>
             
             <TabsContent value="general">
@@ -73,103 +81,66 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     <TableCell className="font-medium">{t("marker.ferritin")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>
-                      {gender === "female" ? 
-                        "premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200" :
-                        "30–400<br/>optimal: 100–300"}
+                      {getGenderSpecificValue(
+                        "premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200",
+                        "30–400<br/>optimal: 100–300"
+                      )}
                     </TableCell>
-                    <TableCell></TableCell>
+                    <TableCell>Iron storage protein; reflects total body iron stores</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">TSH</TableCell>
+                    <TableCell>mIU/l</TableCell>
+                    <TableCell>0.5–2.5 (optimal)</TableCell>
+                    <TableCell>Thyroid stimulating hormone</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminD")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>50–70 (optimal)</TableCell>
-                    <TableCell>Reference: 10–100, optimal higher</TableCell>
+                    <TableCell>Essential for calcium absorption, bone health, immune function</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminB12")}</TableCell>
                     <TableCell>pg/ml</TableCell>
                     <TableCell>&gt;600 (optimal 1000)</TableCell>
-                    <TableCell>Reference: 200–2000</TableCell>
+                    <TableCell>Critical for nerve function, DNA synthesis</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Holo-transcobalamin</TableCell>
                     <TableCell>pmol/l</TableCell>
                     <TableCell>&gt;100</TableCell>
-                    <TableCell>Reference: 37.5–150</TableCell>
+                    <TableCell>Active form of B12 that can be utilized by cells</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.folicAcid")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>&gt;16</TableCell>
-                    <TableCell>Reference: 4.5–20</TableCell>
+                    <TableCell>Crucial for DNA synthesis, repair, and methylation</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Zinc (whole blood)</TableCell>
                     <TableCell>mg/l</TableCell>
                     <TableCell>6–7</TableCell>
-                    <TableCell>Reference: 4.5–7.5</TableCell>
+                    <TableCell>Essential for immune function, protein synthesis</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Magnesium (serum)</TableCell>
                     <TableCell>mmol/l</TableCell>
                     <TableCell>0.85–1.0</TableCell>
-                    <TableCell>Reference: 0.75–1.0</TableCell>
+                    <TableCell>Required for over 600 enzymatic reactions</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Selenium (whole blood)</TableCell>
                     <TableCell>µg/l</TableCell>
                     <TableCell>140–160</TableCell>
-                    <TableCell>Reference: 100–140</TableCell>
+                    <TableCell>Antioxidant mineral essential for thyroid hormone metabolism</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Omega-3 Index</TableCell>
                     <TableCell>%</TableCell>
                     <TableCell>&gt;8</TableCell>
-                    <TableCell>Reference: 4–11, optimal &gt;8</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Total protein</TableCell>
-                    <TableCell>g/dl</TableCell>
-                    <TableCell>&gt;7.0 (optimal 7.3–7.6)</TableCell>
-                    <TableCell>Reference: 6.2–8.5</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">DHEA-S</TableCell>
-                    <TableCell>µg/dl</TableCell>
-                    <TableCell>
-                      {gender === "female" ?
-                        "35.4–256 (age-dependent, optimal upper third)" :
-                        "44.3–331 (age-dependent, optimal upper third)"}
-                    </TableCell>
-                    <TableCell>Age-dependent, measure in morning</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Total testosterone</TableCell>
-                    <TableCell>ng/ml</TableCell>
-                    <TableCell>
-                      {gender === "female" ? 
-                        "up to 50 yrs: 0.5–2<br/>over 50 yrs: 0.4–2" :
-                        "3.0–9.0"}
-                    </TableCell>
-                    <TableCell>Target: upper range</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Free testosterone</TableCell>
-                    <TableCell>pg/ml</TableCell>
-                    <TableCell>
-                      {gender === "female" ? "2–4" : "8–30 (age-dependent)"}
-                    </TableCell>
-                    <TableCell>Target: upper reference third</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Estradiol (E2)</TableCell>
-                    <TableCell>pg/ml</TableCell>
-                    <TableCell>
-                      {gender === "female" ? 
-                        "Follicular: 12–170<br/>Ovulation: 100–500<br/>Luteal: 40–200<br/>Postmeno: up to 40" :
-                        "up to 40<br/>optimal: 20–25"}
-                    </TableCell>
-                    <TableCell>Under HRT: 60–80 (max. 100)</TableCell>
+                    <TableCell>Measures EPA and DHA in red blood cell membranes</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -309,6 +280,12 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     <TableCell>10–20 (target: 10–20, up to 100 possible)</TableCell>
                     <TableCell>Antioxidant, immune system</TableCell>
                   </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Vitamin E</TableCell>
+                    <TableCell>mg/L</TableCell>
+                    <TableCell>16–25 (target: 16–25)</TableCell>
+                    <TableCell>Cell membranes, antioxidant</TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </TabsContent>
@@ -330,12 +307,8 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                   <TableRow>
                     <TableCell className="font-medium">CRP (C-reactive protein, hsCRP)</TableCell>
                     <TableCell>mg/L</TableCell>
-                    <TableCell>
-                      {gender === "female" ? 
-                        "15 (optimal: up to 80)" : 
-                        "&gt;15 (optimal: up to 80)"}
-                    </TableCell>
-                    <TableCell>Histamine breakdown</TableCell>
+                    <TableCell>&lt;1.0 (optimal: &lt;0.8)</TableCell>
+                    <TableCell>Acute phase protein, inflammation marker</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">BDNF (Brain-derived neurotrophic factor)</TableCell>
@@ -357,9 +330,151 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Zonulin (leaky gut marker)</TableCell>
-                    <TableCell>µg/ml</TableCell>
+                    <TableCell>ng/ml</TableCell>
                     <TableCell>&lt;30 (the lower the better)</TableCell>
                     <TableCell>Intestinal permeability</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TabsContent>
+
+            <TabsContent value="hematology">
+              <Table>
+                <TableCaption>Reference Values for Hematology Parameters</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">Hemoglobin</TableCell>
+                    <TableCell>g/dL</TableCell>
+                    <TableCell>{gender === "female" ? "12.0-15.5" : "13.5-17.5"}</TableCell>
+                    <TableCell>Oxygen carrier in red blood cells</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Hematocrit</TableCell>
+                    <TableCell>%</TableCell>
+                    <TableCell>{gender === "female" ? "36-46" : "41-53"}</TableCell>
+                    <TableCell>Percentage of blood volume occupied by RBCs</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Red Blood Cells (RBC)</TableCell>
+                    <TableCell>10^6/µL</TableCell>
+                    <TableCell>{gender === "female" ? "4.0-5.2" : "4.5-5.9"}</TableCell>
+                    <TableCell>Oxygen transport cells</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Mean Corpuscular Volume (MCV)</TableCell>
+                    <TableCell>fL</TableCell>
+                    <TableCell>80-100</TableCell>
+                    <TableCell>Average size of red blood cells</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">White Blood Cells (WBC)</TableCell>
+                    <TableCell>10^3/µL</TableCell>
+                    <TableCell>4.0-11.0</TableCell>
+                    <TableCell>Immune system cells</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Lymphocytes</TableCell>
+                    <TableCell>%</TableCell>
+                    <TableCell>20-40</TableCell>
+                    <TableCell>T-cells and B-cells of adaptive immunity</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Platelets</TableCell>
+                    <TableCell>10^3/µL</TableCell>
+                    <TableCell>150-450</TableCell>
+                    <TableCell>Blood clotting cells</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TabsContent>
+
+            <TabsContent value="hormones">
+              <Table>
+                <TableCaption>Reference Values for Hormones</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
+                    <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
+                    <TableHead className="w-1/3">
+                      {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
+                    </TableHead>
+                    <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">DHEA-S</TableCell>
+                    <TableCell>µg/dl</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "35.4–256 (age-dependent, optimal upper third)" : 
+                        "44.3–331 (age-dependent, optimal upper third)"}
+                    </TableCell>
+                    <TableCell>Most abundant steroid hormone in the body</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Total testosterone</TableCell>
+                    <TableCell>ng/ml</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "up to 50 yrs: 0.5–2<br/>over 50 yrs: 0.4–2" : 
+                        "3.0–9.0"}
+                    </TableCell>
+                    <TableCell>Target: upper range</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Free testosterone</TableCell>
+                    <TableCell>pg/ml</TableCell>
+                    <TableCell>
+                      {gender === "female" ? "2–4" : "8–30 (age-dependent)"}
+                    </TableCell>
+                    <TableCell>Target: upper reference third</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Estradiol (E2)</TableCell>
+                    <TableCell>pg/ml</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "Follicular: 12–170<br/>Ovulation: 100–500<br/>Luteal: 40–200<br/>Postmeno: up to 40" : 
+                        "up to 40<br/>optimal: 20–25"}
+                    </TableCell>
+                    <TableCell>Under HRT: 60–80 (max. 100)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Progesterone</TableCell>
+                    <TableCell>ng/ml</TableCell>
+                    <TableCell>
+                      {gender === "female" ? 
+                        "2nd cycle half: >10<br/>HRT: 2–6" : 
+                        "1–2"}
+                    </TableCell>
+                    <TableCell>Protection against estrogen dominance</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">SHBG</TableCell>
+                    <TableCell>nmol/l</TableCell>
+                    <TableCell>
+                      {gender === "female" ? "30–130" : "20–75"}
+                    </TableCell>
+                    <TableCell>>100 binds hormones too strongly</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Cortisol (morning)</TableCell>
+                    <TableCell>µg/dl</TableCell>
+                    <TableCell>
+                      {gender === "female" ? "16–18" : "17–18"}
+                    </TableCell>
+                    <TableCell>Optimal range</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -375,6 +490,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
               <li><strong>{t("reference.amino")}</strong>: {t("reference.notes.4")}</li>
               <li><strong>{t("reference.vitamins")}</strong>: {t("reference.notes.5")}</li>
               <li><strong>{t("reference.inflammation")}</strong>: {t("reference.notes.6")}</li>
+              <li><strong>Indicators</strong>: ✓ tests paid by public health insurance, ⭐ tests highly recommended by experts</li>
             </ul>
             <p className="text-xs mt-4 text-muted-foreground">
               <strong>Sources:</strong> {t("reference.sources")}

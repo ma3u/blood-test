@@ -214,3 +214,4 @@ const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => 
 };
 
 export default ReferenceValuesDialog;
+

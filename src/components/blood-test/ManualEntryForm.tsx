@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { bloodMarkers } from "@/lib/bloodTestUtils";
 import { useLanguage } from "@/context/LanguageContext";
+import BloodValueInput from "@/components/blood-test/BloodValueInput";
 
 interface ManualEntryFormProps {
   formValues: Record<string, string>;
@@ -27,10 +28,10 @@ const ManualEntryForm: React.FC<ManualEntryFormProps> = ({
   const { t } = useLanguage();
 
   const handleInputChange = (marker: string, value: string) => {
-    setFormValues(prev => ({
-      ...prev,
+    setFormValues({
+      ...formValues,
       [marker]: value,
-    }));
+    });
   };
 
   return (

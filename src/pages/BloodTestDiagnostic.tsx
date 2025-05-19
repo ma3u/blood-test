@@ -216,42 +216,59 @@ const BloodTestDiagnostic = () => {
           <BloodTestRecommendations 
             results={
               savedResults.length > 0 
-                ? savedResults[savedResults.length - 1].values
+                ? savedResults[savedResults.length - 1].values.map((value: any, index: number) => ({
+                    marker: {
+                      id: Object.keys(bloodMarkers)[index],
+                      name: Object.values(bloodMarkers)[index].name,
+                      unit: Object.values(bloodMarkers)[index].unit,
+                      normalRange: Object.values(bloodMarkers)[index].normalRange,
+                      minValue: Object.values(bloodMarkers)[index].minValue,
+                      maxValue: Object.values(bloodMarkers)[index].maxValue,
+                      description: Object.values(bloodMarkers)[index].description,
+                      lowImplication: Object.values(bloodMarkers)[index].lowImplication,
+                      highImplication: Object.values(bloodMarkers)[index].highImplication,
+                    },
+                    value: value,
+                    status: value < Object.values(bloodMarkers)[index].minValue ? 'low' : 
+                          value > Object.values(bloodMarkers)[index].maxValue ? 'high' : 'normal',
+                    isNormal: value >= Object.values(bloodMarkers)[index].minValue && 
+                              value <= Object.values(bloodMarkers)[index].maxValue
+                  }))
                 : [
-                  {
-                    marker: {
-                      id: "glucose",
-                      name: "Glucose",
-                      unit: "mg/dL",
-                      normalRange: "70-100",
-                      minValue: 70,
-                      maxValue: 100,
-                      description: "Blood sugar level",
-                      lowImplication: "Hypoglycemia",
-                      highImplication: "Hyperglycemia",
+                    {
+                      marker: {
+                        id: "glucose",
+                        name: "Glucose",
+                        unit: "mg/dL",
+                        normalRange: "70-100",
+                        minValue: 70,
+                        maxValue: 100,
+                        description: "Blood sugar level",
+                        lowImplication: "Hypoglycemia",
+                        highImplication: "Hyperglycemia",
+                      },
+                      value: 86,
+                      status: "normal" as const,
+                      isNormal: true
                     },
-                    value: 86,
-                    status: "normal",
-                    isNormal: true
-                  },
-                  {
-                    marker: {
-                      id: "cholesterol",
-                      name: "Total Cholesterol",
-                      unit: "mg/dL",
-                      normalRange: "< 200",
-                      minValue: 0,
-                      maxValue: 200,
-                      description: "Total blood cholesterol",
-                      lowImplication: "",
-                      highImplication: "Increased cardiovascular risk",
-                    },
-                    value: 165,
-                    status: "normal",
-                    isNormal: true
-                  }
-                  // Add more sample results as needed
-                ]
+                    {
+                      marker: {
+                        id: "cholesterol",
+                        name: "Total Cholesterol",
+                        unit: "mg/dL",
+                        normalRange: "< 200",
+                        minValue: 0,
+                        maxValue: 200,
+                        description: "Total blood cholesterol",
+                        lowImplication: "",
+                        highImplication: "Increased cardiovascular risk",
+                      },
+                      value: 165,
+                      status: "normal" as const,
+                      isNormal: true
+                    }
+                    // Add more sample results as needed
+                  ]
             } 
           />
         </>

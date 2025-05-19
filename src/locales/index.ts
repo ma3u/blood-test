@@ -109,6 +109,21 @@ export type TranslationKey = keyof typeof en |
   `recommendations.ferritin.low.female` |
   `recommendations.ferritin.low.male` |
   `recommendations.vitamin_d.low` |
-  `recommendations.lifestyle`;
+  `recommendations.lifestyle` |
+  `recommendation.importance.high` |
+  `recommendation.importance.medium` |
+  `recommendation.importance.low` |
+  `recommendation.related.to` |
+  `recommendation.contraindications` |
+  `recommendation.evidence.strong` |
+  `recommendation.evidence.moderate` |
+  `recommendation.evidence.limited` |
+  `recommendation.none` |
+  `recommendation.none.all` |
+  `recommendation.type.nutrition` |
+  `recommendation.type.supplement` |
+  `recommendation.type.exercise` |
+  `recommendation.type.lifestyle` |
+  `recommendations.description`;
 
 export default locales;

@@ -100,10 +100,32 @@ export type TranslationKey = keyof typeof en |
   `blood-test.save_results` |
   `blood-test.manual_entry_title` |
   `blood-test.enter` |
+  `reference.title` |
+  `reference.description` |
+  `reference.general` |
+  `reference.amino` |
+  `reference.vitamins` |
+  `reference.inflammation` |
   `reference.hematology` |
   `reference.hormones` |
+  `reference.caption.general` |
+  `reference.caption.amino` |
+  `reference.caption.vitamins` |
+  `reference.caption.inflammation` |
   `reference.caption.hematology` |
   `reference.caption.hormones` |
+  `reference.column.parameter` |
+  `reference.column.unit` |
+  `reference.column.women` |
+  `reference.column.men` |
+  `reference.column.comment` |
+  `reference.notes.title` |
+  `reference.notes.1` |
+  `reference.notes.2` |
+  `reference.notes.3` |
+  `reference.notes.4` |
+  `reference.notes.5` |
+  `reference.notes.6` |
   `reference.notes.indicators` |
   `reference.sources` |
   `gender.male` |

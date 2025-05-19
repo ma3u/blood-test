@@ -62,7 +62,7 @@ const GenderSwitch = ({ gender, onChange, className }: GenderSwitchProps) => {
         <HoverCardContent className="w-80">
           <div className="flex justify-between">
             <p className="text-sm">{t("gender.info.text")}</p>
-            <ReferenceValuesDialog />
+            <ReferenceValuesDialog gender={gender} />
           </div>
         </HoverCardContent>
       </HoverCard>

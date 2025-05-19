@@ -202,7 +202,7 @@ const BloodTestContainer = ({
         
         <div className="flex items-center gap-2">
           <GenderSwitch gender={gender} onChange={handleGenderChange} className="mr-2" />
-          <ReferenceValuesDialog />
+          <ReferenceValuesDialog gender={gender} />
         </div>
       </div>
       

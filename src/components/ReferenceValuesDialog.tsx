@@ -40,13 +40,14 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
   
   // Get the appropriate reference data from translations
   const referenceData = useMemo(() => {
+    // Make sure we're accessing the reference data arrays correctly
     return {
-      general: t("reference.general") as unknown as ReferenceValue[],
-      amino: t("reference.amino") as unknown as ReferenceValue[],
-      vitamins: t("reference.vitamins") as unknown as ReferenceValue[],
-      inflammation: t("reference.inflammation") as unknown as ReferenceValue[],
-      hematology: t("reference.hematology") as unknown as ReferenceValue[],
-      hormones: t("reference.hormones") as unknown as ReferenceValue[],
+      general: Array.isArray(t("reference.general")) ? t("reference.general") : [],
+      amino: Array.isArray(t("reference.amino")) ? t("reference.amino") : [],
+      vitamins: Array.isArray(t("reference.vitamins")) ? t("reference.vitamins") : [],
+      inflammation: Array.isArray(t("reference.inflammation")) ? t("reference.inflammation") : [],
+      hematology: Array.isArray(t("reference.hematology")) ? t("reference.hematology") : [],
+      hormones: Array.isArray(t("reference.hormones")) ? t("reference.hormones") : [],
     };
   }, [t, language]);
   
@@ -162,8 +163,11 @@ interface ReferenceTableProps {
   gender: "male" | "female";
 }
 
-const ReferenceTable = ({ data, caption, gender }: ReferenceTableProps) => {
+const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => {
   const { t } = useLanguage();
+  
+  // Add default value and ensure data is an array
+  const safeData = Array.isArray(data) ? data : [];
   
   return (
     <Table>
@@ -179,7 +183,7 @@ const ReferenceTable = ({ data, caption, gender }: ReferenceTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data?.map((item, index) => (
+        {safeData.map((item, index) => (
           <TableRow key={index}>
             <TableCell className="font-medium whitespace-pre-wrap">{item.param}</TableCell>
             <TableCell>{item.unit}</TableCell>

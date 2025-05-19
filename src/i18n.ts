@@ -49,6 +49,12 @@ i18n
           "gender.female": "Female"
         }
       },
+      de: {
+        translation: {
+          // German translations were already added to de/reference.ts
+        },
+        reference: deReference
+      }
     },
     ns: ['longevity', 'translation', 'reference'],
     defaultNS: 'translation',

@@ -34,6 +34,7 @@ interface ReferenceValue {
   women: string;
   men: string;
   comment: string;
+  explanation?: string; // Added explanation field
 }
 
 const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) => {
@@ -86,8 +87,8 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                 <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
                 <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
                 <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
-                <TabsTrigger value="hematology">{t("reference.hematology")}</TabsTrigger>
-                <TabsTrigger value="hormones">{t("reference.hormones")}</TabsTrigger>
+                <TabsTrigger value="hematology">{t(`reference.hematology`)}</TabsTrigger>
+                <TabsTrigger value="hormones">{t(`reference.hormones`)}</TabsTrigger>
               </TabsList>
             
               {/* Scrollable content area */}
@@ -98,6 +99,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.general} 
                     caption={t("reference.caption.general")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
 
@@ -107,6 +109,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.amino} 
                     caption={t("reference.caption.amino")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
 
@@ -116,6 +119,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.vitamins} 
                     caption={t("reference.caption.vitamins")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
                 
@@ -125,6 +129,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.inflammation} 
                     caption={t("reference.caption.inflammation")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
 
@@ -134,6 +139,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.hematology} 
                     caption={t("reference.caption.hematology")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
 
@@ -143,6 +149,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     data={referenceData.hormones} 
                     caption={t("reference.caption.hormones")} 
                     gender={gender} 
+                    showExplanation={true}
                   />
                 </TabsContent>
               
@@ -176,9 +183,10 @@ interface ReferenceTableProps {
   data: ReferenceValue[];
   caption: string;
   gender: "male" | "female";
+  showExplanation?: boolean;
 }
 
-const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => {
+const ReferenceTable = ({ data = [], caption, gender, showExplanation = false }: ReferenceTableProps) => {
   const { t } = useLanguage();
   
   // Add default value and ensure data is an array
@@ -189,12 +197,15 @@ const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => 
       <TableCaption>{caption}</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-1/4 text-left">{t("reference.column.parameter")}</TableHead>
-          <TableHead className="w-1/6 text-left">{t("reference.column.unit")}</TableHead>
-          <TableHead className="w-1/3 text-left">
+          <TableHead className="w-1/5 text-left">{t("reference.column.parameter")}</TableHead>
+          <TableHead className="w-1/12 text-left">{t("reference.column.unit")}</TableHead>
+          <TableHead className="w-1/5 text-left">
             {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
           </TableHead>
-          <TableHead className="w-1/4 text-left">{t("reference.column.comment")}</TableHead>
+          <TableHead className="w-1/5 text-left">{t("reference.column.comment")}</TableHead>
+          {showExplanation && (
+            <TableHead className="w-2/5 text-left">Detailed Explanation</TableHead>
+          )}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -205,7 +216,10 @@ const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => 
             <TableCell className="whitespace-pre-wrap">
               {gender === "female" ? item.women : item.men}
             </TableCell>
-            <TableCell>{item.comment}</TableCell>
+            <TableCell className="whitespace-pre-wrap">{item.comment}</TableCell>
+            {showExplanation && item.explanation && (
+              <TableCell className="whitespace-pre-wrap text-sm text-muted-foreground">{item.explanation}</TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>

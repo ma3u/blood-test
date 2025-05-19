@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/context/LanguageContext";
-import { dangerouslySetInnerHTML } from "react";
 
 interface ReferenceValuesDialogProps {
   gender?: "male" | "female";
@@ -59,8 +58,8 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
               <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
               <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
               <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
-              <TabsTrigger value="hematology">Hematology</TabsTrigger>
-              <TabsTrigger value="hormones">Hormones</TabsTrigger>
+              <TabsTrigger value="hematology">{t("reference.hematology")}</TabsTrigger>
+              <TabsTrigger value="hormones">{t("reference.hormones")}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="general">
@@ -455,7 +454,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     <TableCell>ng/ml</TableCell>
                     <TableCell>
                       {gender === "female" ? 
-                        "2nd cycle half: >10<br/>HRT: 2–6" : 
+                        "2nd cycle half: &gt;10<br/>HRT: 2–6" : 
                         "1–2"}
                     </TableCell>
                     <TableCell>Protection against estrogen dominance</TableCell>
@@ -466,7 +465,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
                     <TableCell>
                       {gender === "female" ? "30–130" : "20–75"}
                     </TableCell>
-                    <TableCell>>100 binds hormones too strongly</TableCell>
+                    <TableCell>&gt;100 binds hormones too strongly</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Cortisol (morning)</TableCell>

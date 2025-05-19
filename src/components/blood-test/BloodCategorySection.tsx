@@ -7,13 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
 import { useLanguage } from "@/context/LanguageContext";
+import { useUserProfile } from "@/context/UserProfileContext";
 
 interface BloodCategorySectionProps {
   category: string;
   markers: BloodMarker[];
   categoryName: string;
   categoryColor: string;
-  gender: "male" | "female";
   register: UseFormRegister<any>;
   initialValues?: Record<string, string>;
 }
@@ -23,11 +23,12 @@ const BloodCategorySection = ({
   markers,
   categoryName,
   categoryColor,
-  gender,
   register,
   initialValues
 }: BloodCategorySectionProps) => {
   const { t } = useLanguage();
+  const { profile } = useUserProfile();
+  const gender = profile.gender;
   
   return (
     <div className="space-y-4 mb-6">

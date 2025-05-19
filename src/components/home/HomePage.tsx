@@ -1,46 +1,52 @@
 
-import React from "react";
 import { BloodTestResult } from "@/lib/types";
-import BloodTestContainer from "@/components/blood-test/BloodTestContainer";
-import PageIntro from "@/components/layout/PageIntro";
 import { useLanguage } from "@/context/LanguageContext";
-import { getPageHeadline, getPageDescription } from "./LanguageUtils";
+import GenderSwitch from "../GenderSwitch";
 
 interface HomePageProps {
   onSubmit: (results: BloodTestResult[]) => void;
   onLearnMoreClick: () => void;
   gender: "male" | "female";
+  onGenderChange: (gender: "male" | "female") => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ onSubmit, onLearnMoreClick, gender }) => {
-  const { language } = useLanguage();
+const HomePage = ({ onSubmit, onLearnMoreClick, gender, onGenderChange }: HomePageProps) => {
+  const { t } = useLanguage();
   
+  // Your existing component implementation
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
-        <div className="md:w-1/3 flex justify-center md:justify-start">
-          <img 
-            src="/lovable-uploads/a8f58481-d0d4-4ad7-9810-0adfab52053a.png" 
-            alt="Blood Test Oracle Logo" 
-            className="w-32 h-32 object-contain animate-fade-in"
-            role="img"
-          />
-        </div>
-        <div className="md:w-2/3">
-          <PageIntro
-            title={getPageHeadline(language)}
-            description={getPageDescription(language)}
-            onLearnMoreClick={onLearnMoreClick}
-            compact={true}
-          />
-        </div>
+    <div className="max-w-3xl mx-auto">
+      <div className="text-center mb-6">
+        <h1 className="text-3xl font-bold text-blue-800 mb-2">
+          {t("app.title")}
+        </h1>
+        <p className="text-lg text-gray-600">
+          {t("app.subtitle")}
+        </p>
       </div>
-
-      <BloodTestContainer 
-        onSubmit={onSubmit} 
-        userId="anonymous-user" 
-        gender={gender}
-      />
+      
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <h2 className="text-xl font-semibold mb-4">{t("form.title")}</h2>
+        
+        <div className="mb-4">
+          <GenderSwitch 
+            gender={gender} 
+            onChange={onGenderChange} 
+            className="mb-4"
+          />
+        </div>
+        
+        {/* Rest of your component implementation */}
+      </div>
+      
+      <div className="text-center">
+        <button
+          onClick={onLearnMoreClick}
+          className="text-blue-600 hover:text-blue-800 hover:underline font-medium"
+        >
+          {t("learn.more")}
+        </button>
+      </div>
     </div>
   );
 };

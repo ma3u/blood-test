@@ -11,6 +11,7 @@ import ResultsPage from "@/components/home/ResultsPage";
 import LoadingState from "@/components/home/LoadingState";
 import ErrorState from "@/components/home/ErrorState";
 import { getPageHeadline, getPageDescription } from "@/components/home/LanguageUtils";
+import { useUserProfile } from "@/context/UserProfileContext";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const Index = () => {
   console.log("Index component initializing");
   
   const [results, setResults] = useState<BloodTestResult[] | null>(null);
-  const [gender, setGender] = useState<"male" | "female">("male");
   
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +34,7 @@ const Index = () => {
   }
   
   const { language } = languageContext || { language: 'en' };
+  const { profile, updateProfile } = useUserProfile();
   
   // Set loaded state after component mounts to ensure client-side rendering
   useEffect(() => {
@@ -54,6 +55,10 @@ const Index = () => {
       console.error("Error in handleTestResults:", err);
       setError("Error processing test results");
     }
+  };
+
+  const handleGenderChange = (gender: "male" | "female") => {
+    updateProfile({ gender });
   };
 
   // Show error state if there's an error
@@ -82,7 +87,8 @@ const Index = () => {
           <HomePage 
             onSubmit={handleTestResults} 
             onLearnMoreClick={() => navigate("/longevity")}
-            gender={gender}
+            gender={profile.gender}
+            onGenderChange={handleGenderChange}
           />
         ) : (
           <ResultsPage 

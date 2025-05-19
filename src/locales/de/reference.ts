@@ -29,6 +29,8 @@ const reference = {
   "reference.notes.6": "Entzündungsmarker: Niedrigere Werte sind generell besser; chronische niedriggradige Entzündungen sind ein Risikofaktor für viele Krankheiten.",
   "reference.notes.indicators": "Indikatoren: ✓ Tests werden von der gesetzlichen Krankenversicherung bezahlt, ⭐ Tests werden von Experten besonders empfohlen",
   "reference.sources": "Quellen: Nährstoff-Therapie – Der Praxisleitfaden, Dr. med. Helena Orfanos-Boeckel (2023); Der Blutwerte-Code, Thiemo Osterhaus (2023); Nährstoff-Therapie, Dr. med. Helena Orfanos-Boeckel (2022), Dr. Ulrich Strunz, \"Die Amino-Revolution\" (2022)",
+  "gender.male": "Männlich",
+  "gender.female": "Weiblich",
 };
 
 export default reference;

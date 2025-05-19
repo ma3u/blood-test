@@ -104,6 +104,8 @@ export type TranslationKey = keyof typeof en |
   `reference.hormones` |
   `reference.caption.hematology` |
   `reference.caption.hormones` |
+  `reference.notes.indicators` |
+  `reference.sources` |
   `gender.male` |
   `gender.female`;
 

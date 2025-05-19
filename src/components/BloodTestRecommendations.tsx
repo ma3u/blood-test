@@ -19,11 +19,11 @@ const BloodTestRecommendations = ({ results }: BloodTestRecommendationsProps) =>
     const abnormalResults = results.filter(result => !result.isNormal);
     
     if (abnormalResults.length === 0) {
-      return [t("recommendations.normal")];
+      return [t("recommendations.normal" as any)];
     }
     
     // General recommendation
-    recommendations.push(t("recommendations.general"));
+    recommendations.push(t("recommendations.general" as any));
     
     // Check for specific issues and provide gender-specific recommendations
     abnormalResults.forEach(result => {
@@ -31,14 +31,14 @@ const BloodTestRecommendations = ({ results }: BloodTestRecommendationsProps) =>
       
       if (marker.id === "ferritin" && result.status === "low") {
         if (profile.gender === "female") {
-          recommendations.push(t("recommendations.ferritin.low.female"));
+          recommendations.push(t("recommendations.ferritin.low.female" as any));
         } else {
-          recommendations.push(t("recommendations.ferritin.low.male"));
+          recommendations.push(t("recommendations.ferritin.low.male" as any));
         }
       }
       
       if (marker.id === "vitamin_d" && result.status === "low") {
-        recommendations.push(t("recommendations.vitamin_d.low"));
+        recommendations.push(t("recommendations.vitamin_d.low" as any));
       }
       
       // Add more marker-specific recommendations
@@ -46,7 +46,7 @@ const BloodTestRecommendations = ({ results }: BloodTestRecommendationsProps) =>
     
     // Add general lifestyle recommendations
     if (abnormalResults.length > 2) {
-      recommendations.push(t("recommendations.lifestyle"));
+      recommendations.push(t("recommendations.lifestyle" as any));
     }
     
     return recommendations;
@@ -57,7 +57,7 @@ const BloodTestRecommendations = ({ results }: BloodTestRecommendationsProps) =>
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t("recommendations.title")}</CardTitle>
+        <CardTitle>{t("recommendations.title" as any)}</CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="list-disc pl-5 space-y-2">

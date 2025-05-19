@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -215,17 +214,44 @@ const BloodTestDiagnostic = () => {
           />
           
           <BloodTestRecommendations 
-            values={
+            results={
               savedResults.length > 0 
                 ? savedResults[savedResults.length - 1].values
-                : { 
-                    glucose: 86, 
-                    cholesterol: 165, 
-                    hdl: 62, 
-                    ldl: 95,
-                    triglycerides: 105,
-                    vitaminD: 45
+                : [
+                  {
+                    marker: {
+                      id: "glucose",
+                      name: "Glucose",
+                      unit: "mg/dL",
+                      normalRange: "70-100",
+                      minValue: 70,
+                      maxValue: 100,
+                      description: "Blood sugar level",
+                      lowImplication: "Hypoglycemia",
+                      highImplication: "Hyperglycemia",
+                    },
+                    value: 86,
+                    status: "normal",
+                    isNormal: true
+                  },
+                  {
+                    marker: {
+                      id: "cholesterol",
+                      name: "Total Cholesterol",
+                      unit: "mg/dL",
+                      normalRange: "< 200",
+                      minValue: 0,
+                      maxValue: 200,
+                      description: "Total blood cholesterol",
+                      lowImplication: "",
+                      highImplication: "Increased cardiovascular risk",
+                    },
+                    value: 165,
+                    status: "normal",
+                    isNormal: true
                   }
+                  // Add more sample results as needed
+                ]
             } 
           />
         </>

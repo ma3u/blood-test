@@ -99,6 +99,16 @@ export type TranslationKey = keyof typeof en |
   `blood-test.extracted_values` |
   `blood-test.save_results` |
   `blood-test.manual_entry_title` |
-  `blood-test.enter`;
+  `blood-test.enter` |
+  `form.title` |
+  `app.title` |
+  `app.subtitle` |
+  `recommendations.title` |
+  `recommendations.normal` |
+  `recommendations.general` |
+  `recommendations.ferritin.low.female` |
+  `recommendations.ferritin.low.male` |
+  `recommendations.vitamin_d.low` |
+  `recommendations.lifestyle`;
 
 export default locales;

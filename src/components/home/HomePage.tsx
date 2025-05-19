@@ -26,7 +26,7 @@ const HomePage = ({ onSubmit, onLearnMoreClick, gender, onGenderChange }: HomePa
       </div>
       
       <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-        <h2 className="text-xl font-semibold mb-4">{t("form.title")}</h2>
+        <h2 className="text-xl font-semibold mb-4">{t("form.title" as any)}</h2>
         
         <div className="mb-4">
           <GenderSwitch 

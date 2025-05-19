@@ -151,7 +151,7 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
               <li><strong>{t("reference.amino")}</strong>: {t("reference.notes.4")}</li>
               <li><strong>{t("reference.vitamins")}</strong>: {t("reference.notes.5")}</li>
               <li><strong>{t("reference.inflammation")}</strong>: {t("reference.notes.6")}</li>
-              <li>{referenceData.notes?.indicators || t("reference.notes.indicators")}</li>
+              <li>{t("reference.notes.indicators")}</li>
             </ul>
             <p className="text-xs mt-4 text-muted-foreground">
               <strong>{t("reference.sources")}</strong>

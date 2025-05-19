@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import longevityJson from '@/locales/en/longevity.json';
@@ -51,7 +50,8 @@ i18n
       },
       de: {
         translation: {
-          // German translations were already added to de/reference.ts
+          "reference.hematology": "Hämatologie",
+          // Other German translations were already added to de/reference.ts
         },
         reference: deReference
       }

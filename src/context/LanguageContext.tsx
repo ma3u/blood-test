@@ -5,7 +5,7 @@ import locales, { SupportedLanguage, TranslationKey } from "../locales";
 type LanguageContextType = {
   language: SupportedLanguage;
   setLanguage: (lang: SupportedLanguage) => void;
-  t: (key: TranslationKey) => string;
+  t: (key: TranslationKey) => any; // Changed from 'string' to 'any' to support complex translations
   availableLanguages: SupportedLanguage[];
 };
 
@@ -27,7 +27,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("language", language);
   }, [language]);
 
-  const t = (key: TranslationKey): string => {
+  const t = (key: TranslationKey): any => {
     return locales[language][key] || key;
   };
 

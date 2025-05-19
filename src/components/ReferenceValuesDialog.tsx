@@ -36,20 +36,19 @@ interface ReferenceValue {
 }
 
 const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) => {
-  const { t, currentLanguage } = useLanguage();
+  const { t, language } = useLanguage();
   
   // Get the appropriate reference data from translations
   const referenceData = useMemo(() => {
-    const path = currentLanguage === 'en' ? 'reference' : 'reference';
     return {
-      general: t(`${path}.general`, { returnObjects: true }) as ReferenceValue[],
-      amino: t(`${path}.amino`, { returnObjects: true }) as ReferenceValue[],
-      vitamins: t(`${path}.vitamins`, { returnObjects: true }) as ReferenceValue[],
-      inflammation: t(`${path}.inflammation`, { returnObjects: true }) as ReferenceValue[],
-      hematology: t(`${path}.hematology`, { returnObjects: true }) as ReferenceValue[],
-      hormones: t(`${path}.hormones`, { returnObjects: true }) as ReferenceValue[],
+      general: t("reference.general") as unknown as ReferenceValue[],
+      amino: t("reference.amino") as unknown as ReferenceValue[],
+      vitamins: t("reference.vitamins") as unknown as ReferenceValue[],
+      inflammation: t("reference.inflammation") as unknown as ReferenceValue[],
+      hematology: t("reference.hematology") as unknown as ReferenceValue[],
+      hormones: t("reference.hormones") as unknown as ReferenceValue[],
     };
-  }, [t, currentLanguage]);
+  }, [t, language]);
   
   return (
     <Dialog>

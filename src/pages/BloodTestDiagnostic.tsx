@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,6 +12,7 @@ import FileUploader from "@/components/FileUploader";
 import { bloodMarkers } from "@/lib/bloodTestUtils";
 import BloodTestTrends from "@/components/BloodTestTrends";
 import BloodTestRecommendations from "@/components/BloodTestRecommendations";
+import { BloodTestResult } from "@/lib/types";
 
 const BloodTestDiagnostic = () => {
   const { t } = useLanguage();
@@ -216,24 +218,31 @@ const BloodTestDiagnostic = () => {
           <BloodTestRecommendations 
             results={
               savedResults.length > 0 
-                ? savedResults[savedResults.length - 1].values.map((value: any, index: number) => ({
-                    marker: {
-                      id: Object.keys(bloodMarkers)[index],
-                      name: Object.values(bloodMarkers)[index].name,
-                      unit: Object.values(bloodMarkers)[index].unit,
-                      normalRange: Object.values(bloodMarkers)[index].normalRange,
-                      minValue: Object.values(bloodMarkers)[index].minValue,
-                      maxValue: Object.values(bloodMarkers)[index].maxValue,
-                      description: Object.values(bloodMarkers)[index].description,
-                      lowImplication: Object.values(bloodMarkers)[index].lowImplication,
-                      highImplication: Object.values(bloodMarkers)[index].highImplication,
-                    },
-                    value: value,
-                    status: value < Object.values(bloodMarkers)[index].minValue ? 'low' : 
-                          value > Object.values(bloodMarkers)[index].maxValue ? 'high' : 'normal',
-                    isNormal: value >= Object.values(bloodMarkers)[index].minValue && 
-                              value <= Object.values(bloodMarkers)[index].maxValue
-                  }))
+                ? Object.entries(savedResults[savedResults.length - 1].values).map(([key, value]) => {
+                    const marker = bloodMarkers[key];
+                    if (!marker) return null;
+                    
+                    const numValue = typeof value === 'string' ? parseFloat(value) : value;
+                    return {
+                      marker: {
+                        id: key,
+                        name: marker.name,
+                        unit: marker.unit,
+                        normalRange: marker.normalRange,
+                        minValue: marker.minValue,
+                        maxValue: marker.maxValue,
+                        description: marker.description,
+                        lowImplication: marker.lowImplication,
+                        highImplication: marker.highImplication,
+                      },
+                      value: numValue,
+                      status: isNaN(numValue) ? 'normal' : 
+                              numValue < marker.minValue ? 'low' : 
+                              numValue > marker.maxValue ? 'high' : 'normal',
+                      isNormal: isNaN(numValue) ? true : 
+                                numValue >= marker.minValue && numValue <= marker.maxValue
+                    };
+                  }).filter(Boolean) as BloodTestResult[]
                 : [
                     {
                       marker: {

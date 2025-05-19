@@ -51,6 +51,7 @@ i18n
       de: {
         translation: {
           "reference.hematology": "Hämatologie",
+          "reference.hormones": "Hormone",
           // Other German translations were already added to de/reference.ts
         },
         reference: deReference

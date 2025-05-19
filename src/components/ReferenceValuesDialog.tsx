@@ -75,89 +75,97 @@ const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) 
             {t("reference.description")}
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="h-[65vh] w-full">
-          <Tabs defaultValue="general" className="w-full">
-            <TabsList className="mb-4 flex flex-wrap">
-              <TabsTrigger value="general">{t("reference.general")}</TabsTrigger>
-              <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
-              <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
-              <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
-              <TabsTrigger value="hematology">{t("reference.hematology")}</TabsTrigger>
-              <TabsTrigger value="hormones">{t("reference.hormones")}</TabsTrigger>
-            </TabsList>
+        
+        {/* Using a relative container with sticky tabs and scrollable content */}
+        <div className="relative h-[65vh]">
+          {/* Sticky tabs at the top */}
+          <div className="sticky top-0 bg-background z-10 pb-2 pt-1">
+            <Tabs defaultValue="general" className="w-full">
+              <TabsList className="mb-4 flex flex-wrap">
+                <TabsTrigger value="general">{t("reference.general")}</TabsTrigger>
+                <TabsTrigger value="amino">{t("reference.amino")}</TabsTrigger>
+                <TabsTrigger value="vitamins">{t("reference.vitamins")}</TabsTrigger>
+                <TabsTrigger value="inflammation">{t("reference.inflammation")}</TabsTrigger>
+                <TabsTrigger value="hematology">{t("reference.hematology")}</TabsTrigger>
+                <TabsTrigger value="hormones">{t("reference.hormones")}</TabsTrigger>
+              </TabsList>
             
-            {/* General Parameters Tab */}
-            <TabsContent value="general">
-              <ReferenceTable 
-                data={referenceData.general} 
-                caption={t("reference.caption.general")} 
-                gender={gender} 
-              />
-            </TabsContent>
+              {/* Scrollable content area */}
+              <ScrollArea className="h-[60vh] w-full overflow-auto">
+                {/* General Parameters Tab */}
+                <TabsContent value="general">
+                  <ReferenceTable 
+                    data={referenceData.general} 
+                    caption={t("reference.caption.general")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
 
-            {/* Amino Acids Tab */}
-            <TabsContent value="amino">
-              <ReferenceTable 
-                data={referenceData.amino} 
-                caption={t("reference.caption.amino")} 
-                gender={gender} 
-              />
-            </TabsContent>
+                {/* Amino Acids Tab */}
+                <TabsContent value="amino">
+                  <ReferenceTable 
+                    data={referenceData.amino} 
+                    caption={t("reference.caption.amino")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
 
-            {/* Special Vitamins Tab */}
-            <TabsContent value="vitamins">
-              <ReferenceTable 
-                data={referenceData.vitamins} 
-                caption={t("reference.caption.vitamins")} 
-                gender={gender} 
-              />
-            </TabsContent>
-            
-            {/* Inflammation Markers Tab */}
-            <TabsContent value="inflammation">
-              <ReferenceTable 
-                data={referenceData.inflammation} 
-                caption={t("reference.caption.inflammation")} 
-                gender={gender} 
-              />
-            </TabsContent>
+                {/* Special Vitamins Tab */}
+                <TabsContent value="vitamins">
+                  <ReferenceTable 
+                    data={referenceData.vitamins} 
+                    caption={t("reference.caption.vitamins")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
+                
+                {/* Inflammation Markers Tab */}
+                <TabsContent value="inflammation">
+                  <ReferenceTable 
+                    data={referenceData.inflammation} 
+                    caption={t("reference.caption.inflammation")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
 
-            {/* Hematology Tab */}
-            <TabsContent value="hematology">
-              <ReferenceTable 
-                data={referenceData.hematology} 
-                caption={t("reference.caption.hematology")} 
-                gender={gender} 
-              />
-            </TabsContent>
+                {/* Hematology Tab */}
+                <TabsContent value="hematology">
+                  <ReferenceTable 
+                    data={referenceData.hematology} 
+                    caption={t("reference.caption.hematology")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
 
-            {/* Hormones Tab */}
-            <TabsContent value="hormones">
-              <ReferenceTable 
-                data={referenceData.hormones} 
-                caption={t("reference.caption.hormones")} 
-                gender={gender} 
-              />
-            </TabsContent>
-          </Tabs>
-
-          {/* Notes Section */}
-          <div className="mt-8 p-4 bg-gray-50 rounded-md">
-            <h3 className="font-semibold mb-2">{t("reference.notes.title")}</h3>
-            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
-              <li>{t("reference.notes.1")}</li>
-              <li>{t("reference.notes.2")}</li>
-              <li>{t("reference.notes.3")}</li>
-              <li><strong>{t("reference.amino")}</strong>: {t("reference.notes.4")}</li>
-              <li><strong>{t("reference.vitamins")}</strong>: {t("reference.notes.5")}</li>
-              <li><strong>{t("reference.inflammation")}</strong>: {t("reference.notes.6")}</li>
-              <li>{t("reference.notes.indicators")}</li>
-            </ul>
-            <p className="text-xs mt-4 text-muted-foreground">
-              <strong>{t("reference.sources")}</strong>
-            </p>
+                {/* Hormones Tab */}
+                <TabsContent value="hormones">
+                  <ReferenceTable 
+                    data={referenceData.hormones} 
+                    caption={t("reference.caption.hormones")} 
+                    gender={gender} 
+                  />
+                </TabsContent>
+              
+                {/* Notes Section */}
+                <div className="mt-8 p-4 bg-gray-50 rounded-md">
+                  <h3 className="font-semibold mb-2">{t("reference.notes.title")}</h3>
+                  <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                    <li>{t("reference.notes.1")}</li>
+                    <li>{t("reference.notes.2")}</li>
+                    <li>{t("reference.notes.3")}</li>
+                    <li><strong>{t("reference.amino")}</strong>: {t("reference.notes.4")}</li>
+                    <li><strong>{t("reference.vitamins")}</strong>: {t("reference.notes.5")}</li>
+                    <li><strong>{t("reference.inflammation")}</strong>: {t("reference.notes.6")}</li>
+                    <li>{t("reference.notes.indicators")}</li>
+                  </ul>
+                  <p className="text-xs mt-4 text-muted-foreground">
+                    <strong>{t("reference.sources")}</strong>
+                  </p>
+                </div>
+              </ScrollArea>
+            </Tabs>
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   );
@@ -181,12 +189,12 @@ const ReferenceTable = ({ data = [], caption, gender }: ReferenceTableProps) => 
       <TableCaption>{caption}</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-1/4">{t("reference.column.parameter")}</TableHead>
-          <TableHead className="w-1/6">{t("reference.column.unit")}</TableHead>
-          <TableHead className="w-1/3">
+          <TableHead className="w-1/4 text-left">{t("reference.column.parameter")}</TableHead>
+          <TableHead className="w-1/6 text-left">{t("reference.column.unit")}</TableHead>
+          <TableHead className="w-1/3 text-left">
             {gender === "female" ? t("reference.column.women") : t("reference.column.men")}
           </TableHead>
-          <TableHead className="w-1/4">{t("reference.column.comment")}</TableHead>
+          <TableHead className="w-1/4 text-left">{t("reference.column.comment")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

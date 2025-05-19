@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -237,6 +238,7 @@ const BloodTestContainer = ({
                           markers={markers}
                           categoryName={healthCategories[categoryKey]?.name || category}
                           categoryColor={healthCategories[categoryKey]?.color || "bg-gray-100"}
+                          gender={gender}
                           register={form.register}
                           initialValues={initialValues}
                         />

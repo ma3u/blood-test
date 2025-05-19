@@ -1,10 +1,17 @@
 
 import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/context/LanguageContext";
 import SEOHead from "@/components/SEOHead";
-import BloodTestEntryMethods from "@/components/blood-test/BloodTestEntryMethods";
-import BloodTestResults from "@/components/blood-test/BloodTestResults";
+import FileUploader from "@/components/FileUploader";
+import { bloodMarkers } from "@/lib/bloodTestUtils";
+import BloodTestTrends from "@/components/BloodTestTrends";
+import BloodTestRecommendations from "@/components/BloodTestRecommendations";
 
 const BloodTestDiagnostic = () => {
   const { t } = useLanguage();
@@ -27,6 +34,13 @@ const BloodTestDiagnostic = () => {
     }
   };
   
+  const handleInputChange = (marker: string, value: string) => {
+    setFormValues(prev => ({
+      ...prev,
+      [marker]: value,
+    }));
+  };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -43,19 +57,17 @@ const BloodTestDiagnostic = () => {
     updatedResults.push(newResults);
     setSavedResults(updatedResults);
     
+    // Reset form after saving if needed
+    // setFormValues({});
+    
     toast({
       title: t("blood-test.data_saved" as any),
       description: t("blood-test.results_available_dashboard" as any),
     });
-    
-    // Reset form values after saving
-    if (entryMethod === "manual") {
-      setFormValues({});
-    }
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto py-8">
       <SEOHead
         title={t("blood-test.diagnostic_title" as any)}
         description={t("blood-test.diagnostic_description" as any)}
@@ -65,23 +77,158 @@ const BloodTestDiagnostic = () => {
         {t("blood-test.diagnostic_title" as any)}
       </h1>
       
-      <BloodTestEntryMethods
-        entryMethod={entryMethod}
-        setEntryMethod={setEntryMethod}
-        formValues={formValues}
-        setFormValues={setFormValues}
-        availableDates={availableDates}
-        setAvailableDates={setAvailableDates}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-        onSubmit={handleSubmit}
-        onResultsExtracted={handleResultsExtracted}
-      />
+      <Tabs value={entryMethod} onValueChange={(v) => setEntryMethod(v as "manual" | "upload")} className="w-full max-w-4xl mx-auto">
+        <TabsList className="grid grid-cols-2 mb-6">
+          <TabsTrigger value="upload">{t("blood-test.upload_results" as any)}</TabsTrigger>
+          <TabsTrigger value="manual">{t("blood-test.manual_entry" as any)}</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="upload" className="space-y-6">
+          <FileUploader onResultsExtracted={handleResultsExtracted} />
+          
+          {Object.keys(formValues).length > 0 && (
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-xl">
+                  {t("blood-test.extracted_values" as any)}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {Object.entries(formValues).map(([key, value]) => (
+                    <div key={key} className="flex justify-between items-center border-b pb-2">
+                      <span className="font-medium">{bloodMarkers[key]?.name || key}:</span>
+                      <span>{value} {bloodMarkers[key]?.unit}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6 flex justify-end">
+                  <Button onClick={handleSubmit}>
+                    {t("blood-test.save_results" as any)}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+        
+        <TabsContent value="manual" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">
+                {t("blood-test.manual_entry_title" as any)}
+              </CardTitle>
+              
+              <div className="mt-2">
+                <Label htmlFor="test-date">Test Date</Label>
+                <Input 
+                  id="test-date" 
+                  type="date" 
+                  value={selectedDate || new Date().toISOString().split('T')[0]} 
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full md:w-[250px]"
+                />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {Object.entries(bloodMarkers).map(([key, marker]) => (
+                    <div key={key} className="space-y-2">
+                      <Label htmlFor={key}>{marker.name}</Label>
+                      <div className="flex items-center">
+                        <Input 
+                          id={key}
+                          type="text"
+                          placeholder={`${t("blood-test.enter" as any)} ${marker.name.toLowerCase()}`}
+                          value={formValues[key] || ''}
+                          onChange={(e) => handleInputChange(key, e.target.value)}
+                        />
+                        <span className="ml-2 text-gray-500 text-sm">{marker.unit}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="flex justify-end">
+                  <Button type="submit">
+                    {t("blood-test.save_results" as any)}
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
       
-      {savedResults.length > 0 && (
-        <div className="mt-12">
-          <BloodTestResults savedResults={savedResults} />
-        </div>
+      {/* Sample data for demonstration - in real app, this would use the actual savedResults */}
+      {(savedResults.length > 0 || true) && (
+        <>
+          <BloodTestTrends 
+            data={savedResults.length > 0 ? savedResults : [
+              { 
+                date: '2023-01-15', 
+                values: { 
+                  glucose: 95, 
+                  cholesterol: 180, 
+                  hdl: 55, 
+                  ldl: 110,
+                  triglycerides: 120,
+                  vitaminD: 35
+                } 
+              },
+              { 
+                date: '2023-04-20', 
+                values: { 
+                  glucose: 92, 
+                  cholesterol: 175, 
+                  hdl: 58, 
+                  ldl: 105,
+                  triglycerides: 115,
+                  vitaminD: 38
+                } 
+              },
+              { 
+                date: '2023-07-10', 
+                values: { 
+                  glucose: 88, 
+                  cholesterol: 170, 
+                  hdl: 60, 
+                  ldl: 100,
+                  triglycerides: 110,
+                  vitaminD: 42
+                } 
+              },
+              { 
+                date: '2023-10-05', 
+                values: { 
+                  glucose: 86, 
+                  cholesterol: 165, 
+                  hdl: 62, 
+                  ldl: 95,
+                  triglycerides: 105,
+                  vitaminD: 45
+                } 
+              }
+            ]} 
+          />
+          
+          <BloodTestRecommendations 
+            values={
+              savedResults.length > 0 
+                ? savedResults[savedResults.length - 1].values
+                : { 
+                    glucose: 86, 
+                    cholesterol: 165, 
+                    hdl: 62, 
+                    ldl: 95,
+                    triglycerides: 105,
+                    vitaminD: 45
+                  }
+            } 
+          />
+        </>
       )}
     </div>
   );

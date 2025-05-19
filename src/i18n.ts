@@ -1,10 +1,10 @@
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enLongevityJson from '@/locales/en/longevity.json';
-import deLongevityJson from '@/locales/de/longevity.json';
+import longevityJson from '@/locales/en/longevity.json';
 
-// Initialize i18next with our localization resources
+// You can add more languages/namespaces as needed
+
 i18n
   .use(initReactI18next)
   .init({
@@ -12,11 +12,8 @@ i18n
     fallbackLng: 'en',
     resources: {
       en: {
-        longevity: enLongevityJson,
+        longevity: longevityJson,
       },
-      de: {
-        longevity: deLongevityJson,
-      }
     },
     ns: ['longevity'],
     defaultNS: 'longevity',

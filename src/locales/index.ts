@@ -99,31 +99,6 @@ export type TranslationKey = keyof typeof en |
   `blood-test.extracted_values` |
   `blood-test.save_results` |
   `blood-test.manual_entry_title` |
-  `blood-test.enter` |
-  `form.title` |
-  `app.title` |
-  `app.subtitle` |
-  `recommendations.title` |
-  `recommendations.normal` |
-  `recommendations.general` |
-  `recommendations.ferritin.low.female` |
-  `recommendations.ferritin.low.male` |
-  `recommendations.vitamin_d.low` |
-  `recommendations.lifestyle` |
-  `recommendation.importance.high` |
-  `recommendation.importance.medium` |
-  `recommendation.importance.low` |
-  `recommendation.related.to` |
-  `recommendation.contraindications` |
-  `recommendation.evidence.strong` |
-  `recommendation.evidence.moderate` |
-  `recommendation.evidence.limited` |
-  `recommendation.none` |
-  `recommendation.none.all` |
-  `recommendation.type.nutrition` |
-  `recommendation.type.supplement` |
-  `recommendation.type.exercise` |
-  `recommendation.type.lifestyle` |
-  `recommendations.description`;
+  `blood-test.enter`;
 
 export default locales;

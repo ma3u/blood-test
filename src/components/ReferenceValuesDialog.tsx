@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -21,14 +20,9 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/context/LanguageContext";
-import ReferenceValuesGenderSwitch from "./ReferenceValuesGenderSwitch";
-import { useUserProfile } from "@/context/UserProfileContext";
 
 const ReferenceValuesDialog = () => {
   const { t } = useLanguage();
-  const { profile } = useUserProfile();
-  // Initialize with the current user gender from context, but allow separate toggle
-  const [referenceGender, setReferenceGender] = useState<"male" | "female">(profile.gender);
   
   return (
     <Dialog>
@@ -45,16 +39,7 @@ const ReferenceValuesDialog = () => {
             {t("reference.description")}
           </DialogDescription>
         </DialogHeader>
-        
-        {/* Add the gender switch at the top of the dialog */}
-        <div className="mb-4 pb-2 border-b">
-          <ReferenceValuesGenderSwitch 
-            gender={referenceGender} 
-            onChange={setReferenceGender} 
-          />
-        </div>
-        
-        <ScrollArea className="h-[60vh] w-full">
+        <ScrollArea className="h-[65vh] w-full">
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="mb-4">
               <TabsTrigger value="general">{t("reference.general")}</TabsTrigger>
@@ -70,10 +55,8 @@ const ReferenceValuesDialog = () => {
                   <TableRow>
                     <TableHead>{t("reference.column.parameter")}</TableHead>
                     <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead>{referenceGender === "female" ? 
-                      t("reference.column.women") : 
-                      t("reference.column.men")}
-                    </TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
                     <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -81,22 +64,21 @@ const ReferenceValuesDialog = () => {
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.ferritin")}</TableCell>
                     <TableCell>ng/ml</TableCell>
-                    <TableCell>
-                      {referenceGender === "female" ? 
-                        "premenopausal: 15–150\npostmenopausal: 15–300\noptimal: 70–200" : 
-                        "30–400\noptimal: 100–300"}
-                    </TableCell>
+                    <TableCell>premenopausal: 15–150<br/>postmenopausal: 15–300<br/>optimal: 70–200</TableCell>
+                    <TableCell>30–400<br/>optimal: 100–300</TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminD")}</TableCell>
                     <TableCell>ng/ml</TableCell>
                     <TableCell>50–70 (optimal)</TableCell>
+                    <TableCell>50–70 (optimal)</TableCell>
                     <TableCell>Reference: 10–100, optimal higher</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">{t("marker.vitaminB12")}</TableCell>
                     <TableCell>pg/ml</TableCell>
+                    <TableCell>&gt;600 (optimal 1000)</TableCell>
                     <TableCell>&gt;600 (optimal 1000)</TableCell>
                     <TableCell>Reference: 200–2000</TableCell>
                   </TableRow>
@@ -188,10 +170,8 @@ const ReferenceValuesDialog = () => {
                   <TableRow>
                     <TableHead>{t("reference.column.parameter")}</TableHead>
                     <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead>{referenceGender === "female" ? 
-                      t("reference.column.women") : 
-                      t("reference.column.men")}
-                    </TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
                     <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -277,10 +257,8 @@ const ReferenceValuesDialog = () => {
                   <TableRow>
                     <TableHead>{t("reference.column.parameter")}</TableHead>
                     <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead>{referenceGender === "female" ? 
-                      t("reference.column.women") : 
-                      t("reference.column.men")}
-                    </TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
                     <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -345,10 +323,8 @@ const ReferenceValuesDialog = () => {
                   <TableRow>
                     <TableHead>{t("reference.column.parameter")}</TableHead>
                     <TableHead>{t("reference.column.unit")}</TableHead>
-                    <TableHead>{referenceGender === "female" ? 
-                      t("reference.column.women") : 
-                      t("reference.column.men")}
-                    </TableHead>
+                    <TableHead>{t("reference.column.women")}</TableHead>
+                    <TableHead>{t("reference.column.men")}</TableHead>
                     <TableHead>{t("reference.column.comment")}</TableHead>
                   </TableRow>
                 </TableHeader>

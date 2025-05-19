@@ -22,6 +22,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ReferenceValuesDialogProps {
   gender?: "male" | "female";
@@ -37,19 +38,24 @@ interface ReferenceValue {
 
 const ReferenceValuesDialog = ({ gender = "male" }: ReferenceValuesDialogProps) => {
   const { t, language } = useLanguage();
+  const { t: t2, i18n } = useTranslation('reference');
+  
+  // Log the reference data to debug
+  console.log("Reference data in language:", language);
+  console.log("General reference data:", i18n.getResourceBundle(language, 'reference')?.general);
   
   // Get the appropriate reference data from translations
   const referenceData = useMemo(() => {
-    // Make sure we're accessing the reference data arrays correctly
+    const resourceBundle = i18n.getResourceBundle(language, 'reference');
     return {
-      general: Array.isArray(t("reference.general")) ? t("reference.general") : [],
-      amino: Array.isArray(t("reference.amino")) ? t("reference.amino") : [],
-      vitamins: Array.isArray(t("reference.vitamins")) ? t("reference.vitamins") : [],
-      inflammation: Array.isArray(t("reference.inflammation")) ? t("reference.inflammation") : [],
-      hematology: Array.isArray(t("reference.hematology")) ? t("reference.hematology") : [],
-      hormones: Array.isArray(t("reference.hormones")) ? t("reference.hormones") : [],
+      general: resourceBundle?.general || [],
+      amino: resourceBundle?.amino || [],
+      vitamins: resourceBundle?.vitamins || [],
+      inflammation: resourceBundle?.inflammation || [],
+      hematology: resourceBundle?.hematology || [],
+      hormones: resourceBundle?.hormones || [],
     };
-  }, [t, language]);
+  }, [i18n, language]);
   
   return (
     <Dialog>

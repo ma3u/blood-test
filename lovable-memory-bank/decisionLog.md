@@ -64,6 +64,9 @@
 ### 📖 Decision 026: Store Static Generated HTML Pages for Longevity Content in Public Folder
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Content Structure<br><b>Date:</b> 2025-05-08</div>
 
+> **Progress:** [GitHub Issue Created: #2](https://github.com/ma3u/blood-test/issues/2)
+
+
 - **Rationale:** Serve longevity content as static HTML for SEO and performance.
 - **Implementation:**
   - Generated static HTML files from markdown sources using a build script.
@@ -72,6 +75,9 @@
 
 ### 📖 Decision 027: Reference List Layout – Multi-Line, Simple Text Style
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-12</div>
+
+> **Progress:** [GitHub Issue Created: #1](https://github.com/ma3u/blood-test/issues/1)
+
 
 - **Rationale:**
   - Ensure all references are readable, accessible, and visually consistent.
@@ -333,11 +339,15 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
 ### 🌐 Decision 009: Internationalization – Comprehensive Translation Keys
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Internationalization<br><b>Date:</b> 2025-05-07</div>
 
+> **Progress:** [GitHub Issue Created: #19](https://github.com/ma3u/blood-test/issues/19)
+
 - **Rationale:** Ensure consistent localization and accessibility.
 - **Implementation:** Added translation keys, updated components, and organized translations.
 
 ### ♿ Decision 008: Accessibility – Button Accessibility & Event Handling
 <div style="background-color:#f3e5f5; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Accessibility<br><b>Date:</b> 2025-05-07</div>
+
+> **Progress:** [GitHub Issue Created: #21](https://github.com/ma3u/blood-test/issues/21)
 
 - **Rationale:** Prevent unintended form submissions and improve accessibility.
 - **Implementation:** Added `type="button"`, improved ARIA, and handled events properly.
@@ -345,11 +355,15 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
 ### 🌐 Decision 007: Internationalization – Locale Files & French Support
 <div style="background-color:#e8f5e9; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Internationalization<br><b>Date:</b> 2025-05-07</div>
 
+> **Progress:** [GitHub Issue Created: #22](https://github.com/ma3u/blood-test/issues/22)
+
 - **Rationale:** Maintainable translations and French accessibility.
 - **Implementation:** Added locale files, dropdown, browser detection, and persistence.
 
 ### 📦 Decision 006: Dependency – Icon Import Fixes (lucide-react)
 <div style="background-color:#ede7f6; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Dependency<br><b>Date:</b> 2025-05-07</div>
+
+> **Progress:** [GitHub Issue Created: #20](https://github.com/ma3u/blood-test/issues/20)
 
 - **Rationale:** Build errors from non-existent icon imports.
 - **Implementation:** Replaced problematic icons and updated all usages for compatibility.
@@ -357,11 +371,15 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
 ### 🟦 Decision 005: UI/UX – Enhanced Upload Functionality & Health Impact Categorization
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-07</div>
 
+> **Progress:** [GitHub Issue Created: #23](https://github.com/ma3u/blood-test/issues/23)
+
 - **Rationale:** Enable uploads in main form and clarify marker categories.
 - **Implementation:** Added upload tab, category color-coding, OCR info, and multi-date extraction.
 
 ### 🟦 Decision 004: UI/UX – Marker Info Space Optimization
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-07</div>
+
+> **Progress:** [GitHub Issue Created: #26](https://github.com/ma3u/blood-test/issues/26)
 
 - **Rationale:** Marker info took too much vertical space; needed compact display.
 - **Implementation:** Moved details to hover cards and reduced redundant info.
@@ -369,17 +387,23 @@ Decision 024 is now complete. The current `public/longevity.md` is the canonical
 ### 🟦 Decision 003: UI/UX – Gender Switch Functionality & UI Organization
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-07</div>
 
+> **Progress:** [GitHub Issue Created: #24](https://github.com/ma3u/blood-test/issues/24)
+
 - **Rationale:** Ensure accurate reference ranges and reduce clutter.
 - **Implementation:** Synced gender state, moved info to hover cards, and updated reference range display.
 
 ### 🟦 Decision 002: UI/UX – Compact, Responsive Blood Test Input Form
 <div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> UI/UX<br><b>Date:</b> 2025-05-07</div>
 
+> **Progress:** [GitHub Issue Created: #25](https://github.com/ma3u/blood-test/issues/25)
+
 - **Rationale:** Improve usability and fit more data on screen.
 - **Implementation:** Used grid layout, hover tooltips, and gender-aware placeholders.
 
 ### 🛠️ Decision 001: Type System – Support `string | number` for BloodTestResult.value
-<div style="background-color:#f5f5f5; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Type System<br><b>Date:</b> 2025-04-28</div>
+<div style="background-color:#e3f2fd; padding:8px; border-radius:6px; margin-bottom:6px;"><b>Category:</b> Type System<br><b>Date:</b> 2025-04-28</div>
+
+> **Progress:** [GitHub Issue Created: #27](https://github.com/ma3u/blood-test/issues/27)
 
 - **Rationale:**
   - Form inputs naturally return string values.
